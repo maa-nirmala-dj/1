@@ -2427,7 +2427,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
 <div class="slider-container">
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Royal Wedding Setup">
+        <img src="https://i.postimg.cc/pXx5fqGQ/image_fac9be10.png" alt="Royal Wedding Setup">
         <div class="slide-info">
             <h3>Royal Wedding Pandals</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Experience the ultimate grandeur with our luxurious, imported fabric drapery and custom architectural setups designed for unforgettable Beltikri weddings.</div>
@@ -2435,7 +2435,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Heavy DJ Setup">
+        <img src="https://i.postimg.cc/g20XqtDW/IMG_20260303_121446.png" alt="Heavy DJ Setup">
         <div class="slide-info">
             <h3>Earth-Shattering DJ Rigs</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Dominate the dance floor with our massive dual subwoofers and crystal-clear line arrays. Pure acoustic supremacy for the ultimate high-energy Baaraat.</div>
@@ -2443,7 +2443,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lighting Setup">
+        <img src="https://i.postimg.cc/cLJgMkmJ/maxresdefault.jpg" alt="Lighting Setup">
         <div class="slide-info">
             <h3>Intelligent DMX Lighting</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Transform the night sky with synchronized 3D laser shows, brilliant LED wash lights, and cinematic cold spark pyro effects synced perfectly to the beat.</div>
@@ -2451,7 +2451,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Catering Setup">
+        <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="Catering Setup">
         <div class="slide-info">
             <h3>Elite Gastronomy & Catering</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Serving culinary perfection with high-hygiene industrial cooking setups, premium bone china, and a vast menu of authentic, mouth-watering traditional flavors.</div>
@@ -2459,7 +2459,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Tent Structure">
+        <img src="https://i.postimg.cc/5yRdctZh/1771529133710.jpg" alt="Tent Structure">
         <div class="slide-info">
             <h3>Heavy-Duty Iron Trusses</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Unyielding structural integrity featuring waterproof, industrial-grade iron rigging to keep your VIP guests safe and incredibly comfortable in any weather.</div>
@@ -2467,7 +2467,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Floral Decoration">
+        <img src="https://i.postimg.cc/hPgQLpyz/image_b73be3f2_1.png" alt="Floral Decoration">
         <div class="slide-info">
             <h3>Bespoke Floral Architecture</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Breathtaking Varmala stages and intricate floral archways crafted by expert designers using the absolute freshest orchids, roses, and vibrant marigolds.</div>
@@ -2475,7 +2475,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Generator Setup">
+        <img src="https://i.postimg.cc/bwFG60Cv/image_ae71021a.png" alt="Generator Setup">
         <div class="slide-info">
             <h3>Silent Power Infrastructure</h3>
             <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Uninterrupted celebrations powered by our highly reliable, heavy-duty Silent DG Sets. Absolute electrical reliability with zero flickering or darkness.</div>
@@ -2483,10 +2483,10 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
     </div>
 
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Transport Logistics">
+        <img src="https://i.postimg.cc/pdyF9r0J/image_143d2d44.png" alt="Transport Logistics">
         <div class="slide-info">
             <h3>Flawless Heavy Logistics</h3>
-            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Backed by Laxmikant Tractor Transport, our formidable mechanical fleet guarantees the punctual, safe delivery of colossal payloads to any remote venue.</div>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Backed by Laxmikant  Transport, our formidable mechanical fleet guarantees the punctual, safe delivery of colossal payloads to any remote venue.</div>
         </div>
     </div>
 
