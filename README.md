@@ -2536,8 +2536,8 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                 </ul>
                 <div style="border-top: 1px solid var(--border-color); margin: 25px 0;"></div>
                 <div style="text-align: center;">
-                    <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lalu Kumar Tanti" style="width: 100px; height: 100px; margin-bottom: 10px; border: 3px solid var(--gold-primary);">
-                    <h2 style="color: var(--gold-primary); font-family: 'Cinzel'; font-size: 22px; font-weight: bold;">Lalu Kumar Tanti</h2>
+                    <img src"https://i.postimg.cc/6qbJj3hQ/Screenshot-2026-01-14-15-25-06-57-1c337646f29875672b5a61192b9010f9-2.jpg" alt="Anil Kumar" style="width: 100px; height: 100px; margin-bottom: 10px; border: 3px solid var(--gold-primary);">
+                    <h2 style="color: var(--gold-primary); font-family: 'Cinzel'; font-size: 22px; font-weight: bold;">Anil Kumar Tanti</h2>
                     <h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Founder & Owner</h3>
                 </div>
             </div>
@@ -2548,24 +2548,24 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                 <p style="text-align: center; font-size: 12px; color: #ccc; margin-bottom: 15px; font-family: 'Outfit'; letter-spacing: 1px;">JRPM+RQ, Beltikri, Tola Tetaria, Bihar 814131</p>
                 
                 <div class="map-wrapper">
-                    <iframe src="https://maps.google.com/maps?q=JRPM+RQ%20Beltikri,%20Tola%20Tetaria,%20Bihar%20814131&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <iframe src="https://maps.app.goo.gl/yADvX3hyGwPENtqz8" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
                 
-                <a href="https://maps.google.com/maps?q=JRPM+RQ%20Beltikri,%20Tola%20Tetaria,%20Bihar%20814131" target="_blank" style="display: block; width: 100%; padding: 15px; background: var(--gold-primary); color: #000; text-align: center; font-weight: bold; border-radius: 8px; text-decoration: none; margin-top: 15px; font-family: 'Rajdhani'; letter-spacing: 1px; transition: 0.3s;">
+                <a href="https://maps.app.goo.gl/yADvX3hyGwPENtqz8" target="_blank" style="display: block; width: 100%; padding: 15px; background: var(--gold-primary); color: #000; text-align: center; font-weight: bold; border-radius: 8px; text-decoration: none; margin-top: 15px; font-family: 'Rajdhani'; letter-spacing: 1px; transition: 0.3s;">
                     <i class="fas fa-directions"></i> GET DIRECTIONS TO MAP
                 </a>
             </div>
 
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-music"></i> THE MAA NIRMALA EXPERIENCE</div>
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-                <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid var(--gold-primary); margin-bottom: 15px;" alt="Experience">
-                <h3 style="color: var(--gold-primary); font-family: 'Cinzel'; margin-bottom: 10px; font-size: 20px;">Unmatched Sound & Vibes</h3>
+                <img src="https://i.postimg.cc/Vv6QHtHD/1771530083282.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid var(--gold-primary); margin-bottom: 15px;" alt="Experience">
+                <h3 style="color: var(--gold-primary); font-family: 'Cinzel'; margin-bottom: 10px; font-size: 20px;">Our Sound & Vibes</h3>
                 <p style="font-size: 14px; line-height: 1.6; color: #ddd;">Maa Nirmala DJ sets the standard for high-energy celebrations in Banka. With state-of-the-art audio, dazzling light shows, and premium VIP tents, we guarantee a flawless event. From intimate functions to massive district festivals, our team works tirelessly to bring your dream event to reality.</p>
             </div>
                       <div class="section-label" style="margin-top:40px;"><i class="fas fa-music"></i> THE MAA NIRMALA EXPERIENCE</div>
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
-                <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid var(--gold-primary); margin-bottom: 15px;" alt="Experience">
-                <h3 style="color: var(--gold-primary); font-family: 'Cinzel'; margin-bottom: 10px; font-size: 20px;">Unmatched Sound & Vibes</h3>
+                <img src="https://i.postimg.cc/hPgQLpyz/image_b73be3f2_1.png" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid var(--gold-primary); margin-bottom: 15px;" alt="Experience">
+                <h3 style="color: var(--gold-primary); font-family: 'Cinzel'; margin-bottom: 10px; font-size: 20px;">Decoration & Tent House</h3>
                 <p style="font-size: 14px; line-height: 1.6; color: #ddd;">Maa Nirmala DJ sets the standard for high-energy celebrations in Banka. With state-of-the-art audio, dazzling light shows, and premium VIP tents, we guarantee a flawless event. From intimate functions to massive district festivals, our team works tirelessly to bring your dream event to reality.</p>
             </div>
           <div style="width: 100%; padding: 40px 15px; background-color: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;">
