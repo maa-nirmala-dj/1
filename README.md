@@ -2543,18 +2543,32 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
             </div>
 
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-map-marker-alt"></i> OUR LOCATION</div>
-            <div class="map-container">
-                <p style="text-align: center; color: var(--gold-primary); font-family: 'Cinzel'; font-weight: bold; font-size: 18px; margin-bottom: 5px;">Maa Nirmala DJ & Tent House</p>
-                <p style="text-align: center; font-size: 12px; color: #ccc; margin-bottom: 15px; font-family: 'Outfit'; letter-spacing: 1px;">JRPM+RQ, Beltikri, Tola Tetaria, Bihar 814131</p>
-                
-                <div class="map-wrapper">
-                    <iframe src="https://maps.app.goo.gl/yADvX3hyGwPENtqz8" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                </div>
-                
-                <a href="https://maps.app.goo.gl/yADvX3hyGwPENtqz8" target="_blank" style="display: block; width: 100%; padding: 15px; background: var(--gold-primary); color: #000; text-align: center; font-weight: bold; border-radius: 8px; text-decoration: none; margin-top: 15px; font-family: 'Rajdhani'; letter-spacing: 1px; transition: 0.3s;">
-                    <i class="fas fa-directions"></i> GET DIRECTIONS TO MAP
-                </a>
-            </div>
+<div class="map-container">
+    <p style="text-align: center; color: var(--gold-primary, #D4AF37); font-family: 'Cinzel', serif; font-weight: bold; font-size: 22px; margin-bottom: 5px;">
+        Maa Nirmala DJ & Tent House
+    </p>
+    
+    <p style="text-align: center; font-size: 14px; color: #ccc; margin-bottom: 20px; font-family: 'Outfit', sans-serif; letter-spacing: 1px;">
+        JRPM+RQ, Beltikri, Tola Tetaria, Bihar 813106
+    </p>
+    
+    <div class="map-wrapper" style="width: 100%; height: 350px; border-radius: 12px; overflow: hidden; border: 2px solid var(--gold-primary, #D4AF37); box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+        <iframe 
+            src="https://maps.google.com/maps?q=JRPM%2BRQ%20Beltikri,%20Bihar%20813106&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0;" 
+            allowfullscreen="" 
+            aria-hidden="false" 
+            tabindex="0">
+        </iframe>
+    </div>
+    
+    <a href="https://www.google.com/maps/dir/?api=1&destination=JRPM%2BRQ,+Beltikri,+Bihar+813106" target="_blank" style="display: block; width: 100%; padding: 15px; box-sizing: border-box; background: var(--gold-primary, #D4AF37); color: #000; text-align: center; font-weight: bold; border-size: 18px; border-radius: 8px; text-decoration: none; margin-top: 20px; font-family: 'Rajdhani', sans-serif; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase;">
+        <i class="fas fa-directions"></i> Get Directions To Map
+    </a>
+</div>
 
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-music"></i> THE MAA NIRMALA EXPERIENCE</div>
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
