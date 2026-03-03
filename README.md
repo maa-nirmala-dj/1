@@ -2541,7 +2541,12 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                     <h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Founder & Owner</h3>
                 </div>
             </div>
-            <div class="map-wrapper">
+            <div class="section-label" style="margin-top:40px;"><i class="fas fa-map-marker-alt"></i> OUR LOCATION</div>
+            <div class="map-container">
+                <p style="text-align: center; color: var(--gold-primary); font-family: 'Cinzel'; font-weight: bold; font-size: 18px; margin-bottom: 5px;">Maa Nirmala DJ & Tent House</p>
+                <p style="text-align: center; font-size: 12px; color: #ccc; margin-bottom: 15px; font-family: 'Outfit'; letter-spacing: 1px;">JRPM+RQ, Beltikri, Tola Tetaria, Bihar 813106</p>
+                
+                <div class="map-wrapper">
                     <iframe src="https://maps.google.com/maps?q=JRPM%2BRQ%20Beltikri,%20Bihar%20813106&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
                 
