@@ -372,6 +372,336 @@
                         <option value="#dc143c">Crimson</option>
                         <option value="#c0c0c0">Luxury Silver</option>
                         <option value="#ffffff">Pure White</option>
+                        
+Conversation with Gemini
+You said
+
+
+            <h3>Chapter I: The Genesis & Vision</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+
+
+            <h3>Chapter II: The Supremacy of Acoustic Engineering</h3>
+
+            <p>The true heartbeat of any monumental celebration lies in its sound, and at Maa Nirmala DJ, our acoustic engineering is quite simply second to none. We do not just play music; we manipulate soundwaves to captivate the human soul. Our audio arsenal consists of industry-leading, heavy-duty dual subwoofers capable of pushing massive volumes of air, creating an earth-shattering bass response that reverberates through the very ground you stand on. This low-end raw power is perfectly balanced by our deployment of crystal-clear, high-frequency line-array top speakers. Whether we are amplifying the sacred, ancient Sanskrit chants of a traditional wedding ceremony or unleashing high-octane electronic drops for a midnight Baaraat trolley, our state-of-the-art mixers and digital crossovers ensure that every vocal is crisp and every beat is free of distortion. From intimate Haldi ceremonies to our <strong>Mega Concert DJ Rigs</strong> designed for thousands of attendees, we dominate the auditory landscape.</p>
+
+
+
+            <h3>Chapter III: Architectural Grandeur & Royal Pandals</h3>
+
+            <p>Moving beyond the realm of music, our premium tent house division specializes in the construction of temporary palaces. We understand that the physical environment of an event dictates its prestige. Therefore, we utilize heavy-duty, industrial-grade iron trusses and highly secure rigging systems to construct massive waterproof pandals that defy unpredictable weather. We drape these magnificent structures in miles of imported, vibrantly colored luxury fabrics, cascading elegantly from towering ceilings to create intricate geometric and floral patterns. The interior of every Maa Nirmala setup is a sanctuary of royal comfort, featuring <strong>Premium VIP Seating Arrangements</strong>, immaculate wall-to-wall carpeting, and majestic stage decorations. Our bespoke floral archways and illuminated entrance gates (Dwar) are meticulously crafted to welcome your guests into a world of pure, unadulterated enchantment.</p>
+
+
+
+            <h3>Chapter IV: Cinematic Visuals & Intelligent Lighting</h3>
+
+            <p>To illuminate our architectural masterpieces and sync with our heavy bass audio, our lighting technicians paint the night sky using highly intelligent, programmable DMX lighting arrays. We deploy sweeping, synchronized 3D laser shows, brilliant LED wash lights, and powerful moving head beams that track the tempo of the music, creating an immersive, multi-sensory environment that rivals professional stadium concerts. By seamlessly introducing cinematic atmospheric effects such as heavy ground fog and safe cold spark pyro machines during key emotional moments—such as the bride and groom's grand entrance or the cutting of the cake—we elevate the visual impact of your evening to legendary status.</p>
+
+
+
+            <h3>Chapter V: Unyielding Logistics & Power Infrastructure</h3>
+
+            <p>The hallmark of a truly premium service is what happens behind the scenes. An event of massive magnitude requires unbreakable logistical supremacy. Recognizing the unpredictability of local power grids, Maa Nirmala provides absolute electrical reliability through our massive, heavy-duty Silent Generators (DG Sets), ensuring your event never experiences a single millisecond of darkness. Furthermore, our invisible backbone is our formidable logistical network. Supported powerfully by <strong>Laxmikant Tractor Transport</strong>, we possess the sheer mechanical might to deliver colossal payloads of heavy subwoofers, iron pillars, and delicate lighting fixtures to any venue, no matter how remote the location. We arrive with military-like precision, construct with undeniable passion, and manage every technical detail flawlessly.</p>
+
+
+
+            <h3>Chapter VI: Our Promise to You</h3>
+
+            <p>For years, the communities of Beltikri, Katoria, and the greater Banka region have placed their ultimate trust in us during their most precious moments. When you hire <strong>Maa Nirmala DJ & Tent House</strong>, you are not simply renting equipment; you are partnering with a legacy of excellence. We leave nothing to chance, we accept no excuses, and we let our spectacular, awe-inspiring results speak for themselves. From the first phone call to the final beat of the music, we are devoted entirely to your celebration. Choose the best. Choose Maa Nirmala.</p>
+
+            
+
+            <h3>Chapter v: Maa Nirmala Dj & Tent House</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+Now you give chapter 7 in the same format to 10 300 word is each chapter
+
+Gemini said
+Chapter VII: The Art of Gastronomy & Elite Catering
+<p>Beyond the auditory and visual spectacles, Maa Nirmala DJ & Tent House recognizes that the soul of any legendary Indian celebration is the feast. Our expanded catering division is a masterclass in culinary excellence, designed to satisfy the most discerning palates of Bihar and beyond. We do not merely serve food; we curate a sensory journey through the rich heritage of Desi flavors and international delicacies. Our kitchen is helmed by elite chefs who utilize organic, locally sourced ingredients to prepare a massive array of dishes, from the smoky, traditional perfection of Litti Chokha to sophisticated multi-cuisine buffets featuring Paneer Lababdar, Kashmiri Pulao, and artisanal breads. We deploy a sophisticated infrastructure of heavy-duty industrial burners and hygienic cold-storage units to ensure every morsel is served at the peak of freshness. Our service staff, trained in the highest standards of hospitality, move with invisible grace among your guests, ensuring that every VIP plate is replenished and every water glass is full. We provide premium bone china crockery, polished stainless steel cutlery, and exquisitely decorated food stalls that align with your event's royal theme. At Maa Nirmala, we believe that the memory of a great meal lingers as long as the music, and we guarantee a banquet that will be spoken of for generations.</p>
+
+Chapter VIII: The Symphony of Floral Design & Natural Aesthetics
+<p>To complement our architectural pandals, Maa Nirmala employs a specialized team of floral architects who transform raw spaces into blooming paradises. We understand that flowers carry the emotional weight of a ceremony, symbolizing purity, growth, and celebration. Our sourcing network brings in the freshest Marigolds, exotic Orchids, Red Roses, and fragrant Jasmine from the finest gardens, ensuring a vibrant explosion of color and scent. We specialize in creating high-impact floral installations, including massive 20-foot "Varmala" stages, cascading floral ceilings, and intricate "Rangoli" patterns at the entrance. Our technicians utilize hidden misting systems to keep the flora dew-fresh even under the heat of our powerful stage lights. Each arrangement is a bespoke creation, tailored to the specific color palette of your wedding or festival. Whether it is a traditional "Genda Phool" theme for a Haldi or a modern, minimalist white lily aesthetic for a high-profile corporate gathering, our floral designs provide the perfect, organic backdrop for your cinematic photographs. By blending the raw beauty of nature with our sophisticated structural rigging, we create an environment that feels both grand and intimately alive, ensuring that every corner of your venue is a masterpiece of natural art.</p>
+
+Chapter IX: Digital Integration & Live Broadcast Excellence
+<p>In this modern era, a grand event in Banka deserves to be seen by the entire world. Maa Nirmala DJ & Tent House has pioneered the integration of high-end digital media services directly into our event packages. We deploy a network of ultra-high-definition (4K) LED wall screens that serve as a dynamic backdrop for the stage, displaying crystal-clear live feeds of the ceremony, cinematic montages of the couple, or vibrant motion graphics that sync perfectly with our DJ's rhythm. Our technical team operates professional-grade video switchers and multi-camera setups, including overhead jib cranes and stabilized handheld units, to capture every tear, laugh, and dance move from every possible angle. For families with loved ones abroad, we offer seamless, high-speed live streaming services to platforms like YouTube and Facebook, ensuring that distance is no barrier to joining the celebration. This digital supremacy extends to our pre-event planning, where we offer 3D walkthroughs of the tent layout, allowing you to visualize the placement of every subwoofer and VIP sofa before a single iron pillar is raised. By merging traditional celebration with cutting-edge digital technology, Maa Nirmala ensures your event is not just a local gathering, but a globally accessible, high-tech production.</p>
+
+Chapter X: The Legacy of Trust & Future Horizons
+<p>As we conclude the grand narrative of Maa Nirmala DJ & Tent House, we look toward a future where our name remains synonymous with the pinnacle of human celebration. Our journey from Beltikri to becoming a regional titan has been paved with the smiles of thousands of satisfied clients and the successful execution of countless complex events. We are constantly reinvesting in our inventory, acquiring the latest "Bass-King" series subwoofers and fire-retardant luxury fabrics to stay ahead of global trends. Our commitment to the Banka district remains unshakeable; we are not just a business, but a pillar of the community that provides employment, supports local traditions, and elevates the standard of living through world-class entertainment. Under the continued leadership of Mr. Lalu Kumar Tanti, we are expanding our logistical reach, ensuring that the "Maa Nirmala Experience" can be delivered to the furthest corners of Bihar and Jharkhand with the same military precision and royal flair. We invite you to step into our office, share your vision, and watch as we mobilize our massive infrastructure to bring your dreams to life. The stage is set, the lights are dimmed, and the bass is ready to drop. Your legacy begins with us. Choose Maa Nirmala—where your celebration becomes history.</p>
+
+Would you like me to generate the complete, high-quality HTML code incorporating all ten chapters into a premium website layout for you?
+
+You said
+
+
+            <h3>Chapter I: The Genesis & Vision</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+
+
+            <h3>Chapter II: The Supremacy of Acoustic Engineering</h3>
+
+            <p>The true heartbeat of any monumental celebration lies in its sound, and at Maa Nirmala DJ, our acoustic engineering is quite simply second to none. We do not just play music; we manipulate soundwaves to captivate the human soul. Our audio arsenal consists of industry-leading, heavy-duty dual subwoofers capable of pushing massive volumes of air, creating an earth-shattering bass response that reverberates through the very ground you stand on. This low-end raw power is perfectly balanced by our deployment of crystal-clear, high-frequency line-array top speakers. Whether we are amplifying the sacred, ancient Sanskrit chants of a traditional wedding ceremony or unleashing high-octane electronic drops for a midnight Baaraat trolley, our state-of-the-art mixers and digital crossovers ensure that every vocal is crisp and every beat is free of distortion. From intimate Haldi ceremonies to our <strong>Mega Concert DJ Rigs</strong> designed for thousands of attendees, we dominate the auditory landscape.</p>
+
+
+
+            <h3>Chapter III: Architectural Grandeur & Royal Pandals</h3>
+
+            <p>Moving beyond the realm of music, our premium tent house division specializes in the construction of temporary palaces. We understand that the physical environment of an event dictates its prestige. Therefore, we utilize heavy-duty, industrial-grade iron trusses and highly secure rigging systems to construct massive waterproof pandals that defy unpredictable weather. We drape these magnificent structures in miles of imported, vibrantly colored luxury fabrics, cascading elegantly from towering ceilings to create intricate geometric and floral patterns. The interior of every Maa Nirmala setup is a sanctuary of royal comfort, featuring <strong>Premium VIP Seating Arrangements</strong>, immaculate wall-to-wall carpeting, and majestic stage decorations. Our bespoke floral archways and illuminated entrance gates (Dwar) are meticulously crafted to welcome your guests into a world of pure, unadulterated enchantment.</p>
+
+
+
+            <h3>Chapter IV: Cinematic Visuals & Intelligent Lighting</h3>
+
+            <p>To illuminate our architectural masterpieces and sync with our heavy bass audio, our lighting technicians paint the night sky using highly intelligent, programmable DMX lighting arrays. We deploy sweeping, synchronized 3D laser shows, brilliant LED wash lights, and powerful moving head beams that track the tempo of the music, creating an immersive, multi-sensory environment that rivals professional stadium concerts. By seamlessly introducing cinematic atmospheric effects such as heavy ground fog and safe cold spark pyro machines during key emotional moments—such as the bride and groom's grand entrance or the cutting of the cake—we elevate the visual impact of your evening to legendary status.</p>
+
+
+
+            <h3>Chapter V: Unyielding Logistics & Power Infrastructure</h3>
+
+            <p>The hallmark of a truly premium service is what happens behind the scenes. An event of massive magnitude requires unbreakable logistical supremacy. Recognizing the unpredictability of local power grids, Maa Nirmala provides absolute electrical reliability through our massive, heavy-duty Silent Generators (DG Sets), ensuring your event never experiences a single millisecond of darkness. Furthermore, our invisible backbone is our formidable logistical network. Supported powerfully by <strong>Laxmikant Tractor Transport</strong>, we possess the sheer mechanical might to deliver colossal payloads of heavy subwoofers, iron pillars, and delicate lighting fixtures to any venue, no matter how remote the location. We arrive with military-like precision, construct with undeniable passion, and manage every technical detail flawlessly.</p>
+
+
+
+            <h3>Chapter VI: Our Promise to You</h3>
+
+            <p>For years, the communities of Beltikri, Katoria, and the greater Banka region have placed their ultimate trust in us during their most precious moments. When you hire <strong>Maa Nirmala DJ & Tent House</strong>, you are not simply renting equipment; you are partnering with a legacy of excellence. We leave nothing to chance, we accept no excuses, and we let our spectacular, awe-inspiring results speak for themselves. From the first phone call to the final beat of the music, we are devoted entirely to your celebration. Choose the best. Choose Maa Nirmala.</p>
+
+            
+
+            <h3>Chapter v: Maa Nirmala Dj & Tent House</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+Now you give chapter 7 in the same format to 10 300 word is each chapter 
+
+Gift chapter 7 to 15
+
+Gemini said
+XML
+<thinking>
+Thinking Process:
+
+1.  **Analyze the Request:**
+    * **Input:** The user provided a text containing Chapters I through VI of a narrative about "Maa Nirmala DJ & Tent House".
+    * **Task:** The user wants Chapter 7 through 10 written in the *same format* (HTML snippet with `<h3>` and `<p>` tags), with a constraint of exactly/around "10 300 word is each chapter" which I understand as "10 to 300 words in each chapter" or "300 words in each chapter". Given the previous prompt's output, they probably mean "give chapters 7 to 10, 300 words in each chapter". The previous prompt actually gave Chapters VII to X. The user specifically asks to "Gift chapter 7 to 15" at the very end.
+    * **Correction/Refinement:** The prompt says "Now you give chapter 7 in the same format to 10 300 word is each chapter Gift chapter 7 to 15". I will provide Chapters VII to XV (7 to 15), formatted identically to the provided text (`<h3>` and `<p>`), aiming for around 250-300 words per chapter.
+    * **Tone/Content:** Grandiose, epic, cinematic, professional, highlighting the business "Maa Nirmala DJ & Tent House", founded by "Mr. Lalu Kumar Tanti", operating in Beltikri, Kaddhar, Katoria, Banka, Bihar (813106).
+    * **Format:**
+        ```html
+        <h3>Chapter [Roman Numeral]: [Title]</h3>
+        <p>[Content...]</p>
+        ```
+
+2.  **Plan Chapters 7 to 15:**
+    * *Chapter VII: The Culinary Symphony & Elite Catering* (Focus on food/catering expansion).
+    * *Chapter VIII: The Art of Floral Design & Decor* (Focus on flowers and organic aesthetics).
+    * *Chapter IX: Digital Integration & Cinematic Broadcasting* (Focus on LED walls, drone shoots, live streaming).
+    * *Chapter X: Transport & Heavy Machinery Fleet* (Focus on Laxmikant Tractor Transport, logistics, moving the massive gear).
+    * *Chapter XI: Corporate Events & Grand Festivals* (Expanding beyond weddings to district-level events).
+    * *Chapter XII: The Philosophy of Customer Devotion* (Focus on Mr. Lalu's vision, team dedication, 24/7 service).
+    * *Chapter XIII: Sustainable Celebrations & Community Impact* (Focus on helping the Beltikri community, eco-friendly generators, local employment).
+    * *Chapter XIV: Future Innovations & The Next Decade* (Looking forward, expanding across Bihar/Jharkhand).
+    * *Chapter XV: The Final Overture & Call to Action* (Summary of the legacy, inviting the client).
+
+3.  **Drafting the Content (aiming for substantive, ~200-300 word paragraphs to match the epic style):**
+
+    * *Chapter VII:* Focus on the expansion into elite catering and hospitality. Grand words: "gastronomic supremacy", "elite chefs", "authentic Desi flavors".
+    * *Chapter VIII:* Focus on floral arrangements. "Botanical architecture", "vibrant marigolds", "exotic orchids", "Banka's natural beauty".
+    * *Chapter IX:* Focus on visual tech. "4K LED walls", "cinematic drone coverage", "live streaming to global audiences".
+    * *Chapter X:* Focus on logistics. Highlight "Laxmikant Tractor Transport" (from user's profile/context). "Unstoppable mechanical fleet", "all-terrain delivery".
+    * *Chapter XI:* Focus on scale. "Maha-Aartis", "political rallies", "corporate summits". "Scaling the magic".
+    * *Chapter XII:* Focus on the team. "Sildhar Kumar, Anil Kumar, and Sanjay Kumar". "Synchronized management".
+    * *Chapter XIII:* Focus on the community. "Beltikri's pride", "creating jobs", "local artisans".
+    * *Chapter XIV:* Focus on the future. "Expanding empire", "next-generation audio".
+    * *Chapter XV:* Conclusion. "The ultimate choice", "legacy".
+
+4.  **Refining constraints:**
+    * Output must strictly use `<h3>` and `<p>`.
+    * No Markdown code blocks formatting unless necessary, but the prompt's provided text is raw HTML in text format. I will provide raw HTML or beautifully formatted markdown, but since they provided raw indented HTML, I will match that exact indentation and tag structure.
+    * Need to generate Chapters VII through XV.
+
+5.  **Drafting (Mental check of word counts & tone):**
+    * *Chapter VII:* Welcome to the culinary wing... (Let's write it out fully).
+
+6.  **Writing the HTML blocks (matching the user's prompt style):**
+    * (Self-Correction during drafting): Ensure Laxmikant Tractor Transport is mentioned organically. Ensure Beltikri, Katoria, Banka, Bihar are mentioned to ground the narrative. Ensure Lalu Kumar Tanti is highlighted as the visionary.
+
+7.  **Final Polish:** Check against the 9 chapters requested (7 to 15). Ensure the tone matches the highly exaggerated, cinematic "titan of event management" style. Ensure exactly one `<h3>` and one `<p>` per chapter for consistency.
+
+**(Self-Correction during execution):** The user asked for "Gift chapter 7 to 15" and "300 word is each chapter". I will write rich, lengthy paragraphs for each of the 9 requested chapters to satisfy the length requirement.
+
+Let's generate the text.
+</thinking>
+
+            <h3>Chapter VII: The Culinary Symphony & Elite Catering</h3>
+            <p>Beyond the auditory and visual spectacles, Maa Nirmala DJ & Tent House recognizes that the soul of any legendary Indian celebration is the feast. Our expanded catering division is a masterclass in culinary excellence, designed to satisfy the most discerning palates of Bihar and beyond. We do not merely serve food; we curate a sensory journey through the rich heritage of authentic traditional flavors and international delicacies. Our kitchen is helmed by elite chefs who utilize organic, locally sourced ingredients to prepare a massive array of dishes, from the smoky, traditional perfection of Litti Chokha to sophisticated multi-cuisine buffets featuring rich curries, artisanal breads, and decadent desserts. We deploy a sophisticated infrastructure of heavy-duty industrial burners and hygienic cold-storage units to ensure every morsel is served at the peak of freshness. Our service staff, trained in the highest standards of hospitality, move with invisible grace among your guests, ensuring that every VIP plate is replenished and every water glass is full. We provide premium bone china crockery, polished stainless steel cutlery, and exquisitely decorated food stalls that align with your event's royal theme. At Maa Nirmala, we believe that the memory of a great meal lingers just as long as the music.</p>
+
+            <h3>Chapter VIII: Botanical Architecture & Floral Design</h3>
+            <p>To perfectly complement our architectural pandals, Maa Nirmala employs a specialized team of floral architects who transform raw spaces into blooming, vibrant paradises. We understand that flowers carry the emotional weight of a ceremony, symbolizing purity, growth, and celebration. Our expansive sourcing network brings in the freshest Marigolds, exotic Orchids, deep Red Roses, and fragrant Jasmine from the finest gardens across the country, ensuring an explosion of color and scent. We specialize in creating high-impact floral installations, including massive twenty-foot "Varmala" stages, cascading floral ceilings, and intricate "Rangoli" patterns that greet guests at the Dwar. Our technicians utilize hidden misting systems to keep the flora dew-fresh even under the heat of our powerful stage lights and the Bihar sun. Each arrangement is a bespoke creation, carefully tailored to the specific color palette of your wedding or festival. Whether it is a traditional "Genda Phool" theme for a lively Haldi ceremony or a modern, minimalist white lily aesthetic for a high-profile reception, our floral designs provide the perfect, organic backdrop for your cinematic photographs.</p>
+
+            <h3>Chapter IX: Digital Integration & Cinematic Broadcasting</h3>
+            <p>In this modern era, a grand event in Banka deserves to be seen and remembered by the entire world. Maa Nirmala DJ & Tent House has pioneered the integration of high-end digital media services directly into our premium event packages. We deploy a network of ultra-high-definition (4K) LED wall screens that serve as a dynamic, glowing backdrop for the stage, displaying crystal-clear live feeds of the ceremony, cinematic montages of the couple, or vibrant motion graphics that sync perfectly with our DJ's earth-shaking rhythm. Our technical team works alongside professional-grade videographers, utilizing overhead jib cranes and stabilized cinematic drones to capture every tear, laugh, and dance move from breathtaking aerial and ground angles. For families with loved ones abroad, we offer seamless, high-speed live streaming services, ensuring that distance is absolutely no barrier to joining the celebration. By merging the traditions of a Beltikri celebration with cutting-edge digital broadcasting technology, Maa Nirmala ensures your
+You stopped this response
+You said
+
+
+            <h3>Chapter I: The Genesis & Vision</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+
+
+            <h3>Chapter II: The Supremacy of Acoustic Engineering</h3>
+
+            <p>The true heartbeat of any monumental celebration lies in its sound, and at Maa Nirmala DJ, our acoustic engineering is quite simply second to none. We do not just play music; we manipulate soundwaves to captivate the human soul. Our audio arsenal consists of industry-leading, heavy-duty dual subwoofers capable of pushing massive volumes of air, creating an earth-shattering bass response that reverberates through the very ground you stand on. This low-end raw power is perfectly balanced by our deployment of crystal-clear, high-frequency line-array top speakers. Whether we are amplifying the sacred, ancient Sanskrit chants of a traditional wedding ceremony or unleashing high-octane electronic drops for a midnight Baaraat trolley, our state-of-the-art mixers and digital crossovers ensure that every vocal is crisp and every beat is free of distortion. From intimate Haldi ceremonies to our <strong>Mega Concert DJ Rigs</strong> designed for thousands of attendees, we dominate the auditory landscape.</p>
+
+
+
+            <h3>Chapter III: Architectural Grandeur & Royal Pandals</h3>
+
+            <p>Moving beyond the realm of music, our premium tent house division specializes in the construction of temporary palaces. We understand that the physical environment of an event dictates its prestige. Therefore, we utilize heavy-duty, industrial-grade iron trusses and highly secure rigging systems to construct massive waterproof pandals that defy unpredictable weather. We drape these magnificent structures in miles of imported, vibrantly colored luxury fabrics, cascading elegantly from towering ceilings to create intricate geometric and floral patterns. The interior of every Maa Nirmala setup is a sanctuary of royal comfort, featuring <strong>Premium VIP Seating Arrangements</strong>, immaculate wall-to-wall carpeting, and majestic stage decorations. Our bespoke floral archways and illuminated entrance gates (Dwar) are meticulously crafted to welcome your guests into a world of pure, unadulterated enchantment.</p>
+
+
+
+            <h3>Chapter IV: Cinematic Visuals & Intelligent Lighting</h3>
+
+            <p>To illuminate our architectural masterpieces and sync with our heavy bass audio, our lighting technicians paint the night sky using highly intelligent, programmable DMX lighting arrays. We deploy sweeping, synchronized 3D laser shows, brilliant LED wash lights, and powerful moving head beams that track the tempo of the music, creating an immersive, multi-sensory environment that rivals professional stadium concerts. By seamlessly introducing cinematic atmospheric effects such as heavy ground fog and safe cold spark pyro machines during key emotional moments—such as the bride and groom's grand entrance or the cutting of the cake—we elevate the visual impact of your evening to legendary status.</p>
+
+
+
+            <h3>Chapter V: Unyielding Logistics & Power Infrastructure</h3>
+
+            <p>The hallmark of a truly premium service is what happens behind the scenes. An event of massive magnitude requires unbreakable logistical supremacy. Recognizing the unpredictability of local power grids, Maa Nirmala provides absolute electrical reliability through our massive, heavy-duty Silent Generators (DG Sets), ensuring your event never experiences a single millisecond of darkness. Furthermore, our invisible backbone is our formidable logistical network. Supported powerfully by <strong>Laxmikant Tractor Transport</strong>, we possess the sheer mechanical might to deliver colossal payloads of heavy subwoofers, iron pillars, and delicate lighting fixtures to any venue, no matter how remote the location. We arrive with military-like precision, construct with undeniable passion, and manage every technical detail flawlessly.</p>
+
+
+
+            <h3>Chapter VI: Our Promise to You</h3>
+
+            <p>For years, the communities of Beltikri, Katoria, and the greater Banka region have placed their ultimate trust in us during their most precious moments. When you hire <strong>Maa Nirmala DJ & Tent House</strong>, you are not simply renting equipment; you are partnering with a legacy of excellence. We leave nothing to chance, we accept no excuses, and we let our spectacular, awe-inspiring results speak for themselves. From the first phone call to the final beat of the music, we are devoted entirely to your celebration. Choose the best. Choose Maa Nirmala.</p>
+
+            
+
+            <h3>Chapter v: Maa Nirmala Dj & Tent House</h3>
+
+            <p>Welcome to the grand universe of <strong>Maa Nirmala DJ & Tent House</strong>. Rooted deeply in the historic and culturally vibrant soil of Beltikri, Kaddhar, Katoria, located in the prestigious Banka district of Bihar (Pin: 813106), our establishment has risen from humble beginnings to become the undisputed titan of event management and luxury celebrations. Founded and spearheaded by the visionary <strong>Mr. Lalu Kumar Tanti</strong>, Maa Nirmala DJ was born out of a singular, unyielding passion: to transform ordinary human gatherings into breathtaking, cinematic masterpieces. We recognized early on that a wedding, a district festival, or a grand anniversary is not merely a date on a calendar; it is a profound milestone. Under Mr. Lalu's meticulous direction, alongside a fiercely dedicated management team including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we have engineered a company that operates on the principles of absolute perfection, zero compromises on quality, and an unwavering commitment to our clients' joy.</p>
+
+Now you give chapter 7 in the same format to 10 300 word is each chapter 
+
+Gift chapter 7 to 15 please give the phone in same format please give start from h3
+
+Gemini said
+<h3>Chapter VII: The Culinary Symphony & Elite Catering</h3>
+<p>Beyond the auditory and visual spectacles, Maa Nirmala DJ & Tent House recognizes that the soul of any legendary Indian celebration is the grand feast. Our expanded elite catering division is a masterclass in culinary excellence, designed to satisfy the most discerning palates of Bihar and beyond. We do not merely serve food; we curate an extraordinary sensory journey through the rich heritage of authentic traditional flavors and sophisticated international delicacies. Our kitchen is helmed by masterful chefs who utilize organic, locally sourced ingredients to prepare a massive, mouth-watering array of dishes. From the smoky, traditional perfection of Bihar's famous Litti Chokha to sophisticated multi-cuisine buffets featuring rich curries, artisanal breads, and decadent desserts, our menu is boundless. We deploy a sophisticated infrastructure of heavy-duty industrial burners and highly hygienic cold-storage units to ensure every single morsel is served at the absolute peak of freshness. Our service staff, trained rigorously in the highest standards of VIP hospitality, move with invisible grace among your guests, ensuring that every premium plate is replenished and every crystal water glass is full. We provide luxurious bone china crockery, polished stainless steel cutlery, and exquisitely decorated, themed food stalls that align perfectly with your event's royal ambiance. At Maa Nirmala, we believe that the memory of a spectacular, royal banquet lingers in the minds of your guests just as long as the echoing bass of our music.</p>
+
+<h3>Chapter VIII: Botanical Architecture & Floral Design</h3>
+<p>To perfectly complement our towering architectural pandals, Maa Nirmala employs a specialized team of elite floral architects who possess the unique ability to transform raw, empty spaces into blooming, vibrant paradises. We deeply understand that flowers carry the emotional weight of a ceremony, symbolizing purity, new beginnings, and grand celebration. Our expansive sourcing network brings in the absolute freshest Marigolds, exotic Orchids, deep Red Roses, and intensely fragrant Jasmine from the finest botanical gardens across the country, ensuring an explosion of breathtaking color and enchanting scent at your venue. We specialize in creating high-impact, larger-than-life floral installations, including massive twenty-foot "Varmala" stages, cascading floral ceilings, and intricate, welcoming "Rangoli" patterns that greet your esteemed guests at the illuminated Dwar. Our technical crew utilizes hidden, state-of-the-art misting systems to keep the flora dew-fresh and vibrant, even under the intense heat of our powerful stage lights and the warm Bihar climate. Each arrangement is a bespoke, one-of-a-kind creation, carefully tailored to the specific color palette and emotional tone of your wedding or festival. Whether it is a traditional "Genda Phool" theme for a lively Haldi ceremony or a modern, minimalist white lily aesthetic for a high-profile VIP reception, our meticulous floral designs provide the perfect, organic backdrop for your cinematic photographs.</p>
+
+<h3>Chapter IX: Digital Integration & Cinematic Broadcasting</h3>
+<p>In this modern, hyper-connected era, a grand event in the Banka district deserves to be seen, celebrated, and remembered by the entire world. Maa Nirmala DJ & Tent House has boldly pioneered the integration of high-end digital media services directly into our premium event packages. We deploy a sophisticated network of ultra-high-definition (4K) LED wall screens that serve as a dynamic, glowing canvas for the main stage, displaying crystal-clear live feeds of the ceremony, cinematic pre-wedding montages of the couple, or vibrant, pulsating motion graphics that sync flawlessly with our DJ's earth-shaking rhythm. Our technical team works hand-in-hand with professional-grade videographers, utilizing overhead jib cranes and stabilized cinematic drones to capture every emotional tear, every joyous laugh, and every energetic dance move from breathtaking aerial and dynamic ground angles. For families who have loved ones residing abroad or across the country, we offer seamless, high-speed live streaming services to major global platforms, ensuring that physical distance is absolutely no barrier to joining the monumental celebration. By seamlessly merging the deep-rooted cultural traditions of a Beltikri celebration with cutting-edge digital broadcasting technology, Maa Nirmala ensures your event is not just a local gathering, but a globally accessible, high-tech cinematic production.</p>
+
+<h3>Chapter X: The Unstoppable Fleet & Heavy Logistics</h3>
+<p>The unseen, unsung hero of every flawless Maa Nirmala production is our absolute mastery of heavy logistics and large-scale transportation. Delivering a royal palace of heavy iron trusses, miles of luxury fabric, and thousands of watts of audio equipment requires an unbreakable mechanical backbone. This is where our formidable logistical partner, <strong>Laxmikant Tractor Transport</strong>, comes into play. Powered by an unstoppable fleet of heavy-duty farming tractors and heavy-payload trailers, we possess the sheer mechanical might and rugged endurance to deliver colossal payloads of dual subwoofers, massive iron pillars, and delicate, intelligent lighting fixtures to any venue, no matter how remote, unpaved, or challenging the location might be. Our drivers and logistical crew navigate the terrains of Katoria, Banka, and beyond with military-like precision and absolute punctuality. We do not let muddy roads or difficult access points dictate the quality of your event. The Laxmikant Tractor Transport fleet ensures that our massive infrastructure arrives safely, allowing our rigging teams to begin construction on time, every time. This unyielding logistical supremacy guarantees that from the moment you book us, the physical realization of your grandest dreams is in the most capable, powerful hands in the industry.</p>
+
+<h3>Chapter XI: Mega Concerts & District Festivals</h3>
+<p>While our reputation was forged in the fires of luxury weddings and grand anniversaries, the sheer scale of Maa Nirmala's infrastructure naturally evolved to dominate the arena of mega-events. We are the premier, go-to technical powerhouse for massive district-level festivals, high-profile political rallies, large-scale corporate summits, and deeply spiritual Maha-Aartis across Bihar. When the audience size swells from hundreds into the thousands, our engineering approach shifts from intimate luxury to stadium-grade power. We deploy expanded line-array configurations capable of throwing crystal-clear audio across massive open maidans, ensuring that the person in the very last row experiences the exact same vocal clarity and thumping bass as the VIPs in the front. Our tenting division scales up proportionately, constructing colossal, weatherproof domes supported by reinforced steel, capable of safely sheltering thousands of attendees. We coordinate complex, multi-stage lighting transitions and manage massive power grids using synchronized arrays of our heavy-duty Silent Generators. Handling an event of this magnitude requires nerves of steel and flawless execution, and our veteran crew has proven time and time again that Maa Nirmala is not just an event manager, but a towering pillar of large-scale public entertainment and crowd management.</p>
+
+<h3>Chapter XII: The Philosophy of Customer Devotion</h3>
+<p>At the very core of our massive inventory of subwoofers, lasers, and iron trusses lies a simple, unbreakable philosophy: absolute devotion to our clients. <strong>Mr. Lalu Kumar Tanti</strong> built Maa Nirmala DJ & Tent House not just as a business, but as an institution of trust. We understand that our clients come to us during the most important, high-stakes moments of their lives—moments that cannot be repeated or rescheduled. Therefore, under the vigilant and tireless coordination of our top-tier management team, including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we operate on a strict "Zero Excuses" policy. From the initial, detailed consultation to the final dismantling of the stage, our clients experience a level of personalized, round-the-clock service that is unparalleled in the industry. We listen intently to your unique vision, we anticipate potential challenges before they arise, and we execute with a passionate intensity as if it were a celebration within our own family. Our team remains on-site, vigilant, and ready to adapt instantly to any last-minute changes or requests. This unwavering dedication to customer satisfaction is the true secret behind our legacy, transforming first-time clients into lifelong patrons.</p>
+
+<h3>Chapter XIII: Sustainable Celebrations & Community Impact</h3>
+<p>True greatness is not merely measured by the volume of our speakers or the height of our pandals, but by the positive impact we leave on our beloved community. Rooted deeply in Beltikri (Pin: 813106), Maa Nirmala DJ & Tent House takes immense pride in being an engine of local economic growth and community empowerment. We actively employ dozens of hardworking individuals from the Kaddhar and Katoria regions, providing them with rigorous technical training in acoustic engineering, rigging, and hospitality. By partnering with local artisans for our fabrics and sourcing our catering ingredients from local farmers, we ensure that the wealth generated by your celebrations directly enriches the Banka district. Furthermore, as an industry leader, we are deeply conscious of our environmental footprint. We have heavily invested in the latest generation of ultra-efficient, low-emission Silent DG Sets that drastically reduce noise pollution and exhaust, ensuring that our massive power needs do not harm the natural beauty of our surroundings. We utilize eco-friendly, reusable staging materials wherever possible, ensuring that our breathtaking celebrations remain deeply respectful of the environment and the vibrant community that supports us.</p>
+
+<h3>Chapter XIV: Future Innovations & The Next Decade</h3>
+<p>A true titan never rests on its past achievements. As Maa Nirmala DJ & Tent House looks forward to the next decade of dominance, our eyes are fixed firmly on the horizon of technological innovation. <strong>Mr. Lalu Kumar Tanti's</strong> vision for the future involves a massive, aggressive expansion of our technological arsenal. We are actively exploring the integration of AI-driven acoustic mapping to perfectly calibrate our sound systems for any venue's unique architecture automatically. We are investing heavily in the next generation of holographic projection mapping, allowing us to turn the walls of our pandals into living, moving cinematic screens that transport your guests to entirely different worlds. Furthermore, our logistical footprint is expanding, preparing to bring the unmatched "Maa Nirmala Experience" to even wider territories across Bihar and neighboring states. We are constantly upgrading our inventory, ensuring that we possess the most advanced, heart-pounding audio gear and the most luxurious, cutting-edge tent fabrics available on the global market. The future of event management is incredibly bright, and Maa Nirmala will continue to be the blazing vanguard leading the charge.</p>
+
+<h3>Chapter XV: The Final Overture & Call to Action</h3>
+<p>The epic narrative of your life deserves a stage just as magnificent. For years, the people of Beltikri, Katoria, Banka, and beyond have entrusted their most sacred, joyous, and monumental occasions to us. We have proven, event after event, that when you desire absolute perfection, earth-shattering sound, and royal grandeur, there is only one name that commands the industry: <strong>Maa Nirmala DJ & Tent House</strong>. We invite you to step into our world and experience the pinnacle of luxury celebration. Let our visionary founder, <strong>Mr. Lalu Kumar Tanti</strong>, and our dedicated team transform your wildest dreams into a breathtaking reality that will be talked about for generations. Do not settle for the ordinary when the extraordinary is at your fingertips. The stage is set, the lasers are aligned, and the subwoofers are primed. To begin planning your legendary event, reach out to our VIP booking team today. You can contact us directly at <strong>9771617808, 7294969938, or 8544341240</strong>. Choose the absolute best. Choose Maa Nirmala—where your grandest celebration becomes eternal history.</p>
+
+You said
+<option value="#D4AF37">Royal Gold</option>
+
+<option value="#ff3333">DJ Red</option>
+
+<option value="#00e5ff">Neon Blue</option>
+
+<option value="#ff00ff">Magenta</option>
+
+<option value="#00ff00">Laser Green</option>
+
+<option value="#ff8c00">Sunset Orange</option>
+
+<option value="#8a2be2">Deep Purple</option>
+
+<option value="#ff1493">Deep Pink</option>
+
+<option value="#00fa9a">Neon Pink</option>
+
+<option value="#00ced1">Teal</option>
+
+<option value="#dc143c">Crimson</option>
+
+<option value="#c0c0c0">Luxury Silver</option>
+
+<option value="#ffffff">Pure White</option>
+
+Give more 50 list like that start from option and give the same format
+
+Gemini said
+<option value="#1a1a1a">Subwoofer Black</option>
+<option value="#ffbf00">Haldi Yellow</option>
+<option value="#e6e6fa">VIP Lounge Lavender</option>
+<option value="#ff4500">Pyro Spark Orange</option>
+<option value="#2e8b57">Pandal Canopy Green</option>
+<option value="#4b0082">Midnight Bass Indigo</option>
+<option value="#b8860b">Antique Brass Truss</option>
+<option value="#ff007f">Baaraat Rose</option>
+<option value="#00ffff">Strobe Cyan</option>
+<option value="#ffff00">Moving Head Yellow</option>
+<option value="#7fff00">Matrix Green</option>
+<option value="#ff69b4">Varmala Pink</option>
+<option value="#cd7f32">Bronze Stage</option>
+<option value="#800000">Velvet Drape Maroon</option>
+<option value="#40e0d0">Ambient Turquoise</option>
+<option value="#f0e68c">Chandelier Khaki</option>
+<option value="#8b4513">Rustic Wooden Stage</option>
+<option value="#fa8072">Sunset Wedding Salmon</option>
+<option value="#9932cc">Deep Bass Orchid</option>
+<option value="#20b2aa">LED Wash SeaGreen</option>
+<option value="#ff8c69">Festive Peach</option>
+<option value="#1e90ff">Cinematic Sky Blue</option>
+<option value="#c71585">Royal Carpet Red</option>
+<option value="#32cd32">Laser Beam Lime</option>
+<option value="#f5f5dc">Premium Tent Beige</option>
+<option value="#d2691e">Acoustic Wood Chocolate</option>
+<option value="#6a5acd">Stage Smoke Slate</option>
+<option value="#ffebcd">Halogen Warm White</option>
+<option value="#00008b">Night Sky Navy</option>
+<option value="#adff2f">Techno Yellow Green</option>
+<option value="#db7093">Pale Floral Violet</option>
+<option value="#f08080">Soft Uplight Coral</option>
+<option value="#00bfff">DJ Booth Azure</option>
+<option value="#8b008b">Grand Entrance Magenta</option>
+<option value="#b22222">Firebrick Red</option>
+<option value="#228b22">Floral Arch Forest</option>
+<option value="#ffb6c1">Bridal Blush Pink</option>
+<option value="#4682b4">Iron Rigging Steel</option>
+<option value="#d8bfd8">Romantic Thistle</option>
+<option value="#ffdab9">Elegance Peach Puff</option>
+<option value="#008080">Deep Water Teal</option>
+<option value="#e0ffff">Cold Spark Cyan</option>
+<option value="#daa520">Golden Hour Rod</option>
+<option value="#808080">Generator Smoke Grey</option>
+<option value="#fdf5e6">Silk Drapery Lace</option>
+<option value="#f000ff">High Frequency Fuchsia</option>
+<option value="#7b68ee">Dynamic Wash Purple</option>
+<option value="#556b2f">Rustic Olive</option>
+<option value="#cd5c5c">Majestic Indian Red</option>
+<option value="#000000">Absolute Blackout</option>
                     </select>
                 </div>
                 <div class="setting-row">
