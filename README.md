@@ -2425,27 +2425,226 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
 
             <div class="section-label" style="margin-top: 40px;"><i class="fas fa-star"></i> BEST OF MAA NIRMALA</div>
 <div class="slider-container">
+    <style>
+/* Section Label Styling */
+.section-label {
+    font-size: 24px;
+    font-weight: 800;
+    color: #D4AF37; /* Royal Gold */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+}
+
+.section-label i {
+    margin-right: 10px;
+}
+
+/* Slider Container */
+.slider-container {
+    display: flex;
+    gap: 25px;
+    padding: 20px 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar Firefox */
+    scroll-snap-type: x mandatory; 
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Slide Cards */
+.slide-card {
+    min-width: 320px;
+    max-width: 320px;
+    background: #121212;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.slide-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.5); /* Gold border on hover */
+}
+
+/* Slide Image */
+.slide-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.slide-card:hover img {
+    transform: scale(1.08); /* Cinematic zoom effect */
+}
+
+/* Slide Information */
+.slide-info {
+    padding: 20px;
+    background: linear-gradient(to top, #0a0a0a 80%, transparent);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.slide-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+</style>
+
+
+<div class="section-label" style="margin-top: 40px;"><i class="fas fa-star"></i> BEST OF MAA NIRMALA</div>
+<div class="slider-container">
+
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Setup 1">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Royal Wedding Setup">
         <div class="slide-info">
-            <h3>Grand Wedding Setup</h3>
-            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Hello, this is Maa Nirmala DJ, one of the best DJs here. Perfect!</div>
+            <h3>Royal Wedding Pandals</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Experience the ultimate grandeur with our luxurious, imported fabric drapery and custom architectural setups designed for unforgettable Beltikri weddings.</div>
         </div>
     </div>
+
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Setup 2">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Heavy DJ Setup">
         <div class="slide-info">
-            <h3>Heavy Bass DJ Event</h3>
-            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Hello, this is Maa Nirmala DJ, one of the best DJs here. Perfect!</div>
+            <h3>Earth-Shattering DJ Rigs</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Dominate the dance floor with our massive dual subwoofers and crystal-clear line arrays. Pure acoustic supremacy for the ultimate high-energy Baaraat.</div>
         </div>
     </div>
+
     <div class="slide-card">
-        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Setup 3">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lighting Setup">
         <div class="slide-info">
-            <h3>VIP Tent & Decoration</h3>
-            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Hello, this is Maa Nirmala DJ, one of the best DJs here. Perfect!</div>
+            <h3>Intelligent DMX Lighting</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Transform the night sky with synchronized 3D laser shows, brilliant LED wash lights, and cinematic cold spark pyro effects synced perfectly to the beat.</div>
         </div>
     </div>
+
+    <div class="slide-card">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Catering Setup">
+        <div class="slide-info">
+            <h3>Elite Gastronomy & Catering</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Serving culinary perfection with high-hygiene industrial cooking setups, premium bone china, and a vast menu of authentic, mouth-watering traditional flavors.</div>
+        </div>
+    </div>
+
+    <div class="slide-card">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Tent Structure">
+        <div class="slide-info">
+            <h3>Heavy-Duty Iron Trusses</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Unyielding structural integrity featuring waterproof, industrial-grade iron rigging to keep your VIP guests safe and incredibly comfortable in any weather.</div>
+        </div>
+    </div>
+
+    <div class="slide-card">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Floral Decoration">
+        <div class="slide-info">
+            <h3>Bespoke Floral Architecture</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Breathtaking Varmala stages and intricate floral archways crafted by expert designers using the absolute freshest orchids, roses, and vibrant marigolds.</div>
+        </div>
+    </div>
+
+    <div class="slide-card">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Generator Setup">
+        <div class="slide-info">
+            <h3>Silent Power Infrastructure</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Uninterrupted celebrations powered by our highly reliable, heavy-duty Silent DG Sets. Absolute electrical reliability with zero flickering or darkness.</div>
+        </div>
+    </div>
+
+    <div class="slide-card">
+        <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Transport Logistics">
+        <div class="slide-info">
+            <h3>Flawless Heavy Logistics</h3>
+            <div style="font-size: 13px; color: #dddddd; margin-top: 5px; font-weight: normal; line-height: 1.4;">Backed by Laxmikant Tractor Transport, our formidable mechanical fleet guarantees the punctual, safe delivery of colossal payloads to any remote venue.</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector('.slider-container');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let autoScrollInterval;
+
+    // --- Premium Auto-Scroll Function ---
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            // Scroll right by 2 pixels every 30 milliseconds for smooth movement
+            slider.scrollLeft += 2; 
+            
+            // If we reach the end of the scroll, instantly jump back to the start
+            // This creates a continuous, infinite feel
+            if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth)) {
+                slider.scrollLeft = 0;
+            }
+        }, 30); 
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    // Start scrolling immediately
+    startAutoScroll();
+
+    // Pause the cinematic scroll when the user hovers over a card to read it
+    slider.addEventListener('mouseenter', stopAutoScroll);
+    slider.addEventListener('mouseleave', startAutoScroll);
+
+    // --- Optional: Add Touch/Mouse Drag Support for Mobile Users ---
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        stopAutoScroll(); // Stop auto-scrolling while user is dragging
+    });
+    
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'pointer';
+    });
+    
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'pointer';
+        startAutoScroll(); // Resume auto-scrolling after dragging
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll-fast multiplier
+        slider.scrollLeft = scrollLeft - walk;
+    });
+});
+</script>
 </div>
 
 
@@ -2938,7 +3137,7 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                     MNDs BRAIN v2.07<i class="fas fa-times" style="float:right; cursor:pointer;" onclick="closeModal(null, true)"></i>
                 </div>
                 <div class="chat-box" id="chatHistory">
-                    <div class="bubble bot">Hello! I am MNDs Brain, the official AI for Maa Nirmala DJ & Tent House.<br><br>Ask me about our prices, bookings, location, or owner details!</div>
+                    <div class="bubble bot">Hello! I am MND Brain, the official AI for Maa Nirmala DJ & Tent House.<br><br>Ask me about our prices, bookings, location, or owner details!</div>
                 </div>
                 <div style="padding:15px; border-top:1px solid #333; display:flex;">
                     <input type="text" id="userMsg" class="input-box" style="flex:1; margin-bottom:0; padding:10px; background:#111; border:1px solid #333; color:#fff;" placeholder="Ask MNDs AI..." onkeypress="handleEnter(event)">
