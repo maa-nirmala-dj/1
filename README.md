@@ -2541,43 +2541,14 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                     <h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Founder & Owner</h3>
                 </div>
             </div>
-            <div class="section-label" style="margin-top:50px;"><i class="fas fa-map-marker-alt"></i> OUR LOCATION</div>
-<div class="map-container" style="max-width: 100%; margin: 0 auto;">
-    
-    <p style="text-align: center; color: var(--gold-primary, #D4AF37); font-family: 'Cinzel', serif; font-weight: 800; font-size: 26px; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">
-        Maa Nirmala DJ & Tent House
-    </p>
-    
-    <p style="text-align: center; font-size: 16px; color: #e0e0e0; margin-bottom: 25px; font-family: 'Outfit', sans-serif; letter-spacing: 1px;">
-        JRPM+RQ, Beltikri, Tola Tetaria, Bihar 813106
-    </p>
-    
-    <div class="map-wrapper" style="width: 100%; height: 55vh; min-height: 400px; border-radius: 15px; overflow: hidden; border: 3px solid var(--gold-primary, #D4AF37); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8); background: #111;">
-        <iframe 
-            src="https://maps.google.com/maps?q=JRPM%2BRQ%20Beltikri,%20Tola%20Tetaria,%20Bihar%20813106&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            frameborder="0" 
-            style="border:0; filter: contrast(1.1) saturate(1.2);" 
-            allowfullscreen="" 
-            aria-hidden="false" 
-            tabindex="0">
-        </iframe>
-    </div>
-    
-    <a href="https://maps.google.com/maps?q=JRPM%2BRQ%20Beltikri,%20Tola%20Tetaria,%20Bihar%20813106" target="_blank" 
-       style="display: block; width: 100%; max-width: 600px; margin: 25px auto 0 auto; padding: 18px; box-sizing: border-box; background: var(--gold-primary, #D4AF37); color: #000; text-align: center; font-weight: 800; font-size: 18px; border-radius: 10px; text-decoration: none; font-family: 'Rajdhani', sans-serif; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease;"
-       onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(212, 175, 55, 0.7)';"
-       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(212, 175, 55, 0.4)';">
-        <i class="fas fa-directions"></i> Get Directions To Map
-    </a>
-    
-</div>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=JRPM%2BRQ,+Beltikri,+Bihar+813106" target="_blank" style="display: block; width: 100%; padding: 15px; box-sizing: border-box; background: var(--gold-primary, #D4AF37); color: #000; text-align: center; font-weight: bold; border-size: 18px; border-radius: 8px; text-decoration: none; margin-top: 20px; font-family: 'Rajdhani', sans-serif; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase;">
-        <i class="fas fa-directions"></i> Get Directions To Map
-    </a>
-</div>
-
+            <div class="map-wrapper">
+                    <iframe src="https://maps.google.com/maps?q=JRPM%2BRQ%20Beltikri,%20Bihar%20813106&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                
+                <a href="https://www.google.com/maps/dir/?api=1&destination=JRPM%2BRQ,+Beltikri,+Bihar+813106" target="_blank" style="display: block; width: 100%; padding: 15px; background: var(--gold-primary); color: #000; text-align: center; font-weight: bold; border-radius: 8px; text-decoration: none; margin-top: 15px; font-family: 'Rajdhani'; letter-spacing: 1px; transition: 0.3s;">
+                    <i class="fas fa-directions"></i> GET DIRECTIONS TO MAP
+                </a>
+            </div>
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-music"></i> THE MAA NIRMALA EXPERIENCE</div>
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
                 <img src="https://i.postimg.cc/Vv6QHtHD/1771530083282.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid var(--gold-primary); margin-bottom: 15px;" alt="Experience">
