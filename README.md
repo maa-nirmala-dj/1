@@ -357,7 +357,7 @@
                 <h3><i class="fas fa-paint-brush"></i> Appearance & Theme</h3>
                 <div class="setting-row"><div class="setting-label">🌙 Dark / ☀️ Light Mode</div><label class="mn-switch"><input type="checkbox" id="themeTgl" onchange="themeSwitch()" checked><span class="mn-slider"></span></label></div>
                 <div class="setting-row">
-                    <div class="setting-label">🎨 13 Premium Colors</div>
+                    <div class="setting-label">🎨 100+ Premium Colors</div>
                     <select class="mn-input" style="width:120px; padding:5px;" onchange="document.documentElement.style.setProperty('--gold-primary', this.value);">
                         <option value="#D4AF37">Royal Gold</option>
                         <option value="#ff3333">DJ Red</option>
@@ -426,7 +426,7 @@
                     </select>
                 </div>
                 <div class="setting-row">
-                    <div class="setting-label">🔠 13 Font Styles</div>
+                    <div class="setting-label">🔠 100+ Font Styles</div>
                     <select class="mn-input" style="width:120px; padding:5px;" onchange="document.body.style.fontFamily=this.value">
                         <option value="'Outfit', sans-serif">Outfit (Default)</option>
                         <option value="'Cinzel', serif">Cinzel (Luxury)</option>
@@ -1591,6 +1591,35 @@
 
             <h4>6. Power Supply Requirements</h4>
             <p>If the Client chooses not to rent our heavy-duty Silent Generators (DG Sets), the Client must provide a stable, commercial-grade electrical connection. Maa Nirmala DJ will not connect our sensitive amplifiers to fluctuating, low-voltage domestic power lines. Any damage to our equipment caused by faulty venue wiring provided by the Client will be billed directly to the Client.</p>
+
+            <h4>7. Setup and Dismantling Timelines</h4>
+            <p>To deliver our signature cinematic quality, our technical rigging and acoustic teams require guaranteed, uninterrupted access to the venue at least 24 to 48 hours prior to the event start time, depending on the scale of the pandal and DJ rig. Once the event concludes, the Client must allow our crew sufficient time (up to 12 hours) to safely dismantle the heavy iron trusses, lighting arrays, and audio equipment. Any delays caused by the venue or the Client will incur waiting charges.</p>
+            <h4>8. Crew Hospitality & Basic Amenities</h4>
+            <p>The construction of massive architectural pandals and the deployment of stadium-grade sound systems require immense physical labor. The Client is kindly requested to provide basic hospitality, including safe drinking water, standard meals, and access to clean washrooms for our ground crew, technicians, and the Laxmikant Tractor Transport drivers during the entirety of the setup, event execution, and dismantling phases.</p>
+            <h4>9. Pyrotechnics & Fire Safety Regulations</h4>
+            <p>If the Client has opted for our cold spark pyro machines, heavy ground fog, or any special atmospheric effects, strictly no open flames, unauthorized fireworks, or flammable materials are permitted within a 20-foot radius of our equipment and the main stage. Maa Nirmala DJ prioritizes absolute safety; our technicians reserve the right to refuse the use of pyrotechnics if the crowd becomes unruly or if the pandal conditions are deemed a fire hazard.</p>
+            <h4>10. Out-of-Station Logistics & Travel</h4>
+            <p>While we are deeply rooted in Beltikri and the Katoria region, we frequently execute premium events across the wider Banka district and beyond. For all out-of-station bookings, additional logistical fees, toll taxes, commercial vehicle entry taxes, and basic overnight accommodation for our core technical operators must be provided or reimbursed by the Client.</p>
+            <h4>11. Overtime & Extended Play Charges</h4>
+            <p>Our standard DJ and event operation packages are booked for specific, pre-agreed timeframes. If the Client wishes to extend the music, lighting, or generator services beyond the contracted end time, strictly enforced hourly overtime charges will apply. These charges must be approved by our management on-site and paid before the extended session begins.</p>
+            <h4>12. Drone Clearances & Venue Restrictions</h4>
+            <p>For packages including cinematic broadcasting and aerial drone videography, it is the sole responsibility of the Client to ensure that the venue management allows drone flights. Maa Nirmala DJ will not be responsible for grounded drones due to sudden venue restrictions, overhead high-tension electrical wires, or local no-fly zone enforcement by authorities.</p>
+            <h4>13. Floral Integrity & Decor Protection</h4>
+            <p>Our elite floral designs, Varmala stages, and imported luxury draperies are crafted with meticulous care. The Client must ensure that guests do not pull, dismantle, or destroy the floral arrangements, premium VIP seating, or carpets during the celebration. Severe damage to our decorative inventory, including burns on carpets or torn imported fabrics, will be evaluated and added to the final damage invoice.</p>
+            <h4>14. Exclusivity Clause</h4>
+            <p>To maintain our undisputed standard of quality, Maa Nirmala DJ & Tent House must be the exclusive provider of audio, lighting, and primary tenting at the contracted venue. We do not permit third-party, local DJs or decorators to plug into our high-end mixers or alter our structural trusses, as this compromises our equipment safety and the overall premium aesthetic we guarantee.</p>
+            <h4>15. Security of Stage & VIP Areas</h4>
+            <p>The DJ booth, LED wall control stations, and generator staging areas are highly restricted zones. The Client is responsible for ensuring that intoxicated guests or unauthorized individuals do not enter these technical zones. Spilling beverages on our digital consoles or tampering with heavy electrical cables will result in an immediate halt of the event until the area is secured.</p>
+            <h4>16. Substitute Equipment Policy</h4>
+            <p>In the highly unlikely event of an unexpected mechanical failure or technical malfunction before an event, Maa Nirmala DJ reserves the right to substitute the specified equipment (such as a specific speaker model or lighting fixture) with an alternative of equal or greater premium quality to ensure the event proceeds flawlessly without interruption.</p>
+            <h4>17. Promotional Media Rights</h4>
+            <p>Maa Nirmala DJ & Tent House reserves the right to capture photographs, audio recordings, and video footage of our stage setups, lighting arrays, and DJ performances during the event. By booking us, the Client grants us permission to use these media assets for our official portfolio, social media platforms, and future marketing campaigns to showcase our cinematic capabilities.</p>
+            <h4>18. On-Site Management Authority</h4>
+            <p>All technical, logistical, and operational decisions made on the ground are at the absolute discretion of our core management team. Our highly dedicated managers, including Mr. Sildhar Kumar and Mr. Om Kumar, alongside our founder, have the final authority regarding equipment placement and safety protocols. Any abusive language or physical threats directed at our staff will result in the immediate and total withdrawal of our services without a refund.</p>
+            <h4>19. Legal Jurisdiction & Dispute Resolution</h4>
+            <p>Maa Nirmala DJ & Tent House operates with the highest standards of business integrity. However, in the rare event of a financial dispute, breach of contract, or severe property damage, all legal matters, claims, and arbitration will be handled exclusively under the jurisdiction of the honorable courts located in the Banka district of Bihar.</p>
+            <h4>20. Binding Acceptance of Terms</h4>
+            <p>By remitting the initial advance payment and confirming the booking date, the Client formally acknowledges that they have read, understood, and agreed to be legally bound by all 20 clauses of this comprehensive Official Policy. This agreement ensures a transparent, secure, and spectacularly successful partnership between you and Maa Nirmala DJ & Tent House.</p>
 
             <p style="text-align: center; margin-top: 30px; font-weight: bold; color: #D4AF37;">
                 By confirming a booking with Maa Nirmala DJ & Tent House, you acknowledge that you have read, understood, and agreed to all the terms stated above.
