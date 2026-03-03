@@ -2523,22 +2523,21 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                     <p>Coordinating premium tent decorations, lighting arrangements, and dedicated client relations.</p>
                 </div>
             </div>
-
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-info-circle"></i> ABOUT THE BUSINESS</div>
-            <div class="owner-profile" style="text-align: left;">
-                <h1 style="text-align: center; font-size: 28px;">Maa Nirmala DJ & Tent House</h1>
-                <p style="text-align: center; color: var(--gold-primary); font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Premium Event Management in Bihar</p>
-                <p style="font-size: 14px;">Welcome to <b>Maa Nirmala DJ & Tent House</b>, the premier event management and setup service based in Beltikri. We specialize in transforming ordinary events into grand, unforgettable celebrations.</p>
-                <ul style="color: #eaeaea; font-size: 14px; line-height: 1.8; margin-left: 20px; margin-bottom: 25px; margin-top: 15px;">
-                    <li><b style="color: var(--gold-primary);">Elite DJ Setups:</b> High-fidelity sound systems, heavy bass, and non-stop entertainment.</li>
-                    <li><b style="color: var(--gold-primary);">Premium Tent Houses:</b> Grand wedding tents, VIP seating, and beautiful decorations.</li>
-                    <li><b style="color: var(--gold-primary);">Stage Lighting:</b> Advanced dynamic lighting to illuminate your special moments.</li>
-                </ul>
-                <div style="border-top: 1px solid var(--border-color); margin: 25px 0;"></div>
-                <div style="text-align: center;">
-                    <img src"https://i.postimg.cc/6qbJj3hQ/Screenshot-2026-01-14-15-25-06-57-1c337646f29875672b5a61192b9010f9-2.jpg" alt="Anil Kumar" style="width: 100px; height: 100px; margin-bottom: 10px; border: 3px solid var(--gold-primary);">
-                    <h2 style="color: var(--gold-primary); font-family: 'Cinzel'; font-size: 22px; font-weight: bold;">Anil Kumar Tanti</h2>
-                    <h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Founder & Owner</h3>
+<div class="owner-profile" style="text-align: left;">
+<h1 style="text-align: center; font-size: 28px;">Maa Nirmala DJ & Tent House</h1>
+<p style="text-align: center; color: var(--gold-primary); font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">Premium Event Management in Bihar</p>
+<p style="font-size: 14px;">Welcome to <b>Maa Nirmala DJ & Tent House</b>, the premier event management and setup service based in Beltikri. We specialize in transforming ordinary events into grand, unforgettable celebrations.</p>
+<ul style="color: #eaeaea; font-size: 14px; line-height: 1.8; margin-left: 20px; margin-bottom: 25px; margin-top: 15px;">
+<li><b style="color: var(--gold-primary);">Elite DJ Setups:</b> High-fidelity sound systems, heavy bass, and non-stop entertainment.</li>
+<li><b style="color: var(--gold-primary);">Premium Tent Houses:</b> Grand wedding tents, VIP seating, and beautiful decorations.</li>
+<li><b style="color: var(--gold-primary);">Stage Lighting:</b> Advanced dynamic lighting to illuminate your special moments.</li>
+</ul>
+<div style="border-top: 1px solid var(--border-color); margin: 25px 0;"></div>
+<div style="text-align: center;">
+<img src="https://i.postimg.cc/6qbJj3hQ/Screenshot-2026-01-14-15-25-06-57-1c337646f29875672b5a61192b9010f9-2.jpg" alt="Anil Kumar" style="width: 100px; height: 100px; margin-bottom: 10px; border: 3px solid var(--gold-primary); border-radius: 50%; object-fit: cover; display: inline-block;">
+<h2 style="color: var(--gold-primary); font-family: 'Cinzel'; font-size: 22px; font-weight: bold;">Anil Kumar Tanti</h2>
+<h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">Founder & Owner</h3>
                 </div>
             </div>
             <div class="section-label" style="margin-top:40px;"><i class="fas fa-map-marker-alt"></i> OUR LOCATION</div>
