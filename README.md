@@ -2237,9 +2237,7 @@
 Premium Quality | Best DJ in Banka.
 Unforgettable sound. Flawless event setups.
 Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
-                <button id="installBtn" onclick="installApp()"><i class="fas fa-download"></i> INSTALL MNDs APP</button>
-            </div>
-
+                
             <div class="section-label"><i class="fas fa-images"></i> OUR SETUP & SHOWCASE</div>
             <div class="grid">
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/5yRdctZh/1771529133710.jpg" alt="DJ Setup"><span>Elite DJ Setup</span></a>
@@ -2468,7 +2466,6 @@ Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
                     </p>
                 </div>
             </div>
-
 <div style="text-align: center; max-width: 800px; margin: 40px auto 20px auto; padding: 0 20px;">
     <p style="color: #dddddd; font-family: 'Outfit', sans-serif; font-size: 16px; line-height: 1.8; text-wrap: balance; margin-bottom: 30px;">
         Maa Nirmala DJ sets the standard for high-energy celebrations in Banka. With state-of-the-art audio, dazzling light shows, and premium VIP tents, we guarantee a flawless event. From intimate functions to massive district festivals, our team works tirelessly to bring your dream event to reality.
