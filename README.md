@@ -2585,6 +2585,346 @@
 </div>
                 <button id="installBtn" onclick="installApp()"><i class="fas fa-download"></i> INSTALL MNDs APP</button>
             </div>
+            <style>
+    /* --- 1. THE GLOWING MASTER BUTTON --- */
+    .premium-social-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 85%;
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 18px 25px;
+        border-radius: 40px;
+        background: linear-gradient(135deg, #111, #222);
+        border: 2px solid #D4AF37;
+        color: #fff;
+        font-family: 'Cinzel', serif;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: subtlePulse 3s infinite alternate;
+    }
+
+    .premium-social-trigger::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.6), transparent);
+        transform: skewX(-25deg);
+        animation: buttonShine 4s infinite;
+    }
+
+    @keyframes buttonShine {
+        0% { left: -100%; }
+        20% { left: 200%; }
+        100% { left: 200%; }
+    }
+
+    @keyframes subtlePulse {
+        0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        100% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.8); }
+    }
+
+    .premium-social-trigger:active {
+        transform: scale(0.96);
+    }
+
+    /* Auto-scrolling Social Logos inside the button */
+    .social-logo-scroller {
+        display: flex;
+        gap: 15px;
+        width: 80px; 
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    }
+    
+    .social-logo-track {
+        display: flex;
+        gap: 15px;
+        animation: scrollLogos 6s linear infinite;
+    }
+
+    .social-logo-track i {
+        font-size: 22px;
+        color: #D4AF37;
+    }
+
+    @keyframes scrollLogos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - 7.5px)); }
+    }
+
+    /* --- 2. THE MODAL OVERLAYS (Glassmorphism) --- */
+    .media-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 99999;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .media-modal.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .close-modal-btn {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        color: #D4AF37;
+        font-size: 35px;
+        cursor: pointer;
+        z-index: 100000;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    /* --- 3. SELECTION SCREEN --- */
+    .selection-box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .selection-title {
+        color: #fff;
+        font-family: 'Cinzel', serif;
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+    }
+
+    .option-btn {
+        background: rgba(20, 20, 20, 0.8);
+        border: 1px solid #D4AF37;
+        padding: 25px;
+        border-radius: 20px;
+        color: #fff;
+        font-family: 'Outfit', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        cursor: pointer;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .option-btn i { font-size: 28px; color: #D4AF37; }
+    .option-btn:active { transform: scale(0.95); }
+
+    /* --- 4. GALLERIES (Audio/Video Lists) --- */
+    .gallery-container {
+        width: 100%;
+        max-width: 500px;
+        height: 85vh;
+        overflow-y: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+        scrollbar-width: none; 
+    }
+    .gallery-container::-webkit-scrollbar { display: none; }
+
+    .gallery-title {
+        color: #D4AF37;
+        font-family: 'Cinzel', serif;
+        font-size: 24px;
+        margin: 0 0 10px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        background: rgba(5,5,5,0.95);
+        padding: 15px;
+        width: 100%;
+        z-index: 10;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Audio Player Styling */
+    .audio-card {
+        background: #111;
+        border: 1px solid rgba(212, 175, 55, 0.4);
+        border-radius: 15px;
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+        text-align: left;
+    }
+    .audio-card h4 { color: #fff; font-family: 'Outfit', sans-serif; margin: 0 0 10px 0; font-size: 16px; }
+    .audio-card audio { width: 100%; outline: none; border-radius: 30px; }
+    audio::-webkit-media-controls-panel { background-color: #222; }
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display { color: #fff; }
+
+    /* Video Embed Container (FIXED TO PREVENT COLLAPSING) */
+    .video-card {
+        width: 100%;
+        min-height: 450px; /* <--- THIS PREVENTS THE FLAT LINES */
+        background: #050505;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<button class="premium-social-trigger" onclick="openHubModal('selectionModal')">
+    SOCIAL POSTS
+    <div class="social-logo-scroller">
+        <div class="social-logo-track">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </div>
+</button>
+
+<div class="media-modal" id="selectionModal">
+    <i class="fas fa-times close-modal-btn" onclick="closeAllModals()"></i>
+    
+    <div class="selection-box">
+        <h2 class="selection-title">MND MEDIA HUB</h2>
+        
+        <div class="option-btn" onclick="openHubModal('audioModal')">
+            <i class="fas fa-music"></i> LISTEN TO AUDIO
+        </div>
+        
+        <div class="option-btn" onclick="openHubModal('videoModal')">
+            <i class="fab fa-instagram"></i> WATCH REELS
+        </div>
+    </div>
+</div>
+
+<div class="media-modal" id="audioModal">
+    <i class="fas fa-times close-modal-btn" onclick="closeAllModals()"></i>
+    
+    <div class="gallery-container">
+        <h2 class="gallery-title"><i class="fas fa-compact-disc"></i> EXCLUSIVE MIXES</h2>
+        
+        <div class="audio-card">
+            <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Premium DJ Mix 1</h4>
+            <audio controls preload="none"><source src="https://files.catbox.moe/m832cb.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="audio-card">
+            <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Heavy Bass Drop</h4>
+            <audio controls preload="none"><source src="https://files.catbox.moe/efdl27.mp3" type="audio/mpeg"></audio>
+        </div>
+
+        <div class="audio-card">
+            <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Grand Wedding Entrance</h4>
+            <audio controls preload="none"><source src="https://files.catbox.moe/mus2yv.mp3" type="audio/mpeg"></audio>
+        </div>
+        
+        <button class="option-btn" style="width:100%; margin-top:10px; padding:15px;" onclick="openHubModal('selectionModal')">
+            <i class="fas fa-arrow-left"></i> BACK
+        </button>
+    </div>
+</div>
+
+<div class="media-modal" id="videoModal">
+    <i class="fas fa-times close-modal-btn" onclick="closeAllModals()"></i>
+    
+    <div class="gallery-container" style="padding: 10px;"> 
+        <h2 class="gallery-title"><i class="fab fa-instagram"></i> INSTAGRAM REELS</h2>
+        
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT-a_KEk7Dg/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT1WY8SCOgw/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU97ieVE7nR/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU85vD-E25K/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU846FikxCk/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU837C8kxNF/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUDeT9siJfO/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT5paKBE03U/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT5X-Z-k-ai/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT4HlNrE9xN/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT1lb02iGy0/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT1fBhtCA4X/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTz9nEPkyKO/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTz79cyE7Hh/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTzJWMNExQh/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTy-LYlCNSm/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTwaxZ2kel6/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTu4AZdE2sr/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTv-Kt5kyN8/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; max-width:540px; min-width:326px; padding:0; width:100%;"></blockquote></div>
+
+        <button class="option-btn" style="width:90%; margin:20px auto; padding:15px;" onclick="openHubModal('selectionModal')">
+            <i class="fas fa-arrow-left"></i> BACK
+        </button>
+    </div>
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+    function openHubModal(modalId) {
+        // Close all modals first
+        document.querySelectorAll('.media-modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        
+        // Open the selected modal
+        document.getElementById(modalId).classList.add('active');
+        
+        // --- THE FIX ---
+        // If opening the video modal, wait 300 milliseconds for the window to 
+        // physically open on the screen BEFORE telling Instagram to load the videos.
+        // This prevents the flat lines!
+        if(modalId === 'videoModal') {
+            setTimeout(() => {
+                if(window.instgrm) {
+                    window.instgrm.Embeds.process();
+                }
+            }, 300);
+        }
+    }
+
+    function closeAllModals() {
+        document.querySelectorAll('.media-modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        
+        // Stop audio from playing when modal closes
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    }
+</script>
 
             <div class="section-label"><i class="fas fa-images"></i> OUR SETUP & SHOWCASE</div>
             <div class="grid">
