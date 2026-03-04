@@ -2590,7 +2590,7 @@
             <div class="grid">
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/5yRdctZh/1771529133710.jpg" alt="DJ Setup"><span>Elite DJ Setup</span></a>
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/R0smYWFp/2025-10-07-(5).jpg" alt="Tent House"><span>Premium Tents</span></a>
-                <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/R0smYWFp/2025-10-07-(5).jpg" alt="Premium Quality"><span>Premium Lightings</span></a>
+                <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/hPgQLpyz/image_b73be3f2_1.png" alt="Premium Quality"><span>Premium Lightings</span></a>
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Vv7kBKCH/2025-10-07-(1).jpg" alt="Booking"><span>Premium Quality</span></a>
             </div>
 
