@@ -2612,6 +2612,7 @@
         animation: subtlePulse 3s infinite alternate;
     }
 
+    /* The moving diagonal light reflection */
     .premium-social-trigger::before {
         content: '';
         position: absolute;
@@ -2783,17 +2784,14 @@
     audio::-webkit-media-controls-current-time-display,
     audio::-webkit-media-controls-time-remaining-display { color: #fff; }
 
-    /* Video Embed Container (FIXED TO PREVENT COLLAPSING) */
+    /* Video Embed Container */
     .video-card {
         width: 100%;
-        min-height: 450px; /* <--- THIS PREVENTS THE FLAT LINES */
-        background: #050505;
-        border-radius: 10px;
-        overflow: hidden;
-        border: 1px solid rgba(212, 175, 55, 0.3);
         display: flex;
         justify-content: center;
-        align-items: center;
+        background: #000;
+        border-radius: 15px;
+        overflow: hidden;
     }
 </style>
 
@@ -2837,17 +2835,23 @@
         
         <div class="audio-card">
             <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Premium DJ Mix 1</h4>
-            <audio controls preload="none"><source src="https://files.catbox.moe/m832cb.mp3" type="audio/mpeg"></audio>
+            <audio controls preload="none">
+                <source src="https://files.catbox.moe/m832cb.mp3" type="audio/mpeg">
+            </audio>
         </div>
 
         <div class="audio-card">
             <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Heavy Bass Drop</h4>
-            <audio controls preload="none"><source src="https://files.catbox.moe/efdl27.mp3" type="audio/mpeg"></audio>
+            <audio controls preload="none">
+                <source src="https://files.catbox.moe/efdl27.mp3" type="audio/mpeg">
+            </audio>
         </div>
 
         <div class="audio-card">
             <h4><i class="fas fa-play-circle" style="color:#D4AF37;"></i> Grand Wedding Entrance</h4>
-            <audio controls preload="none"><source src="https://files.catbox.moe/mus2yv.mp3" type="audio/mpeg"></audio>
+            <audio controls preload="none">
+                <source src="https://files.catbox.moe/mus2yv.mp3" type="audio/mpeg">
+            </audio>
         </div>
         
         <button class="option-btn" style="width:100%; margin-top:10px; padding:15px;" onclick="openHubModal('selectionModal')">
@@ -2856,6 +2860,66 @@
     </div>
 </div>
 
+<div class="media-modal" id="videoModal">
+    <i class="fas fa-times close-modal-btn" onclick="closeAllModals()"></i>
+    
+    <div class="gallery-container" style="padding: 0;"> 
+        <h2 class="gallery-title"><i class="fab fa-instagram"></i> INSTAGRAM REELS</h2>
+        
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT-a_KEk7Dg/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DT1WY8SCOgw/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU97ieVE7nR/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU85vD-E25K/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU846FikxCk/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DU837C8kxNF/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUDeT9siJfO/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT5paKBE03U/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT5X-Z-k-ai/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT4HlNrE9xN/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT1lb02iGy0/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DT1fBhtCA4X/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTz9nEPkyKO/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTz79cyE7Hh/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTzJWMNExQh/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTy-LYlCNSm/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTwaxZ2kel6/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTu4AZdE2sr/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+        <div class="video-card"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTv-Kt5kyN8/" data-instgrm-version="14" style="background:#000; border:0; margin: 0; width:100%;"><div style="padding:16px; text-align:center; color:#fff;">Loading Reel...</div></blockquote></div>
+
+        <button class="option-btn" style="width:90%; margin:20px auto; padding:15px;" onclick="openHubModal('selectionModal')">
+            <i class="fas fa-arrow-left"></i> BACK
+        </button>
+    </div>
+</div>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+    function openHubModal(modalId) {
+        document.querySelectorAll('.media-modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        
+        document.getElementById(modalId).classList.add('active');
+        
+        // This forces Instagram to load the 19 videos ONLY when the gallery is opened
+        if(modalId === 'videoModal' && window.instgrm) {
+            window.instgrm.Embeds.process();
+        }
+    }
+
+    function closeAllModals() {
+        document.querySelectorAll('.media-modal').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        
+        // Stop audio from playing when modal closes
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    }
+</script>
 <div class="media-modal" id="videoModal">
     <i class="fas fa-times close-modal-btn" onclick="closeAllModals()"></i>
     
