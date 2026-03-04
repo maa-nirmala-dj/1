@@ -2586,7 +2586,6 @@
                 <button id="installBtn" onclick="installApp()"><i class="fas fa-download"></i> INSTALL MNDs APP</button>
             </div>
             <style>
-                <style>
     /* --- 1. THE GLOWING MASTER BUTTON --- */
     .premium-social-trigger {
         display: flex;
