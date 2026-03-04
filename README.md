@@ -2405,13 +2405,184 @@
 </script>
         
         <div class="container" id="homeSection">
-            <div class="profile-wrapper">
-                <div class="img-container"><img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="profile-pic" alt="Maa Nirmala DJ & Tent House"></div>
-                <h1>MAA NIRMALA DJ & TENT HOUSE <i class="fas fa-check-circle verified"></i></h1>
-                <p class="bio">🎵 Maa Nirmala DJ & Tent House ⛺
-Premium Quality | Best DJ in Banka.
-Unforgettable sound. Flawless event setups.
-Tola Beltikri | Kadhar | Katoria | Banka | Bihar</p>
+            <style>
+    /* --- IMPORT PREMIUM LUXURY FONTS --- */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;600;800&display=swap');
+
+    /* 1. Main container reset */
+    #homeSection {
+        padding: 0; 
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #050505; 
+    }
+
+    /* 2. The edge-to-edge full-bleed hero card */
+    .full-bleed-hero-edge {
+        position: relative;
+        width: 100vw; 
+        margin-left: calc(-50vw + 50%); 
+        
+        height: 48vh; 
+        min-height: 420px; 
+        
+        border-radius: 0 0 35px 35px; 
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    /* 3. Perfect image fit */
+    .hero-img-full {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%; 
+        display: block;
+    }
+
+    /* 4. THE 10-COLOR BACKGROUND OVERLAY (DJ LIGHTING) */
+    .dj-color-shine {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, 
+            #4a0000, #2a004d, #00004d, #00331a, #4d3300, 
+            #4d0033, #4d1a00, #003333, #1a0033, #4a0000 
+        );
+        background-size: 400% 400%;
+        animation: djShineAnim 15s ease-in-out infinite;
+        mix-blend-mode: screen; 
+        opacity: 0.65; 
+        z-index: 1;
+    }
+
+    @keyframes djShineAnim {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* 5. Deep Black Gradient Fade */
+    .hero-dark-edge-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65%; 
+        background: linear-gradient(
+            to bottom,
+            rgba(5, 5, 5, 0) 0%,      
+            rgba(5, 5, 5, 0.75) 50%,   
+            rgba(5, 5, 5, 0.98) 85%,  
+            #050505 100%              
+        );
+        z-index: 2;
+    }
+
+    /* 6. Text content positioned perfectly */
+    .hero-text-edge-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0 20px 15px 20px; 
+        text-align: center;
+        z-index: 3;
+    }
+
+    /* 7. THE 2-SECOND DEEP COLOR TEXT SHINE ANIMATION */
+    @keyframes textDeepShine {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+    }
+
+    /* MASSIVE Main Title */
+    .hero-massive-title {
+        font-family: 'Cinzel', serif; 
+        font-size: 44px; 
+        font-weight: 900;
+        text-transform: uppercase;
+        margin: 0 0 2px 0;
+        letter-spacing: 1px;
+        line-height: 1.05;
+        filter: drop-shadow(0px 8px 15px rgba(0, 0, 0, 1)); 
+        
+        /* The Deep Color Gradient */
+        background: linear-gradient(to right, #FFD700, #FF1493, #8A2BE2, #00BFFF, #00FA9A, #FFD700);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* 2-Second continuous loop */
+        animation: textDeepShine 2s linear infinite;
+    }
+
+    /* Stacked Elegant Subtitle */
+    .hero-massive-subtitle {
+        display: block;
+        font-family: 'Cinzel', serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 5px; 
+        margin-bottom: 12px;
+        filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 1));
+
+        /* Matches the deep color shine of the main title */
+        background: linear-gradient(to right, #FFD700, #FF1493, #8A2BE2, #00BFFF, #00FA9A, #FFD700);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textDeepShine 2s linear infinite;
+    }
+
+    /* 8. Luxury Spaced Address Line */
+    .hero-premium-address {
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: #E0E0E0; 
+        margin: 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        line-height: 1.8;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 1);
+    }
+
+    /* Gold Separators inside the address */
+    .hero-premium-address span {
+        color: #D4AF37; 
+        margin: 0 6px;
+        opacity: 0.9;
+        font-weight: 800;
+    }
+</style>
+
+<div id="homeSection">
+    <div class="full-bleed-hero-edge">
+        
+        <img src="https://i.postimg.cc/g20XqtDW/IMG_20260303_121446.png" class="hero-img-full" alt="Maa Nirmala DJ">
+        
+        <div class="dj-color-shine"></div>
+        
+        <div class="hero-dark-edge-fade"></div>
+
+        <div class="hero-text-edge-content">
+            
+            <h1 class="hero-massive-title">MAA NIRMALA DJ</h1>
+            <span class="hero-massive-subtitle">& TENT HOUSE</span>
+            
+            <p class="hero-premium-address">
+                Tola Beltikri <span>|</span> Kaddhar <span>|</span> Katoria <br> Banka <span>|</span> Bihar
+            </p>
+            
+        </div>
+        
+    </div>
+</div>
                 <button id="installBtn" onclick="installApp()"><i class="fas fa-download"></i> INSTALL MNDs APP</button>
             </div>
 
