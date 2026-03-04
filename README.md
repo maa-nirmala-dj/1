@@ -2593,8 +2593,297 @@
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/hPgQLpyz/image_b73be3f2_1.png" alt="Premium Quality"><span>Premium Lightings</span></a>
                 <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Vv7kBKCH/2025-10-07-(1).jpg" alt="Booking"><span>Premium Quality</span></a>
             </div>
+            <style>
+    /* --- IMPORT ADVANCED LUXURY FONTS --- */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;600&display=swap');
 
-            <div class="section-label" style="margin-top: 40px;"><i class="fas fa-star"></i> BEST OF MAA NIRMALA</div>
+    /* --- 1. GALLERY HEADING --- */
+    #gallery {
+        text-align: center;
+        margin: 40px 0 20px 0;
+        font-family: 'Cinzel', serif;
+        scroll-margin-top: 80px;
+    }
+    
+    .gallery-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: 2px;
+        margin: 0 0 5px 0;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    
+    .gallery-title i {
+        color: var(--gold-primary);
+        margin-right: 8px;
+    }
+
+    .gallery-subtitle {
+        font-family: 'Outfit', sans-serif;
+        color: var(--gold-primary);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    /* --- 2. THE SMART AUTO-SLIDER TRACK (Left-to-Right) --- */
+    .smart-slider-container {
+        position: relative;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Forcing edge-to-edge full width */
+        background-color: var(--bg-body);
+        padding: 20px 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Cinematic Dark Fade Edges */
+    .smart-slider-container::before,
+    .smart-slider-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 100%;
+        z-index: 5;
+        pointer-events: none;
+    }
+    .smart-slider-container::before { left: 0; background: linear-gradient(to right, var(--bg-body) 0%, transparent 100%); }
+    .smart-slider-container::after { right: 0; background: linear-gradient(to left, var(--bg-body) 0%, transparent 100%); }
+
+    /* The Scrollable Track */
+    .smart-track {
+        display: flex;
+        gap: 15px;
+        padding: 0 15px;
+        overflow-x: auto;
+        scroll-behavior: auto;
+        /* Hide scrollbars for a clean look */
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch; /* Smooth native mobile scrolling */
+    }
+    .smart-track::-webkit-scrollbar { display: none; }
+
+    /* The Images */
+    .smart-img {
+        flex: 0 0 auto;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .smart-img:active {
+        transform: scale(0.95);
+        border-color: var(--gold-primary);
+    }
+
+    /* --- 3. THE PREMIUM EXPAND VIEW LIGHTBOX (MODAL) --- */
+    .mnd-lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        z-index: 99999;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .mnd-lightbox.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .lb-close-btn {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: var(--gold-primary);
+        font-size: 35px;
+        cursor: pointer;
+        z-index: 100000;
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Full Image, Half Window height, Preserving aspect ratio */
+    .lb-image {
+        max-width: 90%;
+        max-height: 55vh; /* Constraints height to ~55% of the viewport */
+        border-radius: 20px;
+        border: 2px solid var(--gold-primary);
+        box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
+        object-fit: contain; /* Shows full uncropped image */
+        animation: zoomIn 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @keyframes zoomIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .lb-text-container {
+        margin-top: 25px;
+        text-align: center;
+        padding: 0 20px;
+        max-width: 400px;
+    }
+
+    .lb-title {
+        font-family: 'Cinzel', serif;
+        color: var(--gold-primary);
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0 0 8px 0;
+        letter-spacing: 1px;
+    }
+
+    .lb-desc {
+        font-family: 'Outfit', sans-serif;
+        color: var(--text-sub);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+        font-weight: 300;
+    }
+</style>
+
+<div id="gallery">
+    <h2 class="gallery-title"><i class="fas fa-gem"></i> ELITE SHOWCASE</h2>
+    <p class="gallery-subtitle">Tap Any Image To Expand</p>
+</div>
+
+<div class="smart-slider-container">
+    <div class="smart-track" id="autoScrollTrack">
+        
+        <img src="https://i.postimg.cc/R0smYWFp/2025-10-07-(5).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Pf8H6rkd/2025-10-10-(1).png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Mp9mfwHd/2025-10-09.jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/5N3wDJB1/2025-10-10.png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/g0RrFyC3/2025-10-07.jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/3JHsnX1r/2025-10-07-(6).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/3xxbcnv3/2025-10-07-(10).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Vv7kBKCH/2025-10-07-(1).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/W38NT5X0/2025-10-07-(2).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/N0VVTmFm/2025-10-07-(8).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/pXpWMY8f/2025-10-07.png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/9XySR4hN/2025-10-07-(9).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/kMhCs6ZG/2025-10-07-(3).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Pr8gM6Yz/2025-10-07-(4).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/FFfr2V0k/2025-10-07-(1).png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/k5k1DChn/2025-10-07-(2).png" class="smart-img" onclick="openLightbox(this.src)">
+
+        <img src="https://i.postimg.cc/R0smYWFp/2025-10-07-(5).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Pf8H6rkd/2025-10-10-(1).png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Mp9mfwHd/2025-10-09.jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/5N3wDJB1/2025-10-10.png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/g0RrFyC3/2025-10-07.jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/3JHsnX1r/2025-10-07-(6).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/3xxbcnv3/2025-10-07-(10).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Vv7kBKCH/2025-10-07-(1).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/W38NT5X0/2025-10-07-(2).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/N0VVTmFm/2025-10-07-(8).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/pXpWMY8f/2025-10-07.png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/9XySR4hN/2025-10-07-(9).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/kMhCs6ZG/2025-10-07-(3).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/Pr8gM6Yz/2025-10-07-(4).jpg" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/FFfr2V0k/2025-10-07-(1).png" class="smart-img" onclick="openLightbox(this.src)">
+        <img src="https://i.postimg.cc/k5k1DChn/2025-10-07-(2).png" class="smart-img" onclick="openLightbox(this.src)">
+
+    </div>
+</div>
+
+<div class="mnd-lightbox" id="mndLightbox">
+    <i class="fas fa-times lb-close-btn" onclick="closeLightbox()"></i>
+    
+    <img src="" id="lightboxImg" class="lb-image" alt="Full Screen Event View">
+    
+    <div class="lb-text-container">
+        <h3 class="lb-title">MAA NIRMALA EXCLUSIVE</h3>
+        <p class="lb-desc">A perfect perspective on our signature event setups. From grand lighting to flawless stage designs, every detail is captured in full clarity.</p>
+    </div>
+</div>
+
+<script>
+    // --- 1. Smart Auto/Manual Scrolling Logic ---
+    const track = document.getElementById('autoScrollTrack');
+    let isAutoScrolling = true;
+    let scrollSpeed = 1; // Speed of the auto-slide
+    let resumeTimeout;
+
+    // Start auto-scrolling
+    function autoSlide() {
+        if (isAutoScrolling) {
+            track.scrollLeft += scrollSpeed;
+            // Loop silently halfway through duplicated images
+            if (track.scrollLeft >= (track.scrollWidth / 2)) {
+                track.scrollLeft = 0;
+            }
+        }
+        requestAnimationFrame(autoSlide);
+    }
+    
+    // Start the animation immediately
+    requestAnimationFrame(autoSlide);
+
+    // Stop auto-scrolling when user touches or swipes
+    track.addEventListener('touchstart', () => {
+        isAutoScrolling = false;
+        clearTimeout(resumeTimeout);
+    }, {passive: true});
+
+    // Resume auto-scrolling after 1.5 seconds of no touching
+    track.addEventListener('touchend', () => {
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => {
+            isAutoScrolling = true;
+        }, 1500);
+    });
+
+    // --- 2. Full Screen Lightbox Logic ---
+    function openLightbox(imageSrc) {
+        const lightbox = document.getElementById('mndLightbox');
+        const img = document.getElementById('lightboxImg');
+        
+        // Load the tapped image
+        img.src = imageSrc;
+        
+        // Show Lightbox with transition
+        lightbox.classList.add('active');
+        
+        // Pause slider in background
+        isAutoScrolling = false;
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('mndLightbox');
+        lightbox.classList.remove('active');
+        
+        // Resume slider
+        isAutoScrolling = true;
+    }
+
+    // Close lightbox if user clicks the dark background outside the image
+    document.getElementById('mndLightbox').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeLightbox();
+        }
+    });
+</script>
+
+            <div class="section-label" style="margin-top: 40px;"><i class="fas fa-star"></i> BEST OF MAA NIRMALA DJ</div>
 <div class="slider-container">
 
     <div class="slide-card">
