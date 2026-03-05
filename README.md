@@ -50,7 +50,21 @@
 
         /* GATEKEEPER */
         #gatekeeper { position: fixed; inset: 0; z-index: 9999; background: var(--bg-body); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 80%); transition: opacity 0.8s ease, visibility 0.8s; }
-        .gate-card { width: 100%; max-width: 400px; background: rgba(10, 10, 10, 0.95); border: 1px solid var(--gold-primary); border-radius: 20px; padding: 40px 25px; box-shadow: 0 0 80px rgba(212, 175, 55, 0.15); backdrop-filter: blur(20px); position: relative; overflow: hidden; animation: pulseCard 4s infinite alternate; }
+        .gate-card {
+    width: 100%; 
+    max-width: 400px;
+    max-height: 85vh; /* ADDED: Limits the box height so it doesn't push off-screen */
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--gold-primary);
+    border-radius: 20px; 
+    padding: 40px 25px;
+    box-shadow: 0 0 80px rgba(212, 175, 55, 0.15);
+    backdrop-filter: blur(20px);
+    position: relative; 
+    overflow-y: auto; /* CHANGED: Enables vertical manual scrolling inside the box */
+    overflow-x: hidden; /* ADDED: Keeps the horizontal layout neat */
+    animation: pulseCard 4s infinite alternate;
+}
         @keyframes pulseCard { from { transform: scale(1); border-color: rgba(212,175,55,0.3); } to { transform: scale(1.005); border-color: rgba(212,175,55,0.6); } }
         .gate-img-frame { width: 110px; height: 110px; margin: 0 auto 20px; border-radius: 50%; padding: 3px; border: 2px solid var(--gold-primary); box-shadow: 0 0 30px rgba(212, 175, 55, 0.3); }
         .gate-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
@@ -233,9 +247,9 @@
     <div style="background:linear-gradient(135deg, #110e08 0%, #050505 100%); border:2px solid #D4AF37; border-radius:20px; padding:30px; text-align:center; width:92%; max-width:450px; box-shadow:0 20px 60px rgba(212,175,55,0.4); position:relative; animation:slideUpZoom 0.5s ease;">
         <span onclick="document.getElementById('royalWelcomePopup').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
         <div style="color:#D4AF37; font-size:16px; line-height:1.6; font-family:'Cinzel', serif; font-weight:bold;">
-             ━━━━━━━━━━━━━━<br>
+             ━━━━━━━━━━━━━<br>
             <span style="font-size:26px; color:#fff; text-shadow:0 0 10px #D4AF37; line-height: 1.2;">🎉 WELCOME TO 🎉</span><br>
-            <span style="font-size:30px; color:#FFD700; text-shadow:0 0 20px #FFD700; line-height: 1.2;">🎧 MAA NIRMALA DJ 🎧</span><br>
+            <span style="font-size:30px; color:#FFD700; text-shadow:0 0 20px #FFD700; line-height: 1.2;"> MAA NIRMALA DJ </span><br>
             ━━━━━━━━━━━━━━━
         </div>
         <div style="color:#ddd; font-family:'Outfit', sans-serif; font-size:15px; text-align:left; margin-top:25px; line-height:2;">
