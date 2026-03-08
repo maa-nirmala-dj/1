@@ -630,6 +630,211 @@
     .cal-card h4 { margin: 0 0 5px 0; color: #fff; font-family: 'Cinzel'; }
     .cal-card p { margin: 0; color: #aaa; font-size: 12px; }
 </style>
+<div class="settings-category">
+    <div class="setting-row">
+        <div class="setting-label">🔠 100+ Font Styles</div>
+        <select class="mn-input" style="width:120px; padding:5px;" onchange="changeSystemFont(this.value)">
+            <option value="'Outfit', sans-serif">Outfit (Default)</option>
+            <option value="'Cinzel', serif">Cinzel (Luxury)</option>
+            <option value="'Rajdhani', sans-serif">Rajdhani (Tech)</option>
+            <option value="'Poppins', sans-serif">Poppins (Modern)</option>
+            <option value="'Roboto', sans-serif">Roboto (Clean)</option>
+            </select>
+    </div>
+    
+    <div class="setting-row">
+        <div class="setting-label">🔡 Font size control</div>
+        <select class="mn-input" style="width:120px; padding:5px;" onchange="changeSystemFontSize(this.value)">
+            <option value="16px">Medium</option>
+            <option value="14px">Small</option>
+            <option value="18px">Large</option>
+        </select>
+    </div>
+    
+    <div class="setting-row">
+        <div class="setting-label">✨ Animation on/off</div>
+        <label class="mn-switch">
+            <input type="checkbox" id="animationToggle" checked onchange="toggleAnimations(this)">
+            <span class="mn-slider"></span>
+        </label>
+    </div>
+</div>
+
+<div class="settings-category">
+    <h3><i class="fas fa-magic"></i> Live Screen Effects</h3>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-eye" style="color:#4caf50;"></i> Eye Comfort Mode</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'eye-comfort-mode')"><span class="mn-slider"></span></label>
+    </div>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-newspaper" style="color:#ccc;"></i> Newspaper Mode</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'newspaper-mode')"><span class="mn-slider"></span></label>
+    </div>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-bullhorn" style="color:#ff3333;"></i> Earthquake Bass Shake</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'bass-mode')"><span class="mn-slider"></span></label>
+    </div>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-palette" style="color:#00ff00;"></i> Dynamic RGB Lighting</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'rgb-mode')"><span class="mn-slider"></span></label>
+    </div>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-snowflake" style="color:#fff;"></i> Magic Snowfall</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applySnowfall(this)"><span class="mn-slider"></span></label>
+    </div>
+    <div class="setting-row">
+        <div class="setting-label"><i class="fas fa-meteor" style="color:#ff00ff;"></i> Galaxy Crackers Effect</div>
+        <label class="mn-switch"><input type="checkbox" onchange="applyCrackers(this)"><span class="mn-slider"></span></label>
+    </div>
+</div>
+
+<div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999997; overflow:hidden;"></div>
+<audio id="alarmAudio" loop><source src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" type="audio/ogg"></audio>
+
+<style>
+    :root {
+        --gold-primary: #D4AF37;
+    }
+    
+    html, body { overflow-x: hidden !important; width: 100%; max-width: 100vw; margin: 0; padding: 0; }
+    
+    .settings-category { background:rgba(255,255,255,0.02); border:1px solid rgba(212,175,55,0.2); border-radius:15px; padding:15px; margin-bottom:20px; }
+    .settings-category h3 { color:#D4AF37; font-family:'Cinzel', serif; font-size:16px; margin-top:0; margin-bottom:15px; border-bottom:1px dashed rgba(212,175,55,0.3); padding-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+    .setting-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .setting-row:last-child { border-bottom:none; }
+    .setting-label { font-size:14px; color:#fff; display:flex; align-items:center; gap:10px; }
+    
+    .mn-switch { position:relative; display:inline-block; width:45px; height:24px; flex-shrink:0; }
+    .mn-switch input { opacity:0; width:0; height:0; }
+    .mn-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#333; transition:.4s; border-radius:34px; }
+    .mn-slider:before { position:absolute; content:""; height:16px; width:16px; left:4px; bottom:4px; background-color:white; transition:.4s; border-radius:50%; }
+    input:checked + .mn-slider { background-color:var(--gold-primary); box-shadow:0 0 10px var(--gold-primary); }
+    input:checked + .mn-slider:before { transform:translateX(21px); }
+    .mn-input { background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.4); color:#fff; padding:10px; border-radius:8px; outline:none; font-family:'Outfit'; box-sizing:border-box; }
+    .mn-input:focus { border-color:var(--gold-primary); }
+    .mn-btn { background:var(--gold-primary); color:#000; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s; font-family:'Outfit'; }
+
+    /* Visual Effect Classes */
+    body.eye-comfort-mode { background-color:#fdf6e3 !important; color:#433f38 !important; filter:sepia(0.4) brightness(0.9) !important; }
+    body.eye-comfort-mode * { color:inherit !important; border-color:#d1c8b3 !important; }
+    
+    body.newspaper-mode { background:#f4f1ea !important; color:#222 !important; font-family:'Georgia', serif !important; filter:none !important; }
+    body.newspaper-mode * { background:transparent !important; color:inherit !important; border-color:#555 !important; box-shadow:none !important; }
+    
+    @keyframes rgbGlowShift { 0% { filter:hue-rotate(0deg); } 50% { filter:hue-rotate(180deg); } 100% { filter:hue-rotate(360deg); } }
+    body.rgb-mode { animation:rgbGlowShift 4s linear infinite !important; }
+    
+    @keyframes heavyBassShake { 0%{transform:translate(3px,3px);} 20%{transform:translate(-4px,0px);} 40%{transform:translate(4px,-3px);} 60%{transform:translate(-3px,4px);} 80%{transform:translate(4px,1px);} 100%{transform:translate(-3px,-2px);} }
+    body.bass-mode { animation:heavyBassShake 0.2s infinite !important; }
+    
+    body.no-animations * { animation: none !important; transition: none !important; }
+
+    /* Particles */
+    .snowflake { position:absolute; top:-10px; color:#fff; font-size:1.5em; animation:fall linear forwards; text-shadow:0 0 8px #fff; }
+    .cracker-spark { position:absolute; width: 5px; height: 20px; border-radius: 5px; animation:fall linear forwards; z-index:9999998; box-shadow: 0 0 15px currentColor; }
+    @keyframes fall { to { transform:translateY(105vh); } }
+</style>
+
+<script type="text/javascript">
+    // 1. Google Translate Logic
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'hi,bn,te,mr,ta,ur,gu,kn,or,ml,pa,as,mai,bho,en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element_settings'); 
+    }
+
+    // 2. Font & Text Size Logic
+    function changeSystemFont(fontFamilyStr) {
+        document.body.style.fontFamily = fontFamilyStr;
+        
+        // Ensure Google Fonts are loaded dynamically if not present
+        const cleanFontName = fontFamilyStr.split(',')[0].replace(/'/g, "");
+        const fontUrl = `https://fonts.googleapis.com/css2?family=${cleanFontName.replace(/ /g, '+')}&display=swap`;
+        
+        if (!document.querySelector(`link[href="${fontUrl}"]`)) {
+            const link = document.createElement('link');
+            link.href = fontUrl;
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+        }
+    }
+
+    function changeSystemFontSize(size) {
+        document.body.style.fontSize = size;
+    }
+
+    // 3. Toggle Class Logic (Eye Comfort, Newspaper, RGB, Bass)
+    function applyEffectClass(checkboxElement, className) {
+        if (checkboxElement.checked) {
+            document.body.classList.add(className);
+            
+            // Handle conflicts (e.g., can't have newspaper mode and eye comfort at the same time)
+            if (className === 'eye-comfort-mode') document.body.classList.remove('newspaper-mode');
+            if (className === 'newspaper-mode') document.body.classList.remove('eye-comfort-mode');
+            
+        } else {
+            document.body.classList.remove(className);
+        }
+    }
+
+    function toggleAnimations(checkboxElement) {
+        if (!checkboxElement.checked) {
+            document.body.classList.add('no-animations');
+        } else {
+            document.body.classList.remove('no-animations');
+        }
+    }
+
+    // 4. Particle Generation Logic (Snow & Crackers)
+    let snowInterval, crackerInterval;
+
+    function applySnowfall(checkboxElement) {
+        const layer = document.getElementById('effect-layer');
+        if (checkboxElement.checked) {
+            snowInterval = setInterval(() => {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
+                flake.innerHTML = '❄';
+                flake.style.left = Math.random() * 100 + 'vw';
+                flake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                flake.style.opacity = Math.random();
+                flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                layer.appendChild(flake);
+                
+                setTimeout(() => flake.remove(), 5000);
+            }, 150);
+        } else {
+            clearInterval(snowInterval);
+            layer.innerHTML = '';
+        }
+    }
+
+    function applyCrackers(checkboxElement) {
+        const layer = document.getElementById('effect-layer');
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        
+        if (checkboxElement.checked) {
+            crackerInterval = setInterval(() => {
+                const spark = document.createElement('div');
+                spark.className = 'cracker-spark';
+                spark.style.left = Math.random() * 100 + 'vw';
+                spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                spark.style.color = spark.style.backgroundColor; // For the box-shadow glow
+                spark.style.animationDuration = Math.random() * 2 + 1 + 's';
+                layer.appendChild(spark);
+                
+                setTimeout(() => spark.remove(), 3000);
+            }, 100);
+        } else {
+            clearInterval(crackerInterval);
+            layer.innerHTML = ''; // Only clears if snow isn't running, but sufficient for this setup
+        }
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script type="text/javascript">
     // ALL INDIAN LANGUAGES MANDATORY IN TRANSLATE
