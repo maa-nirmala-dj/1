@@ -3979,16 +3979,19 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        // 3 MAIN INDIAN LANGUAGES (Hindi, Bengali, Telugu)
+ <script type="text/javascript">
+        // Comprehensive list of Indian Languages supported by Google Translate
+        // Ordered: English (en), Hindi (hi), followed by the rest.
         function googleTranslateElementInit() { 
             new google.translate.TranslateElement({ 
-                pageLanguage: 'en', includedLanguages: 'hi,bn,te',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false 
+                pageLanguage: 'en', 
+                includedLanguages: 'en,hi,as,bho,bn,doi,gom,gu,kn,mai,ml,mni-Mtei,mr,ne,or,pa,sa,sd,ta,te,ur',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+                autoDisplay: false 
             }, 'google_translate_element'); 
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>   
 
     <script>
         const TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
