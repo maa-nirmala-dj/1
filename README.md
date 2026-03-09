@@ -1386,6 +1386,127 @@
         }
     }
 </script>
+<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openAdvanceFeaturesModal()">
+    <i class="fas fa-headset fa-pulse"></i> Advance Features
+</a>
+
+<div id="advanceFeaturesModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); z-index:9999999; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
+    <div class="mn-master-box" style="width:100%; height:100%; max-width:600px; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden; box-shadow: 0 0 50px rgba(212,175,55,0.2);">
+        
+        <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+            <span onclick="closeAdvanceFeaturesModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer; transition: 0.3s;">&times;</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-microchip"></i> Advance Features</h2>
+        </div>
+        
+        <div class="master-content" style="flex-grow:1; overflow-y:auto; padding:20px; padding-bottom:50px;">
+
+            <div class="settings-category">
+                <h3><i class="fas fa-paint-roller"></i> Visual & UI Customization</h3>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00e5ff;"><i class="fas fa-language"></i></div><div>Global Language<div style="font-size: 11px; color: #888;">Select any language</div></div></div>
+                    <div id="google_translate_element_advance"></div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#D4AF37;"><i class="fas fa-font"></i></div><div>Font Styling<div style="font-size: 11px; color: #888;">Change website font</div></div></div>
+                    <select class="mn-input" style="width:130px; padding:5px;" onchange="document.body.style.fontFamily=this.value">
+                        <option value="'Outfit', sans-serif">Outfit (Default)</option>
+                        <option value="'Cinzel', serif">Cinzel (Royal)</option>
+                        <option value="'Poppins', sans-serif">Poppins (Modern)</option>
+                        <option value="'Courier New', monospace">Hacker (Mono)</option>
+                    </select>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff00ff;"><i class="fas fa-fill-drip"></i></div><div>Custom Background<div style="font-size: 11px; color: #888;">Pick background color</div></div></div>
+                    <input type="color" id="bgColorPicker" value="#050505" style="border:none; width:40px; height:30px; cursor:pointer;" onchange="applyCustomBg(this.value)">
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-search-plus"></i></div><div>Screen Zoom<div style="font-size: 11px; color: #888;">Adjust UI scale</div></div></div>
+                    <input type="range" min="80" max="150" value="100" style="width:100px; accent-color:#D4AF37;" onchange="applyScreenZoom(this.value)">
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff3333;"><i class="fas fa-image"></i></div><div>Hover Image Zoom<div style="font-size: 11px; color: #888;">Images grow on touch/hover</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'hover-zoom-mode')"><span class="mn-slider"></span></label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="far fa-window-maximize"></i></div><div>Floating Notification<div style="font-size: 11px; color: #888;">Live alert banner</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="toggleFloatingNotification(this)"><span class="mn-slider"></span></label>
+                </div>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-palette"></i></div><div>RGB Color Changing<div style="font-size: 11px; color: #888;">Dynamic lighting</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'rgb-mode')"><span class="mn-slider"></span></label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="fas fa-snowflake"></i></div><div>Snowfall Effect<div style="font-size: 11px; color: #888;">Winter vibes</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applySnowfall(this)"><span class="mn-slider"></span></label>
+                </div>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ccc;"><i class="fas fa-newspaper"></i></div><div>Newspaper Mode<div style="font-size: 11px; color: #888;">Reading layout</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'newspaper-mode')"><span class="mn-slider"></span></label>
+                </div>
+            </div>
+
+            <div class="settings-category" style="border-color: #0088cc;">
+                <h3 style="color:#0088cc;"><i class="fab fa-telegram-plane"></i> Direct Telegram Manager</h3>
+                
+                <div style="background:rgba(0,136,204,0.1); padding:15px; border-radius:10px; margin-bottom:15px; border:1px dashed #0088cc;">
+                    <p style="margin:0 0 10px 0; color:#fff; font-size:13px;"><i class="fas fa-user-shield"></i> <b>Mandatory User Details</b></p>
+                    <input type="text" id="advName" class="mn-input" placeholder="Enter Your Name *" style="width:100%; margin-bottom:10px; border-color:#0088cc;">
+                    <input type="tel" id="advContact" class="mn-input" placeholder="Enter Contact Number *" style="width:100%; border-color:#0088cc;">
+                </div>
+
+                <div class="setting-row" style="flex-direction:column; align-items:flex-start;">
+                    <div class="setting-label" style="margin-bottom:10px;"><i class="fas fa-file-upload" style="color:#D4AF37;"></i> Send File/Photo/Audio to Manager</div>
+                    <div style="display:flex; width:100%; gap:10px;">
+                        <input type="file" id="advFile" class="mn-input" style="flex-grow:1; font-size:12px; padding:8px;">
+                        <button class="mn-btn" style="background:#0088cc; color:#fff;" onclick="sendMediaToManagerTG()"><i class="fas fa-paper-plane"></i> Send</button>
+                    </div>
+                    <div id="fileUploadStatus" style="font-size:12px; color:#00ff00; margin-top:5px; display:none;">Uploading securely...</div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff8c00;"><i class="fas fa-address-book"></i></div><div>Share Phone Contact<div style="font-size: 11px; color: #888;">Select contact to send</div></div></div>
+                    <button class="mn-btn" style="padding:8px 15px; font-size:12px;" onclick="shareContactToManager()"><i class="fas fa-share-square"></i> Select</button>
+                </div>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#aaa;"><i class="fas fa-envelope-open-text"></i></div><div>Read Messages Access<div style="font-size: 11px; color: #888;">Web browser constraints apply</div></div></div>
+                    <button class="mn-btn" style="padding:8px 15px; font-size:12px; background:#444; color:#fff;" onclick="alert('Browser Security: Direct SMS reading is strictly blocked by Android/iOS for web browsers. A native App is required for this feature.')"><i class="fas fa-shield-alt"></i> Info</button>
+                </div>
+            </div>
+
+            <div class="settings-category" style="border-color: #ff3333;">
+                <h3 style="color:#ff3333;"><i class="fas fa-satellite-dish"></i> Advanced Location Radar</h3>
+                
+                <div class="setting-row" style="flex-direction:column; align-items:flex-start; background:rgba(255,51,51,0.05); padding:15px; border-radius:10px;">
+                    <div class="setting-label" style="width:100%; justify-content:space-between; margin-bottom:10px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <div class="setting-icon" style="color:#ff3333;"><i class="fas fa-map-marker-alt fa-beat"></i></div>
+                            <div>Live Telegram Tracking<div style="font-size: 11px; color: #888;">Continuous background sharing</div></div>
+                        </div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleLiveTracking" onchange="toggleLiveLocation(this)"><span class="mn-slider"></span></label>
+                    </div>
+                    <div id="trackingStatusIndicator" style="font-size:12px; color:#ff3333; font-family:'Courier New'; font-weight:bold; display:none;">
+                        🔴 TRANSMITTING TO MANAGER...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="mnFloatingNotification" style="display:none; position:fixed; top:80px; left:50%; transform:translateX(-50%); background:rgba(212,175,55,0.9); color:#000; padding:10px 20px; border-radius:30px; font-family:'Outfit'; font-weight:bold; z-index:9999998; box-shadow:0 10px 20px rgba(0,0,0,0.5); border:2px solid #fff; white-space:nowrap; animation: slideDownBounce 0.5s ease-out;">
+    <i class="fas fa-bell fa-shake"></i> Special Booking Offers Available Now!
+</div>
         <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openComplaintModal()">
     <i class="fas fa-headset"></i> Support / Complaint
 </a>
