@@ -281,7 +281,145 @@
     </div>
 </div>
 
-</option>
+<div id="masterSettingsOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+    <div class="mn-master-box" style="width:100%; height:100%; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden;">
+        
+        <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+            <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Ultimate Control Center</h2>
+        </div>
+        
+        <div class="master-content" style="flex-grow:1; overflow-y:auto; padding:20px; padding-bottom:50px;">
+
+            <div class="settings-category">
+                <h3><i class="fas fa-satellite-dish"></i> Direct Telegram Studio Vault</h3>
+                <input type="text" id="mediaName" class="mn-input" placeholder="Your Name (Mandatory)" style="width:100%; margin-bottom:10px;">
+                <input type="tel" id="mediaNum" class="mn-input" placeholder="Your Phone (Mandatory)" style="width:100%; margin-bottom:15px;">
+                
+                <video id="cameraPreview" autoplay muted playsinline style="display:none; width:100%; height:250px; object-fit:cover; border-radius:12px; border:2px solid #ff3333; margin-bottom:10px;"></video>
+                
+                <div style="display: flex; width: 100%; gap: 10px; margin-bottom: 10px;">
+                    <button class="mn-btn" style="background:#0088cc; color:#fff; flex:1;" id="btnVoice" onclick="startVoiceRecord()"><i class="fas fa-microphone"></i> Voice Record</button>
+                    <button class="mn-btn" style="background:#ff3333; color:#fff; flex:1;" id="btnVideo" onclick="startVideoRecord()"><i class="fas fa-video"></i> Video (50s)</button>
+                    <button class="mn-btn" style="background:#444; color:#fff;" id="btnFlipCam" onclick="switchCamera()"><i class="fas fa-sync-alt"></i></button>
+                </div>
+                
+                <button id="stopRecordBtn" style="display:none; width:100%; padding:15px; background:#ff0000; color:#fff; font-weight:bold; font-size:16px; border:none; border-radius:8px; margin-bottom:10px; animation: flashRed 1s infinite;" onclick="stopMediaRecording()">
+                    <i class="fas fa-stop-circle"></i> STOP RECORDING NOW
+                </button>
+
+                <button class="mn-btn" style="background:#25D366; width:100%; color:#fff;" onclick="requestVideoCall()"><i class="fas fa-phone-video"></i> Direct Telegram Video Call Router</button>
+                <div id="recordingStatus" style="color:#ff3333; font-weight:bold; font-size:12px; margin-top:10px; display:none; text-align:center;"><i class="fas fa-circle fa-beat"></i> Processing...</div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-clock"></i> Unlimited 3D Alarms & Calendar</h3>
+                <div style="background:rgba(255,153,51,0.1); border:1px solid #D4AF37; padding:15px; border-radius:12px; margin-bottom:15px;">
+                    <div style="color:#D4AF37; font-weight:bold;"><i class="fas fa-calendar-alt"></i> Indian Festival Radar</div>
+                    <div id="nextFestivalText" style="font-size:13px; color:#fff; margin-top:5px;">Loading Calendar...</div>
+                    <button class="mn-btn" style="margin-top:10px; font-size:11px; padding:5px 10px;" onclick="openCalendarModal()">View All Festivals</button>
+                </div>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <input type="time" id="newAlarmTime" class="mn-input" style="flex:1;">
+                    <button class="mn-btn" onclick="addCustomAlarm()">Add Alarm</button>
+                </div>
+                <ul id="activeAlarmsList" style="list-style:none; padding:0; margin:0; color:#fff; font-size:14px;"></ul>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-bell"></i> Notification Settings</h3>
+                <div class="setting-row"><div class="setting-label">🔔 Popup notification on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📩 Booking confirmation alerts</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🎉 Offer & festival notifications</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📢 Announcement banner control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
+                <div class="setting-row"><div class="setting-label">🔐 Data protection settings</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📜 Privacy policy display</div><button class="mn-btn" style="padding:5px 15px; font-size:12px;" onclick="alert('Privacy Policy: Your data is fully encrypted and never shared.')">View</button></div>
+                <div class="setting-row"><div class="setting-label">🍪 Cookie consent control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🚫 Spam & fake booking protection</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-universal-access"></i> Language & Accessibility</h3>
+                <div class="setting-row">
+                    <div class="setting-label">🌍 Language switch (All India)</div>
+                    <div id="google_translate_element_settings"></div>
+                </div>
+                <div class="setting-row"><div class="setting-label">♿ Accessibility mode</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🗣️ Voice reading support</div><label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label></div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-music"></i> Sound & Media Settings</h3>
+                <div class="setting-row"><div class="setting-label">🔈 Background music on/off</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🎧 DJ sample music preview</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row" style="flex-direction:column; align-items:flex-start;">
+                    <div class="setting-label" style="margin-bottom:10px;">🔊 Volume control slider</div>
+                    <input type="range" min="1" max="100" value="100" style="width:100%; accent-color:#D4AF37;">
+                </div>
+                <div class="setting-row"><div class="setting-label">🎶 Auto-play music (permissions)</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row">
+                    <div class="setting-label">🎥 Video preview quality</div>
+                    <select class="mn-input" style="width:120px; padding:5px;"><option>Auto</option><option>Low</option><option>HD</option><option>Full HD</option></select>
+                </div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-paint-brush"></i> Appearance & Theme</h3>
+                <div class="setting-row"><div class="setting-label">🌙 Dark / ☀️ Light Mode</div><label class="mn-switch"><input type="checkbox" id="themeTgl" onchange="themeSwitch()" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row">
+                    <div class="setting-label">🎨 100+ Premium Colors</div>
+                    <select class="mn-input" style="width:120px; padding:5px;" onchange="document.documentElement.style.setProperty('--gold-primary', this.value);">
+                        <option value="#D4AF37">Royal Gold</option>
+                        <option value="#ff3333">DJ Red</option>
+                        <option value="#00e5ff">Neon Blue</option>
+                        <option value="#ff00ff">Magenta</option>
+                        <option value="#00ff00">Laser Green</option>
+                        <option value="#ff8c00">Sunset Orange</option>
+                        <option value="#8a2be2">Deep Purple</option>
+                        <option value="#ff1493">Deep Pink</option>
+                        <option value="#00fa9a">Neon Pink</option>
+                        <option value="#00ced1">Teal</option>
+                        <option value="#dc143c">Crimson</option>
+                        <option value="#c0c0c0">Luxury Silver</option>
+                        <option value="#ffffff">Pure White</option>
+                        <option value="#1a1a1a">Subwoofer Black</option>
+<option value="#ffbf00">Haldi Yellow</option>
+<option value="#e6e6fa">VIP Lounge Lavender</option>
+<option value="#ff4500">Pyro Spark Orange</option>
+<option value="#2e8b57">Pandal Canopy Green</option>
+<option value="#4b0082">Midnight Bass Indigo</option>
+<option value="#b8860b">Antique Brass Truss</option>
+<option value="#ff007f">Baaraat Rose</option>
+<option value="#00ffff">Strobe Cyan</option>
+<option value="#ffff00">Moving Head Yellow</option>
+<option value="#7fff00">Matrix Green</option>
+<option value="#ff69b4">Varmala Pink</option>
+<option value="#cd7f32">Bronze Stage</option>
+<option value="#800000">Velvet Drape Maroon</option>
+<option value="#40e0d0">Ambient Turquoise</option>
+<option value="#f0e68c">Chandelier Khaki</option>
+<option value="#8b4513">Rustic Wooden Stage</option>
+<option value="#fa8072">Sunset Wedding Salmon</option>
+<option value="#9932cc">Deep Bass Orchid</option>
+<option value="#20b2aa">LED Wash SeaGreen</option>
+<option value="#ff8c69">Festive Peach</option>
+<option value="#1e90ff">Cinematic Sky Blue</option>
+<option value="#c71585">Royal Carpet Red</option>
+<option value="#32cd32">Laser Beam Lime</option>
+<option value="#f5f5dc">Premium Tent Beige</option>
+<option value="#d2691e">Acoustic Wood Chocolate</option>
+<option value="#6a5acd">Stage Smoke Slate</option>
+<option value="#ffebcd">Halogen Warm White</option>
+<option value="#00008b">Night Sky Navy</option>
+<option value="#adff2f">Techno Yellow Green</option>
+<option value="#db7093">Pale Floral Violet</option>
+<option value="#f08080">Soft Uplight Coral</option>
+<option value="#00bfff">DJ Booth Azure</option>
+<option value="#8b008b">Grand Entrance Magenta</option>
 <option value="#b22222">Firebrick Red</option>
 <option value="#228b22">Floral Arch Forest</option>
 <option value="#ffb6c1">Bridal Blush Pink</option>
@@ -338,6 +476,96 @@
                         <option value="'Inter', sans-serif">Inter (UI/UX)</option>
                         <option value="'Work Sans', sans-serif">Work Sans (Minimalist)</option>
                         <option value="'Quicksand', sans-serif">Quicksand (Rounded)</option>
+                        <option value="'Jost', sans-serif">Jost (Futura Style)</option>
+                        <option value="'Fira Sans', sans-serif">Fira Sans (Dynamic)</option>
+                        <option value="'Barlow', sans-serif">Barlow (Highway)</option>
+                        <option value="'Cabin', sans-serif">Cabin (Humanist)</option>
+                        <option value="'Varela Round', sans-serif">Varela Round (Soft)</option>
+                        <option value="'Lexend', sans-serif">Lexend (Legible)</option>
+                        <option value="'Mulish', sans-serif">Mulish (Versatile)</option>
+                        <option value="'Mukta', sans-serif">Mukta (Indian Modern)</option>
+                        <option value="'Hind', sans-serif">Hind (Clean Reading)</option>
+                        <option value="'Questrial', sans-serif">Questrial (Architectural)</option>
+                        <option value="'Maven Pro', sans-serif">Maven Pro (Curved Tech)</option>
+                        <option value="'Archivo', sans-serif">Archivo (Grotesque)</option>
+                        <option value="'Heebo', sans-serif">Heebo (Sharp)</option>
+                        <option value="'Dosis', sans-serif">Dosis (Pill-shaped)</option>
+                        <option value="'Signika', sans-serif">Signika (Signage)</option>
+                        <option value="'Tenor Sans', sans-serif">Tenor Sans (Fashion)</option>
+
+                        <option value="'Orbitron', sans-serif">Orbitron (Laser Sci-Fi)</option>
+                        <option value="'Exo 2', sans-serif">Exo 2 (Futuristic)</option>
+                        <option value="'Audiowide', display">Audiowide (Electronic)</option>
+                        <option value="'Syncopate', sans-serif">Syncopate (Ultra Wide)</option>
+                        <option value="'Teko', sans-serif">Teko (Industrial Bass)</option>
+                        <option value="'Chakra Petch', sans-serif">Chakra Petch (Mecha Tech)</option>
+                        <option value="'Michroma', sans-serif">Michroma (Automotive)</option>
+                        <option value="'Quantico', sans-serif">Quantico (Military Tech)</option>
+                        <option value="'Jura', sans-serif">Jura (Euro Tech)</option>
+                        <option value="'Bruno Ace', display">Bruno Ace (Speed)</option>
+                        <option value="'Syne', sans-serif">Syne (Avant-Garde)</option>
+                        <option value="'Aldrich', sans-serif">Aldrich (Blueprint)</option>
+                        <option value="'Gruppo', display">Gruppo (Thin Stylish)</option>
+                        <option value="'Titillium Web', sans-serif">Titillium Web (Digital)</option>
+                        <option value="'Russo One', sans-serif">Russo One (Bold Tech)</option>
+
+                        <option value="'Anton', sans-serif">Anton (DJ Poster)</option>
+                        <option value="'Abril Fatface', display">Abril Fatface (Heavy Editorial)</option>
+                        <option value="'Righteous', display">Righteous (Retro Tech)</option>
+                        <option value="'Fjalla One', sans-serif">Fjalla One (Headline)</option>
+                        <option value="'Fredoka One', display">Fredoka One (Bubbly)</option>
+                        <option value="'Alfa Slab One', display">Alfa Slab One (Heavyweight)</option>
+                        <option value="'Carter One', display">Carter One (Retro Web)</option>
+                        <option value="'Patua One', display">Patua One (Soft Slab)</option>
+                        <option value="'Bangers', display">Bangers (Comic Book)</option>
+                        <option value="'Black Ops One', display">Black Ops One (Military)</option>
+                        <option value="'Saira', sans-serif">Saira (Super Wide Impact)</option>
+                        <option value="'Josefin Sans', sans-serif">Josefin Sans (Geometric)</option>
+                        <option value="'Yeseva One', display">Yeseva One (Feminine Heavy)</option>
+                        <option value="'Limelight', display">Limelight (Cinema)</option>
+                        <option value="'Fascinate', display">Fascinate (Art Deco)</option>
+                        <option value="'Allerta Stencil', sans-serif">Allerta Stencil (Crate)</option>
+
+                        <option value="'Great Vibes', cursive">Great Vibes (Varmala Script)</option>
+                        <option value="'Pacifico', cursive">Pacifico (Vibrant Surf)</option>
+                        <option value="'Lobster', cursive">Lobster (Festive)</option>
+                        <option value="'Sacramento', cursive">Sacramento (Invitation)</option>
+                        <option value="'Parisienne', cursive">Parisienne (Romantic)</option>
+                        <option value="'Yellowtail', cursive">Yellowtail (Brush Script)</option>
+                        <option value="'Cookie', cursive">Cookie (Sweet)</option>
+                        <option value="'Courgette', cursive">Courgette (Casual Script)</option>
+                        <option value="'Satisfy', cursive">Satisfy (Fluid)</option>
+                        <option value="'Kaushan Script', cursive">Kaushan Script (Energetic)</option>
+                        <option value="'Tangerine', cursive">Tangerine (Calligraphy)</option>
+                        <option value="'Berkshire Swash', cursive">Berkshire Swash (Magical)</option>
+                        <option value="'Caveat', cursive">Caveat (Handwritten Notes)</option>
+                        <option value="'Shadows Into Light', cursive">Shadows Into Light (Playful)</option>
+                        <option value="'Indie Flower', cursive">Indie Flower (Carefree)</option>
+                        <option value="'Amatic SC', cursive">Amatic SC (Handcrafted)</option>
+                        <option value="'Permanent Marker', cursive">Permanent Marker (Edgy Marker)</option>
+
+                        <option value="'Monoton', display">Monoton (Neon Lights)</option>
+                        <option value="'Vampiro One', display">Vampiro One (Neon Tube)</option>
+                        <option value="'Press Start 2P', display">Press Start 2P (Arcade 8-Bit)</option>
+                        <option value="'Bungee', display">Bungee (Urban Street)</option>
+                        <option value="'Creepster', display">Creepster (Spooky Halloween)</option>
+                        <option value="'Space Mono', monospace">Space Mono (Hacker)</option>
+                        <option value="'Roboto Mono', monospace">Roboto Mono (Developer)</option>
+                        <option value="'Fira Code', monospace">Fira Code (Code Terminal)</option>
+                        <option value="'Courier Prime', monospace">Courier Prime (Typewriter)</option>
+                    </select>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-label">🔡 Font size control</div>
+                    <select class="mn-input" style="width:120px; padding:5px;" onchange="document.body.style.fontSize=this.value"><option value="16px">Medium</option><option value="14px">Small</option><option value="18px">Large</option></select>
+                </div>
+                <div class="setting-row"><div class="setting-label">✨ Animation on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-magic"></i> Live Screen Effects</h3>
+                <div class="setting-row"><div class="setting-label"><i class="fas fa-eye" style="color:#4caf50;"></i> Eye Comfort Mode</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'eye-comfort-mode')"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label"><i class="fas fa-newspaper" style="color:#ccc;"></i> Newspaper Mode</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'newspaper-mode')"><span class="mn-slider"></span></label></div>
                 <div class="setting-row"><div class="setting-label"><i class="fas fa-bullhorn" style="color:#ff3333;"></i> Earthquake Bass Shake</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'bass-mode')"><span class="mn-slider"></span></label></div>
                 <div class="setting-row"><div class="setting-label"><i class="fas fa-palette" style="color:#00ff00;"></i> Dynamic RGB Lighting</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'rgb-mode')"><span class="mn-slider"></span></label></div>
                 <div class="setting-row"><div class="setting-label"><i class="fas fa-snowflake" style="color:#fff;"></i> Magic Snowfall</div><label class="mn-switch"><input type="checkbox" onchange="applySnowfall(this)"><span class="mn-slider"></span></label></div>
@@ -347,6 +575,61 @@
         </div>
     </div>
 </div>
+
+<div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999997; overflow:hidden;"></div>
+<audio id="alarmAudio" loop><source src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" type="audio/ogg"></audio>
+
+<style>
+    /* CRITICAL: FIXES ZOOM 100% - 120% LEFT/RIGHT SCROLL ISSUE */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100%; 
+        max-width: 100vw; 
+        margin: 0; 
+        padding: 0;
+    }
+    
+    /* Settings Modal Architecture */
+    .settings-category { background:rgba(255,255,255,0.02); border:1px solid rgba(212,175,55,0.2); border-radius:15px; padding:15px; margin-bottom:20px; }
+    .settings-category h3 { color:#D4AF37; font-family:'Cinzel', serif; font-size:16px; margin-top:0; margin-bottom:15px; border-bottom:1px dashed rgba(212,175,55,0.3); padding-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+    .setting-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .setting-row:last-child { border-bottom:none; }
+    .setting-label { font-size:14px; color:#fff; display:flex; align-items:center; gap:10px; }
+    
+    /* Global Toggles & Inputs */
+    .mn-switch { position:relative; display:inline-block; width:45px; height:24px; flex-shrink:0; }
+    .mn-switch input { opacity:0; width:0; height:0; }
+    .mn-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#333; transition:.4s; border-radius:34px; }
+    .mn-slider:before { position:absolute; content:""; height:16px; width:16px; left:4px; bottom:4px; background-color:white; transition:.4s; border-radius:50%; }
+    input:checked + .mn-slider { background-color:var(--gold-primary); box-shadow:0 0 10px var(--gold-primary); }
+    input:checked + .mn-slider:before { transform:translateX(21px); }
+    .mn-input { background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.4); color:#fff; padding:10px; border-radius:8px; outline:none; font-family:'Outfit'; box-sizing:border-box; }
+    .mn-input:focus { border-color:var(--gold-primary); }
+    .mn-btn { background:var(--gold-primary); color:#000; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s; font-family:'Outfit'; }
+
+    /* Visual Effect Classes */
+    body.eye-comfort-mode { background-color:#fdf6e3 !important; color:#433f38 !important; filter:sepia(0.4) brightness(0.9) !important; }
+    body.eye-comfort-mode * { color:inherit !important; border-color:#d1c8b3 !important; }
+    body.newspaper-mode { background:#f4f1ea !important; color:#222 !important; font-family:'Georgia', serif !important; filter:none !important; }
+    body.newspaper-mode * { background:transparent !important; color:inherit !important; border-color:#555 !important; box-shadow:none !important; }
+    
+    @keyframes rgbGlowShift { 0% { filter:hue-rotate(0deg); } 50% { filter:hue-rotate(180deg); } 100% { filter:hue-rotate(360deg); } }
+    body.rgb-mode { animation:rgbGlowShift 4s linear infinite !important; }
+    
+    @keyframes heavyBassShake { 0%{transform:translate(3px,3px);} 20%{transform:translate(-4px,0px);} 40%{transform:translate(4px,-3px);} 60%{transform:translate(-3px,4px);} 80%{transform:translate(4px,1px);} 100%{transform:translate(-3px,-2px);} }
+    body.bass-mode { animation:heavyBassShake 0.2s infinite !important; }
+
+    /* Particles (Snow & Crackers) */
+    .snowflake { position:absolute; top:-10px; color:#fff; font-size:1.5em; animation:fall linear forwards; text-shadow:0 0 8px #fff; }
+    .cracker-spark { position:absolute; width: 5px; height: 20px; border-radius: 5px; animation:fall linear forwards; z-index:9999998; box-shadow: 0 0 15px currentColor; }
+    @keyframes fall { to { transform:translateY(105vh); } }
+    @keyframes flashRed { 0% { background: #ff0000; } 50% { background: #550000; } 100% { background: #ff0000; } }
+
+    /* Calendar Grid */
+    .cal-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid var(--gold-primary); display: flex; justify-content: space-between; align-items: center; }
+    .cal-card h4 { margin: 0 0 5px 0; color: #fff; font-family: 'Cinzel'; }
+    .cal-card p { margin: 0; color: #aaa; font-size: 12px; }
+</style>
 
 <script type="text/javascript">
     // ALL INDIAN LANGUAGES MANDATORY IN TRANSLATE
