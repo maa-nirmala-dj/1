@@ -2169,61 +2169,123 @@
         </div>
         
         <div class="master-content">
-            
-            <div class="setting-row" style="background: rgba(212,175,55,0.05);">
+        <div class="setting-row" style="background: rgba(212,175,55,0.05); border-radius: 8px; padding: 15px;">
                 <div class="setting-label">
-                    <div class="setting-icon"><i class="fas fa-clock"></i></div>
+                    <div class="setting-icon" style="color:#D4AF37;"><i class="fas fa-clock"></i></div>
                     <div>
-                        Live Time: <strong id="liveClock" style="color: #D4AF37;">00:00:00</strong>
-                        <div style="font-size: 11px; color: #888;">Set Earthquake Alarm</div>
+                        Live Time: <strong id="liveClock" style="color: #D4AF37; font-family: 'Rajdhani', sans-serif; font-size: 18px;">00:00:00</strong>
+                        <div style="font-size: 11px; color: #888;">Set Auto-DJ Alarm</div>
                     </div>
                 </div>
                 <div style="display:flex; gap:10px; align-items:center;">
                     <input type="time" id="alarmTime" class="mn-input" style="padding: 5px;">
-                    <label class="mn-switch"><input type="checkbox" id="toggleAlarm" onchange="toggleAlarmStatus()"><span class="mn-slider"></span></label>
+                    <label class="mn-switch"><input type="checkbox" id="toggleAlarm" onchange="toggleAlarmStatus(this)"><span class="mn-slider"></span></label>
                 </div>
             </div>
 
-            <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
-                <div class="setting-label" style="margin-bottom: 10px;">
+            <div class="setting-row" style="flex-direction: column; align-items: flex-start; background: rgba(0,136,204,0.05); border-radius: 8px; padding: 15px; margin-top: 10px;">
+                <div class="setting-label" style="margin-bottom: 10px; width: 100%;">
                     <div class="setting-icon" style="color:#0088cc;"><i class="fab fa-telegram-plane"></i></div>
                     <div>Direct Message to Management</div>
                 </div>
                 <div style="display: flex; width: 100%; gap: 10px;">
-                    <input type="text" id="quickMsg" class="mn-input" placeholder="Type your feedback here..." style="flex-grow: 1;">
-                    <button id="quickSendBtn" class="mn-btn" onclick="sendQuickFeedback()"><i class="fas fa-paper-plane"></i> Send</button>
+                    <input type="text" id="quickMsg" class="mn-input" placeholder="Type your message here..." style="flex-grow: 1;">
+                    <button id="quickSendBtn" class="mn-btn" style="background: #0088cc; color: white;" onclick="sendQuickFeedback()"><i class="fas fa-paper-plane"></i> Send</button>
                 </div>
             </div>
 
+            <h3 style="margin-top: 25px;"><i class="fas fa-magic"></i> Live Screen Effects</h3>
+
             <div class="setting-row">
                 <div class="setting-label"><div class="setting-icon" style="color:#ff3333;"><i class="fas fa-bullhorn"></i></div><div>Earthquake Bass<div style="font-size: 11px; color: #888;">Screen physically shakes!</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleBass" onchange="applyEffectClass('toggleBass', 'bass-mode')"><span class="mn-slider"></span></label>
+                <label class="mn-switch"><input type="checkbox" id="toggleBass" onchange="applyEffectClass(this, 'bass-mode')"><span class="mn-slider"></span></label>
             </div>
 
             <div class="setting-row">
                 <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-palette"></i></div><div>Dynamic RGB Shining<div style="font-size: 11px; color: #888;">Colors shift like DJ Lights</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleRGB" onchange="applyEffectClass('toggleRGB', 'rgb-mode')"><span class="mn-slider"></span></label>
+                <label class="mn-switch"><input type="checkbox" id="toggleRGB" onchange="applyEffectClass(this, 'rgb-mode')"><span class="mn-slider"></span></label>
             </div>
 
             <div class="setting-row">
                 <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="fas fa-snowflake"></i></div><div>Magic Snowfall ❄️<div style="font-size: 11px; color: #888;">Beautiful winter effect</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleSnow" onchange="applySnowfall()"><span class="mn-slider"></span></label>
+                <label class="mn-switch"><input type="checkbox" id="toggleSnow" onchange="applySnowfall(this)"><span class="mn-slider"></span></label>
             </div>
 
             <div class="setting-row">
                 <div class="setting-label"><div class="setting-icon" style="color:#00bcd4;"><i class="fas fa-robot"></i></div><div>Auto-Reader Voice<div style="font-size: 11px; color: #888;">AI reads page to you</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label>
+                <label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader(this)"><span class="mn-slider"></span></label>
             </div>
 
             <div class="setting-row">
                 <div class="setting-label"><div class="setting-icon" style="color:#ccc;"><i class="fas fa-newspaper"></i></div><div>Newspaper Mode<div style="font-size: 11px; color: #888;">Simple reading view</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleNewspaper" onchange="applyEffectClass('toggleNewspaper', 'newspaper-mode')"><span class="mn-slider"></span></label>
+                <label class="mn-switch"><input type="checkbox" id="toggleNewspaper" onchange="applyEffectClass(this, 'newspaper-mode')"><span class="mn-slider"></span></label>
+            </div>
+
+            <h3 style="margin-top: 25px;"><i class="fas fa-crown"></i> Ultra-Premium UI Enhancements</h3>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#ff1493;"><i class="fas fa-glass-cheers"></i></div><div>Party Click Confetti<div style="font-size: 11px; color: #888;">Sparkles on every click</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleConfetti" onchange="toggleClickConfetti(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#FFD700;"><i class="fas fa-mouse-pointer"></i></div><div>Premium Glow Cursor<div style="font-size: 11px; color: #888;">Custom tracking orb</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleCursor" onchange="toggleCustomCursor(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#0f0;"><i class="fas fa-code"></i></div><div>Cyber Matrix Rain<div style="font-size: 11px; color: #888;">Hacker style background</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleMatrix" onchange="applyMatrixRain(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="fas fa-bolt"></i></div><div>Intense Strobe Flash<div style="font-size: 11px; color: #888;">WARNING: Fast flashing lights</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleStrobe" onchange="applyEffectClass(this, 'strobe-mode')"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#00ffea;"><i class="fas fa-wave-square"></i></div><div>Live DJ Laser Show<div style="font-size: 11px; color: #888;">Animated crossing lasers</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleLasers" onchange="toggleLaserShow(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#ff00ff;"><i class="fas fa-music"></i></div><div>Floating Music Notes<div style="font-size: 11px; color: #888;">Notes rise from the bottom</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleMusicNotes" onchange="applyMusicNotes(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#88ccff;"><i class="fas fa-window-restore"></i></div><div>Frosted Glass UI<div style="font-size: 11px; color: #888;">Modern translucent design</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleGlass" onchange="applyEffectClass(this, 'glass-mode')"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#aaa;"><i class="fas fa-compact-disc"></i></div><div>Spinning Vinyl Record<div style="font-size: 11px; color: #888;">Animated visualizer in corner</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleVinyl" onchange="toggleVinylWidget(this)"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#ff8c00;"><i class="fas fa-tv"></i></div><div>Retro CRT TV Filter<div style="font-size: 11px; color: #888;">90s vintage scanlines</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleCRT" onchange="applyEffectClass(this, 'crt-mode')"><span class="mn-slider"></span></label>
+            </div>
+
+            <div class="setting-row">
+                <div class="setting-label"><div class="setting-icon" style="color:#D4AF37;"><i class="fas fa-arrows-alt-v"></i></div><div>Golden VIP Scrollbar<div style="font-size: 11px; color: #888;">Replaces default browser scroll</div></div></div>
+                <label class="mn-switch"><input type="checkbox" id="toggleScrollbar" onchange="applyEffectClass(this, 'gold-scroll-mode')"><span class="mn-slider"></span></label>
             </div>
 
         </div>
     </div>
 </div>
 
+<div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999996; overflow:hidden;"></div>
+<div id="laser-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999995; overflow:hidden;"></div>
+<canvas id="matrixCanvas" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:1; opacity:0.3;"></canvas>
+
+<div id="mn-cursor-dot" class="mn-cursor" style="display:none;"></div>
+<div id="mn-cursor-glow" class="mn-cursor-glow" style="display:none;"></div>
+
+<div id="vinylWidget" style="display:none; position:fixed; bottom:20px; left:20px; z-index:9999998; width:80px; height:80px; background:url('https://cdn-icons-png.flaticon.com/512/3426/3426210.png') center/cover; animation:spinVinyl 2s linear infinite; filter: drop-shadow(0 0 10px #D4AF37);"></div>
+            
 <div id="effect-layer"></div>
 
 <audio id="alarmAudio" loop>
