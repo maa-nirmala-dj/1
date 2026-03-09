@@ -2135,7 +2135,393 @@
         }
     }
 </script>
+
+        <a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="openAdvanceFeaturesModal()">
+    <i class="fas fa-headset fa-pulse"></i> Advance Features
+</a>
+
+<div id="advanceFeaturesModal" onclick="closeAdvanceOnOutsideClick(event)">
+    <div class="mn-master-box" id="advanceBoxContent">
         
+        <span onclick="closeAdvanceFeaturesModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; line-height:1; cursor:pointer; transition:0.3s; z-index: 100;">&times;</span>
+        
+        <h2 style="font-family:'Cinzel',serif; color:#00e5ff; text-align:center; margin-top:0; border-bottom:1px solid rgba(0, 229, 255, 0.3); padding-bottom:15px; font-size: 24px; font-weight:800; letter-spacing:1px;">
+            <i class="fas fa-microchip"></i> Advance UI Features
+        </h2>
+        
+        <div style="max-height: 70vh; overflow-y: auto; padding-right: 5px;" class="custom-scroll">
+            
+            <div class="settings-category">
+                <h3><i class="fas fa-paint-roller"></i> Visual Customization</h3>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00e5ff;"><i class="fas fa-language"></i></div><div>Global Language<div style="font-size: 11px; color: #888;">Select any language</div></div></div>
+                    <div id="google_translate_element_advance"></div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#D4AF37;"><i class="fas fa-font"></i></div><div>Font Styling<div style="font-size: 11px; color: #888;">Change website font</div></div></div>
+                    <select class="s-input" style="width:130px; margin-bottom:0; padding:8px;" onchange="document.body.style.fontFamily=this.value">
+                        <option value="'Outfit', sans-serif">Outfit (Default)</option>
+                        <option value="'Cinzel', serif">Cinzel (Royal)</option>
+                        <option value="'Poppins', sans-serif">Poppins (Modern)</option>
+                        <option value="'Courier New', monospace">Hacker (Mono)</option>
+                    </select>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff00ff;"><i class="fas fa-fill-drip"></i></div><div>Custom Background<div style="font-size: 11px; color: #888;">Pick background color</div></div></div>
+                    <input type="color" id="bgColorPicker" value="#050505" style="border:none; width:40px; height:30px; cursor:pointer; background:transparent;" onchange="applyCustomBg(this.value)">
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-search-plus"></i></div><div>Screen Zoom<div style="font-size: 11px; color: #888;">Adjust UI scale</div></div></div>
+                    <input type="range" min="80" max="150" value="100" style="width:100px; accent-color:#D4AF37;" onchange="applyScreenZoom(this.value)">
+                </div>
+            </div>
+
+            <div class="settings-category">
+                <h3><i class="fas fa-magic"></i> Live Screen Effects</h3>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff3333;"><i class="fas fa-image"></i></div><div>Hover Image Zoom<div style="font-size: 11px; color: #888;">Images grow on touch/hover</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'hover-zoom-mode')"><span class="mn-slider"></span></label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="far fa-window-maximize"></i></div><div>Floating Notification<div style="font-size: 11px; color: #888;">Live alert banner</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="toggleFloatingNotification(this)"><span class="mn-slider"></span></label>
+                </div>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-palette"></i></div><div>RGB Color Changing<div style="font-size: 11px; color: #888;">Dynamic lighting</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'rgb-mode')"><span class="mn-slider"></span></label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="fas fa-snowflake"></i></div><div>Snowfall Effect<div style="font-size: 11px; color: #888;">Winter vibes</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applySnowfall(this)"><span class="mn-slider"></span></label>
+                </div>
+                
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ccc;"><i class="fas fa-newspaper"></i></div><div>Newspaper Mode<div style="font-size: 11px; color: #888;">Reading layout</div></div></div>
+                    <label class="mn-switch"><input type="checkbox" onchange="applyEffectClass(this, 'newspaper-mode')"><span class="mn-slider"></span></label>
+                </div>
+            </div>
+
+            <div class="settings-category" style="border-color: #0088cc; box-shadow: inset 0 0 10px rgba(0,136,204,0.1);">
+                <h3 style="color:#0088cc;"><i class="fab fa-telegram-plane"></i> Direct Telegram Manager</h3>
+                
+                <div style="background:rgba(0,136,204,0.1); padding:15px; border-radius:10px; margin-bottom:15px; border:1px dashed #0088cc;">
+                    <p style="margin:0 0 10px 0; color:#fff; font-size:13px;"><i class="fas fa-user-shield"></i> <b>Mandatory Details</b></p>
+                    <input type="text" id="advName" class="s-input" placeholder="Enter Your Name *" style="margin-bottom:10px;">
+                    <input type="tel" id="advContact" class="s-input" placeholder="Enter Contact Number *" style="margin-bottom:0;">
+                </div>
+
+                <div class="setting-row" style="flex-direction:column; align-items:flex-start;">
+                    <div class="setting-label" style="margin-bottom:10px;"><i class="fas fa-file-upload" style="color:#D4AF37;"></i> Upload File/Photo/Audio</div>
+                    <div style="display:flex; width:100%; gap:10px;">
+                        <input type="file" id="advFile" class="s-input" style="flex-grow:1; font-size:12px; padding:8px; margin-bottom:0;">
+                        <button class="s-submit-btn" style="padding:10px 15px; margin-top:0;" onclick="sendMediaToManagerTG()"><i class="fas fa-paper-plane"></i> Send</button>
+                    </div>
+                    <div id="fileUploadStatus" style="font-size:12px; color:#00ff00; margin-top:5px; display:none;">Uploading securely...</div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label"><div class="setting-icon" style="color:#ff8c00;"><i class="fas fa-address-book"></i></div><div>Share Contact<div style="font-size: 11px; color: #888;">Select from phone</div></div></div>
+                    <button class="s-submit-btn" style="padding:8px 15px; margin-top:0; font-size:12px;" onclick="shareContactToManager()"><i class="fas fa-share-square"></i> Select</button>
+                </div>
+            </div>
+
+            <div class="settings-category" style="border-color: #ff3333; box-shadow: inset 0 0 10px rgba(255,51,51,0.1);">
+                <h3 style="color:#ff3333;"><i class="fas fa-satellite-dish"></i> Location Radar</h3>
+                
+                <div class="setting-row" style="flex-direction:column; align-items:flex-start; background:rgba(255,51,51,0.05); padding:15px; border-radius:10px;">
+                    <div class="setting-label" style="width:100%; justify-content:space-between; margin-bottom:10px;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <div class="setting-icon" style="color:#ff3333;"><i class="fas fa-map-marker-alt fa-beat"></i></div>
+                            <div>Live Telegram Tracking<div style="font-size: 11px; color: #888;">Continuous background share</div></div>
+                        </div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleLiveTracking" onchange="toggleLiveLocation(this)"><span class="mn-slider"></span></label>
+                    </div>
+                    <div id="trackingStatusIndicator" style="font-size:12px; color:#ff3333; font-family:'Courier New'; font-weight:bold; display:none;">
+                        🔴 TRANSMITTING LOC TO MANAGER...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="mnFloatingNotification" style="display:none; position:fixed; top:80px; left:50%; transform:translateX(-50%); background:rgba(212,175,55,0.9); color:#000; padding:10px 20px; border-radius:30px; font-family:'Outfit'; font-weight:bold; z-index:9999998; box-shadow:0 10px 20px rgba(0,0,0,0.5); border:2px solid #fff; white-space:nowrap; animation: slideDownBounce 0.5s ease-out;">
+    <i class="fas fa-bell fa-shake"></i> Special Booking Offers Available Now!
+</div>
+
+<div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999996; overflow:hidden;"></div>
+
+<style>
+    /* Animated Button Style */
+    .premium-animated-btn { background: linear-gradient(90deg, #D4AF37, #6a11cb, #D4AF37); background-size: 200% 200%; animation: twoColorFlow 3s ease infinite; color: #ffffff !important; border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 8px; margin-top: 10px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5); box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4); }
+    .premium-animated-btn i { animation: iconPulse 1.5s infinite; color: #ffffff; }
+    
+    @keyframes twoColorFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes iconPulse { 0% { transform: scale(1); text-shadow: 0 0 5px #fff; } 50% { transform: scale(1.2); text-shadow: 0 0 15px #D4AF37; } 100% { transform: scale(1); text-shadow: 0 0 5px #fff; } }
+
+    /* Modal Overlay (Same as your demo) */
+    #advanceFeaturesModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(10px); z-index: 999999; justify-content: center; align-items: center; animation: fadeInOverlay 0.3s ease; }
+    
+    /* Content Box (Same as your demo) */
+    .mn-master-box { background: linear-gradient(135deg, #0a0a0c 0%, #100a1c 100%); border: 2px solid; border-image-slice: 1; border-width: 2px; border-image-source: linear-gradient(90deg, #00e5ff, #6a11cb); border-radius: 16px; width: 95%; max-width: 520px; padding: 25px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(106, 17, 203, 0.2); animation: slideDownFade 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+    
+    /* Input & Button Styles */
+    .s-input { width: 100%; padding: 12px 15px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); color: #fff; border-radius: 8px; outline: none; font-family: 'Outfit', sans-serif; box-sizing: border-box; transition: all 0.3s ease; margin-bottom: 12px; }
+    .s-input:focus { border-color: #6a11cb; background: rgba(106, 17, 203, 0.05); box-shadow: 0 0 12px rgba(106, 17, 203, 0.4); }
+    .s-submit-btn { background: linear-gradient(90deg, #00e5ff, #6a11cb); background-size: 200% 200%; animation: twoColorFlow 3s ease infinite; color: #fff; font-weight: bold; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; transition: 0.3s; font-family: 'Outfit', sans-serif; box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4); }
+    
+    /* Settings Layout */
+    .settings-category { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1); border-radius:15px; padding:15px; margin-bottom:20px; }
+    .settings-category h3 { color:#D4AF37; font-family:'Cinzel', serif; font-size:16px; margin-top:0; margin-bottom:15px; border-bottom:1px dashed rgba(255,255,255,0.2); padding-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+    .setting-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .setting-row:last-child { border-bottom:none; }
+    .setting-label { display: flex; align-items: center; text-align: left; font-size: 14px; color: #fff;}
+    .setting-icon { display: inline-flex; justify-content: center; align-items: center; margin-right: 15px; width: 30px; font-size: 18px; text-shadow: 0 0 10px currentColor; }
+    
+    /* Switch Toggles */
+    .mn-switch { position:relative; display:inline-block; width:45px; height:24px; flex-shrink:0; }
+    .mn-switch input { opacity:0; width:0; height:0; }
+    .mn-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#333; transition:.4s; border-radius:34px; }
+    .mn-slider:before { position:absolute; content:""; height:16px; width:16px; left:4px; bottom:4px; background-color:white; transition:.4s; border-radius:50%; }
+    input:checked + .mn-slider { background-color:#00e5ff; box-shadow:0 0 10px #00e5ff; }
+    input:checked + .mn-slider:before { transform:translateX(21px); }
+    
+    /* Scrollbar */
+    .custom-scroll::-webkit-scrollbar { width: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #6a11cb; border-radius: 10px; }
+
+    /* Visual Effect Classes */
+    body.hover-zoom-mode img { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
+    body.hover-zoom-mode img:hover { transform: scale(1.15) !important; z-index: 10; position: relative; box-shadow: 0 10px 20px rgba(212,175,55,0.5); cursor: zoom-in; }
+    body.newspaper-mode { background:#f4f1ea !important; color:#222 !important; font-family:'Georgia', serif !important; filter:none !important; }
+    body.newspaper-mode * { background:transparent !important; color:inherit !important; border-color:#555 !important; box-shadow:none !important; text-shadow:none !important; }
+    
+    @keyframes rgbGlowShift { 0% { filter:hue-rotate(0deg); } 50% { filter:hue-rotate(180deg); } 100% { filter:hue-rotate(360deg); } }
+    body.rgb-mode { animation:rgbGlowShift 4s linear infinite !important; }
+    
+    .snowflake { position:absolute; top:-10px; color:#fff; font-size:1.5em; animation:fall linear forwards; text-shadow:0 0 8px #fff; }
+    @keyframes fall { to { transform:translateY(105vh); } }
+    @keyframes slideDownBounce { 0% { top: -50px; opacity: 0; } 70% { top: 90px; } 100% { top: 80px; opacity: 1; } }
+    @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideDownFade { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
+
+<script type="text/javascript">
+    function googleTranslateElementInitAdvance() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element_advance'); 
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInitAdvance"></script>
+
+<script>
+    // --- MODAL CONTROLS (Exactly like your demo) ---
+    function openAdvanceFeaturesModal() { 
+        // Dummy toggleMenu logic in case you use it elsewhere
+        if(typeof toggleMenu === 'function') { toggleMenu(); }
+        document.getElementById('advanceFeaturesModal').style.display = 'flex'; 
+    }
+    
+    function closeAdvanceFeaturesModal() { 
+        document.getElementById('advanceFeaturesModal').style.display = 'none'; 
+    }
+
+    function closeAdvanceOnOutsideClick(event) {
+        const box = document.getElementById('advanceBoxContent');
+        // If the click is outside the popup box, close it
+        if (!box.contains(event.target)) {
+            closeAdvanceFeaturesModal();
+        }
+    }
+
+    // --- UI CUSTOMIZATION LOGIC ---
+    function applyCustomBg(color) {
+        document.body.style.backgroundColor = color;
+        document.body.style.backgroundImage = 'none'; 
+    }
+
+    function applyScreenZoom(value) {
+        const scaleValue = value / 100;
+        document.body.style.zoom = scaleValue; 
+    }
+
+    function toggleFloatingNotification(el) {
+        const banner = document.getElementById('mnFloatingNotification');
+        banner.style.display = el.checked ? 'block' : 'none';
+    }
+
+    function applyEffectClass(element, className) {
+        if (element.checked) {
+            document.body.classList.add(className);
+        } else {
+            document.body.classList.remove(className);
+        }
+    }
+
+    let snowInt;
+    function applySnowfall(element) {
+        const layer = document.getElementById('effect-layer');
+        if (element.checked) {
+            snowInt = setInterval(() => {
+                const snow = document.createElement('div'); 
+                snow.className='snowflake'; snow.innerText='❄️';
+                snow.style.left = Math.random() * 100 + 'vw'; 
+                snow.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                snow.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                layer.appendChild(snow); 
+                setTimeout(() => snow.remove(), 4000);
+            }, 150);
+        } else { 
+            clearInterval(snowInt); 
+            layer.innerHTML = ''; 
+        }
+    }
+
+    // --- TELEGRAM MANAGER PORTAL CREDENTIALS ---
+    const TG_ADV_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+    const TG_ADV_CHAT = "8506290708";
+
+    function getAdvUserDetails() {
+        const name = document.getElementById('advName').value.trim();
+        const phone = document.getElementById('advContact').value.trim();
+        if(!name || !phone) {
+            alert("⚠️ Please enter your Name and Contact Number first so the Manager knows who you are.");
+            return null;
+        }
+        return { name, phone };
+    }
+
+    // --- SEND FILE/MEDIA TO MANAGER ---
+    async function sendMediaToManagerTG() {
+        const user = getAdvUserDetails();
+        if(!user) return;
+
+        const fileInput = document.getElementById('advFile');
+        if(fileInput.files.length === 0) {
+            return alert("⚠️ Please select a file, photo, or audio track to send.");
+        }
+
+        const file = fileInput.files[0];
+        const statusTxt = document.getElementById('fileUploadStatus');
+        statusTxt.style.display = 'block';
+        statusTxt.innerText = 'Encrypting & Sending to Manager...';
+
+        const formData = new FormData();
+        formData.append("chat_id", TG_ADV_CHAT);
+        formData.append("caption", `📁 *NEW MANAGER UPLOAD*\n👤 Name: ${user.name}\n📞 Contact: ${user.phone}`);
+        formData.append("document", file); 
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendDocument`, {
+                method: 'POST',
+                body: formData
+            });
+            
+            if(response.ok) {
+                statusTxt.style.color = '#00ff00';
+                statusTxt.innerText = '✅ File successfully and securely sent to Manager!';
+                fileInput.value = ""; 
+            } else {
+                throw new Error("Telegram API rejected file");
+            }
+        } catch (error) {
+            statusTxt.style.color = '#ff3333';
+            statusTxt.innerText = '❌ Failed to send. File might be too large (Max 50MB).';
+        }
+        
+        setTimeout(() => { statusTxt.style.display = 'none'; }, 6000);
+    }
+
+    // --- SHARE CONTACT API ---
+    async function shareContactToManager() {
+        const user = getAdvUserDetails();
+        if(!user) return;
+
+        if ('contacts' in navigator && 'ContactsManager' in window) {
+            try {
+                const props = ['name', 'tel'];
+                const opts = { multiple: false };
+                const contacts = await navigator.contacts.select(props, opts);
+                
+                if(contacts.length > 0) {
+                    const c = contacts[0];
+                    const msg = `📱 *CONTACT SHARED*\n👤 From: ${user.name} (${user.phone})\n\n*Shared Contact Details:*\nName: ${c.name[0]}\nPhone: ${c.tel[0]}`;
+                    
+                    await fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
+                    alert("✅ Contact shared with Manager successfully!");
+                }
+            } catch (err) {
+                alert("Contact selection cancelled.");
+            }
+        } else {
+            alert("⚠️ Your browser does not support the Web Contact Picker API. Please try using Google Chrome on an Android device.");
+        }
+    }
+
+    // --- LIVE TELEGRAM TRACKING (HIDDEN/BACKGROUND) ---
+    let locationWatchId = null;
+
+    function toggleLiveLocation(el) {
+        const user = getAdvUserDetails();
+        const indicator = document.getElementById('trackingStatusIndicator');
+
+        if (el.checked) {
+            if(!user) {
+                el.checked = false; 
+                return;
+            }
+
+            if (navigator.geolocation) {
+                indicator.style.display = 'block';
+                
+                // Send Start Notification
+                fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(`🚨 *LIVE TRACKING STARTED*\n👤 User: ${user.name}\n📞 Phone: ${user.phone}`)}&parse_mode=Markdown`);
+
+                // Begin Live Location Pings
+                locationWatchId = navigator.geolocation.watchPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        
+                        const url = `https://api.telegram.org/bot${TG_ADV_TOKEN}/sendLocation?chat_id=${TG_ADV_CHAT}&latitude=${lat}&longitude=${lon}`;
+                        fetch(url).catch(e => console.log(e));
+                    },
+                    (error) => {
+                        alert("⚠️ Location error/denied: " + error.message);
+                        el.checked = false;
+                        indicator.style.display = 'none';
+                    },
+                    { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 }
+                );
+                alert("📍 Live Location Tracking is now Active in the background.");
+            } else {
+                alert("Geolocation is not supported by your device browser.");
+                el.checked = false;
+            }
+        } else {
+            // STOP Tracking
+            if (locationWatchId !== null) {
+                navigator.geolocation.clearWatch(locationWatchId);
+                locationWatchId = null;
+                indicator.style.display = 'none';
+                fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(`🛑 *LIVE TRACKING STOPPED*\n👤 User: ${document.getElementById('advName').value}`)}&parse_mode=Markdown`);
+                alert("⏹️ Live tracking to Manager has been stopped.");
+            }
+        }
+    }
+</script>
         <a href="mailto:lalukumartanti75@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
     </div>
 
