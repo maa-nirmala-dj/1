@@ -1708,7 +1708,7 @@
         const exactTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
         
         // Telegram Message Formatting
-        const msg = `🚨 *URGENT COMPLAINT LOGGED* 🚨\n---------------------------\n🗓️ *Submitted Day:* ${exactDay}\n📅 *Submitted Date:* ${exactDate}\n⏰ *Submitted Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎪 *Event Details:*\n• Name: ${eventName}\n• Date: ${eventDate}\n• Time: ${eventTime}\n\n⚠️ *Issue Category:* ${type}\n📝 *Description:*\n${desc}\n\n🛑 *ACTION REQUIRED IMMEDIATELY*`;
+        const msg = `🚨 *URGENT COMPLAINT LOGGED* 🚨\n-----------------------------------\n🗓️ *Submitted Day:* ${exactDay}\n📅 *Submitted Date:* ${exactDate}\n⏰ *Submitted Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎪 *Event Details:*\n• Name: ${eventName}\n• Date: ${eventDate}\n• Time: ${eventTime}\n\n⚠️ *Issue Category:* ${type}\n📝 *Description:*\n${desc}\n\n🛑 *ACTION REQUIRED IMMEDIATELY*`;
         
         // Send to Telegram
         fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { 
@@ -2022,7 +2022,7 @@
         const exactTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
         
         // Telegram Message Formatting
-        const msg = `💡 *NEW BUSINESS SUGGESTION* 💡\n---------------------------\n🗓️ *Day:* ${exactDay}\n📅 *Date:* ${exactDate}\n⏰ *Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎯 *Improvement Area:* ${category}\n📝 *Suggestion Details:*\n${desc}\n\n🌟 *Let's make Maa Nirmala DJ the best!*`;
+        const msg = `💡 *NEW BUSINESS SUGGESTION* 💡\n-----------------------------------\n🗓️ *Day:* ${exactDay}\n📅 *Date:* ${exactDate}\n⏰ *Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎯 *Improvement Area:* ${category}\n📝 *Suggestion Details:*\n${desc}\n\n🌟 *Let's make Maa Nirmala DJ the best!*`;
         
         // Send to Telegram
         fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { 
@@ -2340,7 +2340,7 @@
     }
 </script>
         
-        <a href="mailto:lalukumartanti75@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
     </div>
 
     <div id="main-interface">
