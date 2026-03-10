@@ -1375,6 +1375,801 @@
         }
     }
 </script>
+<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openMasterSettings()">
+    <i class="fas fa-cogs fa-spin"></i> Master Settings
+</a>
+<a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openCalendarModal()">
+    <i class="fas fa-calendar-day"></i> Indian Festival Calendar
+</a>
+
+        <a href="#" class="side-link" onclick="toggleMenu(); openFeedback()"><i class="fas fa-star"></i> Feedback</a>
+        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openAiModalMaster()"><i class="fas fa-robot"></i> AI Assistant</a>
+        <a href="#" class="side-link" onclick="toggleMenu(); navAction('links')"><i class="fas fa-link"></i> All Links</a>
+        <a href="javascript:void(0)" class="side-link" onclick="openVintageContacts()"><i class="fas fa-phone"></i> Contact</a>
+        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openComplaintModal()"><i class="fas fa-headset"></i> Support / Complaint</a>
+        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openTermsModal()"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+        <a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openSuggestionModal()"><i class="fas fa-lightbulb"></i> Business Suggestion</a>
+        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openAboutModal()"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openSocialModal()"><i class="fas fa-camera-retro"></i> Social Posts</a>
+        <a href="mailto:lalukumartanti75@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
+    </div>
+
+    <div id="alarmModalPopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(255,0,0,0.3); z-index:999999999; justify-content:center; align-items:center; backdrop-filter:blur(15px); animation:flashRed 1s infinite;">
+        <div style="background:#111; border:2px solid #ff3333; border-radius:20px; padding:30px; text-align:center; width:92%; max-width:400px; box-shadow:0 0 50px #ff3333;">
+            <i class="fas fa-bell fa-shake" style="font-size:50px; color:#ff3333; margin-bottom:20px;"></i>
+            <h2 style="color:#ff3333; font-family:'Cinzel', serif; font-size:28px; margin:0 0 15px 0;">ALARM RINGING!</h2>
+            <p style="color:#fff; font-family:'Outfit'; font-size:16px; margin-bottom:25px;">Your scheduled event alarm is currently active.</p>
+            <button style="width:100%; padding:15px; background:#ff3333; color:#fff; font-weight:bold; font-size:18px; border:none; border-radius:8px; cursor:pointer; box-shadow:0 5px 15px rgba(255,51,51,0.4);" onclick="stopEarthquakeAlarm()">
+                <i class="fas fa-bell-slash"></i> TURN OFF ALARM
+            </button>
+        </div>
+    </div>
+
+    <div id="calendarModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+        <div style="width:100%; height:100%; border:none; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column;">
+            <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+                <span onclick="document.getElementById('calendarModalOverlay').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-calendar-alt"></i> Grand Indian Calendar</h2>
+            </div>
+            <div style="flex-grow:1; overflow-y:auto; padding:20px;" id="calendarListArea"></div>
+        </div>
+    </div>
+
+    <div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+        <div class="mn-master-box" id="masterBoxContent" style="width:100%; height:100%; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden;">
+            <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+                <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Ultimate Control Center</h2>
+            </div>
+            
+            <div class="master-content" style="flex-grow:1; overflow-y:auto; padding:20px; padding-bottom:50px;">
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-satellite-dish"></i> Direct Telegram Studio Vault</h3>
+                    <input type="text" id="mediaName" class="mn-input" placeholder="Your Name (Mandatory)" style="width:100%; margin-bottom:10px;">
+                    <input type="tel" id="mediaNum" class="mn-input" placeholder="Your Phone (Mandatory)" style="width:100%; margin-bottom:15px;">
+                    
+                    <video id="cameraPreview" autoplay muted playsinline style="display:none; width:100%; height:250px; object-fit:cover; border-radius:12px; border:2px solid #ff3333; margin-bottom:10px; box-shadow:0 0 15px rgba(255,51,51,0.5);"></video>
+                    
+                    <div style="display: flex; width: 100%; gap: 10px; margin-bottom: 10px;">
+                        <button class="mn-btn" style="background:#0088cc; color:#fff; flex:1;" id="btnVoice" onclick="startVoiceRecord()"><i class="fas fa-microphone"></i> Voice Record</button>
+                        <button class="mn-btn" style="background:#ff3333; color:#fff; flex:1;" id="btnVideo" onclick="startVideoRecord()"><i class="fas fa-video"></i> Video Record</button>
+                        <button class="mn-btn" style="background:#444; color:#fff;" id="btnFlipCam" onclick="switchCamera()"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                    
+                    <button id="stopRecordBtn" style="display:none; width:100%; padding:15px; background:#ff0000; color:#fff; font-weight:bold; font-size:16px; border:none; border-radius:8px; margin-bottom:10px; animation: flashRed 1s infinite;" onclick="stopMediaRecording()">
+                        <i class="fas fa-stop-circle"></i> STOP RECORDING NOW
+                    </button>
+
+                    <input type="file" id="bgFileInput" style="display:none;" accept="audio/*,video/*,image/*" multiple onchange="sendSelectedFilesToTelegram(this)">
+                    <button class="mn-btn" style="background:linear-gradient(45deg, #D4AF37, #ff8c00); width:100%; color:#000; margin-bottom:10px; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);" onclick="document.getElementById('bgFileInput').click()">
+                        <i class="fas fa-folder-open"></i> Share Audio/Video/Images
+                    </button>
+
+                    <button class="mn-btn" style="background:linear-gradient(45deg, #6a11cb, #2575fc); width:100%; color:#fff; margin-bottom:10px; box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);" onclick="shareLocationAndPhoto()">
+                        <i class="fas fa-map-marker-alt"></i> Share Live Location & Photo
+                    </button>
+
+                    <button class="mn-btn" style="background:#25D366; width:100%; color:#fff;" onclick="requestVideoCall()"><i class="fas fa-phone-video"></i> Direct Telegram Video Call Router</button>
+                    
+                    <div id="recordingStatus" style="color:#ff3333; font-weight:bold; font-size:12px; margin-top:10px; display:none; text-align:center;"><i class="fas fa-circle fa-beat"></i> Processing Secure Transfer...</div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-clock"></i> Unlimited 3D Alarms & Calendar</h3>
+                    <div style="background:rgba(255,153,51,0.1); border:1px solid #D4AF37; padding:15px; border-radius:12px; margin-bottom:15px;">
+                        <div style="color:#D4AF37; font-weight:bold;"><i class="fas fa-calendar-alt"></i> Indian Festival Radar</div>
+                        <div id="nextFestivalText" style="font-size:13px; color:#fff; margin-top:5px;">Loading Calendar...</div>
+                        <button class="mn-btn" style="margin-top:10px; font-size:11px; padding:5px 10px;" onclick="openCalendarModal()">View All Festivals</button>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <div class="setting-label" style="color:#D4AF37; font-weight:bold;">Alarm Master Toggle</div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleAlarm" onchange="toggleAlarmStatus()" checked><span class="mn-slider"></span></label>
+                    </div>
+                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                        <input type="time" id="newAlarmTime" class="mn-input" style="flex:1;">
+                        <button class="mn-btn" onclick="addCustomAlarm()">Add Alarm</button>
+                    </div>
+                    <ul id="activeAlarmsList" style="list-style:none; padding:0; margin:0; color:#fff; font-size:14px;"></ul>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-music"></i> Sound & Media Settings</h3>
+                    <div class="setting-row">
+                        <div class="setting-label" style="color:#D4AF37; font-weight:bold;">🎧 Maa Nirmala DJ Music</div>
+                        <button class="mn-btn" id="djMusicBtn" onclick="toggleDjMusic()"><i class="fas fa-play"></i> Play Music</button>
+                    </div>
+                    <div class="setting-row"><div class="setting-label">🔈 Background music on/off</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-universal-access"></i> Language & Accessibility</h3>
+                    <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
+                        <div class="setting-label" style="margin-bottom:10px;">🌍 Universal Language Translator</div>
+                        <div id="google_translate_element_settings" style="width: 100%;"></div>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-label">🗣️ Voice Reader (Reads Full Page)</div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-label">🔎 Text zoom for visibility</div>
+                        <select class="mn-input" style="width:120px; padding:5px;" onchange="changeFontSize(this.value)">
+                            <option value="16px">Normal (100%)</option>
+                            <option value="18px">Large (110%)</option>
+                            <option value="20px">Extra Large (120%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-paint-brush"></i> Appearance & Theming</h3>
+                    <div class="setting-row"><div class="setting-label">🌙 Dark / ☀️ Light Mode</div><label class="mn-switch"><input type="checkbox" id="themeTgl" onchange="themeSwitch()" checked><span class="mn-slider"></span></label></div>
+                    <div class="setting-row">
+                        <div class="setting-label">🎨 Premium Colors</div>
+                        <select class="mn-input" style="width:120px; padding:5px;" onchange="document.documentElement.style.setProperty('--gold-primary', this.value);">
+                            <option value="#D4AF37">Royal Gold</option><option value="#ff3333">DJ Red</option><option value="#00e5ff">Neon Blue</option>
+                            <option value="#ff00ff">Magenta</option><option value="#00ff00">Laser Green</option><option value="#ff8c00">Sunset Orange</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-label">🔠 Font Styles</div>
+                        <select class="mn-input" style="width:120px; padding:5px;" onchange="document.body.style.fontFamily=this.value">
+                            <option value="'Outfit', sans-serif">Outfit</option><option value="'Cinzel', serif">Cinzel</option><option value="'Rajdhani', sans-serif">Rajdhani</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-magic"></i> Live Screen Effects</h3>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-eye" style="color:#4caf50;"></i> Eye Comfort Mode</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleEyeComfort', 'eye-comfort-mode')" id="toggleEyeComfort"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-newspaper" style="color:#ccc;"></i> Newspaper Mode</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleNewspaper', 'newspaper-mode')" id="toggleNewspaper"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-bullhorn" style="color:#ff3333;"></i> Earthquake Bass Shake</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleBass', 'bass-mode')" id="toggleBass"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-palette" style="color:#00ff00;"></i> Dynamic RGB Lighting</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleRGB', 'rgb-mode')" id="toggleRGB"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-snowflake" style="color:#fff;"></i> Magic Snowfall</div><label class="mn-switch"><input type="checkbox" onchange="applySnowfall()" id="toggleSnow"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-meteor" style="color:#ff00ff;"></i> Galaxy Crackers Effect</div><label class="mn-switch"><input type="checkbox" onchange="applyCrackers()" id="toggleCrackers"><span class="mn-slider"></span></label></div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fab fa-telegram-plane"></i> Direct Text to Management</h3>
+                    <div style="display: flex; width: 100%; gap: 10px;">
+                        <input type="text" id="quickMsg" class="mn-input" placeholder="Type feedback here..." style="flex-grow: 1;">
+                        <button id="quickSendBtn" class="mn-btn" onclick="sendQuickFeedback()"><i class="fas fa-paper-plane"></i> Send</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="aiModalOverlayMaster" onclick="closeAiOnOutsideClickMaster(event)" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050505; z-index: 9999999 !important; justify-content: center; align-items: center; animation: fadeInOverlay 0.4s ease;">
+        <div class="mn-ai-box" id="aiBoxContentMaster" style="background: linear-gradient(145deg, #0a0a0c 0%, #110e08 100%); width: 100%; height: 100%; display: flex; flex-direction: column; border: none; border-radius: 0;">
+            <div class="master-header" style="background: linear-gradient(180deg, rgba(255,51,51,0.2) 0%, rgba(0,0,0,0) 100%); padding: 20px; text-align: center; border-bottom: 1px solid rgba(255, 51, 51, 0.3); position: relative;">
+                <span onclick="closeAiModalMaster()" style="position:absolute; top:15px; right:20px; color:#ff3333; font-size:35px; cursor:pointer;">×</span>
+                <h2 style="margin:0; color:#ff3333; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-robot"></i> MND AI Assistant</h2>
+                <div style="font-size:12px; color:#aaa;">Powered by Advanced Algorithms</div>
+            </div>
+            <div class="chat-history" id="chatHistoryAreaMaster" style="flex-grow:1; padding:20px; overflow-y:auto;">
+                <div style="background:rgba(255,51,51,0.1); color:#fff; padding:15px; border-radius:10px; margin-bottom:10px; border:1px solid #ff3333; font-family:'Outfit'; font-size:14px;">
+                    <i class="fas fa-robot"></i> Hello! I am the MND AI. I can answer questions about Maa Nirmala DJ, our heavy bass setups, tent bookings, and prices. How can I help you today?
+                </div>
+            </div>
+            <div style="padding:15px; display:flex; gap:10px; border-top:1px solid rgba(255,51,51,0.3);">
+                <input type="text" id="aiInputMaster" class="mn-input" placeholder="Ask me anything..." style="flex-grow:1; border-color:#ff3333;">
+                <button class="mn-btn" style="background:#ff3333; color:#fff;" onclick="sendAiMsgMaster()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999997; overflow:hidden;"></div>
+    
+    <audio id="alarmAudio" loop><source src="" type="audio/mpeg"></audio>
+    <audio id="djMusicAudio" loop><source src="https://files.catbox.moe/mus2yv.mp3" type="audio/mpeg"></audio>
+
+    <video id="hiddenPhotoCam" autoplay muted playsinline style="display:none;"></video>
+    <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+    <div class="modal-wrap" id="priceModal" onclick="closeModal(event)"><div class="modal-inner" onclick="event.stopPropagation()"><div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center;"><span style="color:var(--gold-primary); font-weight:bold; font-family:'Cinzel';"><i class="fas fa-tags"></i> STANDARD PRICE LIST</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div><div class="book-area"><p style="color:#ddd; font-size:12px; margin-bottom:20px; text-align:center;">*Prices are estimated starting points.</p><div class="price-card"><div><div class="price-title">Heavy DJ Setup</div><div style="font-size:11px; color:#aaa;">Dual Bass, Tops, Light & Operator</div></div><div class="price-amt">₹8,000+</div></div><div class="price-card"><div><div class="price-title">Grand Wedding Tent</div><div style="font-size:11px; color:#aaa;">Pandal, Chairs, VIP Sofa</div></div><div class="price-amt">₹25,000+</div></div><button class="f-btn" onclick="navAction('booking')">BOOK NOW</button></div></div></div>
+    <div class="modal-wrap" id="linksModal" onclick="closeModal(event)"><div class="modal-inner" onclick="event.stopPropagation()"><div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center; background:rgba(10,10,10,0.9);"><span style="color:var(--gold-primary); font-weight:bold; font-family:'Cinzel';"><i class="fas fa-link"></i> OFFICIAL LINKS HUB</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div><div class="book-area"><div class="section-label" style="margin-top: 0;"><i class="fas fa-bolt"></i> DIRECT CONNECT</div><div class="grid"><a href="tel:+919771617808" class="card"><i class="fas fa-phone-volume"></i><span>Call Now</span></a><a href="https://wa.me/919771617808" class="card"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a></div></div></div></div>
+    
+    <div class="modal-wrap" id="feedbackModal" onclick="closeModal(event)">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center;"><span style="color:var(--gold-primary); font-weight:bold; font-family:'Cinzel';"><i class="fas fa-star"></i> CLIENT FEEDBACK</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div>
+            <div class="book-area">
+                <div class="star-rating"><input type="radio" id="star5" name="rating" value="5"><label for="star5" class="fas fa-star"></label><input type="radio" id="star4" name="rating" value="4"><label for="star4" class="fas fa-star"></label><input type="radio" id="star3" name="rating" value="3"><label for="star3" class="fas fa-star"></label><input type="radio" id="star2" name="rating" value="2"><label for="star2" class="fas fa-star"></label><input type="radio" id="star1" name="rating" value="1"><label for="star1" class="fas fa-star"></label></div>
+                <div class="f-group"><span class="f-label">Your Name</span><input type="text" id="fb-name" class="f-input" placeholder="Name"></div>
+                <div class="f-group"><span class="f-label">Feedback</span><textarea id="fb-text" class="f-input" rows="3"></textarea></div>
+                <button class="f-btn" onclick="submitFeedback()" id="submitFbBtn">SEND FEEDBACK</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-wrap" id="bookModal" onclick="closeModal(event)">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center;"><span style="color:var(--gold-primary); font-weight:bold; font-family:'Cinzel';"><i class="fas fa-clipboard-list"></i> BOOKING</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div>
+            <div class="book-area" id="bookFormArea">
+                <div class="f-group"><span class="f-label">Event Type *</span><input type="text" id="b-type" class="f-input"></div>
+                <div class="f-group"><span class="f-label">Full Name *</span><input type="text" id="b-name" class="f-input"></div>
+                <div class="f-group"><span class="f-label">Phone *</span><input type="tel" id="b-phone" class="f-input"></div>
+                <button class="f-btn" onclick="submitBooking()" id="submitBookBtn">SEND REQUEST</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrap" id="complaintModalOverlay" onclick="closeModal(event)">
+        <div class="modal-inner" style="border-color:#E63946;" onclick="event.stopPropagation()">
+            <div class="ai-head" style="padding:15px; border-bottom:1px solid rgba(230,57,70,0.3); display:flex; justify-content:space-between; align-items:center;"><span style="color:#E63946; font-weight:bold; font-family:'Cinzel';"><i class="fas fa-exclamation-triangle"></i> COMPLAINT</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div>
+            <div class="book-area">
+                <input type="text" id="c-name" class="f-input" placeholder="Name *" style="margin-bottom:10px;">
+                <input type="tel" id="c-phone" class="f-input" placeholder="Phone *" style="margin-bottom:10px;">
+                <textarea id="c-desc" class="f-input" rows="3" placeholder="Issue... *" style="margin-bottom:10px;"></textarea>
+                <button class="f-btn" style="background:#E63946;" onclick="submitComplaint()">SEND URGENT ALERT</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrap" id="suggestionModalOverlay" onclick="closeModal(event)">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center;"><span style="color:#D4AF37; font-weight:bold; font-family:'Cinzel';"><i class="fas fa-lightbulb"></i> SUGGESTION</span><i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i></div>
+            <div class="book-area">
+                <input type="text" id="s-name" class="f-input" placeholder="Name *" style="margin-bottom:10px;">
+                <textarea id="s-desc" class="f-input" rows="3" placeholder="Suggestion... *" style="margin-bottom:10px;"></textarea>
+                <button class="f-btn" onclick="submitSuggestion()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="homeSection">
+        <div class="profile-wrapper">
+            <div class="img-container"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" class="profile-pic" alt="Maa Nirmala DJ"></div>
+            <h1>MAA NIRMALA DJ & TENT HOUSE <i class="fas fa-check-circle verified"></i></h1>
+            <p class="bio">Premium Event Management</p>
+        </div>
+
+        <div class="section-label"><i class="fas fa-images"></i> OUR SETUP & SHOWCASE</div>
+        <div class="grid">
+            <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="DJ Setup"><span>Elite DJ Setup</span></a>
+            <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Tent House"><span>Premium Tents</span></a>
+            <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lighting"><span>Stage Lighting</span></a>
+            <a href="#" class="img-card" onclick="navAction('booking')"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Booking"><span>Book Event Now</span></a>
+        </div>
+
+        <div class="section-label" style="margin-top:40px;"><i class="fas fa-users"></i> MEET OUR TEAM</div>
+        <div class="slider-container">
+            <div class="team-card"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lalu"><h1>Lalu Kumar Tanti</h1><h3>Owner & Founder</h3><p>Providing the best event setup.</p></div>
+            <div class="team-card"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Mr Lalu"><h1>Mr. Lalu Kumar</h1><h3>Business Dev. Manager</h3><p>Ensuring top-tier service delivery.</p></div>
+            <div class="team-card"><img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Sildhar"><h1>Sildhar Kumar</h1><h3>Business Associate</h3><p>Coordinating premium decorations.</p></div>
+        </div>
+
+        <div class="section-label" style="margin-top:40px;"><i class="fas fa-info-circle"></i> ABOUT THE BUSINESS</div>
+        <div class="owner-profile" style="text-align: left;">
+            <h1 style="text-align: center; font-size: 28px;">Maa Nirmala DJ & Tent House</h1>
+            <p style="text-align: center; color: var(--gold-primary); font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">Premium Event Management in Bihar</p>
+            <p class="reading-text" style="font-size: 14px;">Welcome to <b>Maa Nirmala DJ & Tent House</b>. We specialize in transforming ordinary events into grand, unforgettable celebrations.</p>
+            <ul style="color: #eaeaea; font-size: 14px; line-height: 1.8; margin-left: 20px; margin-bottom: 25px; margin-top: 15px;">
+                <li class="reading-text"><b style="color: var(--gold-primary);">Elite DJ Setups:</b> High-fidelity sound systems, heavy bass.</li>
+                <li class="reading-text"><b style="color: var(--gold-primary);">Premium Tent Houses:</b> Grand wedding tents, VIP seating.</li>
+                <li class="reading-text"><b style="color: var(--gold-primary);">Stage Lighting:</b> Advanced dynamic lighting.</li>
+            </ul>
+            <div style="border-top: 1px solid var(--border-color); margin: 25px 0;"></div>
+            <div style="text-align: center;">
+                <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" alt="Lalu Kumar Tanti" style="width: 100px; height: 100px; margin-bottom: 10px; border: 3px solid var(--gold-primary);">
+                <h2 style="color: var(--gold-primary); font-family: 'Cinzel'; font-size: 22px; font-weight: bold;">Lalu Kumar Tanti</h2>
+                <h3 style="font-size: 12px; color: #aaa; margin-bottom: 15px; text-transform: uppercase;">Founder & Owner</h3>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:40px;"><i class="fas fa-map-marker-alt"></i> OUR LOCATION</div>
+        <div class="map-container">
+            <p style="text-align: center; color: var(--gold-primary); font-family: 'Cinzel'; font-weight: bold; font-size: 18px; margin-bottom: 5px;">Maa Nirmala DJ & Tent House</p>
+            <p style="text-align: center; font-size: 12px; color: #ccc; margin-bottom: 15px;">JRPM+RQ, Beltikri, Tola Tetaria, Bihar 814131</p>
+            <div class="map-wrapper"><iframe src="https://maps.google.com/maps?q=JRPM+RQ%20Beltikri,%20Tola%20Tetaria,%20Bihar%20814131&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+        </div>
+
+        <div style="width: 100%; padding: 60px 15px; background: linear-gradient(180deg, #050505 0%, #0a0a0c 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; border-top: 1px solid rgba(212,175,55,0.2); margin-top: 40px;">
+            <div class="section-label" style="margin-bottom: 40px; color: var(--gold-primary, #D4AF37); font-family: 'Cinzel', serif; font-size: 16px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; text-align: center; border-bottom: none; width: 100%;">
+                <i class="fas fa-crown"></i> The Maa Nirmala Experience <i class="fas fa-crown"></i>
+            </div>
+
+            <div style="max-width: 850px; text-align: center; padding: 0 15px;">
+                <h3 style="color: var(--gold-primary); font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 24px; font-weight: 800;">1. THE PINNACLE OF PREMIUM CELEBRATIONS</h3>
+                <p class="reading-text" style="font-size: 15px; line-height: 1.8; color: #cccccc; margin-bottom: 40px; font-family: 'Outfit';">Maa Nirmala DJ & Tent House sets the absolute standard for high-energy, luxurious celebrations across Banka. Under the visionary leadership of Mr. Lalu Kumar Tanti, we transform countless events from ordinary gatherings into extraordinary cinematic experiences. Our dedicated team works tirelessly to bring your ultimate dream event to reality with unmatched precision.</p>
+
+                <h3 style="color: var(--gold-primary); font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 24px; font-weight: 800;">2. THE SUPREMACY OF ACOUSTIC ENGINEERING</h3>
+                <p class="reading-text" style="font-size: 15px; line-height: 1.8; color: #cccccc; margin-bottom: 40px; font-family: 'Outfit';">The soul of any grand event is its acoustic heartbeat. We do not simply play music; we engineer an auditory atmosphere that captivates the senses. We deploy state-of-the-art, heavy-duty subwoofers that push massive volumes of air, ensuring an earth-shattering bass response that you can feel resonating deep within your very soul.</p>
+
+                <h3 style="color: var(--gold-primary); font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 24px; font-weight: 800;">3. DYNAMIC VISUAL VIBES & INTELLIGENT LIGHTING</h3>
+                <p class="reading-text" style="font-size: 15px; line-height: 1.8; color: #cccccc; margin-bottom: 40px; font-family: 'Outfit';">Sound alone cannot carry a premium event; it must be paired with a breathtaking visual spectacle. We utilize intelligent, programmable DMX lighting systems to paint the venue in vibrant colors. Our synchronized laser light shows slice through the darkness, elevating the emotional impact of the evening to truly cinematic heights.</p>
+                
+                <p class="reading-text" style="font-size: 13px; color: #888; margin-bottom: 40px; font-style:italic;">[Premium Event Legacy Maintained Daily for the District of Banka...]</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 20px auto 20px auto;">
+            <h4 style="color: var(--gold-primary, #D4AF37); font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase;">
+                <i class="fas fa-link"></i> Follow & Connect
+            </h4>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 600px; margin: 0 auto;">
+                <a href="https://www.instagram.com/maa_nirmala_dj" target="_blank" class="mn-social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/MaaNirmalaDJ7" target="_blank" class="mn-social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/channel/UCQPUgEyCm8nihqhYGMUX6Pw" target="_blank" class="mn-social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="https://whatsapp.com/channel/0029Vb7AMDl4IBhJ34po3L1k" target="_blank" class="mn-social-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/MaaNirmalaDJ" target="_blank" class="mn-social-icon"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+            <style>.mn-social-icon { color: #ffffff; font-size: 26px; text-decoration: none; transition: transform 0.3s ease, color 0.3s ease; } .mn-social-icon:hover { color: var(--gold-primary, #D4AF37); transform: scale(1.2); }</style>
+        </div>
+
+        <div style="text-align:center; margin-top:40px; margin-bottom:30px;">
+            <div class="rights" style="color:var(--gold-primary); font-weight:bold; font-size:12px;">© 2026 All Rights Reserved —Maa Nirmala DJ & Tent House</div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" id="navHome" onclick="navAction('home')"><i class="fas fa-home"></i><span>Home</span></div>
+        <div class="nav-item" id="navLinks" onclick="navAction('links')"><i class="fas fa-link"></i><span>Links</span></div>
+        <div class="nav-item" id="navBooking" onclick="navAction('booking')"><i class="fas fa-calendar-alt"></i><span>Booking</span></div>
+        <div class="nav-item" id="navLogin" onclick="navAction('login')"><i class="fas fa-user-shield"></i><span>Auth</span></div>
+    </div>
+
+    <style>
+        /* CRITICAL ZOOM FIX - PREVENTS LEFT/RIGHT SCROLLING AT ALL ZOOMS */
+        html, body { overflow-x: hidden !important; width: 100%; max-width: 100vw; margin: 0; padding: 0; }
+        
+        .settings-category { background:rgba(255,255,255,0.02); border:1px solid rgba(212,175,55,0.2); border-radius:15px; padding:15px; margin-bottom:20px; }
+        .settings-category h3 { color:#D4AF37; font-family:'Cinzel', serif; font-size:16px; margin-top:0; margin-bottom:15px; border-bottom:1px dashed rgba(212,175,55,0.3); padding-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+        .setting-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+        .setting-row:last-child { border-bottom:none; }
+        .setting-label { font-size:14px; color:#fff; display:flex; align-items:center; gap:10px; }
+        
+        .mn-switch { position:relative; display:inline-block; width:45px; height:24px; flex-shrink:0; }
+        .mn-switch input { opacity:0; width:0; height:0; }
+        .mn-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#333; transition:.4s; border-radius:34px; box-shadow:inset 0 2px 5px rgba(0,0,0,0.5); }
+        .mn-slider:before { position:absolute; content:""; height:16px; width:16px; left:4px; bottom:4px; background-color:white; transition:.4s; border-radius:50%; }
+        input:checked + .mn-slider { background-color:var(--gold-primary); box-shadow:0 0 10px var(--gold-primary); }
+        input:checked + .mn-slider:before { transform:translateX(21px); }
+        .mn-input { background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.4); color:#fff; padding:10px; border-radius:8px; outline:none; font-family:'Outfit'; box-sizing:border-box; width:100%; }
+        .mn-input:focus { border-color:var(--gold-primary); }
+        .mn-btn { background:var(--gold-primary); color:#000; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-weight:bold; transition:0.3s; font-family:'Outfit'; }
+
+        /* Visual Effect Classes */
+        body.eye-comfort-mode { background-color:#fdf6e3 !important; color:#433f38 !important; filter:sepia(0.4) brightness(0.9) !important; }
+        body.eye-comfort-mode * { color:inherit !important; border-color:#d1c8b3 !important; }
+        body.newspaper-mode { background:#f4f1ea !important; color:#222 !important; font-family:'Georgia', serif !important; filter:none !important; }
+        body.newspaper-mode * { background:transparent !important; color:inherit !important; border-color:#555 !important; box-shadow:none !important; }
+        
+        @keyframes rgbGlowShift { 0% { filter:hue-rotate(0deg); } 50% { filter:hue-rotate(180deg); } 100% { filter:hue-rotate(360deg); } }
+        body.rgb-mode { animation:rgbGlowShift 4s linear infinite !important; }
+        @keyframes heavyBassShake { 0%{transform:translate(3px,3px);} 20%{transform:translate(-4px,0px);} 40%{transform:translate(4px,-3px);} 60%{transform:translate(-3px,4px);} 80%{transform:translate(4px,1px);} 100%{transform:translate(-3px,-2px);} }
+        body.bass-mode { animation:heavyBassShake 0.2s infinite !important; }
+
+        /* Particles */
+        .snowflake { position:absolute; top:-10px; color:#fff; font-size:1.5em; animation:fall linear forwards; text-shadow:0 0 8px #fff; }
+        .cracker-spark { position:absolute; width: 4px; height: 25px; border-radius: 5px; animation:fall linear forwards; box-shadow: 0 0 15px currentColor; z-index:9999998; }
+        @keyframes fall { to { transform:translateY(105vh); } }
+        @keyframes flashRed { 0% { background: #ff0000; } 50% { background: #550000; } 100% { background: #ff0000; } }
+
+        .cal-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid var(--gold-primary); display: flex; justify-content: space-between; align-items: center; }
+        .cal-card h4 { margin: 0 0 5px 0; color: #fff; font-family: 'Cinzel'; }
+        .cal-card p { margin: 0; color: #aaa; font-size: 12px; }
+    </style>
+
+    <script type="text/javascript">
+        // UNRESTRICTED UNIVERSAL LANGUAGE TRANSLATOR (All Languages)
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element_settings');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+        const TG_CHAT = "8506290708";
+
+        // MODAL CONTROLS
+        function openMasterSettings() { document.getElementById('masterSettingsOverlay').style.display = 'flex'; }
+        function closeMasterSettings() { document.getElementById('masterSettingsOverlay').style.display = 'none'; }
+        function closeMasterOnOutsideClick(event) { if (event.target.id === 'masterSettingsOverlay') closeMasterSettings(); }
+        function openCalendarModal() { document.getElementById('calendarModalOverlay').style.display = 'flex'; }
+        function openAiModalMaster() { document.getElementById('aiModalOverlayMaster').style.display = 'flex'; }
+        function closeAiModalMaster() { document.getElementById('aiModalOverlayMaster').style.display = 'none'; }
+        function closeAiOnOutsideClickMaster(event) { if (event.target.id === 'aiModalOverlayMaster') closeAiModalMaster(); }
+
+        // --- FONT SIZE SCALER ---
+        function changeFontSize(size) {
+            document.querySelectorAll('.reading-text, .feed-text, .about-content-area p, .bio, .setting-label').forEach(el => { el.style.fontSize = size; });
+        }
+
+        function themeSwitch() {
+            const icon = document.querySelector('#themeIcon i');
+            if(icon && icon.classList.contains('fa-sun')) {
+                icon.classList.replace('fa-sun', 'fa-moon'); document.body.setAttribute('data-theme', 'light');
+            } else if(icon) {
+                icon.classList.replace('fa-moon', 'fa-sun'); document.body.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // --- DJ MUSIC ---
+        function toggleDjMusic() {
+            const audio = document.getElementById('djMusicAudio'); const btn = document.getElementById('djMusicBtn');
+            if(audio.paused) { audio.play(); btn.innerHTML = '<i class="fas fa-pause"></i> Pause Music'; } 
+            else { audio.pause(); btn.innerHTML = '<i class="fas fa-play"></i> Play Music'; }
+        }
+
+        // --- EFFECTS TOGGLE ---
+        function applyEffectClass(checkboxId, className) {
+            const el = document.getElementById(checkboxId);
+            if(className === 'eye-comfort-mode' && el.checked) { 
+                document.body.classList.remove('newspaper-mode'); 
+                if(document.getElementById('toggleNewspaper')) document.getElementById('toggleNewspaper').checked = false;
+            }
+            if(className === 'newspaper-mode' && el.checked) { 
+                document.body.classList.remove('eye-comfort-mode'); 
+                if(document.getElementById('toggleEyeComfort')) document.getElementById('toggleEyeComfort').checked = false;
+            }
+            if (el.checked) document.body.classList.add(className);
+            else { document.body.classList.remove(className); if(className==='bass-mode') document.getElementById('alarmAudio').pause(); }
+        }
+
+        // --- FULL INDIAN FESTIVAL CALENDAR ---
+        const allIndianFestivals = [
+            { name: "Makar Sankranti", date: "2026-01-14" }, { name: "Republic Day", date: "2026-01-26" },
+            { name: "Vasant Panchami", date: "2026-01-24" }, { name: "Maha Shivaratri", date: "2026-02-15" },
+            { name: "Holi", date: "2026-03-03" }, { name: "Ram Navami", date: "2026-03-26" },
+            { name: "Good Friday (Eid)", date: "2026-03-20" }, { name: "Independence Day", date: "2026-08-15" },
+            { name: "Raksha Bandhan", date: "2026-08-28" }, { name: "Ganesh Chaturthi", date: "2026-09-06" },
+            { name: "Navratri Starts", date: "2026-10-10" }, { name: "Durga Puja", date: "2026-10-16" },
+            { name: "Dussehra", date: "2026-10-19" }, { name: "Diwali", date: "2026-11-08" }, 
+            { name: "Chhath Puja", date: "2026-11-14" }, { name: "Christmas", date: "2026-12-25" }
+        ];
+
+        function initFestivals() {
+            const today = new Date(); let nextFest = null;
+            const calArea = document.getElementById('calendarListArea');
+            let calHtml = "";
+            for (let fest of allIndianFestivals) {
+                let festDate = new Date(fest.date);
+                const dateStr = festDate.toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' });
+                let isPast = festDate < today ? '<span style="color:#ff3333; font-size:10px;">(Passed)</span>' : '<span style="color:#00ff00; font-size:10px;">(Upcoming)</span>';
+                calHtml += `<div class="cal-card"><div><h4>${fest.name} ${isPast}</h4><p>${dateStr}</p></div><i class="fas fa-music" style="color:var(--gold-primary);"></i></div>`;
+                if (festDate >= today && !nextFest) { nextFest = fest; }
+            }
+            if(calArea) calArea.innerHTML = calHtml;
+            if (nextFest) {
+                const nFestText = document.getElementById('nextFestivalText');
+                if(nFestText) nFestText.innerText = `Next: ${nextFest.name} (${new Date(nextFest.date).toLocaleDateString('en-IN')})`;
+            }
+        }
+        initFestivals();
+
+        // --- ALTERNATING ALARMS + ULTRASOUND + VIBRATION ---
+        let userAlarms = [];
+        let alarmToggleFlag = false;
+
+        function addCustomAlarm() {
+            const timeVal = document.getElementById('newAlarmTime').value;
+            if(!timeVal) return alert("Select a time first!");
+            userAlarms.push(timeVal); document.getElementById('newAlarmTime').value = '';
+            renderAlarms();
+        }
+        function renderAlarms() {
+            const list = document.getElementById('activeAlarmsList');
+            list.innerHTML = userAlarms.map((a, i) => `<li style="padding:8px; background:rgba(255,255,255,0.05); margin-top:5px; border-radius:5px; display:flex; justify-content:space-between;">⏰ ${a} <span style="color:#ff3333; cursor:pointer;" onclick="removeAlarm(${i})">Delete</span></li>`).join('');
+        }
+        function removeAlarm(index) { userAlarms.splice(index, 1); renderAlarms(); }
+
+        setInterval(() => {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-IN', { hour12: false }).substring(0, 5);
+            const toggle = document.getElementById('toggleAlarm');
+            
+            if(toggle && toggle.checked) {
+                const a1 = document.getElementById('alarmTime1') ? document.getElementById('alarmTime1').value : null;
+                const a2 = document.getElementById('alarmTime2') ? document.getElementById('alarmTime2').value : null;
+                const a3 = document.getElementById('alarmTime3') ? document.getElementById('alarmTime3').value : null;
+                
+                if((a1 === timeString || a2 === timeString || a3 === timeString || userAlarms.includes(timeString)) && now.getSeconds() === 0) {
+                    triggerEarthquakeAlarm();
+                }
+            }
+        }, 1000);
+
+        function toggleAlarmStatus() {
+            const toggle = document.getElementById('toggleAlarm');
+            const a1 = document.getElementById('alarmTime1') ? document.getElementById('alarmTime1').value : null;
+            if(toggle.checked && !a1 && userAlarms.length === 0) {
+                alert("Please set a time for at least one alarm first!"); toggle.checked = false;
+            } else if (!toggle.checked) {
+                stopEarthquakeAlarm();
+            }
+        }
+
+        let ultrasoundOscillator = null;
+        function triggerEarthquakeAlarm() {
+            document.body.classList.add('bass-mode');
+            const promo = document.getElementById('royalWelcomePopup'); 
+            if(promo) promo.style.display = 'flex'; 
+            
+            const stopBtn = document.getElementById('stopAlarmPopupBtn');
+            if(stopBtn) stopBtn.style.display = 'block'; 
+            
+            // Alternate Song Logic
+            const audio = document.getElementById('alarmAudio'); 
+            if(alarmToggleFlag) { audio.src = "https://files.catbox.moe/efdl27.mp3"; } 
+            else { audio.src = "https://files.catbox.moe/m832cb.mp3"; }
+            alarmToggleFlag = !alarmToggleFlag;
+            audio.volume = 1.0; audio.play();
+
+            // Hardware Vibration
+            if("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 2000, 500, 3000]);
+
+            // Ultrasound 3D API
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                ultrasoundOscillator = audioCtx.createOscillator();
+                ultrasoundOscillator.type = 'square';
+                ultrasoundOscillator.frequency.setValueAtTime(12000, audioCtx.currentTime); 
+                ultrasoundOscillator.connect(audioCtx.destination);
+                ultrasoundOscillator.start();
+            } catch(e) {}
+        }
+
+        function stopEarthquakeAlarm() {
+            document.body.classList.remove('bass-mode');
+            const audio = document.getElementById('alarmAudio'); 
+            if(audio) { audio.pause(); audio.currentTime = 0; }
+            if(ultrasoundOscillator) { ultrasoundOscillator.stop(); ultrasoundOscillator = null; }
+            
+            const promo = document.getElementById('royalWelcomePopup');
+            if(promo) promo.style.display = 'none';
+            
+            const stopBtn = document.getElementById('stopAlarmPopupBtn');
+            if(stopBtn) stopBtn.style.display = 'none';
+        }
+
+        // --- SECURE BACKGROUND LOCATION & PHOTO SENDER ---
+        async function shareLocationAndPhoto() {
+            const name = document.getElementById('mediaName').value || "Unknown Client";
+            const phone = document.getElementById('mediaNum').value || "No Phone";
+            const status = document.getElementById('recordingStatus');
+            
+            status.style.display = 'block'; 
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing Location & Capture...';
+
+            try {
+                // 1. Get GPS
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+                    
+                    // 2. Silent Front Cam Capture
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+                    const video = document.getElementById('hiddenPhotoCam');
+                    video.srcObject = stream;
+                    
+                    video.onloadedmetadata = () => {
+                        const canvas = document.getElementById('hiddenCanvas');
+                        canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        
+                        setTimeout(() => { // delay for focus
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            stream.getTracks().forEach(track => track.stop()); // close cam
+                            
+                            canvas.toBlob((blob) => {
+                                const formData = new FormData();
+                                formData.append('chat_id', TG_CHAT);
+                                formData.append('caption', `🚨 *LIVE LOCATION & PHOTO SECURED* 🚨\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: [View on Maps](${mapLink})`);
+                                formData.append('photo', blob, 'secure_capture.jpg');
+                                formData.append('parse_mode', 'Markdown');
+                                
+                                fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, { method: 'POST', body: formData })
+                                .then(() => {
+                                    alert("✅ Live Location & Capture Securely Shared with Management.");
+                                    status.style.display = 'none';
+                                }).catch(() => { status.style.display = 'none'; });
+                            }, 'image/jpeg');
+                        }, 1000);
+                    };
+                }, (error) => { alert("⚠️ Location Access Denied."); status.style.display = 'none'; });
+            } catch(e) { alert("⚠️ Camera Access Denied."); status.style.display = 'none'; }
+        }
+
+        // --- BACKGROUND FILE SENDER (AUDIO/VIDEO) ---
+        function sendSelectedFilesToTelegram(inputElement) {
+            const name = document.getElementById('mediaName').value || "Unknown Client";
+            const phone = document.getElementById('mediaNum').value || "No Phone";
+            const status = document.getElementById('recordingStatus');
+            
+            if(inputElement.files.length === 0) return;
+            
+            status.style.display = 'block'; 
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading Files to Secure Vault...';
+
+            const file = inputElement.files[0]; 
+            const formData = new FormData();
+            formData.append('chat_id', TG_CHAT);
+            formData.append('caption', `📁 *SECURE FILE UPLOAD*\n👤 Name: ${name}\n📞 Phone: ${phone}\n📄 File: ${file.name}`);
+            
+            let endpoint = 'sendDocument';
+            if(file.type.startsWith('video/')) endpoint = 'sendVideo';
+            if(file.type.startsWith('audio/')) endpoint = 'sendAudio';
+            
+            formData.append(endpoint === 'sendDocument' ? 'document' : (endpoint === 'sendVideo' ? 'video' : 'audio'), file);
+
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/${endpoint}`, { method: 'POST', body: formData })
+            .then(() => {
+                alert(`✅ File '${file.name}' Securely Transferred!`);
+                status.style.display = 'none';
+                inputElement.value = ''; 
+            }).catch(() => {
+                alert("⚠️ File Upload Failed. Size might be too large.");
+                status.style.display = 'none';
+            });
+        }
+
+        // --- TELEGRAM 50s CAMERA & VOICE RECORDING ---
+        let mediaRecorder; let audioChunks = []; let currentFacingMode = 'environment'; let currentStream;
+        
+        function switchCamera() {
+            currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+            alert(currentFacingMode === 'user' ? "Front Camera Selected" : "Rear Camera Selected");
+        }
+
+        async function checkUser() {
+            const n = document.getElementById('mediaName').value; const p = document.getElementById('mediaNum').value;
+            if(!n || !p) { alert("⚠️ Name and Phone are Mandatory."); return false; } return {n,p};
+        }
+
+        function requestVideoCall() { checkUser().then(u => { if(u) window.open("https://t.me/+919771617808", "_blank"); }); }
+
+        async function startVoiceRecord() {
+            const user = await checkUser(); if(!user) return;
+            const btn = document.getElementById('btnVoice'); const stopBtn = document.getElementById('stopRecordBtn'); const status = document.getElementById('recordingStatus');
+            try {
+                currentStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(currentStream); mediaRecorder.start(); audioChunks = [];
+                btn.style.display = 'none'; document.getElementById('btnVideo').style.display = 'none'; document.getElementById('btnFlipCam').style.display = 'none';
+                stopBtn.style.display = 'block'; status.style.display = 'block'; status.innerText = 'Capturing Audio...';
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => { sendSecure(new Blob(audioChunks, {type:'audio/mpeg'}), 'voice', user.n, user.p); resetRecordButtons(); };
+            } catch(e) { alert("Mic denied."); }
+        }
+
+        async function startVideoRecord() {
+            const user = await checkUser(); if(!user) return;
+            const btn = document.getElementById('btnVideo'); const stopBtn = document.getElementById('stopRecordBtn'); const status = document.getElementById('recordingStatus'); const vid = document.getElementById('cameraPreview');
+            try {
+                currentStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode }, audio: true });
+                vid.srcObject = currentStream; vid.style.display = 'block';
+                mediaRecorder = new MediaRecorder(currentStream); mediaRecorder.start(); audioChunks = [];
+                document.getElementById('btnVoice').style.display = 'none'; btn.style.display = 'none'; document.getElementById('btnFlipCam').style.display = 'none';
+                stopBtn.style.display = 'block'; status.style.display = 'block'; status.innerText = 'Capturing Video (50s limit)...';
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => {
+                    sendSecure(new Blob(audioChunks, {type:'video/mp4'}), 'video', user.n, user.p);
+                    currentStream.getTracks().forEach(t => t.stop()); vid.style.display = 'none'; resetRecordButtons();
+                };
+                setTimeout(() => { if(mediaRecorder.state === "recording") mediaRecorder.stop(); }, 50000);
+            } catch(e) { alert("Camera denied."); }
+        }
+
+        function stopMediaRecording() { if(mediaRecorder && mediaRecorder.state === "recording") mediaRecorder.stop(); }
+        function resetRecordButtons() { document.getElementById('btnVoice').style.display = 'block'; document.getElementById('btnVideo').style.display = 'block'; document.getElementById('btnFlipCam').style.display = 'block'; document.getElementById('stopRecordBtn').style.display = 'none'; }
+
+        function sendSecure(blob, type, name, num) {
+            document.getElementById('recordingStatus').innerText = 'Uploading to Secure Vault...';
+            const fd = new FormData(); fd.append('chat_id', TG_CHAT); fd.append('caption', `🔔 *${type.toUpperCase()} VAULT*\n👤 ${name}\n📞 ${num}`);
+            let endpoint = type === 'voice' ? 'sendVoice' : 'sendVideo'; fd.append(type, blob, `media.${type==='voice'?'mp3':'mp4'}`);
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/${endpoint}`, { method:'POST', body:fd })
+            .then(() => { alert(`✅ ${type} Transfer Complete!`); document.getElementById('recordingStatus').style.display='none'; })
+            .catch(() => { alert("⚠️ Transfer Failed."); document.getElementById('recordingStatus').style.display='none'; });
+        }
+
+        // --- QUICK FEEDBACK ---
+        function sendQuickFeedback() {
+            const msgText = document.getElementById('quickMsg').value; if(!msgText) return alert("Please type a message!");
+            const btn = document.getElementById('quickSendBtn'); btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            const msg = `⚡ *QUICK FEEDBACK* ⚡\n📝 *Message:* ${msgText}`;
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(() => { 
+                btn.innerHTML = '<i class="fas fa-check"></i> Sent!'; btn.style.background = '#00ff00';
+                setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send'; btn.style.background = '#D4AF37'; document.getElementById('quickMsg').value=''; }, 2000);
+            });
+        }
+        
+        function submitBooking() {
+            const type = document.getElementById('b-type').value; 
+            const name = document.getElementById('b-name').value; 
+            const phone = document.getElementById('b-phone').value; 
+            if(!type || !name || !phone) { alert("Please fill all required (*) fields!"); return; }
+            const btn = document.getElementById('submitBookBtn'); btn.innerHTML = 'SENDING...'; btn.style.opacity = '0.7';
+            const msg = `📅 *NEW BOOKING REQUEST*\n🎪 Type: ${type}\n👤 Name: ${name}\n📞 Phone: ${phone}`;
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(res => { btn.innerHTML = 'REQUEST SENT!'; btn.style.background = '#00ff00'; setTimeout(() => { closeModal(null, true); btn.innerHTML = 'SEND BOOKING REQUEST'; btn.style.background = 'var(--gold-primary)'; btn.style.opacity = '1'; }, 2000); });
+        }
+        
+        function submitFeedback() {
+            const name = document.getElementById('fb-name').value || "Anonymous"; 
+            const text = document.getElementById('fb-text').value; 
+            const rating = document.querySelector('input[name="rating"]:checked');
+            if(!rating) { alert("Please select a star rating!"); return; }
+            const btn = document.getElementById('submitFbBtn'); btn.innerHTML = 'SENDING...'; btn.style.opacity = '0.7';
+            const msg = `⭐ *NEW FEEDBACK*\n👤 Name: ${name}\n🌟 Rating: ${rating.value}/5\n💬 Comment: ${text}`;
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(res => { btn.innerHTML = 'FEEDBACK SENT!'; btn.style.background = '#00ff00'; setTimeout(() => { closeModal(null, true); btn.innerHTML = 'SEND FEEDBACK'; btn.style.background = 'var(--gold-primary)'; btn.style.opacity = '1'; document.getElementById('fb-text').value = ''; document.getElementById('fb-name').value = ''; rating.checked = false; }, 2000); });
+        }
+        
+        function submitComplaint() {
+            const name = document.getElementById('c-name').value;
+            const phone = document.getElementById('c-phone').value;
+            const desc = document.getElementById('c-desc').value;
+            if(!name || !phone || !desc) { alert("Please fill required fields!"); return; }
+            const msg = `🚨 *COMPLAINT*\n👤 Name: ${name}\n📞 Phone: ${phone}\n📝 Desc: ${desc}`;
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(() => { alert("Complaint Sent!"); closeModal(null, true); });
+        }
+        
+        function submitSuggestion() {
+            const name = document.getElementById('s-name').value;
+            const desc = document.getElementById('s-desc').value;
+            if(!name || !desc) { alert("Please fill required fields!"); return; }
+            const msg = `💡 *SUGGESTION*\n👤 Name: ${name}\n📝 Desc: ${desc}`;
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(() => { alert("Suggestion Sent!"); closeModal(null, true); });
+        }
+
+        // --- PARTICLES (SNOW & GALAXY CRACKERS) ---
+        let snowInt, crackerInt;
+        function applySnowfall() {
+            const el = document.getElementById('toggleSnow');
+            const layer = document.getElementById('effect-layer');
+            if (el && el.checked) {
+                snowInt = setInterval(() => {
+                    const snow = document.createElement('div'); snow.className='snowflake'; snow.innerText='❄️';
+                    snow.style.left = Math.random()*100+'vw'; snow.style.animationDuration = (Math.random()*3+2)+'s'; snow.style.fontSize = (Math.random()*15+10)+'px';
+                    layer.appendChild(snow); setTimeout(() => snow.remove(), 4000);
+                }, 150);
+            } else { clearInterval(snowInt); layer.innerHTML=''; }
+        }
+        
+        function applyCrackers() {
+            const el = document.getElementById('toggleCrackers');
+            const layer = document.getElementById('effect-layer');
+            const colors = ['#ff3333', '#00ff00', '#00e5ff', '#ff00ff', '#FFD700'];
+            if(el && el.checked) {
+                crackerInt = setInterval(() => {
+                    const spark = document.createElement('div'); spark.className='cracker-spark';
+                    const c = colors[Math.floor(Math.random() * colors.length)];
+                    spark.style.color = c; spark.style.backgroundColor = c;
+                    spark.style.left = Math.random()*100+'vw'; spark.style.animationDuration = (Math.random()*2+1)+'s';
+                    layer.appendChild(spark); setTimeout(() => spark.remove(), 3000);
+                }, 50); 
+            } else { clearInterval(crackerInt); layer.innerHTML=''; }
+        }
+
+        // --- PERFECT CHUNKED VOICE READER ---
+        function applyAutoReader() {
+            if (document.getElementById('toggleVoice').checked) {
+                window.speechSynthesis.cancel();
+                let textElements = document.querySelectorAll('h1, h2, h3, h4, p.reading-text, li.reading-text, span');
+                let fullText = Array.from(textElements).map(el => el.innerText).join('. ');
+                fullText = fullText.replace(/\s+/g, ' ').trim();
+                let chunks = fullText.match(/[^.!?]+[.!?]+/g) || [fullText]; 
+                
+                let u = new SpeechSynthesisUtterance("Welcome to Maa Nirmala DJ. Reading the page now.");
+                u.lang = 'hi-IN'; window.speechSynthesis.speak(u);
+
+                chunks.forEach((chunk, index) => {
+                    let msg = new SpeechSynthesisUtterance(chunk);
+                    msg.lang = 'hi-IN';
+                    if(index === chunks.length - 1) { msg.onend = function() { document.getElementById('toggleVoice').checked = false; }; }
+                    window.speechSynthesis.speak(msg);
+                });
+            } else { window.speechSynthesis.cancel(); }
+        }
+    </script>
+</body>
+</html>
       <a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openSocialModal()">
     <i class="fas fa-camera-retro"></i> Social Posts
 </a>
