@@ -2137,96 +2137,102 @@
         
         <a href="mailto:lalukumartanti75@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
     </div>
-
-    <div id="main-interface">
+    
+    <div id="main-interface" style="display: block; opacity: 1;">
     <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
     <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
     <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
     <style>
+        /* 1. FIX THE SCROLLING ISSUE (Locks Navbar to top, lets page scroll under) */
+        body {
+            padding-top: 65px !important; 
+            overflow-x: hidden !important;
+        }
+
         #mainNavbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 99999 !important; /* Keeps it above everything */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 15px;
-            background: #0a0a0c;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 15px !important;
+            background: #0a0a0c !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
             box-sizing: border-box;
-            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
         }
+
+        /* 2. MATCH THE IMAGE SIZING PERFECTLY */
         .brand {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             color: #D4AF37;
             font-family: 'Cinzel', serif;
             font-weight: 900;
-            font-size: 22px;
+            font-size: 20px !important;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         .brand i.fa-bars {
-            color: #ffffff; /* White hamburger menu */
-            font-size: 26px;
+            color: #ffffff; 
+            font-size: 24px !important;
             cursor: pointer;
         }
-        .brand i.fa-crown {
-            color: #D4AF37; /* Gold crown */
-        }
+        
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 12px; /* Perfect spacing between Translate and Buttons */
+            gap: 10px !important; /* Tight spacing like image */
         }
         .controls {
             display: flex;
             align-items: center;
-            gap: 8px; /* Perfect spacing between Sun and Cog buttons */
+            gap: 8px !important;
         }
+
+        /* The Square Gold Buttons */
         .nav-btn-square {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            background: #111;
-            border: 2px solid rgba(212, 175, 55, 0.6);
-            color: #D4AF37;
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 10px !important;
+            background: transparent !important;
+            border: 1.5px solid #D4AF37 !important; /* Distinct gold border */
+            color: #D4AF37 !important;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
+            font-size: 18px !important;
             cursor: pointer;
             transition: 0.3s ease;
-            box-shadow: 0 0 10px rgba(212,175,55,0.1);
-        }
-        .nav-btn-square:hover {
-            border-color: #D4AF37;
-            box-shadow: 0 0 15px rgba(212,175,55,0.3);
+            box-shadow: 0 0 8px rgba(212,175,55,0.15) !important;
         }
         
-        /* PERFECT GOOGLE TRANSLATE WIDGET OVERRIDE */
+        /* Google Translate Box Perfect Match */
         #google_translate_element {
             display: flex;
             align-items: center;
         }
         .goog-te-gadget-simple {
-            background-color: #111 !important;
-            border: 2px solid rgba(212, 175, 55, 0.6) !important;
-            border-radius: 8px !important;
-            padding: 0 12px !important;
-            height: 42px !important;
+            background-color: transparent !important;
+            border: 1.5px solid #D4AF37 !important;
+            border-radius: 10px !important;
+            padding: 0 10px !important;
+            height: 38px !important; /* Matches button height perfectly */
             display: flex !important;
             align-items: center !important;
+            justify-content: center !important;
             box-sizing: border-box !important;
-            transition: 0.3s ease;
-        }
-        .goog-te-gadget-simple:hover {
-            border-color: #D4AF37 !important;
         }
         .goog-te-gadget-simple span {
             color: #D4AF37 !important;
             font-family: 'Outfit', sans-serif !important;
-            font-weight: 700 !important;
-            font-size: 15px !important;
+            font-weight: 800 !important;
+            font-size: 13px !important;
+            letter-spacing: 0.5px;
         }
         .goog-te-gadget-icon { display: none !important; }
     </style>
