@@ -2433,10 +2433,7 @@
             
             <p class="hero-premium-address">
                 Tola Beltikri <span>|</span> Kaddhar <span>|</span> Katoria <br> Banka <span>|</span> Bihar
-            </p>
-            
-        </div>
-        
+            </p>        
     </div>
 </div>
                 <button id="installBtn" onclick="installApp()"><i class="fas fa-download"></i> INSTALL MNDs APP</button>
