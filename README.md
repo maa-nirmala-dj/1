@@ -3683,7 +3683,8 @@
                 <a href="tel:+919771617808" class="card" onclick="playTap()"><i class="fas fa-phone-volume"></i><span>Call Now</span></a>
                 <a href="https://wa.me/919771617808" target="_blank" class="card" onclick="playTap()"><i class="fab fa-whatsapp"></i><span>WhatsApp Chat</span></a>
                 <a href="https://t.me/MaaNirmalaDJ" target="_blank" class="card" onclick="playTap()"><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
-                <a href="https://maps.app.goo.gl/fSqCowWHPoVxGuLz6" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-map-marked-alt"></i><span>Official Location</span></a>
+                <a href="https://t.me/Maa_Nirmala_Dj_Bot" target="_blank" class="card" onclick="playTap()"><i class="fas fa-robot"></i><span>Telegram Bot</span></a>
+                <a href="https://maps.app.goo.gl/WPcHJHr3Tdzy3nud9" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-map-marked-alt"></i><span>Official Location</span></a>
             </div>
 
             <div class="section-label"><i class="fas fa-globe"></i> SOCIAL EMPIRE</div>
@@ -3700,7 +3701,7 @@
 
             <div class="section-label"><i class="fas fa-laptop-code"></i> OFFICIAL WEBSITES</div>
             <div class="grid">
-                <a href="https://maanirmaladj.github.io/Maa-Nirmala-DJ-Beltikri/" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-globe"></i><span>MND Official Site 1</span></a>
+                <a href="https://maa-nirmala-dj.github.io/-tent-house./" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-globe"></i><span>MND Official Site 1</span></a>
                 <a href="https://maa-nirmala-dj.github.io/-tent-house./" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-external-link-alt"></i><span>MND Official Site 2</span></a>
             </div>
 
