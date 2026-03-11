@@ -2143,6 +2143,8 @@
         <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
 <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
+<nav class="navbar" id="mainNavbar">
+    <div class="brand">
         <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
         <span><i class="fas fa-crown"></i> MND Hub</span>
     </div>
