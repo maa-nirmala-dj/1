@@ -1342,182 +1342,251 @@
         });
     }
 </script>
-<a href="javascript:void(0)" class="management-submit-btn" onclick="toggleMenu(); openSubmitModal()">
-    <div class="mnd-hub-crown-group">
-        <i class="fas fa-crown mnd-hub-logo-icon"></i>
-        <span class="mnd-hub-logo-text">MND HUB</span>
-    </div>
-    <div class="media-icon-group">
-        <i class="fas fa-camera media-icon"></i>
-        <i class="fas fa-video media-icon"></i>
-        <i class="fas fa-microphone media-icon"></i>
-    </div>
-    <span class="main-text">SUBMIT EVENT MEDIA</span>
-    <span class="sub-text">TO MANAGEMENT</span>
+<a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openMediaVault()">
+    <i class="fas fa-cloud-upload-alt"></i> Send Media & Files
 </a>
 
-<div id="mndHubSubmitModal" class="mnd-modal">
-    <div class="mnd-modal-content">
-        <span class="mnd-close-btn" onclick="closeSubmitModal()">&times;</span>
-        <div class="mnd-modal-header">
-            <i class="fas fa-crown mnd-hub-logo-icon-modal"></i>
-            <span class="mnd-hub-logo-text-modal">MND HUB MEDIA Hub</span>
-        </div>
-        <form action="/submit-media" method="post" enctype="multipart/form-data" class="mnd-hub-form">
-            <label for="submit_name" class="required-field">Submitter's Name</label>
-            <input type="text" id="submit_name" name="name" required placeholder="Full Name" class="mnd-input Outfit-Outfit">
-
-            <label for="submit_contact" class="required-field">Contact Number</label>
-            <input type="tel" id="submit_contact" name="contact" required placeholder="Contact Number (e.g., +91...)" class="mnd-input Outfit-Outfit">
-            <p class="access-message">Access to your contact number is mandatory for submission verification.</p>
-
-            <label for="submit_notes">Message / Context (Optional)</label>
-            <textarea id="submit_notes" name="notes" placeholder=" Describe media... maker perfect info." class="mnd-input mnd-textarea Outfit-Outfit"></textarea>
-
-            <label for="submit_media" class="required-field">Upload Photo, Video, Audio or File(s)</label>
-            <div class="media-icon-group-modal">
-                <i class="fas fa-camera media-icon-modal"></i>
-                <i class="fas fa-video media-icon-modal"></i>
-                <i class="fas fa-microphone media-icon-modal"></i>
-                <i class="fas fa-file-export media-icon-modal"></i>
-            </div>
-            <input type="file" id="submit_media" name="media[]" multiple required accept="image/*,video/*,audio/*,.zip,.rar,.pdf" class="mnd-input Outfit-Outfit">
-            <p class="required-hint">Support multi-upload for images, video, audio, and all file types (e.g., pdf, zip). Confirm files are under specific size and count limit suggested as advanced feature.</p>
-            
-            <button type="submit" class="mnd-modal-submit-btn Outfit-Outfit">Send Media To Management</button>
-        </form>
+<div id="mediaVaultOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; flex-direction:column; overflow:hidden;">
+    
+    <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:relative;">
+        <span onclick="closeMediaVault()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+        <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-shield-alt"></i> Secure Media Vault</h2>
+        <p style="margin:5px 0 0 0; color:#aaa; font-family:'Outfit'; font-size:12px;">Direct Transfer to Management</p>
     </div>
+
+    <div style="flex-grow:1; overflow-y:auto; padding:20px; box-sizing:border-box;">
+        
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.2); border-radius:12px; padding:20px; margin-bottom:25px;">
+            <h3 style="color:#D4AF37; font-family:'Cinzel'; font-size:16px; margin:0 0 15px 0;"><i class="fas fa-user-check"></i> 1. Your Details (Required)</h3>
+            <input type="text" id="vaultSenderName" class="mn-input" style="width:100%; box-sizing:border-box; margin-bottom:15px;" placeholder="Your Full Name *">
+            <input type="tel" id="vaultSenderPhone" class="mn-input" style="width:100%; box-sizing:border-box;" placeholder="Your Mobile Number *">
+        </div>
+
+        <h3 style="color:#D4AF37; font-family:'Cinzel'; font-size:16px; margin:0 0 15px 0; text-align:center;"><i class="fas fa-th-large"></i> 2. Select What To Send</h3>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+            <div class="media-action-card" onclick="triggerVaultUpload('image')">
+                <i class="fas fa-image" style="color:#00fa9a;"></i>
+                <span>Send Photo</span>
+            </div>
+            <div class="media-action-card" onclick="triggerVaultUpload('video')">
+                <i class="fas fa-video" style="color:#ff3333;"></i>
+                <span>Send Video</span>
+            </div>
+            <div class="media-action-card" onclick="triggerVaultUpload('audio')">
+                <i class="fas fa-music" style="color:#00bfff;"></i>
+                <span>Send Audio</span>
+            </div>
+            <div class="media-action-card" onclick="triggerVaultUpload('document')">
+                <i class="fas fa-file-pdf" style="color:#ff8c00;"></i>
+                <span>Send File / PDF</span>
+            </div>
+        </div>
+
+        <div class="media-action-card full-width-card" onclick="openContactSender()">
+            <i class="fas fa-address-book" style="color:#D4AF37;"></i>
+            <span>Share a Contact Number</span>
+        </div>
+
+        <div id="vaultUploadStatus" style="display:none; margin-top:20px; padding:15px; background:rgba(0,250,154,0.1); border:1px solid #00fa9a; border-radius:10px; text-align:center; color:#00fa9a; font-family:'Outfit'; font-weight:bold;">
+            <i class="fas fa-spinner fa-spin"></i> Uploading to Secure Vault... Please wait.
+        </div>
+
+        <div id="vaultContactForm" style="display:none; margin-top:20px; background:rgba(255,255,255,0.03); border:1px solid #D4AF37; border-radius:12px; padding:20px;">
+            <h4 style="color:#D4AF37; margin:0 0 10px 0;"><i class="fas fa-user-plus"></i> Contact Details to Share</h4>
+            <input type="text" id="shareContactName" class="mn-input" style="width:100%; box-sizing:border-box; margin-bottom:10px;" placeholder="Name of Person">
+            <input type="tel" id="shareContactPhone" class="mn-input" style="width:100%; box-sizing:border-box; margin-bottom:15px;" placeholder="Phone Number">
+            <button class="mn-btn" style="width:100%; background:#D4AF37; color:#000; font-weight:bold;" onclick="sendContactToVault()">SEND CONTACT NOW</button>
+        </div>
+
+    </div>
+
+    <input type="file" id="vaultInputImage" style="display:none;" accept="image/*" onchange="processVaultUpload(this, 'photo')">
+    <input type="file" id="vaultInputVideo" style="display:none;" accept="video/*" onchange="processVaultUpload(this, 'video')">
+    <input type="file" id="vaultInputAudio" style="display:none;" accept="audio/*" onchange="processVaultUpload(this, 'audio')">
+    <input type="file" id="vaultInputDocument" style="display:none;" accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.zip" onchange="processVaultUpload(this, 'document')">
 </div>
 
 <style>
-    /* Premium visual styling replicating gradient from presented sources and integrating gold border multi-layered sequenced icons group and Outfit Outfit and Cinzel text */
-    .management-submit-btn {
+    .media-action-card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(212,175,55,0.3);
+        border-radius: 12px;
+        padding: 20px 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: calc(100% - 30px); /* Adjust padding */
-        padding: 20px 15px;
-        /* Replicate beautiful, vibrant gradient from deep purple to orange/gold presented sources */
-        background: linear-gradient(135deg, #8a2be2 0%, #ff8c00 100%);
-        background-size: 200% auto;
-        color: white; /* Text color Outfit outfit Outfit outfit presented sources, Cinzel Cinzel for title group */
-        font-family: 'Outfit', sans-serif; /* Suggested Outfit sans-serif Outfit sans-serif for body in presented sources, Cinzel Cinzel for titles as in MND Hub Crown, multi-layered icons group. So for main text Outfit Outfit, other parts Cinzel Cinzel */
-        text-decoration: none;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Shadow for depth like presented sources multi-layered design suggests depth */
+        gap: 12px;
         cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s, background-position 0.3s;
-        border: none;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
-    .management-submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.7);
-        background-position: right center; /* Gradient effect on hover like presented sources */
+    .media-action-card:hover {
+        background: rgba(212,175,55,0.1);
+        border-color: #D4AF37;
+        transform: translateY(-3px);
     }
-
-    /* Brand Integration Group: small gold crown and smaller white text Cinzel Cinzel serif */
-    .mnd-hub-crown-group, .media-icon-group, .mnd-modal-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 5px;
+    .media-action-card i {
+        font-size: 32px;
     }
-    .mnd-hub-logo-icon { color: gold; font-size: 18px; margin-right: 3px; }
-    .mnd-hub-logo-text { color: white; font-family: 'Cinzel', serif; font-size: 14px; font-weight: 900; }
-    /* multi-layered media icons Group sequenced */
-    .media-icon-group { margin-bottom: 10px; }
-    .media-icon { color: white; font-size: 28px; margin: 0 5px; }
-    /* main button text sequence Outfit Outfit sans-serif */
-    .main-text { font-size: 20px; font-weight: 800; color: white; text-align: center; }
-    .sub-text { font-size: 16px; font-weight: 400; color: #ddd; text-align: center; }
-
-    /* Modal Styling - Dark theme presented sources, outlined gold border multi-layered */
-    .mnd-modal {
-        display: none;
-        position: fixed;
-        z-index: 1001;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.85); /* Deep dark overlay presented sources */
-        font-family: 'Outfit', sans-serif; /* body font Outfit Outfit sans-serif like text in presented sources Outfit outfit Outfit outfit suggested. Outfit sans-serif outfit sans-serif Outfit outfit. Cinzel Cinzel serif for titles.  */
-    }
-    .mnd-modal-content {
-        background-color: #1a1a1a;
-        margin: 10% auto;
-        padding: 30px;
-        border: 1px solid gold; /* clean gold outlined border presented sources multi-layered design shows gold outline सोशल पोस्ट्स button */
-        width: calc(90% - 60px); /* accounting for padding */
-        max-width: 600px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        color: white;
-    }
-    .mnd-close-btn { color: gold; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-    .mnd-hub-logo-icon-modal { color: gold; font-size: 22px; margin-right: 5px; }
-    .mnd-hub-logo-text-modal { color: white; font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; }
-    .mnd-modal-header { margin-bottom: 25px; }
-    .mnd-hub-form label { display: block; color: gold; font-weight: 600; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; }
-    /* outfit outfit Outfit outfit text in presented sources Outfit outfit suggested */
-    .mnd-input {
-        width: calc(100% - 24px); /* Accounting for padding */
-        padding: 12px;
-        margin-bottom: 18px;
-        border: 1px solid #444;
-        background-color: #2a2a2a;
-        color: white;
+    .media-action-card span {
+        color: #fff;
         font-family: 'Outfit', sans-serif;
-        font-size: 16px;
-        border-radius: 8px;
-        box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
     }
-    .mnd-textarea { resize: vertical; min-height: 80px; }
-    .required-field::after { content: ' Required'; color: #ff6347; font-size: 12px; font-style: italic; }
-    /* access message specific to presented sources request */
-    .access-message, .required-hint { color: #ccc; font-size: 12px; margin-top: -12px; margin-bottom: 15px; display: block; font-style: italic; font-weight: 400; }
-    .required-hint { margin-bottom: 25px; }
-    .access-message { color: gold; font-weight: bold; }
-    /* sequenced icons within form area Outfit Outfit sans-serif */
-    .media-icon-group-modal { display: flex; align-items: center; justify-content: center; margin-bottom: 10px; width: 100%; }
-    .media-icon-modal { color: #ccc; font-size: 24px; margin: 0 5px; }
-    /* modal submit button clean non-gradient solid Outfit Outfit sans-serif text like सोशल पोस्ट्स button in presented sources. Outline only? No, let's keep it solid but non-gradient for cleanliness in form. Or make it a full solid block. Full solid Outfit Outfit Outfit outfit.  */
-    .mnd-modal-submit-btn {
-        display: block;
-        width: 100%;
+    .full-width-card {
+        grid-column: span 2;
+        flex-direction: row;
         padding: 15px;
-        background-color: #0a0a0c; /* solid block Outfit Outfit sans-serif text like सोशल पोस्ट्स button, no purple/orange. Outfit outfit text as in सोशल पोस्ट्स button, gold outline but solid block. Or gold block. Gold block Outfit outfit. Let's make it dark with gold border like presented sources সোশ্যাল पोस्ट्स but solid block Outfit outfit text for clarity. Or gold block Outfit outfit with white text. I will make a solid gold block with white text for maximum purpose clarity.  */
-        color: white;
-        background-color: gold; /* gold block like multi-layered outline Presented sources Social Posts button but solid-fill like image 3 but non-gradient for clarity. Or make it dark like image 3 but non-gradient.  Let's keep it clean, dark solid block Outfit outfit.  */
-        background-color: transparent; /* or gold block. I'll make a solid gold block. */
-        color: #000; /* gold block Outfit outfit text like image 3 text colors white. Text will be white. Solid gold block, white text. No, image 3 text colors white on gradient, black text on gold might be hard to read. let's make it gold block, white text. No.  Let's make it solid gold block, black text. Black text. No. White text is clearer. Gold block white text. Let's make it dark block. I will make it solid gold block with Outfit Outfit text sequenced multi-layered icons group and gold accent line. White text sequenced with multi-layered icons group and gold accent line. Okay. text sequenced multi-layered icons group. White text on gold is not clean. Let's make it dark block with gold border. */
-        background-color: #0a0a0c;
-        color: white; /* black border presented sources Sosal Posts button style, solid Outfit Outfit text. sequence. */
-        border: 1px solid gold;
-        font-family: 'Outfit', sans-serif;
-        font-size: 18px;
-        font-weight: 800;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        text-transform: uppercase;
-        margin-top: 10px;
     }
-    .mnd-modal-submit-btn:hover { background-color: #333; }
+    .full-width-card i {
+        font-size: 24px;
+    }
 </style>
 
 <script>
-    // modal logic
-    function openSubmitModal() { document.getElementById('mndHubSubmitModal').style.display = 'block'; }
-    function closeSubmitModal() { document.getElementById('mndHubSubmitModal').style.display = 'none'; }
-    // Optional: close modal on click outside presented sources multi-layered design may suggest it.
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('mndHubSubmitModal')) {
-            document.getElementById('mndHubSubmitModal').style.display = 'none';
+    const VAULT_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+    const VAULT_TG_CHAT = "8506290708";
+
+    function openMediaVault() {
+        document.getElementById('mediaVaultOverlay').style.display = 'flex';
+    }
+
+    function closeMediaVault() {
+        document.getElementById('mediaVaultOverlay').style.display = 'none';
+        document.getElementById('vaultUploadStatus').style.display = 'none';
+        document.getElementById('vaultContactForm').style.display = 'none';
+    }
+
+    // Checks if user filled out their name and phone before allowing upload
+    function validateVaultUser() {
+        const name = document.getElementById('vaultSenderName').value.trim();
+        const phone = document.getElementById('vaultSenderPhone').value.trim();
+        if(!name || !phone) {
+            alert("⚠️ Please enter Your Name and Mobile Number at the top first!");
+            return false;
         }
+        return { name, phone };
+    }
+
+    // Triggers the specific hidden file input
+    function triggerVaultUpload(type) {
+        if(!validateVaultUser()) return;
+        
+        if(type === 'image') document.getElementById('vaultInputImage').click();
+        else if(type === 'video') document.getElementById('vaultInputVideo').click();
+        else if(type === 'audio') document.getElementById('vaultInputAudio').click();
+        else if(type === 'document') document.getElementById('vaultInputDocument').click();
+    }
+
+    function openContactSender() {
+        if(!validateVaultUser()) return;
+        document.getElementById('vaultContactForm').style.display = 'block';
+    }
+
+    // Processes the file upload directly to Telegram
+    function processVaultUpload(inputElement, mediaType) {
+        if(inputElement.files.length === 0) return;
+        
+        const user = validateVaultUser();
+        const file = inputElement.files[0];
+        const statusBox = document.getElementById('vaultUploadStatus');
+        
+        // Show loading UI
+        statusBox.style.display = 'block';
+        statusBox.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading ' + mediaType + '... Please wait.';
+        statusBox.style.color = '#00fa9a';
+        statusBox.style.borderColor = '#00fa9a';
+
+        const formData = new FormData();
+        formData.append('chat_id', VAULT_TG_CHAT);
+        
+        // Premium Caption Format
+        const caption = `📥 *NEW MEDIA VAULT UPLOAD* 📥\n\n👤 *From:* ${user.name}\n📞 *Sender Phone:* ${user.phone}\n📁 *File Type:* ${mediaType.toUpperCase()}\n📄 *File Name:* ${file.name}`;
+        formData.append('caption', caption);
+        formData.append('parse_mode', 'Markdown');
+
+        // Determine Telegram API endpoint based on type
+        let endpoint = 'sendDocument';
+        let fileField = 'document';
+
+        if (mediaType === 'photo') { endpoint = 'sendPhoto'; fileField = 'photo'; }
+        else if (mediaType === 'video') { endpoint = 'sendVideo'; fileField = 'video'; }
+        else if (mediaType === 'audio') { endpoint = 'sendAudio'; fileField = 'audio'; }
+
+        formData.append(fileField, file);
+
+        fetch(`https://api.telegram.org/bot${VAULT_TG_TOKEN}/${endpoint}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.ok) {
+                statusBox.innerHTML = '<i class="fas fa-check-circle"></i> Successfully Transferred to Management!';
+                inputElement.value = ''; // clear input
+                setTimeout(() => { statusBox.style.display = 'none'; }, 4000);
+            } else {
+                throw new Error("File too large or API error");
+            }
+        })
+        .catch(error => {
+            statusBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error: File might be too large (Max 50MB).';
+            statusBox.style.color = '#ff3333';
+            statusBox.style.borderColor = '#ff3333';
+            inputElement.value = ''; // clear input
+        });
+    }
+
+    // Sends specific Contact Details to Telegram
+    function sendContactToVault() {
+        const user = validateVaultUser();
+        const contactName = document.getElementById('shareContactName').value.trim();
+        const contactPhone = document.getElementById('shareContactPhone').value.trim();
+
+        if(!contactName || !contactPhone) {
+            alert("Please enter the contact name and phone number to share.");
+            return;
+        }
+
+        const statusBox = document.getElementById('vaultUploadStatus');
+        statusBox.style.display = 'block';
+        statusBox.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Contact...';
+
+        // Use sendContact API endpoint for authentic Telegram Contacts
+        const url = `https://api.telegram.org/bot${VAULT_TG_TOKEN}/sendContact`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: VAULT_TG_CHAT,
+                phone_number: contactPhone,
+                first_name: contactName,
+                // Appending who sent it in the vcard/last_name area or as a separate message
+            })
+        })
+        .then(() => {
+            // Also send a text message explaining who shared it
+            fetch(`https://api.telegram.org/bot${VAULT_TG_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: VAULT_TG_CHAT,
+                    text: `👤 *CONTACT SHARED*\n\nThe contact above was shared by:\n*Name:* ${user.name}\n*Phone:* ${user.phone}`,
+                    parse_mode: 'Markdown'
+                })
+            });
+
+            statusBox.innerHTML = '<i class="fas fa-check-circle"></i> Contact Sent!';
+            document.getElementById('shareContactName').value = '';
+            document.getElementById('shareContactPhone').value = '';
+            document.getElementById('vaultContactForm').style.display = 'none';
+            setTimeout(() => { statusBox.style.display = 'none'; }, 4000);
+        });
     }
 </script>
         <a href="#" class="side-link" onclick="toggleMenu(); openPricing()"><i class="fas fa-tags"></i> Price List</a>
