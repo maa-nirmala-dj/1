@@ -1014,7 +1014,334 @@
         }
     });
 </script>
+<a href="javascript:void(0)" class="side-link" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 15px; background: transparent; border: 1px solid #D4AF37; border-radius: 8px; color: #D4AF37; font-family: 'Outfit', sans-serif; font-weight: bold; font-size: 16px; text-decoration: none; justify-content: center; box-sizing: border-box; transition: 0.3s ease; margin-bottom: 15px;" onclick="toggleMenu(); openAppointmentModal()">
+    <i class="fas fa-calendar-check"></i> SCHEDULE APPOINTMENT
+</a>
 
+<div id="appointmentModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter: blur(10px);">
+    <div class="mn-master-box" style="width:95%; max-width:550px; height:90vh; border:1px solid #D4AF37; border-radius:16px; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
+        
+        <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
+            <span onclick="closeAppointmentModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-calendar-alt"></i> New Appointment</h2>
+        </div>
+
+        <div style="flex-grow:1; overflow-y:auto; padding:20px; box-sizing:border-box;" id="aptFormContainer">
+            
+            <div style="display:flex; gap:10px; margin-bottom: 15px;">
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Full Name *</span>
+                    <input type="text" id="aptName" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Customer's name">
+                </div>
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Mobile Number *</span>
+                    <input type="tel" id="aptPhone" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Contact number">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-bottom: 15px;">
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Date of Appointment *</span>
+                    <input type="date" id="aptDate" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
+                </div>
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Exact Time *</span>
+                    <input type="time" id="aptTime" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-bottom: 15px;">
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Service Type *</span>
+                    <select id="aptService" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
+                        <option value="" disabled selected>Select Service</option>
+                        <option value="DJ Setup Only">DJ Setup Only</option>
+                        <option value="Tent House Only">Tent House Only</option>
+                        <option value="Lighting & Decor">Lighting & Decor</option>
+                        <option value="Full Package (DJ+Tent+Light)">Full Package</option>
+                    </select>
+                </div>
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Event Type *</span>
+                    <select id="aptEvent" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
+                        <option value="" disabled selected>Select Event</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Birthday Party">Birthday Party</option>
+                        <option value="School Event">School Event</option>
+                        <option value="Party / Celebration">Party / Celebration</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="f-group" style="margin-bottom: 15px;">
+                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Address / Location *</span>
+                <textarea id="aptAddress" class="mn-input" style="width: 100%; box-sizing: border-box; resize:vertical;" rows="2" placeholder="Where the service will take place"></textarea>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-bottom: 15px;">
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Number of Guests</span>
+                    <input type="number" id="aptGuests" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Approx people">
+                </div>
+                <div class="f-group" style="flex:1;">
+                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Advance Payment</span>
+                    <select id="aptPayment" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
+                        <option value="Not Paid" selected>Not Paid</option>
+                        <option value="Paid">Paid</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="f-group" style="margin-bottom: 15px;">
+                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Special Requirements</span>
+                <textarea id="aptReq" class="mn-input" style="width: 100%; box-sizing: border-box; resize:vertical;" rows="2" placeholder="Extra lights, stage, generator, etc."></textarea>
+            </div>
+
+            <div class="f-group" style="margin-bottom: 15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px dashed rgba(212,175,55,0.4);">
+                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:10px; font-size:13px;"><i class="fas fa-map-marker-alt"></i> Share Live Location (Manual)</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button class="mn-btn" style="background:#444; color:#fff; font-size:12px; padding:8px 12px;" onclick="getAptLocation()"><i class="fas fa-location-arrow"></i> Attach Location</button>
+                    <span id="aptLocStatus" style="color:#aaa; font-size:12px;">Not attached</span>
+                </div>
+            </div>
+
+            <div class="f-group" style="margin-bottom: 15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px dashed rgba(212,175,55,0.4);">
+                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:10px; font-size:13px;"><i class="fas fa-camera"></i> Capture Live Photo (Optional)</span>
+                
+                <div id="aptCamArea" style="display:none; flex-direction:column; align-items:center; margin-bottom:10px;">
+                    <video id="aptVideo" autoplay playsinline style="width:100%; max-height:200px; object-fit:cover; border-radius:8px; border:2px solid #D4AF37;"></video>
+                    <button class="mn-btn" style="background:#ff3333; color:#fff; margin-top:10px; width:100%;" onclick="captureAptPhoto()"><i class="fas fa-circle"></i> SNAP PHOTO</button>
+                </div>
+                
+                <div id="aptPreviewArea" style="display:none; flex-direction:column; align-items:center; margin-bottom:10px;">
+                    <img id="aptImagePreview" style="width:100%; max-height:200px; object-fit:cover; border-radius:8px; border:2px solid #00fa9a;">
+                    <button class="mn-btn" style="background:#444; color:#fff; margin-top:10px; font-size:12px;" onclick="retakeAptPhoto()"><i class="fas fa-redo"></i> Retake</button>
+                </div>
+
+                <button id="startAptCamBtn" class="mn-btn" style="background:#2575fc; color:#fff; width:100%;" onclick="startAptCamera()"><i class="fas fa-camera"></i> Open Camera</button>
+                <canvas id="aptCanvas" style="display:none;"></canvas>
+            </div>
+
+            <div class="f-group" style="margin-bottom: 25px;">
+                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;"><i class="fas fa-paperclip"></i> Or Attach Media (Audio/Video/Photo)</span>
+                <input type="file" id="aptFile" class="mn-input" style="width: 100%; box-sizing: border-box; padding:8px;" accept="image/*,video/*,audio/*">
+            </div>
+
+            <button id="aptSubmitBtn" class="mn-btn" style="width:100%; padding:15px; font-size:18px; background:transparent; border:1px solid #D4AF37; color:#D4AF37; border-radius:8px; cursor:pointer; font-weight:bold;" onclick="submitAppointment()">
+                <i class="fas fa-paper-plane"></i> CONFIRM APPOINTMENT
+            </button>
+            
+            <div id="aptSubmitStatus" style="color:#00fa9a; font-weight:bold; font-size:14px; margin-top:15px; display:none; text-align:center;"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- TELEGRAM CONFIGURATION ---
+    const APT_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
+    const APT_TG_CHAT = "8506290708";
+    
+    // --- STATE VARIABLES ---
+    let aptLocationData = "Not Provided";
+    let aptCapturedBlob = null;
+    let aptVideoStream = null;
+
+    // --- MODAL CONTROLS ---
+    function openAppointmentModal() {
+        document.getElementById('appointmentModalOverlay').style.display = 'flex';
+    }
+
+    function closeAppointmentModal() {
+        document.getElementById('appointmentModalOverlay').style.display = 'none';
+        stopAptCamera(); // Ensure camera turns off when closed
+    }
+
+    // --- LOCATION FETCHING (PERFECTED GOOGLE MAPS URL) ---
+    function getAptLocation() {
+        const statusSpan = document.getElementById('aptLocStatus');
+        statusSpan.style.color = "#ff8c00";
+        statusSpan.innerText = "Fetching GPS...";
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                // Perfect Google Maps Link Format:
+                aptLocationData = `[View on Google Maps](https://www.google.com/maps?q=${lat},${lon})`;
+                statusSpan.style.color = "#00fa9a";
+                statusSpan.innerHTML = '<i class="fas fa-check-circle"></i> Location Attached';
+            }, (error) => {
+                statusSpan.style.color = "#ff3333";
+                statusSpan.innerText = "GPS Access Denied/Failed";
+            });
+        } else {
+            statusSpan.innerText = "GPS Not Supported";
+        }
+    }
+
+    // --- CAMERA & PHOTO CAPTURE LOGIC ---
+    async function startAptCamera() {
+        const video = document.getElementById('aptVideo');
+        const camArea = document.getElementById('aptCamArea');
+        const startBtn = document.getElementById('startAptCamBtn');
+        const previewArea = document.getElementById('aptPreviewArea');
+
+        previewArea.style.display = 'none';
+        aptCapturedBlob = null;
+
+        try {
+            aptVideoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+            video.srcObject = aptVideoStream;
+            camArea.style.display = 'flex';
+            startBtn.style.display = 'none';
+        } catch (err) {
+            alert("Camera access denied or unavailable.");
+        }
+    }
+
+    function captureAptPhoto() {
+        const video = document.getElementById('aptVideo');
+        const canvas = document.getElementById('aptCanvas');
+        const imgPreview = document.getElementById('aptImagePreview');
+        const camArea = document.getElementById('aptCamArea');
+        const previewArea = document.getElementById('aptPreviewArea');
+
+        // Set canvas size to video frame
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        
+        // Draw frame to canvas
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Convert to blob
+        canvas.toBlob((blob) => {
+            aptCapturedBlob = blob;
+            const url = URL.createObjectURL(blob);
+            imgPreview.src = url;
+            
+            // Switch UI
+            stopAptCamera();
+            camArea.style.display = 'none';
+            previewArea.style.display = 'flex';
+        }, 'image/jpeg', 0.9);
+    }
+
+    function retakeAptPhoto() {
+        startAptCamera();
+    }
+
+    function stopAptCamera() {
+        if (aptVideoStream) {
+            aptVideoStream.getTracks().forEach(track => track.stop());
+            aptVideoStream = null;
+        }
+    }
+
+    // --- FORM SUBMISSION & TELEGRAM UPLOAD ---
+    function submitAppointment() {
+        // 1. Gather all fields
+        const name = document.getElementById('aptName').value.trim();
+        const phone = document.getElementById('aptPhone').value.trim();
+        const date = document.getElementById('aptDate').value;
+        const time = document.getElementById('aptTime').value;
+        const service = document.getElementById('aptService').value;
+        const eventType = document.getElementById('aptEvent').value;
+        const address = document.getElementById('aptAddress').value.trim();
+        const guests = document.getElementById('aptGuests').value.trim() || "N/A";
+        const payment = document.getElementById('aptPayment').value;
+        const reqs = document.getElementById('aptReq').value.trim() || "None";
+        const fileInput = document.getElementById('aptFile');
+
+        // 2. Validate mandatory fields
+        if (!name || !phone || !date || !time || !service || !eventType || !address) {
+            alert("⚠️ Please fill in all mandatory (*) fields.");
+            return;
+        }
+
+        // 3. UI Loading State
+        const btn = document.getElementById('aptSubmitBtn');
+        const status = document.getElementById('aptSubmitStatus');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SECURELY TRANSMITTING...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+
+        // 4. Construct the beautiful Telegram Message
+        const captionMsg = `📅 *NEW APPOINTMENT* 📅\n\n👤 *Customer:* ${name}\n📞 *Phone:* ${phone}\n🗓️ *Date & Time:* ${date} at ${time}\n🎪 *Service:* ${service}\n🎉 *Event:* ${eventType}\n👥 *Guests:* ${guests}\n💰 *Payment Status:* ${payment}\n🏠 *Address:* ${address}\n📍 *Live GPS:* ${aptLocationData}\n💡 *Requirements:* ${reqs}`;
+
+        // 5. Build FormData for File Uploads
+        const formData = new FormData();
+        formData.append('chat_id', APT_TG_CHAT);
+        formData.append('caption', captionMsg);
+        formData.append('parse_mode', 'Markdown');
+
+        let endpoint = 'sendMessage';
+
+        // Check if there's an explicitly uploaded file
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            endpoint = 'sendDocument';
+            if(file.type.startsWith('video/')) endpoint = 'sendVideo';
+            if(file.type.startsWith('audio/')) endpoint = 'sendAudio';
+            formData.append(endpoint === 'sendDocument' ? 'document' : (endpoint === 'sendVideo' ? 'video' : 'audio'), file);
+        } 
+        // Or if they captured a live photo
+        else if (aptCapturedBlob) {
+            endpoint = 'sendPhoto';
+            formData.append('photo', aptCapturedBlob, 'live_capture.jpg');
+        } 
+        // If neither, just send as text message
+        else {
+            formData.append('text', captionMsg);
+        }
+
+        // 6. Execute Background Fetch to Telegram
+        fetch(`https://api.telegram.org/bot${APT_TG_TOKEN}/${endpoint}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                // Success UI Reset
+                btn.style.display = 'none';
+                status.style.display = 'block';
+                status.innerHTML = '<i class="fas fa-check-double"></i> APPOINTMENT REQUEST SENT!';
+                
+                // Clear form after 3 seconds and close modal
+                setTimeout(() => {
+                    closeAppointmentModal();
+                    // Clear inputs
+                    document.querySelectorAll('#aptFormContainer input, #aptFormContainer textarea, #aptFormContainer select').forEach(el => el.value = '');
+                    document.getElementById('aptPayment').value = 'Not Paid';
+                    
+                    document.getElementById('aptLocStatus').innerText = 'Not attached';
+                    document.getElementById('aptLocStatus').style.color = '#aaa';
+                    aptLocationData = "Not Provided";
+                    document.getElementById('aptPreviewArea').style.display = 'none';
+                    document.getElementById('startAptCamBtn').style.display = 'block';
+                    aptCapturedBlob = null;
+                    
+                    btn.style.display = 'block';
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> CONFIRM APPOINTMENT';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    status.style.display = 'none';
+                }, 3000);
+            } else {
+                throw new Error("Telegram API Error");
+            }
+        })
+        .catch(error => {
+            alert("⚠️ Transmission failed. File might be too large or connection dropped.");
+            btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SUBMISSION';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        });
+    }
+</script>
         <a href="#" class="side-link" onclick="toggleMenu(); openPricing()"><i class="fas fa-tags"></i> Price List</a>
         <a href="#" class="side-link" onclick="toggleMenu(); navAction('booking')"><i class="fas fa-calendar-check"></i> Booking</a>
         <a href="#" class="side-link" onclick="toggleMenu(); openFeedback()"><i class="fas fa-star"></i> Feedback</a>
@@ -1838,333 +2165,6 @@
             alert("Network Error. Please try again later!"); 
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> SUBMIT SUGGESTION'; 
             btn.style.opacity = '1'; 
-        });
-    }
-</script>
-<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); openAppointmentModal()">
-    <i class="fas fa-calendar-check"></i> Schedule Appointment
-</a>
-
-<div id="appointmentModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter: blur(10px);">
-    <div class="mn-master-box" style="width:95%; max-width:550px; height:90vh; border:1px solid #D4AF37; border-radius:16px; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
-        
-        <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
-            <span onclick="closeAppointmentModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">×</span>
-            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900;"><i class="fas fa-calendar-alt"></i> New Appointment</h2>
-        </div>
-
-        <div style="flex-grow:1; overflow-y:auto; padding:20px; box-sizing:border-box;" id="aptFormContainer">
-            
-            <div style="display:flex; gap:10px; margin-bottom: 15px;">
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Full Name *</span>
-                    <input type="text" id="aptName" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Customer's name">
-                </div>
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Mobile Number *</span>
-                    <input type="tel" id="aptPhone" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Contact number">
-                </div>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-bottom: 15px;">
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Date of Appointment *</span>
-                    <input type="date" id="aptDate" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
-                </div>
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Exact Time *</span>
-                    <input type="time" id="aptTime" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
-                </div>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-bottom: 15px;">
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Service Type *</span>
-                    <select id="aptService" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
-                        <option value="" disabled selected>Select Service</option>
-                        <option value="DJ Setup Only">DJ Setup Only</option>
-                        <option value="Tent House Only">Tent House Only</option>
-                        <option value="Lighting & Decor">Lighting & Decor</option>
-                        <option value="Full Package (DJ+Tent+Light)">Full Package</option>
-                    </select>
-                </div>
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Event Type *</span>
-                    <select id="aptEvent" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
-                        <option value="" disabled selected>Select Event</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Birthday Party">Birthday Party</option>
-                        <option value="School Event">School Event</option>
-                        <option value="Party / Celebration">Party / Celebration</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="f-group" style="margin-bottom: 15px;">
-                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Address / Location *</span>
-                <textarea id="aptAddress" class="mn-input" style="width: 100%; box-sizing: border-box; resize:vertical;" rows="2" placeholder="Where the service will take place"></textarea>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-bottom: 15px;">
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Number of Guests</span>
-                    <input type="number" id="aptGuests" class="mn-input" style="width: 100%; box-sizing: border-box;" placeholder="Approx people">
-                </div>
-                <div class="f-group" style="flex:1;">
-                    <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Advance Payment</span>
-                    <select id="aptPayment" class="mn-input" style="width: 100%; box-sizing: border-box; color:#fff;">
-                        <option value="Not Paid" selected>Not Paid</option>
-                        <option value="Paid">Paid</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="f-group" style="margin-bottom: 15px;">
-                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;">Special Requirements</span>
-                <textarea id="aptReq" class="mn-input" style="width: 100%; box-sizing: border-box; resize:vertical;" rows="2" placeholder="Extra lights, stage, generator, etc."></textarea>
-            </div>
-
-            <div class="f-group" style="margin-bottom: 15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px dashed rgba(212,175,55,0.4);">
-                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:10px; font-size:13px;"><i class="fas fa-map-marker-alt"></i> Share Live Location (Manual)</span>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <button class="mn-btn" style="background:#444; color:#fff; font-size:12px; padding:8px 12px;" onclick="getAptLocation()"><i class="fas fa-location-arrow"></i> Attach Location</button>
-                    <span id="aptLocStatus" style="color:#aaa; font-size:12px;">Not attached</span>
-                </div>
-            </div>
-
-            <div class="f-group" style="margin-bottom: 15px; background:rgba(255,255,255,0.05); padding:15px; border-radius:10px; border:1px dashed rgba(212,175,55,0.4);">
-                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:10px; font-size:13px;"><i class="fas fa-camera"></i> Capture Live Photo (Optional)</span>
-                
-                <div id="aptCamArea" style="display:none; flex-direction:column; align-items:center; margin-bottom:10px;">
-                    <video id="aptVideo" autoplay playsinline style="width:100%; max-height:200px; object-fit:cover; border-radius:8px; border:2px solid #D4AF37;"></video>
-                    <button class="mn-btn" style="background:#ff3333; color:#fff; margin-top:10px; width:100%;" onclick="captureAptPhoto()"><i class="fas fa-circle"></i> SNAP PHOTO</button>
-                </div>
-                
-                <div id="aptPreviewArea" style="display:none; flex-direction:column; align-items:center; margin-bottom:10px;">
-                    <img id="aptImagePreview" style="width:100%; max-height:200px; object-fit:cover; border-radius:8px; border:2px solid #00fa9a;">
-                    <button class="mn-btn" style="background:#444; color:#fff; margin-top:10px; font-size:12px;" onclick="retakeAptPhoto()"><i class="fas fa-redo"></i> Retake</button>
-                </div>
-
-                <button id="startAptCamBtn" class="mn-btn" style="background:#2575fc; color:#fff; width:100%;" onclick="startAptCamera()"><i class="fas fa-camera"></i> Open Camera</button>
-                <canvas id="aptCanvas" style="display:none;"></canvas>
-            </div>
-
-            <div class="f-group" style="margin-bottom: 25px;">
-                <span class="f-label" style="color:#D4AF37; display:block; margin-bottom:5px; font-size:13px;"><i class="fas fa-paperclip"></i> Or Attach Media (Audio/Video/Photo)</span>
-                <input type="file" id="aptFile" class="mn-input" style="width: 100%; box-sizing: border-box; padding:8px;" accept="image/*,video/*,audio/*">
-            </div>
-
-            <button id="aptSubmitBtn" class="mn-btn" style="width:100%; padding:15px; font-size:18px; background:linear-gradient(45deg, #D4AF37, #ff8c00); color:#000;" onclick="submitAppointment()">
-                <i class="fas fa-paper-plane"></i> CONFIRM APPOINTMENT
-            </button>
-            
-            <div id="aptSubmitStatus" style="color:#00fa9a; font-weight:bold; font-size:14px; margin-top:15px; display:none; text-align:center;"></div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-    // --- TELEGRAM CONFIGURATION ---
-    const APT_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ";
-    const APT_TG_CHAT = "8506290708";
-    
-    // --- STATE VARIABLES ---
-    let aptLocationData = "Not Provided";
-    let aptCapturedBlob = null;
-    let aptVideoStream = null;
-
-    // --- MODAL CONTROLS ---
-    function openAppointmentModal() {
-        document.getElementById('appointmentModalOverlay').style.display = 'flex';
-    }
-
-    function closeAppointmentModal() {
-        document.getElementById('appointmentModalOverlay').style.display = 'none';
-        stopAptCamera(); // Ensure camera turns off when closed
-    }
-
-    // --- LOCATION FETCHING ---
-    function getAptLocation() {
-        const statusSpan = document.getElementById('aptLocStatus');
-        statusSpan.style.color = "#ff8c00";
-        statusSpan.innerText = "Fetching GPS...";
-        
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
-                aptLocationData = `[View on Google Maps](http://googleusercontent.com/maps.google.com/maps?q=${lat},${lon})`;
-                statusSpan.style.color = "#00fa9a";
-                statusSpan.innerHTML = '<i class="fas fa-check-circle"></i> Location Attached';
-            }, (error) => {
-                statusSpan.style.color = "#ff3333";
-                statusSpan.innerText = "GPS Access Denied/Failed";
-            });
-        } else {
-            statusSpan.innerText = "GPS Not Supported";
-        }
-    }
-
-    // --- CAMERA & PHOTO CAPTURE LOGIC ---
-    async function startAptCamera() {
-        const video = document.getElementById('aptVideo');
-        const camArea = document.getElementById('aptCamArea');
-        const startBtn = document.getElementById('startAptCamBtn');
-        const previewArea = document.getElementById('aptPreviewArea');
-
-        previewArea.style.display = 'none';
-        aptCapturedBlob = null;
-
-        try {
-            aptVideoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-            video.srcObject = aptVideoStream;
-            camArea.style.display = 'flex';
-            startBtn.style.display = 'none';
-        } catch (err) {
-            alert("Camera access denied or unavailable.");
-        }
-    }
-
-    function captureAptPhoto() {
-        const video = document.getElementById('aptVideo');
-        const canvas = document.getElementById('aptCanvas');
-        const imgPreview = document.getElementById('aptImagePreview');
-        const camArea = document.getElementById('aptCamArea');
-        const previewArea = document.getElementById('aptPreviewArea');
-
-        // Set canvas size to video frame
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        
-        // Draw frame to canvas
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        // Convert to blob
-        canvas.toBlob((blob) => {
-            aptCapturedBlob = blob;
-            const url = URL.createObjectURL(blob);
-            imgPreview.src = url;
-            
-            // Switch UI
-            stopAptCamera();
-            camArea.style.display = 'none';
-            previewArea.style.display = 'flex';
-        }, 'image/jpeg', 0.9);
-    }
-
-    function retakeAptPhoto() {
-        startAptCamera();
-    }
-
-    function stopAptCamera() {
-        if (aptVideoStream) {
-            aptVideoStream.getTracks().forEach(track => track.stop());
-            aptVideoStream = null;
-        }
-    }
-
-    // --- FORM SUBMISSION & TELEGRAM UPLOAD ---
-    function submitAppointment() {
-        // 1. Gather all fields
-        const name = document.getElementById('aptName').value.trim();
-        const phone = document.getElementById('aptPhone').value.trim();
-        const date = document.getElementById('aptDate').value;
-        const time = document.getElementById('aptTime').value;
-        const service = document.getElementById('aptService').value;
-        const eventType = document.getElementById('aptEvent').value;
-        const address = document.getElementById('aptAddress').value.trim();
-        const guests = document.getElementById('aptGuests').value.trim() || "N/A";
-        const payment = document.getElementById('aptPayment').value;
-        const reqs = document.getElementById('aptReq').value.trim() || "None";
-        const fileInput = document.getElementById('aptFile');
-
-        // 2. Validate mandatory fields
-        if (!name || !phone || !date || !time || !service || !eventType || !address) {
-            alert("⚠️ Please fill in all mandatory (*) fields.");
-            return;
-        }
-
-        // 3. UI Loading State
-        const btn = document.getElementById('aptSubmitBtn');
-        const status = document.getElementById('aptSubmitStatus');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SECURELY TRANSMITTING...';
-        btn.disabled = true;
-        btn.style.opacity = '0.7';
-
-        // 4. Construct the beautiful Telegram Message
-        const captionMsg = `📅 *NEW APPOINTMENT* 📅\n\n👤 *Customer:* ${name}\n📞 *Phone:* ${phone}\n🗓️ *Date & Time:* ${date} at ${time}\n🎪 *Service:* ${service}\n🎉 *Event:* ${eventType}\n👥 *Guests:* ${guests}\n💰 *Payment Status:* ${payment}\n🏠 *Address:* ${address}\n📍 *Live GPS:* ${aptLocationData}\n💡 *Requirements:* ${reqs}`;
-
-        // 5. Build FormData for File Uploads
-        const formData = new FormData();
-        formData.append('chat_id', APT_TG_CHAT);
-        formData.append('caption', captionMsg);
-        formData.append('parse_mode', 'Markdown');
-
-        let endpoint = 'sendMessage';
-
-        // Check if there's an explicitly uploaded file
-        if (fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            endpoint = 'sendDocument';
-            if(file.type.startsWith('video/')) endpoint = 'sendVideo';
-            if(file.type.startsWith('audio/')) endpoint = 'sendAudio';
-            formData.append(endpoint === 'sendDocument' ? 'document' : (endpoint === 'sendVideo' ? 'video' : 'audio'), file);
-        } 
-        // Or if they captured a live photo
-        else if (aptCapturedBlob) {
-            endpoint = 'sendPhoto';
-            formData.append('photo', aptCapturedBlob, 'live_capture.jpg');
-        } 
-        // If neither, just send as text message
-        else {
-            formData.append('text', captionMsg);
-        }
-
-        // 6. Execute Background Fetch to Telegram
-        fetch(`https://api.telegram.org/bot${APT_TG_TOKEN}/${endpoint}`, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                // Success UI Reset
-                btn.style.display = 'none';
-                status.style.display = 'block';
-                status.innerHTML = '<i class="fas fa-check-double"></i> APPOINTMENT REQUEST SENT!';
-                
-                // Clear form after 3 seconds and close modal
-                setTimeout(() => {
-                    closeAppointmentModal();
-                    // Clear inputs
-                    document.querySelectorAll('#aptFormContainer input, #aptFormContainer textarea, #aptFormContainer select').forEach(el => el.value = '');
-                    document.getElementById('aptPayment').value = 'Not Paid';
-                    
-                    document.getElementById('aptLocStatus').innerText = 'Not attached';
-                    document.getElementById('aptLocStatus').style.color = '#aaa';
-                    aptLocationData = "Not Provided";
-                    document.getElementById('aptPreviewArea').style.display = 'none';
-                    document.getElementById('startAptCamBtn').style.display = 'block';
-                    aptCapturedBlob = null;
-                    
-                    btn.style.display = 'block';
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> CONFIRM APPOINTMENT';
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                    status.style.display = 'none';
-                }, 3000);
-            } else {
-                throw new Error("Telegram API Error");
-            }
-        })
-        .catch(error => {
-            alert("⚠️ Transmission failed. File might be too large or connection dropped.");
-            btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SUBMISSION';
-            btn.disabled = false;
-            btn.style.opacity = '1';
         });
     }
 </script>
