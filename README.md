@@ -2143,8 +2143,6 @@
         <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
 <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
-<nav class="navbar" id="mainNavbar">
-    <div class="brand">
         <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
         <span><i class="fas fa-crown"></i> MND Hub</span>
     </div>
@@ -2165,6 +2163,8 @@
     <div class="mn-master-box" id="masterBoxContent">
         <div class="master-header">
             <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
+        </div>
             
     <div class="container" id="homeSection">
             <style>
