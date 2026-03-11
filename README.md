@@ -2165,9 +2165,8 @@
     <div class="mn-master-box" id="masterBoxContent">
         <div class="master-header">
             <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
-            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
-        </div>
-        
+            
+
         
 <style>
     body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
