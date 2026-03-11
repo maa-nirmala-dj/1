@@ -2139,35 +2139,37 @@
     </div>
 
     <div id="main-interface">
-        <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
-        <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
-<div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+    <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
+    <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
-<nav class="navbar" id="mainNavbar">
-    <div class="brand">
-        <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
-        <span><i class="fas fa-crown"></i> MND Hub</span>
-    </div>
-    <div class="nav-right">
-        <div id="google_translate_element"></div>
-        <div class="controls">
-            <button class="nav-btn-square theme-btn" id="themeIcon" onclick="themeSwitch()">
-                <i class="fas fa-sun"></i>
-            </button>
-            <button class="nav-btn-square set-btn" id="masterSettingsIcon" onclick="openMasterSettings()">
-                <i class="fas fa-cog fa-spin-hover"></i>
-            </button>
+    <nav class="navbar" id="mainNavbar">
+        <div class="brand">
+            <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
+            <span><i class="fas fa-crown"></i> MND Hub</span>
         </div>
+        <div class="nav-right">
+            <div id="google_translate_element"></div>
+            <div class="controls">
+                <button class="nav-btn-square theme-btn" id="themeIcon" onclick="themeSwitch()">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="nav-btn-square set-btn" id="masterSettingsIcon" onclick="openMasterSettings()">
+                    <i class="fas fa-cog fa-spin-hover"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:9999999; justify-content:center; align-items:center;">
+        <div class="mn-master-box" id="masterBoxContent" style="width:100%; max-width:500px; height:85vh; background:linear-gradient(145deg, #110e08 0%, #050505 100%); border:1px solid #D4AF37; border-radius:20px; display:flex; flex-direction:column; overflow:hidden;">
+            <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
+                <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
+            </div>
+            </div>
     </div>
-</nav>
 
-<div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)">
-    <div class="mn-master-box" id="masterBoxContent">
-        <div class="master-header">
-            <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
-            
-
-        
 <style>
     body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
 
@@ -2192,10 +2194,52 @@
     .set-btn { background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.4); }
     .fa-spin-hover:hover { animation: fa-spin 2s infinite linear; }
 
-    /* Google Translate Fix */
-    #google_translate_element { max-width: 140px; overflow: hidden; }
-    .goog-te-gadget-simple { background-color: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; padding: 4px !important; border-radius: 4px !important; font-family: 'Outfit', sans-serif !important; }
-    
+    /* ==========================================
+       PERFECT SQUARE GOOGLE TRANSLATE BUTTON
+       ========================================== */
+    #google_translate_element { 
+        width: 38px; 
+        height: 38px; 
+        overflow: hidden; 
+        border-radius: 8px; 
+    }
+    .goog-te-gadget-simple { 
+        background-color: rgba(255, 255, 255, 0.05) !important; 
+        border: 1px solid #D4AF37 !important; 
+        border-radius: 8px !important; 
+        width: 38px !important; 
+        height: 38px !important; 
+        padding: 0 !important; 
+        display: flex !important; 
+        justify-content: center !important; 
+        align-items: center !important; 
+        box-sizing: border-box !important;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    .goog-te-gadget-simple:hover {
+        background-color: rgba(212,175,55,0.15) !important;
+        box-shadow: 0 0 10px rgba(212,175,55,0.4) !important;
+    }
+    /* Hide Google's default text and icons */
+    .goog-te-gadget-simple span,
+    .goog-te-gadget-icon,
+    .goog-te-menu-value span { 
+        display: none !important; 
+    }
+    /* Insert a premium gold Language Icon in the center */
+    .goog-te-gadget-simple::after {
+        content: '\f1ab'; /* FontAwesome Language Icon */
+        font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
+        font-weight: 900;
+        color: #D4AF37;
+        font-size: 16px;
+    }
+    .goog-logo-link { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
+</style>
+
 <script>
     // --- MODAL CONTROLS ---
     function openMasterSettings() { document.getElementById('masterSettingsOverlay').style.display = 'flex'; }
@@ -2213,8 +2257,9 @@
             document.body.style.backgroundColor = '#0a0a0c'; document.body.style.color = '#ffffff';
         }
     }
- 
-        <div class="container" id="homeSection">
+</script>
+
+<div class="container" id="homeSection">
             <style>
     /* --- IMPORT PREMIUM LUXURY FONTS --- */
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;600;800&display=swap');
