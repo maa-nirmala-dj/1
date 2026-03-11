@@ -2199,37 +2199,6 @@
                 <div class="setting-label"><div class="setting-icon" style="color:#ff3333;"><i class="fas fa-bullhorn"></i></div><div>Earthquake Bass<div style="font-size: 11px; color: #888;">Screen physically shakes!</div></div></div>
                 <label class="mn-switch"><input type="checkbox" id="toggleBass" onchange="applyEffectClass('toggleBass', 'bass-mode')"><span class="mn-slider"></span></label>
             </div>
-
-            <div class="setting-row">
-                <div class="setting-label"><div class="setting-icon" style="color:#00ff00;"><i class="fas fa-palette"></i></div><div>Dynamic RGB Shining<div style="font-size: 11px; color: #888;">Colors shift like DJ Lights</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleRGB" onchange="applyEffectClass('toggleRGB', 'rgb-mode')"><span class="mn-slider"></span></label>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-label"><div class="setting-icon" style="color:#fff;"><i class="fas fa-snowflake"></i></div><div>Magic Snowfall ❄️<div style="font-size: 11px; color: #888;">Beautiful winter effect</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleSnow" onchange="applySnowfall()"><span class="mn-slider"></span></label>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-label"><div class="setting-icon" style="color:#00bcd4;"><i class="fas fa-robot"></i></div><div>Auto-Reader Voice<div style="font-size: 11px; color: #888;">AI reads page to you</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-label"><div class="setting-icon" style="color:#ccc;"><i class="fas fa-newspaper"></i></div><div>Newspaper Mode<div style="font-size: 11px; color: #888;">Simple reading view</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleNewspaper" onchange="applyEffectClass('toggleNewspaper', 'newspaper-mode')"><span class="mn-slider"></span></label>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div id="effect-layer"></div>
-
-<audio id="alarmAudio" loop>
-    <source src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" type="audio/ogg">
-</audio>
-
 <style>
     body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
 
