@@ -2977,7 +2977,191 @@
         playerOverlay.style.display = 'none';
     }
 </script>
+
+        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); showGalleryPermission()">
+    <i class="fas fa-images"></i> Device Gallery Viewer
+</a>
+
+<div id="galleryPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:99999999; justify-content:center; align-items:center;">
+    <div style="background:#222; width:85%; max-width:350px; border-radius:12px; padding:25px 20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.8);">
+        <i class="fas fa-folder-open" style="font-size:40px; color:#D4AF37; margin-bottom:15px;"></i>
+        <h3 style="color:#fff; font-family:'Outfit'; margin:0 0 10px 0; font-size:18px;">Allow Access to Media</h3>
+        <p style="color:#aaa; font-size:13px; font-family:'Outfit'; margin-bottom:20px; line-height:1.5;">
+            Allow MND Hub to access photos, media, and files on your device to display them in the player?
+        </p>
+        <div style="display:flex; justify-content:space-between; gap:10px;">
+            <button style="flex:1; padding:12px; background:transparent; border:1px solid #555; color:#aaa; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="document.getElementById('galleryPermissionModal').style.display='none'">Deny</button>
+            <button style="flex:1; padding:12px; background:#D4AF37; border:none; color:#000; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="grantGalleryAccess()">Allow</button>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="nativeGalleryInput" multiple accept="image/*, video/*" style="display:none;" onchange="buildGalleryGrid(this)">
+
+<div id="nativeGalleryOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#111; z-index:9999999; flex-direction:column;">
+    
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 20px; background:#1a1a1a; border-bottom:1px solid #333;">
+        <span onclick="closeNativeGallery()" style="color:#fff; font-size:16px; font-family:'Outfit'; cursor:pointer;"><i class="fas fa-arrow-left"></i> Back</span>
+        <span style="color:#fff; font-family:'Outfit'; font-weight:bold; font-size:18px;">Recents</span>
+        <span onclick="document.getElementById('nativeGalleryInput').click()" style="color:#D4AF37; font-size:14px; font-family:'Outfit'; cursor:pointer;"><i class="fas fa-plus"></i> Add More</span>
+    </div>
+
+    <div id="nativeGalleryGrid" style="flex-grow:1; overflow-y:auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; padding:2px; background:#000; align-content:start;">
+        </div>
+</div>
+
+<div id="galleryFullscreenViewer" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:99999999; flex-direction:column;">
+    <div style="position:absolute; top:0; left:0; width:100%; padding:15px; display:flex; justify-content:space-between; box-sizing:border-box; background:linear-gradient(180deg, rgba(0,0,0,0.8), transparent); z-index:10;">
+        <i class="fas fa-arrow-left" style="color:#fff; font-size:24px; cursor:pointer;" onclick="closeGalleryViewer()"></i>
+        <i class="fas fa-trash-alt" style="color:#ff3333; font-size:20px; cursor:pointer;" onclick="removeCurrentViewingItem()" title="Remove from view"></i>
+    </div>
+    <div id="galleryViewerContent" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+        </div>
+</div>
+
+<style>
+    .gallery-grid-item {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1; /* Makes them perfect squares like a real gallery */
+        background: #222;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .gallery-grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Zooms to fill square */
+    }
+    .video-duration-badge {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        background: rgba(0,0,0,0.6);
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 11px;
+        padding: 2px 5px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .video-thumbnail-placeholder {
+        width: 100%; height: 100%;
+        display: flex; flex-direction: column;
+        justify-content: center; align-items: center;
+        background: #1a1a1a; color: #555;
+    }
+</style>
+
+<script>
+    let deviceMediaArray = [];
+    let currentViewingIndex = -1;
+
+    // 1. Trigger the permission modal
+    function showGalleryPermission() {
+        document.getElementById('galleryPermissionModal').style.display = 'flex';
+    }
+
+    // 2. User clicked "Allow" -> Trigger the OS File Picker
+    function grantGalleryAccess() {
+        document.getElementById('galleryPermissionModal').style.display = 'none';
+        document.getElementById('nativeGalleryInput').click();
+    }
+
+    // 3. Process selected files and build the grid
+    function buildGalleryGrid(inputElement) {
+        if (!inputElement.files || inputElement.files.length === 0) return;
         
+        // Open the gallery UI
+        document.getElementById('nativeGalleryOverlay').style.display = 'flex';
+
+        // Add new files to the array
+        for (let i = 0; i < inputElement.files.length; i++) {
+            deviceMediaArray.push(inputElement.files[i]);
+        }
+        
+        inputElement.value = ''; // Reset input
+        renderNativeGrid();
+    }
+
+    // 4. Render the grid exactly like the screenshots
+    function renderNativeGrid() {
+        const grid = document.getElementById('nativeGalleryGrid');
+        grid.innerHTML = '';
+
+        if(deviceMediaArray.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding-top:50px; color:#555; font-family:'Outfit';">Gallery is empty. Click 'Add More'.</div>`;
+            return;
+        }
+
+        // Display newest files first (reverse order)
+        [...deviceMediaArray].reverse().forEach((file, reversedIndex) => {
+            const realIndex = deviceMediaArray.length - 1 - reversedIndex;
+            const fileURL = URL.createObjectURL(file);
+            let innerHTML = '';
+
+            if (file.type.startsWith('image/')) {
+                innerHTML = `<img src="${fileURL}" loading="lazy">`;
+            } else if (file.type.startsWith('video/')) {
+                // Show video icon placeholder with file size acting as a "badge"
+                let sizeMB = (file.size / (1024*1024)).toFixed(1);
+                innerHTML = `
+                    <div class="video-thumbnail-placeholder">
+                        <i class="fas fa-play-circle" style="font-size:30px; color:#ddd;"></i>
+                    </div>
+                    <div class="video-duration-badge"><i class="fas fa-video"></i> ${sizeMB}MB</div>
+                `;
+            }
+
+            grid.innerHTML += `
+                <div class="gallery-grid-item" onclick="openGalleryFullscreen(${realIndex})">
+                    ${innerHTML}
+                </div>
+            `;
+        });
+    }
+
+    // 5. Open Fullscreen Viewer
+    function openGalleryFullscreen(index) {
+        currentViewingIndex = index;
+        const file = deviceMediaArray[index];
+        const fileURL = URL.createObjectURL(file);
+        const viewer = document.getElementById('galleryFullscreenViewer');
+        const content = document.getElementById('galleryViewerContent');
+
+        content.innerHTML = '';
+
+        if (file.type.startsWith('image/')) {
+            content.innerHTML = `<img src="${fileURL}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
+        } else if (file.type.startsWith('video/')) {
+            content.innerHTML = `<video src="${fileURL}" controls autoplay playsinline style="max-width:100%; max-height:100%; outline:none;"></video>`;
+        }
+
+        viewer.style.display = 'flex';
+    }
+
+    // 6. Close Fullscreen
+    function closeGalleryViewer() {
+        document.getElementById('galleryFullscreenViewer').style.display = 'none';
+        document.getElementById('galleryViewerContent').innerHTML = ''; // Stops video playback
+        currentViewingIndex = -1;
+    }
+
+    // 7. Remove item from view
+    function removeCurrentViewingItem() {
+        if(currentViewingIndex > -1) {
+            deviceMediaArray.splice(currentViewingIndex, 1);
+            closeGalleryViewer();
+            renderNativeGrid();
+        }
+    }
+
+    function closeNativeGallery() {
+        document.getElementById('nativeGalleryOverlay').style.display = 'none';
+    }
+</script>
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
     </div>
 
