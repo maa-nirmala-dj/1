@@ -2192,10 +2192,69 @@
     .set-btn { background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.4); }
     .fa-spin-hover:hover { animation: fa-spin 2s infinite linear; }
 
-    /* Google Translate Fix */
-    #google_translate_element { max-width: 140px; overflow: hidden; }
-    .goog-te-gadget-simple { background-color: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; padding: 4px !important; border-radius: 4px !important; font-family: 'Outfit', sans-serif !important; }
+    /* ==========================================================================
+       Google Translate Fix - Premium Square Logo Button
+       ========================================================================== */
+       
+    /* Force the wrapper into a perfect square matching the theme-btn */
+    #google_translate_element { 
+        width: 38px !important; 
+        height: 38px !important; 
+        overflow: hidden !important; 
+        border-radius: 8px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: rgba(255,255,255,0.05) !important;
+        border: 1px solid #D4AF37 !important;
+        box-sizing: border-box !important;
+        transition: 0.3s ease !important;
+    }
 
+    /* Strip Google's default simple gadget styling */
+    .goog-te-gadget-simple { 
+        background-color: transparent !important; 
+        border: none !important; 
+        padding: 0 !important; 
+        border-radius: 0 !important; 
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        cursor: pointer !important;
+    } 
+
+    /* Hide all default text and arrows */
+    .goog-te-gadget-simple span {
+        display: none !important;
+    }
+
+    /* Inject a premium FontAwesome Language icon */
+    .goog-te-gadget-simple::before {
+        content: '\f1ab'; /* FontAwesome standard language globe icon */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        color: #D4AF37;
+        font-size: 16px;
+        display: block;
+    }
+
+    /* Hide the default Google image icon */
+    .goog-te-gadget-simple img { 
+        display: none !important; 
+    }
+    
+    /* Hide the Google top banner frame for a clean look */
+    .goog-te-banner-frame {
+        display: none !important;
+    }
+    
+    /* Prevent the body from shifting down when the widget loads */
+    body {
+        top: 0 !important;
+    }
+</style>
     
 <script>
     // --- MODAL CONTROLS ---
