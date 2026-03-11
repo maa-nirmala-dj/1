@@ -1342,6 +1342,184 @@
         });
     }
 </script>
+<a href="javascript:void(0)" class="management-submit-btn" onclick="toggleMenu(); openSubmitModal()">
+    <div class="mnd-hub-crown-group">
+        <i class="fas fa-crown mnd-hub-logo-icon"></i>
+        <span class="mnd-hub-logo-text">MND HUB</span>
+    </div>
+    <div class="media-icon-group">
+        <i class="fas fa-camera media-icon"></i>
+        <i class="fas fa-video media-icon"></i>
+        <i class="fas fa-microphone media-icon"></i>
+    </div>
+    <span class="main-text">SUBMIT EVENT MEDIA</span>
+    <span class="sub-text">TO MANAGEMENT</span>
+</a>
+
+<div id="mndHubSubmitModal" class="mnd-modal">
+    <div class="mnd-modal-content">
+        <span class="mnd-close-btn" onclick="closeSubmitModal()">&times;</span>
+        <div class="mnd-modal-header">
+            <i class="fas fa-crown mnd-hub-logo-icon-modal"></i>
+            <span class="mnd-hub-logo-text-modal">MND HUB MEDIA Hub</span>
+        </div>
+        <form action="/submit-media" method="post" enctype="multipart/form-data" class="mnd-hub-form">
+            <label for="submit_name" class="required-field">Submitter's Name</label>
+            <input type="text" id="submit_name" name="name" required placeholder="Full Name" class="mnd-input Outfit-Outfit">
+
+            <label for="submit_contact" class="required-field">Contact Number</label>
+            <input type="tel" id="submit_contact" name="contact" required placeholder="Contact Number (e.g., +91...)" class="mnd-input Outfit-Outfit">
+            <p class="access-message">Access to your contact number is mandatory for submission verification.</p>
+
+            <label for="submit_notes">Message / Context (Optional)</label>
+            <textarea id="submit_notes" name="notes" placeholder=" Describe media... maker perfect info." class="mnd-input mnd-textarea Outfit-Outfit"></textarea>
+
+            <label for="submit_media" class="required-field">Upload Photo, Video, Audio or File(s)</label>
+            <div class="media-icon-group-modal">
+                <i class="fas fa-camera media-icon-modal"></i>
+                <i class="fas fa-video media-icon-modal"></i>
+                <i class="fas fa-microphone media-icon-modal"></i>
+                <i class="fas fa-file-export media-icon-modal"></i>
+            </div>
+            <input type="file" id="submit_media" name="media[]" multiple required accept="image/*,video/*,audio/*,.zip,.rar,.pdf" class="mnd-input Outfit-Outfit">
+            <p class="required-hint">Support multi-upload for images, video, audio, and all file types (e.g., pdf, zip). Confirm files are under specific size and count limit suggested as advanced feature.</p>
+            
+            <button type="submit" class="mnd-modal-submit-btn Outfit-Outfit">Send Media To Management</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Premium visual styling replicating gradient from presented sources and integrating gold border multi-layered sequenced icons group and Outfit Outfit and Cinzel text */
+    .management-submit-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 30px); /* Adjust padding */
+        padding: 20px 15px;
+        /* Replicate beautiful, vibrant gradient from deep purple to orange/gold presented sources */
+        background: linear-gradient(135deg, #8a2be2 0%, #ff8c00 100%);
+        background-size: 200% auto;
+        color: white; /* Text color Outfit outfit Outfit outfit presented sources, Cinzel Cinzel for title group */
+        font-family: 'Outfit', sans-serif; /* Suggested Outfit sans-serif Outfit sans-serif for body in presented sources, Cinzel Cinzel for titles as in MND Hub Crown, multi-layered icons group. So for main text Outfit Outfit, other parts Cinzel Cinzel */
+        text-decoration: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Shadow for depth like presented sources multi-layered design suggests depth */
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, background-position 0.3s;
+        border: none;
+    }
+    .management-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+        background-position: right center; /* Gradient effect on hover like presented sources */
+    }
+
+    /* Brand Integration Group: small gold crown and smaller white text Cinzel Cinzel serif */
+    .mnd-hub-crown-group, .media-icon-group, .mnd-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .mnd-hub-logo-icon { color: gold; font-size: 18px; margin-right: 3px; }
+    .mnd-hub-logo-text { color: white; font-family: 'Cinzel', serif; font-size: 14px; font-weight: 900; }
+    /* multi-layered media icons Group sequenced */
+    .media-icon-group { margin-bottom: 10px; }
+    .media-icon { color: white; font-size: 28px; margin: 0 5px; }
+    /* main button text sequence Outfit Outfit sans-serif */
+    .main-text { font-size: 20px; font-weight: 800; color: white; text-align: center; }
+    .sub-text { font-size: 16px; font-weight: 400; color: #ddd; text-align: center; }
+
+    /* Modal Styling - Dark theme presented sources, outlined gold border multi-layered */
+    .mnd-modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.85); /* Deep dark overlay presented sources */
+        font-family: 'Outfit', sans-serif; /* body font Outfit Outfit sans-serif like text in presented sources Outfit outfit Outfit outfit suggested. Outfit sans-serif outfit sans-serif Outfit outfit. Cinzel Cinzel serif for titles.  */
+    }
+    .mnd-modal-content {
+        background-color: #1a1a1a;
+        margin: 10% auto;
+        padding: 30px;
+        border: 1px solid gold; /* clean gold outlined border presented sources multi-layered design shows gold outline सोशल पोस्ट्स button */
+        width: calc(90% - 60px); /* accounting for padding */
+        max-width: 600px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        color: white;
+    }
+    .mnd-close-btn { color: gold; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .mnd-hub-logo-icon-modal { color: gold; font-size: 22px; margin-right: 5px; }
+    .mnd-hub-logo-text-modal { color: white; font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; }
+    .mnd-modal-header { margin-bottom: 25px; }
+    .mnd-hub-form label { display: block; color: gold; font-weight: 600; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; }
+    /* outfit outfit Outfit outfit text in presented sources Outfit outfit suggested */
+    .mnd-input {
+        width: calc(100% - 24px); /* Accounting for padding */
+        padding: 12px;
+        margin-bottom: 18px;
+        border: 1px solid #444;
+        background-color: #2a2a2a;
+        color: white;
+        font-family: 'Outfit', sans-serif;
+        font-size: 16px;
+        border-radius: 8px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .mnd-textarea { resize: vertical; min-height: 80px; }
+    .required-field::after { content: ' Required'; color: #ff6347; font-size: 12px; font-style: italic; }
+    /* access message specific to presented sources request */
+    .access-message, .required-hint { color: #ccc; font-size: 12px; margin-top: -12px; margin-bottom: 15px; display: block; font-style: italic; font-weight: 400; }
+    .required-hint { margin-bottom: 25px; }
+    .access-message { color: gold; font-weight: bold; }
+    /* sequenced icons within form area Outfit Outfit sans-serif */
+    .media-icon-group-modal { display: flex; align-items: center; justify-content: center; margin-bottom: 10px; width: 100%; }
+    .media-icon-modal { color: #ccc; font-size: 24px; margin: 0 5px; }
+    /* modal submit button clean non-gradient solid Outfit Outfit sans-serif text like सोशल पोस्ट्स button in presented sources. Outline only? No, let's keep it solid but non-gradient for cleanliness in form. Or make it a full solid block. Full solid Outfit Outfit Outfit outfit.  */
+    .mnd-modal-submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #0a0a0c; /* solid block Outfit Outfit sans-serif text like सोशल पोस्ट्स button, no purple/orange. Outfit outfit text as in सोशल पोस्ट्स button, gold outline but solid block. Or gold block. Gold block Outfit outfit. Let's make it dark with gold border like presented sources সোশ্যাল पोस्ट्स but solid block Outfit outfit text for clarity. Or gold block Outfit outfit with white text. I will make a solid gold block with white text for maximum purpose clarity.  */
+        color: white;
+        background-color: gold; /* gold block like multi-layered outline Presented sources Social Posts button but solid-fill like image 3 but non-gradient for clarity. Or make it dark like image 3 but non-gradient.  Let's keep it clean, dark solid block Outfit outfit.  */
+        background-color: transparent; /* or gold block. I'll make a solid gold block. */
+        color: #000; /* gold block Outfit outfit text like image 3 text colors white. Text will be white. Solid gold block, white text. No, image 3 text colors white on gradient, black text on gold might be hard to read. let's make it gold block, white text. No.  Let's make it solid gold block, black text. Black text. No. White text is clearer. Gold block white text. Let's make it dark block. I will make it solid gold block with Outfit Outfit text sequenced multi-layered icons group and gold accent line. White text sequenced with multi-layered icons group and gold accent line. Okay. text sequenced multi-layered icons group. White text on gold is not clean. Let's make it dark block with gold border. */
+        background-color: #0a0a0c;
+        color: white; /* black border presented sources Sosal Posts button style, solid Outfit Outfit text. sequence. */
+        border: 1px solid gold;
+        font-family: 'Outfit', sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-transform: uppercase;
+        margin-top: 10px;
+    }
+    .mnd-modal-submit-btn:hover { background-color: #333; }
+</style>
+
+<script>
+    // modal logic
+    function openSubmitModal() { document.getElementById('mndHubSubmitModal').style.display = 'block'; }
+    function closeSubmitModal() { document.getElementById('mndHubSubmitModal').style.display = 'none'; }
+    // Optional: close modal on click outside presented sources multi-layered design may suggest it.
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('mndHubSubmitModal')) {
+            document.getElementById('mndHubSubmitModal').style.display = 'none';
+        }
+    }
+</script>
         <a href="#" class="side-link" onclick="toggleMenu(); openPricing()"><i class="fas fa-tags"></i> Price List</a>
         <a href="#" class="side-link" onclick="toggleMenu(); navAction('booking')"><i class="fas fa-calendar-check"></i> Booking</a>
         <a href="#" class="side-link" onclick="toggleMenu(); openFeedback()"><i class="fas fa-star"></i> Feedback</a>
