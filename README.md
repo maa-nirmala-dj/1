@@ -2161,15 +2161,15 @@
     </div>
 </nav>
 
-<div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)">
-    <div class="mn-master-box" id="masterBoxContent">
-        <div class="master-header">
+<div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+    <div class="mn-master-box" id="masterBoxContent" style="width:100%; height:100%; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden;">
+        <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
             <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
             <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
         </div>
         
 <style>
-    body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
+    body { padding-top: 65px; overflow-x: hidden !important; }
 
     /* Fixed Navbar Styling */
     .navbar {
@@ -2179,11 +2179,12 @@
         padding: 0 15px; border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         z-index: 1000; box-sizing: border-box; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     }
-    .brand { display: flex; align-items: center; gap: 10px; color: #D4AF37; font-family: 'Cinzel', serif; font-weight: 900; font-size: 1.2rem; white-space: nowrap; }
+    .brand { display: flex; align-items: center; gap: 15px; color: #D4AF37; font-family: 'Cinzel', serif; font-weight: 900; font-size: 20px; text-transform: uppercase; }
+    .brand i.fa-bars { color: #ffffff; font-size: 24px; cursor: pointer; }
     .nav-right { display: flex; align-items: center; gap: 8px; }
     .controls { display: flex; gap: 8px; }
     
-    /* Square Buttons */
+    /* Square Buttons perfectly aligned */
     .nav-btn-square {
         width: 38px; height: 38px; border-radius: 8px; cursor: pointer;
         display: flex; justify-content: center; align-items: center; font-size: 16px; transition: 0.3s;
@@ -2192,87 +2193,37 @@
     .set-btn { background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.4); }
     .fa-spin-hover:hover { animation: fa-spin 2s infinite linear; }
 
-    /* ==========================================================================
-       Google Translate Fix - Premium Square Logo Button
-       ========================================================================== */
-       
-    /* Force the wrapper into a perfect square matching the theme-btn */
+    /* Google Translate widget forced to look exactly like the square buttons */
     #google_translate_element { 
-        width: 38px !important; 
-        height: 38px !important; 
-        overflow: hidden !important; 
-        border-radius: 8px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        background: rgba(255,255,255,0.05) !important;
-        border: 1px solid #D4AF37 !important;
-        box-sizing: border-box !important;
-        transition: 0.3s ease !important;
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
     }
-
-    /* Strip Google's default simple gadget styling */
     .goog-te-gadget-simple { 
         background-color: transparent !important; 
-        border: none !important; 
-        padding: 0 !important; 
-        border-radius: 0 !important; 
-        display: flex !important;
+        border: 1px solid #D4AF37 !important; 
+        border-radius: 8px !important; 
+        padding: 0 10px !important; 
+        height: 38px !important; /* EXACT same height as the other buttons */
+        display: flex !important; 
+        align-items: center !important; 
         justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        height: 100% !important;
-        cursor: pointer !important;
-    } 
-
-    /* Hide all default text and arrows */
-    .goog-te-gadget-simple span {
-        display: none !important;
+        box-sizing: border-box !important;
+        transition: 0.3s ease;
     }
-
-    /* Inject a premium FontAwesome Language icon */
-    .goog-te-gadget-simple::before {
-        content: '\f1ab'; /* FontAwesome standard language globe icon */
-        font-family: 'Font Awesome 5 Free';
-        font-weight: 900;
-        color: #D4AF37;
-        font-size: 16px;
-        display: block;
+    .goog-te-gadget-simple:hover {
+        background-color: rgba(212,175,55,0.1) !important;
     }
-
-    /* Hide the default Google image icon */
-    .goog-te-gadget-simple img { 
-        display: none !important; 
+    .goog-te-gadget-simple span { 
+        color: #D4AF37 !important; 
+        font-family: 'Outfit', sans-serif !important; 
+        font-weight: 700 !important; 
+        font-size: 13px !important; 
     }
-    
-    /* Hide the Google top banner frame for a clean look */
-    .goog-te-banner-frame {
-        display: none !important;
-    }
-    
-    /* Prevent the body from shifting down when the widget loads */
-    body {
-        top: 0 !important;
-    }
+    .goog-te-gadget-icon { display: none !important; }
+    .goog-logo-link { display: none !important; }
+    .goog-te-gadget { color: transparent !important; }
 </style>
-    
-<script>
-    // --- MODAL CONTROLS ---
-    function openMasterSettings() { document.getElementById('masterSettingsOverlay').style.display = 'flex'; }
-    function closeMasterSettings() { document.getElementById('masterSettingsOverlay').style.display = 'none'; }
-    function closeMasterOnOutsideClick(event) { if (event.target.id === 'masterSettingsOverlay') closeMasterSettings(); }
-
-    // --- THEME SWITCH ---
-    function themeSwitch() {
-        const icon = document.querySelector('#themeIcon i');
-        if(icon.classList.contains('fa-sun')) {
-            icon.classList.replace('fa-sun', 'fa-moon');
-            document.body.style.backgroundColor = '#ffffff'; document.body.style.color = '#000000';
-        } else {
-            icon.classList.replace('fa-moon', 'fa-sun');
-            document.body.style.backgroundColor = '#0a0a0c'; document.body.style.color = '#ffffff';
-        }
-    }
         <div class="container" id="homeSection">
             <style>
     /* --- IMPORT PREMIUM LUXURY FONTS --- */
