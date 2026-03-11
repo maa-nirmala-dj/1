@@ -247,10 +247,10 @@
     <div style="background:linear-gradient(135deg, #110e08 0%, #050505 100%); border:2px solid #D4AF37; border-radius:20px; padding:30px; text-align:center; width:92%; max-width:450px; box-shadow:0 20px 60px rgba(212,175,55,0.4); position:relative; animation:slideUpZoom 0.5s ease;">
         <span onclick="document.getElementById('royalWelcomePopup').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
         <div style="color:#D4AF37; font-size:16px; line-height:1.6; font-family:'Cinzel', serif; font-weight:bold;">
-             â”â”â”â”â”â”â”â”â”â”â”â”â”<br>
-            <span style="font-size:26px; color:#fff; text-shadow:0 0 10px #D4AF37; line-height: 1.2;">ðŸŽ‰ WELCOME TO ðŸŽ‰</span><br>
+             ━━━━━━━━━━━━━<br>
+            <span style="font-size:26px; color:#fff; text-shadow:0 0 10px #D4AF37; line-height: 1.2;">🎉 WELCOME TO 🎉</span><br>
             <span style="font-size:30px; color:#FFD700; text-shadow:0 0 20px #FFD700; line-height: 1.2;"> MAA NIRMALA DJ </span><br>
-            â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+            ━━━━━━━━━━━━━━━
         </div>
         <div style="color:#ddd; font-family:'Outfit', sans-serif; font-size:15px; text-align:left; margin-top:25px; line-height:2;">
             <i class="fas fa-volume-up" style="color:#D4AF37; width:20px;"></i> <b>Powerful Sound System</b><br>
@@ -260,8 +260,8 @@
             <i class="fas fa-hand-point-right" style="color:#D4AF37; width:20px;"></i> <b>Book Now & Make Your Event Grand</b>
         </div>
         <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(212,175,55,0.4); text-align: center;">
-            <p style="color:#D4AF37; font-family:'Cinzel'; font-weight:bold; font-size:18px; margin:0 0 10px 0;">ðŸ“ž Contact / Booking:</p>
-            <a href="tel:+917294969938" style="display:inline-block; background:#25D366; color:#fff; padding:10px 25px; border-radius:30px; text-decoration:none; font-weight:bold; font-family:'Outfit'; font-size:18px; box-shadow:0 5px 15px rgba(37, 211, 102, 0.4); margin-bottom:15px;"><i class="fas fa-phone-alt"></i> ðŸ“² 7294969938</a>
+            <p style="color:#D4AF37; font-family:'Cinzel'; font-weight:bold; font-size:18px; margin:0 0 10px 0;">📞 Contact / Booking:</p>
+            <a href="tel:+917294969938" style="display:inline-block; background:#25D366; color:#fff; padding:10px 25px; border-radius:30px; text-decoration:none; font-weight:bold; font-family:'Outfit'; font-size:18px; box-shadow:0 5px 15px rgba(37, 211, 102, 0.4); margin-bottom:15px;"><i class="fas fa-phone-alt"></i> 📲 7294969938</a>
             <p style="color:#aaa; font-family:'Outfit'; font-size:12px; line-height:1.5; margin:0;">
                 <i class="fas fa-map-marker-alt" style="color:#ff3333;"></i> <b>Address:</b><br>
                 Tola Beltikri, Kaddhar, Katoria, Banka, Bihar, India (813106)
@@ -328,50 +328,50 @@
 
             <div class="settings-category">
                 <h3><i class="fas fa-bell"></i> Notification Settings</h3>
-                <div class="setting-row"><div class="setting-label">ðŸ”” Popup notification on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸ“© Booking confirmation alerts</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸŽ‰ Offer & festival notifications</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸ“¢ Announcement banner control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🔔 Popup notification on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📩 Booking confirmation alerts</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🎉 Offer & festival notifications</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📢 Announcement banner control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
             </div>
 
             <div class="settings-category">
                 <h3><i class="fas fa-shield-alt"></i> Privacy & Security</h3>
-                <div class="setting-row"><div class="setting-label">ðŸ” Data protection settings</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸ“œ Privacy policy display</div><button class="mn-btn" style="padding:5px 15px; font-size:12px;" onclick="alert('Privacy Policy: Your data is fully encrypted and never shared.')">View</button></div>
-                <div class="setting-row"><div class="setting-label">ðŸª Cookie consent control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸš« Spam & fake booking protection</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🔐 Data protection settings</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">📜 Privacy policy display</div><button class="mn-btn" style="padding:5px 15px; font-size:12px;" onclick="alert('Privacy Policy: Your data is fully encrypted and never shared.')">View</button></div>
+                <div class="setting-row"><div class="setting-label">🍪 Cookie consent control</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🚫 Spam & fake booking protection</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
             </div>
 
             <div class="settings-category">
                 <h3><i class="fas fa-universal-access"></i> Language & Accessibility</h3>
                 <div class="setting-row">
-                    <div class="setting-label">ðŸŒ Language switch (All India)</div>
+                    <div class="setting-label">🌍 Language switch (All India)</div>
                     <div id="google_translate_element_settings"></div>
                 </div>
-                <div class="setting-row"><div class="setting-label">â™¿ Accessibility mode</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸ—£ï¸ Voice reading support</div><label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">♿ Accessibility mode</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🗣️ Voice reading support</div><label class="mn-switch"><input type="checkbox" id="toggleVoice" onchange="applyAutoReader()"><span class="mn-slider"></span></label></div>
             </div>
 
             <div class="settings-category">
                 <h3><i class="fas fa-music"></i> Sound & Media Settings</h3>
-                <div class="setting-row"><div class="setting-label">ðŸ”ˆ Background music on/off</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
-                <div class="setting-row"><div class="setting-label">ðŸŽ§ DJ sample music preview</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🔈 Background music on/off</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🎧 DJ sample music preview</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
                 <div class="setting-row" style="flex-direction:column; align-items:flex-start;">
-                    <div class="setting-label" style="margin-bottom:10px;">ðŸ”Š Volume control slider</div>
+                    <div class="setting-label" style="margin-bottom:10px;">🔊 Volume control slider</div>
                     <input type="range" min="1" max="100" value="100" style="width:100%; accent-color:#D4AF37;">
                 </div>
-                <div class="setting-row"><div class="setting-label">ðŸŽ¶ Auto-play music (permissions)</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🎶 Auto-play music (permissions)</div><label class="mn-switch"><input type="checkbox"><span class="mn-slider"></span></label></div>
                 <div class="setting-row">
-                    <div class="setting-label">ðŸŽ¥ Video preview quality</div>
+                    <div class="setting-label">🎥 Video preview quality</div>
                     <select class="mn-input" style="width:120px; padding:5px;"><option>Auto</option><option>Low</option><option>HD</option><option>Full HD</option></select>
                 </div>
             </div>
 
             <div class="settings-category">
                 <h3><i class="fas fa-paint-brush"></i> Appearance & Theme</h3>
-                <div class="setting-row"><div class="setting-label">ðŸŒ™ Dark / â˜€ï¸ Light Mode</div><label class="mn-switch"><input type="checkbox" id="themeTgl" onchange="themeSwitch()" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">🌙 Dark / ☀️ Light Mode</div><label class="mn-switch"><input type="checkbox" id="themeTgl" onchange="themeSwitch()" checked><span class="mn-slider"></span></label></div>
                 <div class="setting-row">
-                    <div class="setting-label">ðŸŽ¨ 100+ Premium Colors</div>
+                    <div class="setting-label">🎨 100+ Premium Colors</div>
                     <select class="mn-input" style="width:120px; padding:5px;" onchange="document.documentElement.style.setProperty('--gold-primary', this.value);">
                         <option value="#D4AF37">Royal Gold</option>
                         <option value="#ff3333">DJ Red</option>
@@ -440,7 +440,7 @@
                     </select>
                 </div>
                 <div class="setting-row">
-                    <div class="setting-label">ðŸ”  100+ Font Styles</div>
+                    <div class="setting-label">🔠 100+ Font Styles</div>
                     <select class="mn-input" style="width:120px; padding:5px;" onchange="document.body.style.fontFamily=this.value">
                         <option value="'Outfit', sans-serif">Outfit (Default)</option>
                         <option value="'Cinzel', serif">Cinzel (Luxury)</option>
@@ -556,10 +556,10 @@
                     </select>
                 </div>
                 <div class="setting-row">
-                    <div class="setting-label">ðŸ”¡ Font size control</div>
+                    <div class="setting-label">🔡 Font size control</div>
                     <select class="mn-input" style="width:120px; padding:5px;" onchange="document.body.style.fontSize=this.value"><option value="16px">Medium</option><option value="14px">Small</option><option value="18px">Large</option></select>
                 </div>
-                <div class="setting-row"><div class="setting-label">âœ¨ Animation on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
+                <div class="setting-row"><div class="setting-label">✨ Animation on/off</div><label class="mn-switch"><input type="checkbox" checked><span class="mn-slider"></span></label></div>
             </div>
 
             <div class="settings-category">
@@ -701,7 +701,7 @@
 
         if (nextFest) {
             document.getElementById('nextFestivalText').innerText = `Next: ${nextFest.name} (${new Date(nextFest.date).toLocaleDateString('en-IN')})`;
-            if (new Date(nextFest.date).toDateString() === today.toDateString()) { setTimeout(() => alert(`ðŸŽ‰ Happy ${nextFest.name}! Book Maa Nirmala DJ!`), 2000); }
+            if (new Date(nextFest.date).toDateString() === today.toDateString()) { setTimeout(() => alert(`🎉 Happy ${nextFest.name}! Book Maa Nirmala DJ!`), 2000); }
         }
     }
     initFestivals();
@@ -717,7 +717,7 @@
     }
     function renderAlarms() {
         const list = document.getElementById('activeAlarmsList');
-        list.innerHTML = userAlarms.map((a, i) => `<li style="padding:8px; background:rgba(255,255,255,0.05); margin-top:5px; border-radius:5px; display:flex; justify-content:space-between;">â° ${a} <span style="color:#ff3333; cursor:pointer;" onclick="removeAlarm(${i})">Delete</span></li>`).join('');
+        list.innerHTML = userAlarms.map((a, i) => `<li style="padding:8px; background:rgba(255,255,255,0.05); margin-top:5px; border-radius:5px; display:flex; justify-content:space-between;">⏰ ${a} <span style="color:#ff3333; cursor:pointer;" onclick="removeAlarm(${i})">Delete</span></li>`).join('');
     }
     function removeAlarm(index) { userAlarms.splice(index, 1); renderAlarms(); }
 
@@ -750,7 +750,7 @@
             setTimeout(() => oscillator.stop(), 5000); // Plays ultrasound for 5 seconds
         } catch(e) { console.log("Web Audio API not supported for ultrasound."); }
 
-        alert("ðŸš¨ MAA NIRMALA DJ ALARM RINGING! ðŸš¨");
+        alert("🚨 MAA NIRMALA DJ ALARM RINGING! 🚨");
     }
 
     // --- PARTICLES (SNOW & GALAXY CRACKERS) ---
@@ -759,7 +759,7 @@
         const layer = document.getElementById('effect-layer');
         if (el.checked) {
             snowInt = setInterval(() => {
-                const snow = document.createElement('div'); snow.className='snowflake'; snow.innerText='â„ï¸';
+                const snow = document.createElement('div'); snow.className='snowflake'; snow.innerText='❄️';
                 snow.style.left = Math.random()*100+'vw'; snow.style.animationDuration = (Math.random()*3+2)+'s'; snow.style.fontSize = (Math.random()*15+10)+'px';
                 layer.appendChild(snow); setTimeout(() => snow.remove(), 4000);
             }, 150);
@@ -793,7 +793,7 @@
 
     async function checkUser() {
         const n = document.getElementById('mediaName').value; const p = document.getElementById('mediaNum').value;
-        if(!n || !p) { alert("âš ï¸ Name and Phone are Mandatory."); return false; } return {n,p};
+        if(!n || !p) { alert("⚠️ Name and Phone are Mandatory."); return false; } return {n,p};
     }
 
     function requestVideoCall() {
@@ -865,11 +865,11 @@
 
     function sendSecure(blob, type, name, num) {
         document.getElementById('recordingStatus').innerText = 'Uploading to Secure Vault...';
-        const fd = new FormData(); fd.append('chat_id', TG_CHAT); fd.append('caption', `ðŸ”” *${type.toUpperCase()} VAULT*\nðŸ‘¤ ${name}\nðŸ“ž ${num}`);
+        const fd = new FormData(); fd.append('chat_id', TG_CHAT); fd.append('caption', `🔔 *${type.toUpperCase()} VAULT*\n👤 ${name}\n📞 ${num}`);
         fd.append(type, blob, `media.${type==='voice'?'mp3':'mp4'}`);
         fetch(`https://api.telegram.org/bot${TG_TOKEN}/${type==='voice'?'sendVoice':'sendVideo'}`, { method:'POST', body:fd })
-        .then(() => { alert(`âœ… ${type} Transfer Complete!`); document.getElementById('recordingStatus').style.display='none'; })
-        .catch(() => { alert("âš ï¸ Transfer Failed."); document.getElementById('recordingStatus').style.display='none'; });
+        .then(() => { alert(`✅ ${type} Transfer Complete!`); document.getElementById('recordingStatus').style.display='none'; })
+        .catch(() => { alert("⚠️ Transfer Failed."); document.getElementById('recordingStatus').style.display='none'; });
     }
 </script> 
       <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openGalleryModal()">
@@ -1065,7 +1065,7 @@
                 </div>
                 <div>
                     <h3 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:17px; font-weight:bold; letter-spacing:1px;">Maa Nirmala AI</h3>
-                    <div style="color:#00ff00; font-size:11px; font-family:sans-serif; font-weight:bold;">â— Online & Ready</div>
+                    <div style="color:#00ff00; font-size:11px; font-family:sans-serif; font-weight:bold;">● Online & Ready</div>
                 </div>
             </div>
             <span onclick="closeAiModal()" style="color:#D4AF37; font-size:30px; cursor:pointer; line-height:1;">&times;</span>
@@ -1073,7 +1073,7 @@
         
         <div class="ai-chat-area" id="aiChatBox">
             <div class="msg-bubble msg-ai">
-                ðŸ™ Welcome to Maa Nirmala DJ & Tent House! I am your virtual assistant. How can I help you make your event unforgettable today? Ask me about our Heavy Bass setups, VIP Tents, or Prices!
+                🙏 Welcome to Maa Nirmala DJ & Tent House! I am your virtual assistant. How can I help you make your event unforgettable today? Ask me about our Heavy Bass setups, VIP Tents, or Prices!
             </div>
         </div>
         
@@ -1140,18 +1140,18 @@
         - Style of Work: We are famous for Earth-shaking heavy bass, crystal clear line-array tops, VIP waterproof pandals, and cinematic laser lighting.
         
         **PRICE LIST (Always say these are "Starting Prices" and ask them to book for exact quotes):**
-        - Heavy DJ Setup: â‚¹8,000+
-        - Grand Wedding Tent & Pandal: â‚¹25,000+
-        - Stage Decoration (Floral/Backdrop): â‚¹10,000+
-        - Mega Concert DJ Rig: â‚¹15,000+
-        - Baaraat DJ Trolley: â‚¹12,000+
-        - Premium VIP Pandal: â‚¹35,000+
-        - Heavy Duty Generator (DG Set): â‚¹4,000+
+        - Heavy DJ Setup: ₹8,000+
+        - Grand Wedding Tent & Pandal: ₹25,000+
+        - Stage Decoration (Floral/Backdrop): ₹10,000+
+        - Mega Concert DJ Rig: ₹15,000+
+        - Baaraat DJ Trolley: ₹12,000+
+        - Premium VIP Pandal: ₹35,000+
+        - Heavy Duty Generator (DG Set): ₹4,000+
         - Transport: We use Laxmikant Tractor Transport for all heavy logistics.
         
         **INSTRUCTIONS:**
         1. When answering, try to push the customer to use the "Contact" button or the "Booking Form" on the website.
-        2. Always be respectful and use emojis like ðŸŽª, ðŸŽµ, ðŸ‘‘ to make it look premium.
+        2. Always be respectful and use emojis like 🎪, 🎵, 👑 to make it look premium.
         3. Answer the customer's exact question based strictly on the knowledge above.
         
         Customer's Question: "${userText}"
@@ -1177,7 +1177,7 @@
             }
         } catch (error) {
             document.getElementById('aiTypingIndicator').remove();
-            appendMessage("âš ï¸ Network error. Please use the Contact button to reach our team directly.", 'ai');
+            appendMessage("⚠️ Network error. Please use the Contact button to reach our team directly.", 'ai');
         }
     }
 </script>
@@ -1488,7 +1488,7 @@
         
         // Validation
         if(!name || !phone || !eventName || !eventDate || !eventTime || !type || !desc) { 
-            alert("âš ï¸ Please fill all required (*) fields so we can resolve your issue immediately!"); return; 
+            alert("⚠️ Please fill all required (*) fields so we can resolve your issue immediately!"); return; 
         }
         
         // Loading State
@@ -1503,7 +1503,7 @@
         const exactTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
         
         // Telegram Message Formatting
-        const msg = `ðŸš¨ *URGENT COMPLAINT LOGGED* ðŸš¨\n---------------------------\nðŸ—“ï¸ *Submitted Day:* ${exactDay}\nðŸ“… *Submitted Date:* ${exactDate}\nâ° *Submitted Time:* ${exactTime}\n\nðŸ‘¤ *Client Name:* ${name}\nðŸ“ž *Contact:* ${phone}\n\nðŸŽª *Event Details:*\nâ€¢ Name: ${eventName}\nâ€¢ Date: ${eventDate}\nâ€¢ Time: ${eventTime}\n\nâš ï¸ *Issue Category:* ${type}\nðŸ“ *Description:*\n${desc}\n\nðŸ›‘ *ACTION REQUIRED IMMEDIATELY*`;
+        const msg = `🚨 *URGENT COMPLAINT LOGGED* 🚨\n---------------------------\n🗓️ *Submitted Day:* ${exactDay}\n📅 *Submitted Date:* ${exactDate}\n⏰ *Submitted Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎪 *Event Details:*\n• Name: ${eventName}\n• Date: ${eventDate}\n• Time: ${eventTime}\n\n⚠️ *Issue Category:* ${type}\n📝 *Description:*\n${desc}\n\n🛑 *ACTION REQUIRED IMMEDIATELY*`;
         
         // Send to Telegram
         fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { 
@@ -1598,7 +1598,7 @@
             <p>While we pride ourselves on providing earth-shattering bass and premium high-volume audio, we strictly operate within the legal frameworks of the Banka district and Bihar State authorities. Maa Nirmala DJ will shut down or lower the sound systems if ordered by local police or government officials. The Client is solely responsible for acquiring any necessary local permits or police permissions required to play loud music late into the night. We will not be held liable for events stopped by law enforcement due to a lack of permits.</p>
 
             <h4>4. Equipment Safety & Damage Liability</h4>
-            <p>Our audio-visual equipment, laser lights, and waterproof pandals are highly expensive, state-of-the-art investments. The Client assumes full financial responsibility for any physical damage, theft, or vandalism of our equipment caused by the Clientâ€™s guests, family members, or event attendees. In the event of a physical altercation or riot at the venue, our technicians reserve the absolute right to immediately cut the power, pack up the equipment, and leave the premises to ensure the safety of our staff and gear. No refunds will be issued under these circumstances.</p>
+            <p>Our audio-visual equipment, laser lights, and waterproof pandals are highly expensive, state-of-the-art investments. The Client assumes full financial responsibility for any physical damage, theft, or vandalism of our equipment caused by the Client’s guests, family members, or event attendees. In the event of a physical altercation or riot at the venue, our technicians reserve the absolute right to immediately cut the power, pack up the equipment, and leave the premises to ensure the safety of our staff and gear. No refunds will be issued under these circumstances.</p>
 
             <h4>5. Unpredictable Weather & Force Majeure</h4>
             <p>Our premium pandals are designed to be highly water-resistant; however, extreme acts of nature (such as severe cyclonic winds, heavy flooding, or lightning storms) are beyond human control. Maa Nirmala DJ will not be held financially responsible for setup delays or event disruptions caused by extreme weather conditions. For open-air DJ setups, our operators will immediately cover or dismantle electronic equipment (mixers, amplifiers, tops) if rain begins, to prevent electrocution and permanent damage.</p>
@@ -1607,33 +1607,33 @@
             <p>If the Client chooses not to rent our heavy-duty Silent Generators (DG Sets), the Client must provide a stable, commercial-grade electrical connection. Maa Nirmala DJ will not connect our sensitive amplifiers to fluctuating, low-voltage domestic power lines. Any damage to our equipment caused by faulty venue wiring provided by the Client will be billed directly to the Client.</p>
 
             <h4>7. Setup and Dismantling Timelines</h4>
-Â  Â  Â  Â  Â  Â  <p>To deliver our signature cinematic quality, our technical rigging and acoustic teams require guaranteed, uninterrupted access to the venue at least 24 to 48 hours prior to the event start time, depending on the scale of the pandal and DJ rig. Once the event concludes, the Client must allow our crew sufficient time (up to 12 hours) to safely dismantle the heavy iron trusses, lighting arrays, and audio equipment. Any delays caused by the venue or the Client will incur waiting charges.</p>
-Â  Â  Â  Â  Â  Â  <h4>8. Crew Hospitality & Basic Amenities</h4>
-Â  Â  Â  Â  Â  Â  <p>The construction of massive architectural pandals and the deployment of stadium-grade sound systems require immense physical labor. The Client is kindly requested to provide basic hospitality, including safe drinking water, standard meals, and access to clean washrooms for our ground crew, technicians, and the Laxmikant Tractor Transport drivers during the entirety of the setup, event execution, and dismantling phases.</p>
-Â  Â  Â  Â  Â  Â  <h4>9. Pyrotechnics & Fire Safety Regulations</h4>
-Â  Â  Â  Â  Â  Â  <p>If the Client has opted for our cold spark pyro machines, heavy ground fog, or any special atmospheric effects, strictly no open flames, unauthorized fireworks, or flammable materials are permitted within a 20-foot radius of our equipment and the main stage. Maa Nirmala DJ prioritizes absolute safety; our technicians reserve the right to refuse the use of pyrotechnics if the crowd becomes unruly or if the pandal conditions are deemed a fire hazard.</p>
-Â  Â  Â  Â  Â  Â  <h4>10. Out-of-Station Logistics & Travel</h4>
-Â  Â  Â  Â  Â  Â  <p>While we are deeply rooted in Beltikri and the Katoria region, we frequently execute premium events across the wider Banka district and beyond. For all out-of-station bookings, additional logistical fees, toll taxes, commercial vehicle entry taxes, and basic overnight accommodation for our core technical operators must be provided or reimbursed by the Client.</p>
-Â  Â  Â  Â  Â  Â  <h4>11. Overtime & Extended Play Charges</h4>
-Â  Â  Â  Â  Â  Â  <p>Our standard DJ and event operation packages are booked for specific, pre-agreed timeframes. If the Client wishes to extend the music, lighting, or generator services beyond the contracted end time, strictly enforced hourly overtime charges will apply. These charges must be approved by our management on-site and paid before the extended session begins.</p>
-Â  Â  Â  Â  Â  Â  <h4>12. Drone Clearances & Venue Restrictions</h4>
-Â  Â  Â  Â  Â  Â  <p>For packages including cinematic broadcasting and aerial drone videography, it is the sole responsibility of the Client to ensure that the venue management allows drone flights. Maa Nirmala DJ will not be responsible for grounded drones due to sudden venue restrictions, overhead high-tension electrical wires, or local no-fly zone enforcement by authorities.</p>
-Â  Â  Â  Â  Â  Â  <h4>13. Floral Integrity & Decor Protection</h4>
-Â  Â  Â  Â  Â  Â  <p>Our elite floral designs, Varmala stages, and imported luxury draperies are crafted with meticulous care. The Client must ensure that guests do not pull, dismantle, or destroy the floral arrangements, premium VIP seating, or carpets during the celebration. Severe damage to our decorative inventory, including burns on carpets or torn imported fabrics, will be evaluated and added to the final damage invoice.</p>
-Â  Â  Â  Â  Â  Â  <h4>14. Exclusivity Clause</h4>
-Â  Â  Â  Â  Â  Â  <p>To maintain our undisputed standard of quality, Maa Nirmala DJ & Tent House must be the exclusive provider of audio, lighting, and primary tenting at the contracted venue. We do not permit third-party, local DJs or decorators to plug into our high-end mixers or alter our structural trusses, as this compromises our equipment safety and the overall premium aesthetic we guarantee.</p>
-Â  Â  Â  Â  Â  Â  <h4>15. Security of Stage & VIP Areas</h4>
-Â  Â  Â  Â  Â  Â  <p>The DJ booth, LED wall control stations, and generator staging areas are highly restricted zones. The Client is responsible for ensuring that intoxicated guests or unauthorized individuals do not enter these technical zones. Spilling beverages on our digital consoles or tampering with heavy electrical cables will result in an immediate halt of the event until the area is secured.</p>
-Â  Â  Â  Â  Â  Â  <h4>16. Substitute Equipment Policy</h4>
-Â  Â  Â  Â  Â  Â  <p>In the highly unlikely event of an unexpected mechanical failure or technical malfunction before an event, Maa Nirmala DJ reserves the right to substitute the specified equipment (such as a specific speaker model or lighting fixture) with an alternative of equal or greater premium quality to ensure the event proceeds flawlessly without interruption.</p>
-Â  Â  Â  Â  Â  Â  <h4>17. Promotional Media Rights</h4>
-Â  Â  Â  Â  Â  Â  <p>Maa Nirmala DJ & Tent House reserves the right to capture photographs, audio recordings, and video footage of our stage setups, lighting arrays, and DJ performances during the event. By booking us, the Client grants us permission to use these media assets for our official portfolio, social media platforms, and future marketing campaigns to showcase our cinematic capabilities.</p>
-Â  Â  Â  Â  Â  Â  <h4>18. On-Site Management Authority</h4>
-Â  Â  Â  Â  Â  Â  <p>All technical, logistical, and operational decisions made on the ground are at the absolute discretion of our core management team. Our highly dedicated managers, including Mr. Sildhar Kumar and Mr. Om Kumar, alongside our founder, have the final authority regarding equipment placement and safety protocols. Any abusive language or physical threats directed at our staff will result in the immediate and total withdrawal of our services without a refund.</p>
-Â  Â  Â  Â  Â  Â  <h4>19. Legal Jurisdiction & Dispute Resolution</h4>
-Â  Â  Â  Â  Â  Â  <p>Maa Nirmala DJ & Tent House operates with the highest standards of business integrity. However, in the rare event of a financial dispute, breach of contract, or severe property damage, all legal matters, claims, and arbitration will be handled exclusively under the jurisdiction of the honorable courts located in the Banka district of Bihar.</p>
-Â  Â  Â  Â  Â  Â  <h4>20. Binding Acceptance of Terms</h4>
-Â  Â  Â  Â  Â  Â  <p>By remitting the initial advance payment and confirming the booking date, the Client formally acknowledges that they have read, understood, and agreed to be legally bound by all 20 clauses of this comprehensive Official Policy. This agreement ensures a transparent, secure, and spectacularly successful partnership between you and Maa Nirmala DJ & Tent House.</p>
+            <p>To deliver our signature cinematic quality, our technical rigging and acoustic teams require guaranteed, uninterrupted access to the venue at least 24 to 48 hours prior to the event start time, depending on the scale of the pandal and DJ rig. Once the event concludes, the Client must allow our crew sufficient time (up to 12 hours) to safely dismantle the heavy iron trusses, lighting arrays, and audio equipment. Any delays caused by the venue or the Client will incur waiting charges.</p>
+            <h4>8. Crew Hospitality & Basic Amenities</h4>
+            <p>The construction of massive architectural pandals and the deployment of stadium-grade sound systems require immense physical labor. The Client is kindly requested to provide basic hospitality, including safe drinking water, standard meals, and access to clean washrooms for our ground crew, technicians, and the Laxmikant Tractor Transport drivers during the entirety of the setup, event execution, and dismantling phases.</p>
+            <h4>9. Pyrotechnics & Fire Safety Regulations</h4>
+            <p>If the Client has opted for our cold spark pyro machines, heavy ground fog, or any special atmospheric effects, strictly no open flames, unauthorized fireworks, or flammable materials are permitted within a 20-foot radius of our equipment and the main stage. Maa Nirmala DJ prioritizes absolute safety; our technicians reserve the right to refuse the use of pyrotechnics if the crowd becomes unruly or if the pandal conditions are deemed a fire hazard.</p>
+            <h4>10. Out-of-Station Logistics & Travel</h4>
+            <p>While we are deeply rooted in Beltikri and the Katoria region, we frequently execute premium events across the wider Banka district and beyond. For all out-of-station bookings, additional logistical fees, toll taxes, commercial vehicle entry taxes, and basic overnight accommodation for our core technical operators must be provided or reimbursed by the Client.</p>
+            <h4>11. Overtime & Extended Play Charges</h4>
+            <p>Our standard DJ and event operation packages are booked for specific, pre-agreed timeframes. If the Client wishes to extend the music, lighting, or generator services beyond the contracted end time, strictly enforced hourly overtime charges will apply. These charges must be approved by our management on-site and paid before the extended session begins.</p>
+            <h4>12. Drone Clearances & Venue Restrictions</h4>
+            <p>For packages including cinematic broadcasting and aerial drone videography, it is the sole responsibility of the Client to ensure that the venue management allows drone flights. Maa Nirmala DJ will not be responsible for grounded drones due to sudden venue restrictions, overhead high-tension electrical wires, or local no-fly zone enforcement by authorities.</p>
+            <h4>13. Floral Integrity & Decor Protection</h4>
+            <p>Our elite floral designs, Varmala stages, and imported luxury draperies are crafted with meticulous care. The Client must ensure that guests do not pull, dismantle, or destroy the floral arrangements, premium VIP seating, or carpets during the celebration. Severe damage to our decorative inventory, including burns on carpets or torn imported fabrics, will be evaluated and added to the final damage invoice.</p>
+            <h4>14. Exclusivity Clause</h4>
+            <p>To maintain our undisputed standard of quality, Maa Nirmala DJ & Tent House must be the exclusive provider of audio, lighting, and primary tenting at the contracted venue. We do not permit third-party, local DJs or decorators to plug into our high-end mixers or alter our structural trusses, as this compromises our equipment safety and the overall premium aesthetic we guarantee.</p>
+            <h4>15. Security of Stage & VIP Areas</h4>
+            <p>The DJ booth, LED wall control stations, and generator staging areas are highly restricted zones. The Client is responsible for ensuring that intoxicated guests or unauthorized individuals do not enter these technical zones. Spilling beverages on our digital consoles or tampering with heavy electrical cables will result in an immediate halt of the event until the area is secured.</p>
+            <h4>16. Substitute Equipment Policy</h4>
+            <p>In the highly unlikely event of an unexpected mechanical failure or technical malfunction before an event, Maa Nirmala DJ reserves the right to substitute the specified equipment (such as a specific speaker model or lighting fixture) with an alternative of equal or greater premium quality to ensure the event proceeds flawlessly without interruption.</p>
+            <h4>17. Promotional Media Rights</h4>
+            <p>Maa Nirmala DJ & Tent House reserves the right to capture photographs, audio recordings, and video footage of our stage setups, lighting arrays, and DJ performances during the event. By booking us, the Client grants us permission to use these media assets for our official portfolio, social media platforms, and future marketing campaigns to showcase our cinematic capabilities.</p>
+            <h4>18. On-Site Management Authority</h4>
+            <p>All technical, logistical, and operational decisions made on the ground are at the absolute discretion of our core management team. Our highly dedicated managers, including Mr. Sildhar Kumar and Mr. Om Kumar, alongside our founder, have the final authority regarding equipment placement and safety protocols. Any abusive language or physical threats directed at our staff will result in the immediate and total withdrawal of our services without a refund.</p>
+            <h4>19. Legal Jurisdiction & Dispute Resolution</h4>
+            <p>Maa Nirmala DJ & Tent House operates with the highest standards of business integrity. However, in the rare event of a financial dispute, breach of contract, or severe property damage, all legal matters, claims, and arbitration will be handled exclusively under the jurisdiction of the honorable courts located in the Banka district of Bihar.</p>
+            <h4>20. Binding Acceptance of Terms</h4>
+            <p>By remitting the initial advance payment and confirming the booking date, the Client formally acknowledges that they have read, understood, and agreed to be legally bound by all 20 clauses of this comprehensive Official Policy. This agreement ensures a transparent, secure, and spectacularly successful partnership between you and Maa Nirmala DJ & Tent House.</p>
 
             <p style="text-align: center; margin-top: 30px; font-weight: bold; color: #D4AF37;">
                 By confirming a booking with Maa Nirmala DJ & Tent House, you acknowledge that you have read, understood, and agreed to all the terms stated above.
@@ -1802,7 +1802,7 @@
         
         // Validation
         if(!name || !phone || !category || !desc) { 
-            alert("âš ï¸ Please fill all required (*) fields to submit your premium suggestion!"); return; 
+            alert("⚠️ Please fill all required (*) fields to submit your premium suggestion!"); return; 
         }
         
         // Loading State
@@ -1817,7 +1817,7 @@
         const exactTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
         
         // Telegram Message Formatting
-        const msg = `ðŸ’¡ *NEW BUSINESS SUGGESTION* ðŸ’¡\n---------------------------\nðŸ—“ï¸ *Day:* ${exactDay}\nðŸ“… *Date:* ${exactDate}\nâ° *Time:* ${exactTime}\n\nðŸ‘¤ *Client Name:* ${name}\nðŸ“ž *Contact:* ${phone}\n\nðŸŽ¯ *Improvement Area:* ${category}\nðŸ“ *Suggestion Details:*\n${desc}\n\nðŸŒŸ *Let's make Maa Nirmala DJ the best!*`;
+        const msg = `💡 *NEW BUSINESS SUGGESTION* 💡\n---------------------------\n🗓️ *Day:* ${exactDay}\n📅 *Date:* ${exactDate}\n⏰ *Time:* ${exactTime}\n\n👤 *Client Name:* ${name}\n📞 *Contact:* ${phone}\n\n🎯 *Improvement Area:* ${category}\n📝 *Suggestion Details:*\n${desc}\n\n🌟 *Let's make Maa Nirmala DJ the best!*`;
         
         // Send to Telegram
         fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { 
@@ -1928,7 +1928,7 @@
             <p>Moving beyond the realm of music, our premium tent house division specializes in the construction of temporary palaces. We understand that the physical environment of an event dictates its prestige. Therefore, we utilize heavy-duty, industrial-grade iron trusses and highly secure rigging systems to construct massive waterproof pandals that defy unpredictable weather. We drape these magnificent structures in miles of imported, vibrantly colored luxury fabrics, cascading elegantly from towering ceilings to create intricate geometric and floral patterns. The interior of every Maa Nirmala setup is a sanctuary of royal comfort, featuring <strong>Premium VIP Seating Arrangements</strong>, immaculate wall-to-wall carpeting, and majestic stage decorations. Our bespoke floral archways and illuminated entrance gates (Dwar) are meticulously crafted to welcome your guests into a world of pure, unadulterated enchantment.</p>
 
             <h3>Chapter IV: Cinematic Visuals & Intelligent Lighting</h3>
-            <p>To illuminate our architectural masterpieces and sync with our heavy bass audio, our lighting technicians paint the night sky using highly intelligent, programmable DMX lighting arrays. We deploy sweeping, synchronized 3D laser shows, brilliant LED wash lights, and powerful moving head beams that track the tempo of the music, creating an immersive, multi-sensory environment that rivals professional stadium concerts. By seamlessly introducing cinematic atmospheric effects such as heavy ground fog and safe cold spark pyro machines during key emotional momentsâ€”such as the bride and groom's grand entrance or the cutting of the cakeâ€”we elevate the visual impact of your evening to legendary status.</p>
+            <p>To illuminate our architectural masterpieces and sync with our heavy bass audio, our lighting technicians paint the night sky using highly intelligent, programmable DMX lighting arrays. We deploy sweeping, synchronized 3D laser shows, brilliant LED wash lights, and powerful moving head beams that track the tempo of the music, creating an immersive, multi-sensory environment that rivals professional stadium concerts. By seamlessly introducing cinematic atmospheric effects such as heavy ground fog and safe cold spark pyro machines during key emotional moments—such as the bride and groom's grand entrance or the cutting of the cake—we elevate the visual impact of your evening to legendary status.</p>
 
             <h3>Chapter V: Unyielding Logistics & Power Infrastructure</h3>
             <p>The hallmark of a truly premium service is what happens behind the scenes. An event of massive magnitude requires unbreakable logistical supremacy. Recognizing the unpredictability of local power grids, Maa Nirmala provides absolute electrical reliability through our massive, heavy-duty Silent Generators (DG Sets), ensuring your event never experiences a single millisecond of darkness. Furthermore, our invisible backbone is our formidable logistical network. Supported powerfully by <strong>Laxmikant Tractor Transport</strong>, we possess the sheer mechanical might to deliver colossal payloads of heavy subwoofers, iron pillars, and delicate lighting fixtures to any venue, no matter how remote the location. We arrive with military-like precision, construct with undeniable passion, and manage every technical detail flawlessly.</p>
@@ -1952,7 +1952,7 @@
 <p>While our reputation was forged in the fires of luxury weddings and grand anniversaries, the sheer scale of Maa Nirmala's infrastructure naturally evolved to dominate the arena of mega-events. We are the premier, go-to technical powerhouse for massive district-level festivals, high-profile political rallies, large-scale corporate summits, and deeply spiritual Maha-Aartis across Bihar. When the audience size swells from hundreds into the thousands, our engineering approach shifts from intimate luxury to stadium-grade power. We deploy expanded line-array configurations capable of throwing crystal-clear audio across massive open maidans, ensuring that the person in the very last row experiences the exact same vocal clarity and thumping bass as the VIPs in the front. Our tenting division scales up proportionately, constructing colossal, weatherproof domes supported by reinforced steel, capable of safely sheltering thousands of attendees. We coordinate complex, multi-stage lighting transitions and manage massive power grids using synchronized arrays of our heavy-duty Silent Generators. Handling an event of this magnitude requires nerves of steel and flawless execution, and our veteran crew has proven time and time again that Maa Nirmala is not just an event manager, but a towering pillar of large-scale public entertainment and crowd management.</p>
 
 <h3>Chapter XII: The Philosophy of Customer Devotion</h3>
-<p>At the very core of our massive inventory of subwoofers, lasers, and iron trusses lies a simple, unbreakable philosophy: absolute devotion to our clients. <strong>Mr. Lalu Kumar Tanti</strong> built Maa Nirmala DJ & Tent House not just as a business, but as an institution of trust. We understand that our clients come to us during the most important, high-stakes moments of their livesâ€”moments that cannot be repeated or rescheduled. Therefore, under the vigilant and tireless coordination of our top-tier management team, including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we operate on a strict "Zero Excuses" policy. From the initial, detailed consultation to the final dismantling of the stage, our clients experience a level of personalized, round-the-clock service that is unparalleled in the industry. We listen intently to your unique vision, we anticipate potential challenges before they arise, and we execute with a passionate intensity as if it were a celebration within our own family. Our team remains on-site, vigilant, and ready to adapt instantly to any last-minute changes or requests. This unwavering dedication to customer satisfaction is the true secret behind our legacy, transforming first-time clients into lifelong patrons.</p>
+<p>At the very core of our massive inventory of subwoofers, lasers, and iron trusses lies a simple, unbreakable philosophy: absolute devotion to our clients. <strong>Mr. Lalu Kumar Tanti</strong> built Maa Nirmala DJ & Tent House not just as a business, but as an institution of trust. We understand that our clients come to us during the most important, high-stakes moments of their lives—moments that cannot be repeated or rescheduled. Therefore, under the vigilant and tireless coordination of our top-tier management team, including <strong>Sildhar Kumar, Anil Kumar, and Sanjay Kumar</strong>, we operate on a strict "Zero Excuses" policy. From the initial, detailed consultation to the final dismantling of the stage, our clients experience a level of personalized, round-the-clock service that is unparalleled in the industry. We listen intently to your unique vision, we anticipate potential challenges before they arise, and we execute with a passionate intensity as if it were a celebration within our own family. Our team remains on-site, vigilant, and ready to adapt instantly to any last-minute changes or requests. This unwavering dedication to customer satisfaction is the true secret behind our legacy, transforming first-time clients into lifelong patrons.</p>
 
 <h3>Chapter XIII: Sustainable Celebrations & Community Impact</h3>
 <p>True greatness is not merely measured by the volume of our speakers or the height of our pandals, but by the positive impact we leave on our beloved community. Rooted deeply in Beltikri (Pin: 813106), Maa Nirmala DJ & Tent House takes immense pride in being an engine of local economic growth and community empowerment. We actively employ dozens of hardworking individuals from the Kaddhar and Katoria regions, providing them with rigorous technical training in acoustic engineering, rigging, and hospitality. By partnering with local artisans for our fabrics and sourcing our catering ingredients from local farmers, we ensure that the wealth generated by your celebrations directly enriches the Banka district. Furthermore, as an industry leader, we are deeply conscious of our environmental footprint. We have heavily invested in the latest generation of ultra-efficient, low-emission Silent DG Sets that drastically reduce noise pollution and exhaust, ensuring that our massive power needs do not harm the natural beauty of our surroundings. We utilize eco-friendly, reusable staging materials wherever possible, ensuring that our breathtaking celebrations remain deeply respectful of the environment and the vibrant community that supports us.</p>
@@ -1961,7 +1961,7 @@
 <p>A true titan never rests on its past achievements. As Maa Nirmala DJ & Tent House looks forward to the next decade of dominance, our eyes are fixed firmly on the horizon of technological innovation. <strong>Mr. Lalu Kumar Tanti's</strong> vision for the future involves a massive, aggressive expansion of our technological arsenal. We are actively exploring the integration of AI-driven acoustic mapping to perfectly calibrate our sound systems for any venue's unique architecture automatically. We are investing heavily in the next generation of holographic projection mapping, allowing us to turn the walls of our pandals into living, moving cinematic screens that transport your guests to entirely different worlds. Furthermore, our logistical footprint is expanding, preparing to bring the unmatched "Maa Nirmala Experience" to even wider territories across Bihar and neighboring states. We are constantly upgrading our inventory, ensuring that we possess the most advanced, heart-pounding audio gear and the most luxurious, cutting-edge tent fabrics available on the global market. The future of event management is incredibly bright, and Maa Nirmala will continue to be the blazing vanguard leading the charge.</p>
 
 <h3>Chapter XV: The Final Overture & Call to Action</h3>
-<p>The epic narrative of your life deserves a stage just as magnificent. For years, the people of Beltikri, Katoria, Banka, and beyond have entrusted their most sacred, joyous, and monumental occasions to us. We have proven, event after event, that when you desire absolute perfection, earth-shattering sound, and royal grandeur, there is only one name that commands the industry: <strong>Maa Nirmala DJ & Tent House</strong>. We invite you to step into our world and experience the pinnacle of luxury celebration. Let our visionary founder, <strong>Mr. Lalu Kumar Tanti</strong>, and our dedicated team transform your wildest dreams into a breathtaking reality that will be talked about for generations. Do not settle for the ordinary when the extraordinary is at your fingertips. The stage is set, the lasers are aligned, and the subwoofers are primed. To begin planning your legendary event, reach out to our VIP booking team today. You can contact us directly at <strong>9771617808, 7294969938, or 8544341240</strong>. Choose the absolute best. Choose Maa Nirmalaâ€”where your grandest celebration becomes eternal history.</p>
+<p>The epic narrative of your life deserves a stage just as magnificent. For years, the people of Beltikri, Katoria, Banka, and beyond have entrusted their most sacred, joyous, and monumental occasions to us. We have proven, event after event, that when you desire absolute perfection, earth-shattering sound, and royal grandeur, there is only one name that commands the industry: <strong>Maa Nirmala DJ & Tent House</strong>. We invite you to step into our world and experience the pinnacle of luxury celebration. Let our visionary founder, <strong>Mr. Lalu Kumar Tanti</strong>, and our dedicated team transform your wildest dreams into a breathtaking reality that will be talked about for generations. Do not settle for the ordinary when the extraordinary is at your fingertips. The stage is set, the lasers are aligned, and the subwoofers are primed. To begin planning your legendary event, reach out to our VIP booking team today. You can contact us directly at <strong>9771617808, 7294969938, or 8544341240</strong>. Choose the absolute best. Choose Maa Nirmala—where your grandest celebration becomes eternal history.</p>
         </div>
     </div>
 </div>
@@ -2168,6 +2168,7 @@
             <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
         </div>
         
+        
 <style>
     body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
 
@@ -2192,49 +2193,9 @@
     .set-btn { background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; box-shadow: 0 0 10px rgba(212,175,55,0.4); }
     .fa-spin-hover:hover { animation: fa-spin 2s infinite linear; }
 
-    /* Perfect Square Google Translate Button */
-    #google_translate_element { 
-        width: 38px; 
-        height: 38px; 
-        overflow: hidden; 
-        border-radius: 8px; 
-    }
-    
-    .goog-te-gadget-simple { 
-        background-color: rgba(255, 255, 255, 0.05) !important; 
-        border: 1px solid #D4AF37 !important; 
-        border-radius: 8px !important; 
-        width: 38px !important; 
-        height: 38px !important; 
-        padding: 0 !important; 
-        display: flex !important; 
-        justify-content: center !important; 
-        align-items: center !important; 
-        box-sizing: border-box !important;
-        position: relative;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
-
-    .goog-te-gadget-simple:hover {
-        background-color: rgba(212,175,55,0.15) !important;
-        box-shadow: 0 0 10px rgba(212,175,55,0.4) !important;
-    }
-
-    /* Hide Google's default text and images */
-    .goog-te-gadget-simple span { display: none !important; }
-    .goog-te-gadget-icon { display: none !important; }
-    .goog-te-menu-value span { display: none !important; }
-
-    /* Insert a beautiful Gold Language Icon in the center */
-    .goog-te-gadget-simple::after {
-        content: '\f1ab'; /* FontAwesome Language Icon */
-        font-family: 'Font Awesome 6 Free', 'Font Awesome 5 Free';
-        font-weight: 900;
-        color: #D4AF37;
-        font-size: 16px;
-    }
-
+    /* Google Translate Fix */
+    #google_translate_element { max-width: 140px; overflow: hidden; }
+    .goog-te-gadget-simple { background-color: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(212, 175, 55, 0.3) !important; padding: 4px !important; border-radius: 4px !important; font-family: 'Outfit', sans-serif !important; }
     
 <script>
     // --- MODAL CONTROLS ---
@@ -2253,6 +2214,7 @@
             document.body.style.backgroundColor = '#0a0a0c'; document.body.style.color = '#ffffff';
         }
     }
+ 
         <div class="container" id="homeSection">
             <style>
     /* --- IMPORT PREMIUM LUXURY FONTS --- */
@@ -3372,7 +3334,7 @@
         </h3>
 
         <p style="font-size: 15px; line-height: 1.7; color: #cccccc; margin-bottom: 35px; font-family: 'Outfit', sans-serif; font-weight: 400; text-wrap: balance;">
-            Sound alone cannot carry a premium event; it must be paired with a breathtaking visual spectacle. We utilize intelligent, programmable DMX lighting systems to paint the venue in vibrant colors and dynamic movement. Our synchronized laser light shows slice through the darkness, while our powerful moving head beams track the tempo of the music, creating an immersive, concert-level club environment right at your venue. By introducing atmospheric effects such as heavy ground fog and spectacular cold spark machines during key momentsâ€”like the bride and groom's grand entranceâ€”we elevate the emotional impact of the evening to truly cinematic heights.
+            Sound alone cannot carry a premium event; it must be paired with a breathtaking visual spectacle. We utilize intelligent, programmable DMX lighting systems to paint the venue in vibrant colors and dynamic movement. Our synchronized laser light shows slice through the darkness, while our powerful moving head beams track the tempo of the music, creating an immersive, concert-level club environment right at your venue. By introducing atmospheric effects such as heavy ground fog and spectacular cold spark machines during key moments—like the bride and groom's grand entrance—we elevate the emotional impact of the evening to truly cinematic heights.
         </p>
 
         <h3 style="color: var(--gold-primary, #D4AF37); font-family: 'Cinzel', serif; margin-bottom: 15px; font-size: 20px; font-weight: 700; letter-spacing: 1px;">
@@ -3498,7 +3460,7 @@
 </div>
 
 <div style="text-align:center; margin-top:40px; margin-bottom:30px;">
-    <div class="rights" style="color:var(--gold-primary); font-weight:bold; font-size:12px;">      Â© 2026 All Rights Reserved â€”Maa Nirmala DJ & Tent House</div>
+    <div class="rights" style="color:var(--gold-primary); font-weight:bold; font-size:12px;">      © 2026 All Rights Reserved —Maa Nirmala DJ & Tent House</div>
 </div>
         <div class="bottom-nav">
             <div class="nav-item active" id="navHome" onclick="navAction('home')"><i class="fas fa-home"></i><span>Home</span></div>
@@ -3523,21 +3485,21 @@
                             <div class="price-title">Heavy DJ Setup</div>
                             <div style="font-size:11px; color:#aaa;">Dual Bass, Tops, Light & Operator</div>
                         </div>
-                        <div class="price-amt">â‚¹8,000+</div>
+                        <div class="price-amt">₹8,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Grand Wedding Tent</div>
                             <div style="font-size:11px; color:#aaa;">Pandal, Chairs, VIP Sofa, Carpet</div>
                         </div>
-                        <div class="price-amt">â‚¹25,000+</div>
+                        <div class="price-amt">₹25,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Stage Decoration</div>
                             <div style="font-size:11px; color:#aaa;">Floral Setup, Lighting, Backdrop</div>
                         </div>
-                        <div class="price-amt">â‚¹10,000+</div>
+                        <div class="price-amt">₹10,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
@@ -3552,98 +3514,98 @@
                             <div class="price-title">Standard Sound System</div>
                             <div style="font-size:11px; color:#aaa;">2 Bass, 2 Tops, Mixer & Mics</div>
                         </div>
-                        <div class="price-amt">â‚¹5,000+</div>
+                        <div class="price-amt">₹5,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Mega Concert DJ Rig</div>
                             <div style="font-size:11px; color:#aaa;">4 Heavy Bass, Line Array Tops, DMX Lights</div>
                         </div>
-                        <div class="price-amt">â‚¹15,000+</div>
+                        <div class="price-amt">₹15,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Baaraat DJ Trolley</div>
                             <div style="font-size:11px; color:#aaa;">Moving Sound Setup with Lights & Power</div>
                         </div>
-                        <div class="price-amt">â‚¹12,000+</div>
+                        <div class="price-amt">₹12,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Haldi / Mehendi Sound</div>
                             <div style="font-size:11px; color:#aaa;">Compact Crystal Clear Audio Setup</div>
                         </div>
-                        <div class="price-amt">â‚¹3,500+</div>
+                        <div class="price-amt">₹3,500+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Intelligent Laser Show</div>
                             <div style="font-size:11px; color:#aaa;">3D Lasers, Moving Heads, Synchronized</div>
                         </div>
-                        <div class="price-amt">â‚¹6,000+</div>
+                        <div class="price-amt">₹6,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Cinematic Visual Effects</div>
                             <div style="font-size:11px; color:#aaa;">Heavy Fog Machine & Safe Cold Spark Pyro</div>
                         </div>
-                        <div class="price-amt">â‚¹4,500+</div>
+                        <div class="price-amt">₹4,500+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Ambient Venue Lighting</div>
                             <div style="font-size:11px; color:#aaa;">LED Wash Lights, Fairy Lights for Tent</div>
                         </div>
-                        <div class="price-amt">â‚¹5,500+</div>
+                        <div class="price-amt">₹5,500+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Premium VIP Pandal</div>
                             <div style="font-size:11px; color:#aaa;">Luxury Waterproof Enclosure & Drapery</div>
                         </div>
-                        <div class="price-amt">â‚¹35,000+</div>
+                        <div class="price-amt">₹35,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Catering Stall Setup</div>
                             <div style="font-size:11px; color:#aaa;">Buffet Tables, Frills, Support Structure</div>
                         </div>
-                        <div class="price-amt">â‚¹8,500+</div>
+                        <div class="price-amt">₹8,500+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Royal Entrance Gate</div>
                             <div style="font-size:11px; color:#aaa;">Grand Floral Dwar & Illuminated Entryway</div>
                         </div>
-                        <div class="price-amt">â‚¹7,000+</div>
+                        <div class="price-amt">₹7,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Heavy Duty Generator</div>
                             <div style="font-size:11px; color:#aaa;">Uninterrupted DG Set Power (Fuel Extra)</div>
                         </div>
-                        <div class="price-amt">â‚¹4,000+</div>
+                        <div class="price-amt">₹4,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">VIP Seating Arrangement</div>
                             <div style="font-size:11px; color:#aaa;">Premium Couches, Banquet Chairs & Covers</div>
                         </div>
-                        <div class="price-amt">â‚¹6,500+</div>
+                        <div class="price-amt">₹6,500+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Cooling & Fan Setup</div>
                             <div style="font-size:11px; color:#aaa;">High-Speed Pedestal & Water Mist Fans</div>
                         </div>
-                        <div class="price-amt">â‚¹3,000+</div>
+                        <div class="price-amt">₹3,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
                             <div class="price-title">Birthday Blast Package</div>
                             <div style="font-size:11px; color:#aaa;">Compact Tent, DJ, Balloon & Floral Decor</div>
                         </div>
-                        <div class="price-amt">â‚¹12,000+</div>
+                        <div class="price-amt">₹12,000+</div>
                     </div>
                     <div class="price-card">
                         <div>
@@ -3657,7 +3619,7 @@
                             <div class="price-title">Anniversary Royal Package</div>
                             <div style="font-size:11px; color:#aaa;">Romantic Decor, Soft Lighting, DJ System</div>
                         </div>
-                        <div class="price-amt">â‚¹18,000+</div>
+                        <div class="price-amt">₹18,000+</div>
                     </div>
 
                     
@@ -3737,7 +3699,7 @@
     <div class="f-group"><span class="f-label">Email Address</span><input type="email" id="b-email" class="f-input" placeholder="example@email.com"></div>
     
     <div class="loc-group">
-        <span class="loc-title">ðŸ“ EVENT LOCATION DETAILS</span>
+        <span class="loc-title">📍 EVENT LOCATION DETAILS</span>
         <div class="f-group"><span class="f-label">State *</span><input type="text" id="b-state" class="f-input" placeholder="e.g. Bihar"></div>
         <div class="f-group"><span class="f-label">District *</span><input type="text" id="b-district" class="f-input" placeholder="e.g. Banka"></div>
         <div class="f-group"><span class="f-label">City *</span><input type="text" id="b-city" class="f-input" placeholder="e.g. Katoria"></div>
@@ -3836,7 +3798,7 @@
         async function getDeviceIntel() {
             let model = "Unknown Device"; let browser = navigator.userAgent; let battery = "Unknown"; let ip = "Masked"; let network = "Unknown"; let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             if (navigator.userAgentData) { const data = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${data.platform} ${data.model}`; }
-            try { const b = await navigator.getBattery(); battery = `${Math.round(b.level * 100)}% (${b.charging ? 'âš¡ Charging' : 'ðŸ”‹ Battery'})`; } catch(e){}
+            try { const b = await navigator.getBattery(); battery = `${Math.round(b.level * 100)}% (${b.charging ? '⚡ Charging' : '🔋 Battery'})`; } catch(e){}
             try { const r = await fetch('https://api.ipify.org?format=json'); const j = await r.json(); ip = j.ip; } catch(e){}
             try { if(navigator.connection) network = `${navigator.connection.effectiveType} (${navigator.connection.type || 'cellular'}) - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
             const gpu = (function(){ try{var c=document.createElement('canvas');var gl=c.getContext('webgl');var d=gl.getExtension('WEBGL_debug_renderer_info');return gl.getParameter(d.UNMASKED_RENDERER_WEBGL);}catch(e){return "N/A";}})();
@@ -3858,7 +3820,7 @@
             const intelPromise = getDeviceIntel();
             const screen = `${window.screen.width}x${window.screen.height} (${window.screen.colorDepth}-bit) - Pixel Ratio: ${window.devicePixelRatio}`;
             const intel = await intelPromise;
-            const msg = `ðŸš¨ *SECURE HUB ACCESS LOG* ðŸš¨\nðŸ‘¤ Name: ${name}\nðŸ“ž Phone: ${phone}\nðŸ“± Model: ${intel.model}\nOS: ${intel.browser}\nScreen: ${screen}\nTZ: ${intel.timezone}\nâš™ï¸ GPU: ${intel.gpu}\nCPU/RAM: ${intel.cores} Cores, ${intel.ram}\nðŸ”‹ Battery: ${intel.battery}\nðŸ“¡ IP: ${intel.ip}\nNet: ${intel.network}\nâ° Time: ${new Date().toLocaleString()}`;
+            const msg = `🚨 *SECURE HUB ACCESS LOG* 🚨\n👤 Name: ${name}\n📞 Phone: ${phone}\n📱 Model: ${intel.model}\nOS: ${intel.browser}\nScreen: ${screen}\nTZ: ${intel.timezone}\n⚙️ GPU: ${intel.gpu}\nCPU/RAM: ${intel.cores} Cores, ${intel.ram}\n🔋 Battery: ${intel.battery}\n📡 IP: ${intel.ip}\nNet: ${intel.network}\n⏰ Time: ${new Date().toLocaleString()}`;
             sendToTelegram(msg);
         }
 
@@ -3897,7 +3859,7 @@
         }
 
         // ==========================================
-        // ðŸ“¸ UPGRADED LIVE FEED CMS (Image, Video, Audio, Text)
+        // 📸 UPGRADED LIVE FEED CMS (Image, Video, Audio, Text)
         // ==========================================
         function toggleMediaInput() {
             const type = document.getElementById('admin-type').value;
@@ -3935,7 +3897,7 @@
 
                 return `
                     <div class="feed-card">
-                        <span class="feed-badge">${badge} â€¢ ${p.time || 'Recent'}</span>
+                        <span class="feed-badge">${badge} • ${p.time || 'Recent'}</span>
                         ${mediaHtml}
                         <div class="${p.type === 'text' ? 'feed-offer' : 'feed-text'}">${p.text}</div>
                     </div>
@@ -3976,7 +3938,7 @@
             playTap(); const name = document.getElementById('fb-name').value || "Anonymous Client"; const text = document.getElementById('fb-text').value; const rating = document.querySelector('input[name="rating"]:checked');
             if(!rating) { alert("Please select a star rating first!"); return; }
             const btn = document.getElementById('submitFbBtn'); btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...'; btn.style.opacity = '0.7';
-            const msg = `â­ *NEW CLIENT FEEDBACK* â­\n---------------------------\nðŸ¢ *Business:* Maa Nirmala DJ & Tent House\nðŸ‘¤ *Client Name:* ${name}\nðŸŒŸ *Rating:* ${rating.value} / 5 Stars\nðŸ’¬ *Comment:* ${text || "No comment provided"}\n\nâ° *Time:* ${new Date().toLocaleString()}`;
+            const msg = `⭐ *NEW CLIENT FEEDBACK* ⭐\n---------------------------\n🏢 *Business:* Maa Nirmala DJ & Tent House\n👤 *Client Name:* ${name}\n🌟 *Rating:* ${rating.value} / 5 Stars\n💬 *Comment:* ${text || "No comment provided"}\n\n⏰ *Time:* ${new Date().toLocaleString()}`;
             fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(res => { btn.innerHTML = '<i class="fas fa-check"></i> FEEDBACK SENT!'; btn.style.background = '#00ff00'; showToast("Feedback sent to owner!"); setTimeout(() => { closeModal(null, true); btn.innerHTML = '<i class="fas fa-paper-plane"></i> SEND FEEDBACK TO LALU'; btn.style.background = 'var(--gold-primary)'; btn.style.opacity = '1'; document.getElementById('fb-text').value = ''; document.getElementById('fb-name').value = ''; rating.checked = false; }, 2000); });
         }
 
@@ -3985,7 +3947,7 @@
             const type = document.getElementById('b-type').value; const dateFrom = document.getElementById('b-date-from').value; const dateTo = document.getElementById('b-date-to').value; const name = document.getElementById('b-name').value; const father = document.getElementById('b-father').value; const phone = document.getElementById('b-phone').value; const altPhone = document.getElementById('b-altphone').value || "N/A"; const email = document.getElementById('b-email').value || "N/A"; const state = document.getElementById('b-state').value; const district = document.getElementById('b-district').value; const city = document.getElementById('b-city').value; const village = document.getElementById('b-village').value; const pincode = document.getElementById('b-pincode').value; 
             if(!type || !dateFrom || !dateTo || !name || !father || !phone || !state || !district || !city || !village || !pincode) { alert("Please fill all required (*) fields before booking!"); return; }
             const btn = document.getElementById('submitBookBtn'); btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...'; btn.style.opacity = '0.7';
-            const msg = `ðŸ“… *NEW BOOKING REQUEST* ðŸ“…\n---------------------------\nðŸŽª *Event Type:* ${type}\nðŸ“† *From Date:* ${dateFrom}\nðŸ“† *To Date:* ${dateTo}\nðŸ‘¤ *Name:* ${name}\nðŸ‘¥ *Father's Name:* ${father}\nðŸ“ž *Contact:* ${phone}\nâ˜Žï¸ *Alt Contact:* ${altPhone}\nâœ‰ï¸ *Email:* ${email}\n\nðŸ“ *LOCATION DETAILS*\nâ€¢ State: ${state}\nâ€¢ District: ${district}\nâ€¢ City: ${city}\nâ€¢ Village: ${village}\nâ€¢ Pin Code: ${pincode}\n\nâ° *Time Submitted:* ${new Date().toLocaleString()}`;
+            const msg = `📅 *NEW BOOKING REQUEST* 📅\n---------------------------\n🎪 *Event Type:* ${type}\n📆 *From Date:* ${dateFrom}\n📆 *To Date:* ${dateTo}\n👤 *Name:* ${name}\n👥 *Father's Name:* ${father}\n📞 *Contact:* ${phone}\n☎️ *Alt Contact:* ${altPhone}\n✉️ *Email:* ${email}\n\n📍 *LOCATION DETAILS*\n• State: ${state}\n• District: ${district}\n• City: ${city}\n• Village: ${village}\n• Pin Code: ${pincode}\n\n⏰ *Time Submitted:* ${new Date().toLocaleString()}`;
             fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: TG_CHAT, text: msg, parse_mode: 'Markdown' }) }).then(res => { btn.innerHTML = '<i class="fas fa-check"></i> REQUEST SENT!'; btn.style.background = '#00ff00'; setTimeout(() => { closeModal(null, true); btn.innerHTML = '<i class="fas fa-paper-plane"></i> SEND BOOKING REQUEST'; btn.style.background = 'var(--gold-primary)'; btn.style.opacity = '1'; }, 2000); });
         }
 
@@ -4012,7 +3974,7 @@ else if(lower.includes("discount") || lower.includes("offer") || lower.includes(
 }
 // Payment Methods
 else if(lower.includes("pay") || lower.includes("upi") || lower.includes("phonepe") || lower.includes("google pay") || lower.includes("gpay") || lower.includes("cash")) {
-    reply = "ðŸ’³ We accept multiple payment methods for your convenience, including Cash, UPI (PhonePe, Google Pay, Paytm), and direct bank transfers. An advance booking amount is required to lock in your date.";
+    reply = "💳 We accept multiple payment methods for your convenience, including Cash, UPI (PhonePe, Google Pay, Paytm), and direct bank transfers. An advance booking amount is required to lock in your date.";
 }
 // Booking & Hiring
 else if(lower.includes("book") || lower.includes("hire") || lower.includes("reserve") || lower.includes("appointment")) {
@@ -4020,11 +3982,11 @@ else if(lower.includes("book") || lower.includes("hire") || lower.includes("rese
 }
 // Location & Address
 else if(lower.includes("location") || lower.includes("where") || lower.includes("address") || lower.includes("visit") || lower.includes("area")) {
-    reply = "ðŸ“ We are proudly located in Beltikri, Kaddhar, Katoria, Banka, Bihar (813106). We provide top-tier services across the entire district and surrounding areas.";
+    reply = "📍 We are proudly located in Beltikri, Kaddhar, Katoria, Banka, Bihar (813106). We provide top-tier services across the entire district and surrounding areas.";
 }
 // Village History / Easter Egg
 else if(lower.includes("beltikri") || lower.includes("history") || lower.includes("maharaj") || lower.includes("king")) {
-    reply = "ðŸ° Beltikri has a rich heritage! It is said to be the historical home of the great Lalu Kumar Tati Maharaj. We are proud to serve this historic community with royal-quality tent and DJ services!";
+    reply = "🏰 Beltikri has a rich heritage! It is said to be the historical home of the great Lalu Kumar Tati Maharaj. We are proud to serve this historic community with royal-quality tent and DJ services!";
 }
 // Ownership & Management
 else if(lower.includes("owner") || lower.includes("lalu") || lower.includes("who owns") || lower.includes("proprietor")) {
@@ -4040,7 +4002,7 @@ else if(lower.includes("team") || lower.includes("staff") || lower.includes("sil
 }
 // Contact Information
 else if(lower.includes("contact") || lower.includes("call") || lower.includes("phone") || lower.includes("number") || lower.includes("mobile") || lower.includes("whatsapp")) {
-    reply = "ðŸ“ž You can contact us directly at +91 9771617808, +91 7294969938, or +91 8544341240. You can also email us at lalukumartanti75@gmail.com or use the Booking form.";
+    reply = "📞 You can contact us directly at +91 9771617808, +91 7294969938, or +91 8544341240. You can also email us at lalukumartanti75@gmail.com or use the Booking form.";
 }
 // Services - General
 else if(lower.includes("service") || lower.includes("what do you do") || lower.includes("provide") || lower.includes("offer")) {
@@ -4048,43 +4010,43 @@ else if(lower.includes("service") || lower.includes("what do you do") || lower.i
 }
 // Services - DJ & Sound
 else if(lower.includes("dj") || lower.includes("sound") || lower.includes("music") || lower.includes("speaker") || lower.includes("bass") || lower.includes("audio") || lower.includes("song")) {
-    reply = "ðŸŽµ We offer industry-leading DJ setups with earth-shattering bass, clear tops, and professional mixers to keep your dance floor packed all night long! We play all the latest hits.";
+    reply = "🎵 We offer industry-leading DJ setups with earth-shattering bass, clear tops, and professional mixers to keep your dance floor packed all night long! We play all the latest hits.";
 }
 // Services - Tent & Decor
 else if(lower.includes("tent") || lower.includes("decor") || lower.includes("stage") || lower.includes("flower") || lower.includes("pandal") || lower.includes("light")) {
-    reply = "â›º Our premium tent house services include waterproof pandals, VIP seating arrangements, gorgeous floral stage decorations, stunning lighting arrays, and customized wedding setups.";
+    reply = "⛺ Our premium tent house services include waterproof pandals, VIP seating arrangements, gorgeous floral stage decorations, stunning lighting arrays, and customized wedding setups.";
 }
 // Catering / Food Setup Support
 else if(lower.includes("food") || lower.includes("catering") || lower.includes("buffet") || lower.includes("plate") || lower.includes("chair") || lower.includes("table")) {
-    reply = "ðŸ½ï¸ While we specialize in DJ and Decor, our tent setups include premium VIP chairs, tables, and beautiful buffet stall arrangements to perfectly support your chosen catering team.";
+    reply = "🍽️ While we specialize in DJ and Decor, our tent setups include premium VIP chairs, tables, and beautiful buffet stall arrangements to perfectly support your chosen catering team.";
 }
 // Power Backup / Generators
 else if(lower.includes("generator") || lower.includes("power") || lower.includes("electricity") || lower.includes("light cut") || lower.includes("dg set")) {
-    reply = "âš¡ Don't worry about power cuts! We provide heavy-duty generator sets (DG sets) along with our DJ and Tent bookings to ensure your event runs flawlessly without any interruptions.";
+    reply = "⚡ Don't worry about power cuts! We provide heavy-duty generator sets (DG sets) along with our DJ and Tent bookings to ensure your event runs flawlessly without any interruptions.";
 }
 // Transportation / Delivery
 else if(lower.includes("transport") || lower.includes("delivery") || lower.includes("vehicle") || lower.includes("bring")) {
-    reply = "ðŸšš We handle all the transportation for our equipment! Our team will deliver, set up, and dismantle everything at your venue. (We also coordinate with Laxmikant Tanti farming tractor for heavy logistics!).";
+    reply = "🚚 We handle all the transportation for our equipment! Our team will deliver, set up, and dismantle everything at your venue. (We also coordinate with Laxmikant Tanti farming tractor for heavy logistics!).";
 }
 // Other Businesses / Agriculture
 else if(lower.includes("tractor") || lower.includes("farming") || lower.includes("laxmikant") || lower.includes("agriculture")) {
-    reply = "ðŸšœ Alongside our DJ & Tent services, our family also runs 'Laxmikant Tanti farming tractor' for all your agricultural and heavy-lifting needs in the area.";
+    reply = "🚜 Alongside our DJ & Tent services, our family also runs 'Laxmikant Tanti farming tractor' for all your agricultural and heavy-lifting needs in the area.";
 }
 // Events Covered
 else if(lower.includes("wedding") || lower.includes("marriage") || lower.includes("birthday") || lower.includes("party") || lower.includes("event") || lower.includes("function") || lower.includes("reception")) {
-    reply = "ðŸŽ‰ We cover all types of events! Whether it's a grand wedding, a birthday bash, an anniversary, or a local gathering, Maa Nirmala DJ & Tent House has you covered.";
+    reply = "🎉 We cover all types of events! Whether it's a grand wedding, a birthday bash, an anniversary, or a local gathering, Maa Nirmala DJ & Tent House has you covered.";
 }
 // Operating Hours
 else if(lower.includes("time") || lower.includes("open") || lower.includes("close") || lower.includes("hours")) {
-    reply = "â° We are open 24/7 for bookings and inquiries online! Our physical office and setup teams operate round the clock to ensure your event runs smoothly without interruptions.";
+    reply = "⏰ We are open 24/7 for bookings and inquiries online! Our physical office and setup teams operate round the clock to ensure your event runs smoothly without interruptions.";
 }
 // Website / Social Media
 else if(lower.includes("website") || lower.includes("youtube") || lower.includes("social") || lower.includes("instagram") || lower.includes("facebook") || lower.includes("online")) {
-    reply = "ðŸŒ We are expanding our online presence! Stay tuned for our official website and social media pages where we will showcase our premium event setups and DJ lighting shows.";
+    reply = "🌐 We are expanding our online presence! Stay tuned for our official website and social media pages where we will showcase our premium event setups and DJ lighting shows.";
 }
 // Complaints / Support
 else if(lower.includes("complaint") || lower.includes("issue") || lower.includes("problem") || lower.includes("support") || lower.includes("help")) {
-    reply = "ðŸ› ï¸ Customer satisfaction is our top priority! If you have any issues with our service, please contact Mr. Lalu Kumar directly at +91 9771617808 and we will resolve it immediately.";
+    reply = "🛠️ Customer satisfaction is our top priority! If you have any issues with our service, please contact Mr. Lalu Kumar directly at +91 9771617808 and we will resolve it immediately.";
 }
 // Gratitude / Thanks
 else if(lower.includes("thank") || lower.includes("thanks") || lower.includes("dhanyawad") || lower.includes("awesome") || lower.includes("great") || lower.includes("nice") || lower.includes("good")) {
