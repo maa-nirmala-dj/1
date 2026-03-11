@@ -2224,10 +2224,6 @@
     .goog-logo-link { display: none !important; }
     .goog-te-gadget { color: transparent !important; }
 </style>
-        <div class="container" id="homeSection">
-            <style>
-    /* --- IMPORT PREMIUM LUXURY FONTS --- */
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;600;800&display=swap');
 
     /* 1. Main container reset */
     #homeSection {
