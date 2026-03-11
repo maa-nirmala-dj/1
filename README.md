@@ -2258,7 +2258,8 @@
         }
     }
 </script>
-
+}
+}
 <div class="container" id="homeSection">
             <style>
     /* --- IMPORT PREMIUM LUXURY FONTS --- */
