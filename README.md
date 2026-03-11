@@ -2139,34 +2139,122 @@
     </div>
 
     <div id="main-interface">
-        <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
-        <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
-<div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+    <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i> Success</div>
+    <div class="bg-fx"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 
-<nav class="navbar" id="mainNavbar">
-    <div class="brand">
-        <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
-        <span><i class="fas fa-crown"></i> MND Hub</span>
-    </div>
-    <div class="nav-right">
-        <div id="google_translate_element"></div>
-        <div class="controls">
-            <button class="nav-btn-square theme-btn" id="themeIcon" onclick="themeSwitch()">
-                <i class="fas fa-sun"></i>
-            </button>
-            <button class="nav-btn-square set-btn" id="masterSettingsIcon" onclick="openMasterSettings()">
-                <i class="fas fa-cog fa-spin-hover"></i>
-            </button>
-        </div>
-    </div>
-</nav>
+    <style>
+        #mainNavbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #0a0a0c;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #D4AF37;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .brand i.fa-bars {
+            color: #ffffff; /* White hamburger menu */
+            font-size: 26px;
+            cursor: pointer;
+        }
+        .brand i.fa-crown {
+            color: #D4AF37; /* Gold crown */
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Perfect spacing between Translate and Buttons */
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Perfect spacing between Sun and Cog buttons */
+        }
+        .nav-btn-square {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: #111;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            color: #D4AF37;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 0 10px rgba(212,175,55,0.1);
+        }
+        .nav-btn-square:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212,175,55,0.3);
+        }
+        
+        /* PERFECT GOOGLE TRANSLATE WIDGET OVERRIDE */
+        #google_translate_element {
+            display: flex;
+            align-items: center;
+        }
+        .goog-te-gadget-simple {
+            background-color: #111 !important;
+            border: 2px solid rgba(212, 175, 55, 0.6) !important;
+            border-radius: 8px !important;
+            padding: 0 12px !important;
+            height: 42px !important;
+            display: flex !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+            transition: 0.3s ease;
+        }
+        .goog-te-gadget-simple:hover {
+            border-color: #D4AF37 !important;
+        }
+        .goog-te-gadget-simple span {
+            color: #D4AF37 !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 15px !important;
+        }
+        .goog-te-gadget-icon { display: none !important; }
+    </style>
 
-<div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)">
-    <div class="mn-master-box" id="masterBoxContent">
-        <div class="master-header">
-            <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
-            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
+    <nav class="navbar" id="mainNavbar">
+        <div class="brand">
+            <i class="fas fa-bars nav-btn" onclick="toggleMenu()"></i>
+            <span><i class="fas fa-crown"></i> MND Hub</span>
         </div>
+        <div class="nav-right">
+            <div id="google_translate_element"></div>
+            <div class="controls">
+                <button class="nav-btn-square theme-btn" id="themeIcon" onclick="themeSwitch()">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="nav-btn-square set-btn" id="masterSettingsIcon" onclick="openMasterSettings()">
+                    <i class="fas fa-cog fa-spin-hover"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="masterSettingsOverlay" onclick="closeMasterOnOutsideClick(event)" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; justify-content:center; align-items:center;">
+        <div class="mn-master-box" id="masterBoxContent" style="width:100%; height:100%; border:none; border-radius:0; background:linear-gradient(145deg, #110e08 0%, #050505 100%); display:flex; flex-direction:column; overflow:hidden;">
+            <div class="master-header" style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:rgba(10,10,10,0.9); position:sticky; top:0; z-index:10;">
+                <span onclick="closeMasterSettings()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer;">&times;</span>
+                <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
+            </div>
             
     <div class="container" id="homeSection">
             <style>
