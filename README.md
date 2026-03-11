@@ -2168,37 +2168,6 @@
             <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:22px; font-weight:900; letter-spacing:1px;"><i class="fas fa-sliders-h"></i> Master Control</h2>
         </div>
         
-        <div class="master-content">
-            
-            <div class="setting-row" style="background: rgba(212,175,55,0.05);">
-                <div class="setting-label">
-                    <div class="setting-icon"><i class="fas fa-clock"></i></div>
-                    <div>
-                        Live Time: <strong id="liveClock" style="color: #D4AF37;">00:00:00</strong>
-                        <div style="font-size: 11px; color: #888;">Set Earthquake Alarm</div>
-                    </div>
-                </div>
-                <div style="display:flex; gap:10px; align-items:center;">
-                    <input type="time" id="alarmTime" class="mn-input" style="padding: 5px;">
-                    <label class="mn-switch"><input type="checkbox" id="toggleAlarm" onchange="toggleAlarmStatus()"><span class="mn-slider"></span></label>
-                </div>
-            </div>
-
-            <div class="setting-row" style="flex-direction: column; align-items: flex-start;">
-                <div class="setting-label" style="margin-bottom: 10px;">
-                    <div class="setting-icon" style="color:#0088cc;"><i class="fab fa-telegram-plane"></i></div>
-                    <div>Direct Message to Management</div>
-                </div>
-                <div style="display: flex; width: 100%; gap: 10px;">
-                    <input type="text" id="quickMsg" class="mn-input" placeholder="Type your feedback here..." style="flex-grow: 1;">
-                    <button id="quickSendBtn" class="mn-btn" onclick="sendQuickFeedback()"><i class="fas fa-paper-plane"></i> Send</button>
-                </div>
-            </div>
-
-            <div class="setting-row">
-                <div class="setting-label"><div class="setting-icon" style="color:#ff3333;"><i class="fas fa-bullhorn"></i></div><div>Earthquake Bass<div style="font-size: 11px; color: #888;">Screen physically shakes!</div></div></div>
-                <label class="mn-switch"><input type="checkbox" id="toggleBass" onchange="applyEffectClass('toggleBass', 'bass-mode')"><span class="mn-slider"></span></label>
-            </div>
 <style>
     body { padding-top: 65px; } /* Prevents content from hiding under fixed navbar */
 
