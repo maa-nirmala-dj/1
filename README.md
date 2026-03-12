@@ -2708,22 +2708,23 @@
         }
     }
 </script>
-<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); showVmaxPermission()">
-    <i class="fas fa-photo-video"></i> V-MAX Gallery & Player
+<a href="javascript:void(0)" class="side-link" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 15px; background: transparent; border: 1px solid #D4AF37; border-radius: 8px; color: #D4AF37; font-family: 'Outfit', sans-serif; font-weight: bold; font-size: 16px; text-decoration: none; justify-content: center; box-sizing: border-box; transition: 0.3s ease; margin-bottom: 15px;" onclick="toggleMenu(); showVmaxPermission()">
+    <i class="fas fa-images"></i> DEVICE GALLERY
 </a>
 
-<div id="vmaxPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); z-index:99999999; justify-content:center; align-items:center; backdrop-filter:blur(5px);">
-    <div style="background:#1a1a1a; width:85%; max-width:350px; border-radius:16px; padding:25px 20px; text-align:center; box-shadow:0 15px 40px rgba(0,0,0,0.9); border: 1px solid rgba(212,175,55,0.3);">
-        <div style="width:70px; height:70px; background:rgba(212,175,55,0.1); border-radius:50%; display:flex; justify-content:center; align-items:center; margin:0 auto 15px auto; border:2px solid #D4AF37;">
-            <i class="fas fa-folder-open" style="font-size:30px; color:#D4AF37;"></i>
-        </div>
+<div id="vmaxPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.95); z-index:99999999; justify-content:center; align-items:center;">
+    <div style="background:#111; width:85%; max-width:350px; border-radius:12px; padding:25px 20px; text-align:center; border: 1px solid #333;">
+        
+        <i class="fas fa-folder-open" style="font-size:40px; color:#D4AF37; margin-bottom:15px;"></i>
+        
         <h3 style="color:#fff; font-family:'Outfit'; margin:0 0 10px 0; font-size:18px;">Storage Permission</h3>
         <p style="color:#aaa; font-size:13px; font-family:'Outfit'; margin-bottom:25px; line-height:1.5;">
-            Allow <b>MND Hub</b> to access photos, media, and audio files on your device to build your local gallery?
+            Allow <b>MND Hub</b> to access photos, media, and files on your device to build your local gallery?
         </p>
+        
         <div style="display:flex; justify-content:space-between; gap:10px;">
-            <button style="flex:1; padding:12px; background:#333; border:none; color:#aaa; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="document.getElementById('vmaxPermissionModal').style.display='none'">Deny</button>
-            <button style="flex:1; padding:12px; background:linear-gradient(45deg, #D4AF37, #ff8c00); border:none; color:#000; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="grantVmaxAccess()">Allow</button>
+            <button style="flex:1; padding:12px; background:transparent; border:1px solid #555; color:#aaa; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="document.getElementById('vmaxPermissionModal').style.display='none'">Deny</button>
+            <button style="flex:1; padding:12px; background:#D4AF37; border:none; color:#000; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="grantVmaxAccess()">Allow</button>
         </div>
     </div>
 </div>
