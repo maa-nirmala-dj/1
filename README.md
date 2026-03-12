@@ -2708,8 +2708,9 @@
         }
     }
 </script>
-<a href="javascript:void(0)" class="side-link" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 15px; background: transparent; border: 1px solid #D4AF37; border-radius: 8px; color: #D4AF37; font-family: 'Outfit', sans-serif; font-weight: bold; font-size: 16px; text-decoration: none; justify-content: center; box-sizing: border-box; transition: 0.3s ease; margin-bottom: 15px;" onclick="toggleMenu(); showVmaxPermission()">
-    <i class="fas fa-images"></i> DEVICE GALLERY
+
+<a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); showVmaxPermission()">
+    <i class="fas fa-images"></i> Device Gallery Viewer
 </a>
 
 <div id="vmaxPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.95); z-index:99999999; justify-content:center; align-items:center;">
@@ -2728,7 +2729,6 @@
         </div>
     </div>
 </div>
-
 <div id="vmaxGalleryOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; flex-direction:column;">
     
     <div style="padding:15px 20px; background:#111; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.5);">
