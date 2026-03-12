@@ -213,6 +213,15 @@
         .price-title { font-family: 'Cinzel'; font-weight: bold; font-size: 16px; color: #fff; }
         .price-amt { color: var(--gold-primary); font-size: 20px; font-weight: bold; font-family: 'Rajdhani'; }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "ff288c69-f9c0-4453-b1ba-04cb18f92143",
+    });
+  });
+</script>
     </head>
 <body data-theme="dark">
 
