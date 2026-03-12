@@ -2708,458 +2708,250 @@
         }
     }
 </script>
-<a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); openMediaManager()">
-    <i class="fas fa-folder-open"></i> Local Media Player
+<a href="javascript:void(0)" class="side-link premium-animated-btn" onclick="toggleMenu(); showVmaxPermission()">
+    <i class="fas fa-photo-video"></i> V-MAX Gallery & Player
 </a>
 
-<div id="mediaManagerOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(5,5,5,0.98); z-index:9999999; flex-direction:column; overflow:hidden; backdrop-filter: blur(15px);">
+<div id="vmaxPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); z-index:99999999; justify-content:center; align-items:center; backdrop-filter:blur(5px);">
+    <div style="background:#1a1a1a; width:85%; max-width:350px; border-radius:16px; padding:25px 20px; text-align:center; box-shadow:0 15px 40px rgba(0,0,0,0.9); border: 1px solid rgba(212,175,55,0.3);">
+        <div style="width:70px; height:70px; background:rgba(212,175,55,0.1); border-radius:50%; display:flex; justify-content:center; align-items:center; margin:0 auto 15px auto; border:2px solid #D4AF37;">
+            <i class="fas fa-folder-open" style="font-size:30px; color:#D4AF37;"></i>
+        </div>
+        <h3 style="color:#fff; font-family:'Outfit'; margin:0 0 10px 0; font-size:18px;">Storage Permission</h3>
+        <p style="color:#aaa; font-size:13px; font-family:'Outfit'; margin-bottom:25px; line-height:1.5;">
+            Allow <b>MND Hub</b> to access photos, media, and audio files on your device to build your local gallery?
+        </p>
+        <div style="display:flex; justify-content:space-between; gap:10px;">
+            <button style="flex:1; padding:12px; background:#333; border:none; color:#aaa; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="document.getElementById('vmaxPermissionModal').style.display='none'">Deny</button>
+            <button style="flex:1; padding:12px; background:linear-gradient(45deg, #D4AF37, #ff8c00); border:none; color:#000; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="grantVmaxAccess()">Allow</button>
+        </div>
+    </div>
+</div>
+
+<div id="vmaxGalleryOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#050505; z-index:9999999; flex-direction:column;">
     
-    <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); background:linear-gradient(180deg, rgba(20,20,20,0.9) 0%, rgba(5,5,5,0.9) 100%); position:relative; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
-        <span onclick="closeMediaManager()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:35px; cursor:pointer; transition: 0.3s;">&times;</span>
-        <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:24px; font-weight:900; letter-spacing: 1px;"><i class="fas fa-server"></i> V-MAX Player</h2>
-        <div style="margin-top:8px; display:flex; justify-content:center; gap:15px; color:#aaa; font-family:'Outfit'; font-size:12px; font-weight:bold;">
-            <span id="totalFileCount"><i class="fas fa-file"></i> 0 Media Files</span>
-            <span id="totalFileSize"><i class="fas fa-hdd"></i> 0.00 MB</span>
+    <div style="padding:15px 20px; background:#111; border-bottom:1px solid #333; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+        <span onclick="closeVmaxGallery()" style="color:#fff; font-size:16px; font-family:'Outfit'; cursor:pointer;"><i class="fas fa-arrow-left"></i> Back</span>
+        <div style="text-align:center;">
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel', serif; font-size:20px; font-weight:900;">V-MAX Player</h2>
+            <div style="color:#aaa; font-family:'Outfit'; font-size:10px; margin-top:2px;">
+                <span id="vmaxCount">0 Files</span> | <span id="vmaxSize">0 MB</span>
+            </div>
+        </div>
+        <span onclick="document.getElementById('vmaxMultiInput').click()" style="color:#00fa9a; font-size:14px; font-family:'Outfit'; cursor:pointer; font-weight:bold;"><i class="fas fa-plus"></i> Add</span>
+    </div>
+
+    <div style="padding:10px; background:#0a0a0c; display:flex; flex-direction:column; gap:10px; border-bottom:1px solid #222;">
+        <div style="display:flex; gap:5px; overflow-x:auto; padding-bottom:5px; scrollbar-width:none;">
+            <button class="vmax-filter active-filter" onclick="filterVmax('all', this)">All Media</button>
+            <button class="vmax-filter" onclick="filterVmax('image', this)">Photos</button>
+            <button class="vmax-filter" onclick="filterVmax('video', this)">Videos</button>
+            <button class="vmax-filter" onclick="filterVmax('audio', this)">Audio</button>
+            <button class="vmax-filter" style="background:rgba(0,250,154,0.1); color:#00fa9a; border-color:#00fa9a;" onclick="document.getElementById('vmaxFolderInput').click()"><i class="fas fa-radar"></i> Auto-Scan Folder</button>
         </div>
     </div>
 
-    <div style="padding:15px; background:rgba(255,255,255,0.02); display:flex; flex-direction:column; gap:15px; border-bottom:1px solid rgba(212,175,55,0.2);">
-        
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
-            <button class="mn-btn" style="background:linear-gradient(45deg, #00fa9a, #00bfff); color:#000; font-weight:bold; border:none; padding:12px 15px; box-shadow:0 4px 15px rgba(0,250,154,0.3);" onclick="document.getElementById('folderScannerInput').click()">
-                <i class="fas fa-radar"></i> Auto-Scan Folder
-            </button>
-            
-            <button class="mn-btn" style="background:transparent; border:1px solid #D4AF37; color:#D4AF37; padding:12px 15px;" onclick="document.getElementById('localMediaInput').click()">
-                <i class="fas fa-plus-circle"></i> Select Files
-            </button>
-            
-            <button class="mn-btn" style="background:rgba(255,51,51,0.1); border:1px solid #ff3333; color:#ff3333; padding:12px 15px;" onclick="clearMediaGallery()">
-                <i class="fas fa-trash-alt"></i> Clear All
-            </button>
+    <input type="file" id="vmaxMultiInput" multiple accept="image/*, video/*, audio/*" style="display:none;" onchange="processVmaxFiles(this)">
+    <input type="file" id="vmaxFolderInput" webkitdirectory directory multiple style="display:none;" onchange="processVmaxFiles(this)">
 
-            <input type="file" id="localMediaInput" multiple accept="video/*, audio/*, image/*" style="display:none;" onchange="processScannedFiles(this)">
-            <input type="file" id="folderScannerInput" webkitdirectory directory multiple style="display:none;" onchange="processScannedFiles(this)">
-        </div>
-
-        <div style="display:flex; justify-content:center; gap:5px; flex-wrap:wrap;">
-            <button class="filter-tab active-tab" onclick="filterMedia('all', this)"><i class="fas fa-th-large"></i> All</button>
-            <button class="filter-tab" onclick="filterMedia('video', this)"><i class="fas fa-video"></i> Videos</button>
-            <button class="filter-tab" onclick="filterMedia('audio', this)"><i class="fas fa-music"></i> Audio</button>
-            <button class="filter-tab" onclick="filterMedia('image', this)"><i class="fas fa-image"></i> Photos</button>
-        </div>
+    <div id="vmaxScanStatus" style="display:none; text-align:center; padding:10px; background:rgba(212,175,55,0.1); color:#D4AF37; font-size:12px; font-family:'Outfit'; font-weight:bold;">
+        <i class="fas fa-spinner fa-spin"></i> Scanning device... Please wait.
     </div>
 
-    <div id="scanStatusArea" style="display:none; text-align:center; padding:15px; background:rgba(212,175,55,0.1); color:#D4AF37; font-family:'Outfit'; font-weight:bold; border-bottom:1px solid #D4AF37;">
-        <i class="fas fa-spinner fa-spin"></i> Scanning device for media... Please wait.
-    </div>
-
-    <div id="mediaGalleryArea" style="flex-grow:1; overflow-y:auto; padding:20px; display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:15px; align-content:start;">
-        <div style="grid-column: 1 / -1; text-align:center; color:#555; margin-top:8vh; font-family:'Outfit';">
-            <i class="fas fa-photo-video" style="font-size:60px; margin-bottom:15px; color:rgba(212,175,55,0.3);"></i><br>
-            <span style="font-size:18px; color:#888;">Player is Empty</span><br>
-            <span style="font-size:13px; display:block; margin-top:10px;">Click <b>Auto-Scan Folder</b> to allow access to a folder (like "Downloads" or "DCIM") and instantly load all your media.</span>
+    <div id="vmaxGridArea" style="flex-grow:1; overflow-y:auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; padding:2px; background:#000; align-content:start;">
+        <div style="grid-column:1/-1; text-align:center; padding-top:10vh; color:#555; font-family:'Outfit';">
+            <i class="fas fa-box-open" style="font-size:50px; margin-bottom:15px; color:#222;"></i><br>
+            Player is empty.<br>Click <b>Add</b> or <b>Auto-Scan Folder</b>.
         </div>
     </div>
+</div>
 
-    <div id="activePlayerOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:99999999; flex-direction:column;">
-        <div style="padding:15px 20px; background:linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%); display:flex; justify-content:space-between; align-items:center; position:absolute; top:0; width:100%; box-sizing:border-box; z-index:11;">
-            <div id="playerFileName" style="color:#fff; font-family:'Outfit'; font-weight:bold; font-size:14px; text-shadow:0 2px 4px #000; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:80%;">Playing Media...</div>
-            <span onclick="closeActivePlayer()" style="color:#fff; font-size:35px; cursor:pointer; text-shadow:0 0 10px #000; line-height:1;">&times;</span>
-        </div>
-        <div id="playerContentArea" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#000;"></div>
+<div id="vmaxFullscreenViewer" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:99999999; flex-direction:column;">
+    
+    <div style="position:absolute; top:0; left:0; width:100%; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; box-sizing:border-box; background:linear-gradient(180deg, rgba(0,0,0,0.9), transparent); z-index:10;">
+        <i class="fas fa-arrow-left" style="color:#fff; font-size:20px; cursor:pointer;" onclick="closeVmaxFullscreen()"></i>
+        <div id="vmaxPlayerTitle" style="color:#fff; font-family:'Outfit'; font-size:12px; max-width:60%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-shadow:0 1px 3px #000;">Media File</div>
+        <i class="fas fa-trash-alt" style="color:#ff3333; font-size:18px; cursor:pointer;" onclick="removeVmaxItem()" title="Remove from player"></i>
+    </div>
+
+    <div id="vmaxPlayerContent" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
     </div>
 </div>
 
 <style>
-    /* Filter Tabs */
-    .filter-tab {
-        background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #aaa;
-        padding: 8px 15px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 13px;
-        cursor: pointer; transition: 0.3s ease;
+    /* Filters */
+    .vmax-filter {
+        background: transparent; border: 1px solid #444; color: #aaa; padding: 6px 12px;
+        border-radius: 15px; font-family: 'Outfit', sans-serif; font-size: 12px;
+        cursor: pointer; transition: 0.3s; white-space: nowrap; flex-shrink: 0;
     }
-    .filter-tab.active-tab {
-        background: rgba(212,175,55,0.15); border-color: #D4AF37; color: #D4AF37; font-weight: bold;
-    }
+    .vmax-filter.active-filter { background: rgba(212,175,55,0.2); border-color: #D4AF37; color: #D4AF37; font-weight: bold; }
 
-    /* Media Cards */
-    .media-item-card {
-        background: rgba(20,20,20,0.8); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px;
-        overflow: hidden; display: flex; flex-direction: column; cursor: pointer; position: relative;
-        transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    .media-item-card:hover {
-        border-color: #D4AF37; transform: translateY(-5px); box-shadow: 0 8px 20px rgba(212,175,55,0.3);
-    }
+    /* Grid Items */
+    .vmax-grid-item { position: relative; width: 100%; aspect-ratio: 1 / 1; background: #111; overflow: hidden; cursor: pointer; }
+    .vmax-grid-item img { width: 100%; height: 100%; object-fit: cover; }
     
-    .media-thumbnail {
-        height: 110px; width: 100%; background: #0a0a0c; display: flex; flex-direction: column;
-        justify-content: center; align-items: center; font-size: 35px; color: #D4AF37;
-        object-fit: cover; position: relative;
+    /* Video/Audio Badges */
+    .vmax-badge {
+        position: absolute; bottom: 5px; left: 5px; background: rgba(0,0,0,0.7); color: #fff;
+        font-family: sans-serif; font-size: 10px; padding: 3px 6px; border-radius: 4px;
+        display: flex; align-items: center; gap: 4px;
     }
-    .media-thumbnail.video-bg { background: linear-gradient(45deg, #1a0000, #4d0000); color: #ff3333; }
-    .media-thumbnail.audio-bg { background: linear-gradient(45deg, #001a33, #004080); color: #00bfff; }
-    
-    .play-overlay {
-        position: absolute; background: rgba(0,0,0,0.5); width: 40px; height: 40px;
-        border-radius: 50%; display: flex; justify-content: center; align-items: center;
-        color: #fff; font-size: 16px; border: 2px solid #fff;
+    .vmax-placeholder {
+        width: 100%; height: 100%; display: flex; flex-direction: column;
+        justify-content: center; align-items: center; background: #1a1a1a;
     }
-
-    .media-info { padding: 10px; background: rgba(5,5,5,0.9); font-family: 'Outfit', sans-serif; }
-    .media-title { color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
-    .media-meta { color: #888; font-size: 10px; display: flex; justify-content: space-between; }
-    
-    .media-remove-btn {
-        position: absolute; top: 8px; right: 8px; background: rgba(255,51,51,0.9); color: white;
-        border: none; border-radius: 50%; width: 26px; height: 26px; display: flex;
-        justify-content: center; align-items: center; cursor: pointer; font-size: 12px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 2; transition: 0.2s;
-    }
-    .media-remove-btn:hover { transform: scale(1.1); background: #ff0000; }
 </style>
 
 <script>
-    let vaultFiles = [];
-    let currentFilter = 'all';
+    let vmaxMediaList = [];
+    let vmaxCurrentFilter = 'all';
+    let vmaxCurrentIndex = -1;
 
-    function openMediaManager() { document.getElementById('mediaManagerOverlay').style.display = 'flex'; }
-    function closeMediaManager() { document.getElementById('mediaManagerOverlay').style.display = 'none'; closeActivePlayer(); }
+    // 1. Initial Flow
+    function showVmaxPermission() {
+        document.getElementById('vmaxPermissionModal').style.display = 'flex';
+    }
 
-    // Advanced Folder Scanning Engine
-    function processScannedFiles(inputElement) {
+    function grantVmaxAccess() {
+        document.getElementById('vmaxPermissionModal').style.display = 'none';
+        document.getElementById('vmaxGalleryOverlay').style.display = 'flex';
+        // Auto open file picker after granting permission
+        document.getElementById('vmaxMultiInput').click();
+    }
+
+    function closeVmaxGallery() {
+        document.getElementById('vmaxGalleryOverlay').style.display = 'none';
+        closeVmaxFullscreen();
+    }
+
+    // 2. Process Files (Multi-Select & Auto-Scan)
+    function processVmaxFiles(inputElement) {
         if (!inputElement.files || inputElement.files.length === 0) return;
         
-        document.getElementById('scanStatusArea').style.display = 'block';
+        document.getElementById('vmaxScanStatus').style.display = 'block';
 
-        // Use a timeout to allow the UI to show the "Scanning..." message before heavy processing
         setTimeout(() => {
-            let addedCount = 0;
+            let added = 0;
             for (let i = 0; i < inputElement.files.length; i++) {
                 const file = inputElement.files[i];
-                
-                // FILTER: Only grab actual media files. Ignore system files, PDFs, etc.
+                // Only accept media
                 if (file.type.startsWith('video/') || file.type.startsWith('audio/') || file.type.startsWith('image/')) {
-                    
-                    // Check for exact duplicates to prevent spam
-                    const isDuplicate = vaultFiles.some(f => f.name === file.name && f.size === file.size);
-                    if(!isDuplicate) {
-                        vaultFiles.push(file);
-                        addedCount++;
+                    // Prevent duplicates
+                    const isDup = vmaxMediaList.some(f => f.name === file.name && f.size === file.size);
+                    if(!isDup) {
+                        vmaxMediaList.push(file);
+                        added++;
                     }
                 }
             }
-            
-            inputElement.value = ''; // Reset input
-            renderGallery();
-            updateStorageStats();
-            document.getElementById('scanStatusArea').style.display = 'none';
-            
-            if(addedCount > 0) alert(`✅ Successfully scanned and loaded ${addedCount} media files!`);
-            else alert("No new media files found in that selection.");
-            
+            inputElement.value = ''; 
+            document.getElementById('vmaxScanStatus').style.display = 'none';
+            renderVmaxGrid();
+            if(added > 0) alert(`✅ Loaded ${added} media files!`);
         }, 100);
     }
 
-    function updateStorageStats() {
-        let totalBytes = vaultFiles.reduce((acc, file) => acc + file.size, 0);
-        let sizeMB = (totalBytes / (1024 * 1024)).toFixed(2);
-        
-        document.getElementById('totalFileCount').innerHTML = `<i class="fas fa-file"></i> ${vaultFiles.length} Media Files`;
-        document.getElementById('totalFileSize').innerHTML = `<i class="fas fa-hdd"></i> ${sizeMB} MB`;
+    // 3. Filtering
+    function filterVmax(type, btnElement) {
+        vmaxCurrentFilter = type;
+        document.querySelectorAll('.vmax-filter').forEach(btn => btn.classList.remove('active-filter'));
+        btnElement.classList.add('active-filter');
+        renderVmaxGrid();
     }
 
-    function filterMedia(type, btnElement) {
-        currentFilter = type;
-        document.querySelectorAll('.filter-tab').forEach(btn => btn.classList.remove('active-tab'));
-        btnElement.classList.add('active-tab');
-        renderGallery();
-    }
+    // 4. Render 3-Column Square Grid
+    function renderVmaxGrid() {
+        const grid = document.getElementById('vmaxGridArea');
+        grid.innerHTML = ''; 
 
-    function renderGallery() {
-        const gallery = document.getElementById('mediaGalleryArea');
-        gallery.innerHTML = ''; 
+        // Update Stats
+        let totalBytes = vmaxMediaList.reduce((acc, file) => acc + file.size, 0);
+        document.getElementById('vmaxCount').innerText = `${vmaxMediaList.length} Files`;
+        document.getElementById('vmaxSize').innerText = `${(totalBytes / (1024 * 1024)).toFixed(1)} MB`;
 
-        let filteredFiles = vaultFiles.map((file, index) => ({ file, originalIndex: index }));
-
-        if (currentFilter !== 'all') {
-            filteredFiles = filteredFiles.filter(item => item.file.type.startsWith(currentFilter + '/'));
+        let filtered = vmaxMediaList.map((file, index) => ({ file, realIndex: index }));
+        if (vmaxCurrentFilter !== 'all') {
+            filtered = filtered.filter(item => item.file.type.startsWith(vmaxCurrentFilter + '/'));
         }
 
-        if (filteredFiles.length === 0) {
-            gallery.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align:center; color:#555; margin-top:10vh; font-family:'Outfit';">
-                    <i class="fas fa-search" style="font-size:50px; margin-bottom:15px; color:rgba(212,175,55,0.2);"></i><br>
-                    <span style="font-size:16px;">No ${currentFilter === 'all' ? 'media files' : currentFilter + 's'} found.</span>
-                </div>`;
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding-top:10vh; color:#555; font-family:'Outfit';"><i class="fas fa-search" style="font-size:40px; margin-bottom:10px;"></i><br>No ${vmaxCurrentFilter} found.</div>`;
             return;
         }
 
-        filteredFiles.forEach(item => {
+        // Show newest first
+        [...filtered].reverse().forEach((item) => {
             const file = item.file;
-            const idx = item.originalIndex;
+            const idx = item.realIndex;
             const fileURL = URL.createObjectURL(file);
-            let thumbnailHTML = '';
-            let sizeStr = file.size > 1024 * 1024 ? (file.size / (1024*1024)).toFixed(1) + ' MB' : (file.size / 1024).toFixed(0) + ' KB';
-            
+            let sizeMB = (file.size / (1024*1024)).toFixed(1);
+            let html = '';
+
             if (file.type.startsWith('image/')) {
-                thumbnailHTML = `<img src="${fileURL}" class="media-thumbnail">`;
+                html = `<img src="${fileURL}" loading="lazy">`;
             } else if (file.type.startsWith('video/')) {
-                thumbnailHTML = `<div class="media-thumbnail video-bg"><i class="fas fa-film"></i><div class="play-overlay"><i class="fas fa-play"></i></div></div>`;
+                html = `
+                    <div class="vmax-placeholder">
+                        <i class="fas fa-play" style="font-size:24px; color:#fff; opacity:0.8;"></i>
+                    </div>
+                    <div class="vmax-badge"><i class="fas fa-video"></i> ${sizeMB}MB</div>
+                `;
             } else if (file.type.startsWith('audio/')) {
-                thumbnailHTML = `<div class="media-thumbnail audio-bg"><i class="fas fa-music"></i><div class="play-overlay" style="border-color:#00bfff;"><i class="fas fa-play" style="color:#00bfff;"></i></div></div>`;
-            }
-
-            gallery.innerHTML += `
-                <div class="media-item-card">
-                    <button class="media-remove-btn" onclick="removeMediaItem(event, ${idx})" title="Remove from Player"><i class="fas fa-trash"></i></button>
-                    <div onclick="playMedia(${idx})" style="height:100%; display:flex; flex-direction:column;">
-                        ${thumbnailHTML}
-                        <div class="media-info" style="flex-grow:1;">
-                            <div class="media-title">${file.name}</div>
-                            <div class="media-meta"><span>${file.type.split('/')[0].toUpperCase()}</span> <span>${sizeStr}</span></div>
-                        </div>
+                html = `
+                    <div class="vmax-placeholder" style="background:#0a0a0c;">
+                        <i class="fas fa-music" style="font-size:24px; color:#00bfff; opacity:0.8;"></i>
                     </div>
-                </div>
-            `;
-        });
-    }
-
-    function removeMediaItem(event, index) {
-        event.stopPropagation();
-        vaultFiles.splice(index, 1);
-        renderGallery();
-        updateStorageStats();
-    }
-
-    function clearMediaGallery() {
-        if(vaultFiles.length === 0) return;
-        if(confirm("Clear the V-MAX Player? (This does not delete files from your actual device).")) {
-            vaultFiles = [];
-            renderGallery();
-            updateStorageStats();
-        }
-    }
-
-    function playMedia(index) {
-        const file = vaultFiles[index];
-        const fileURL = URL.createObjectURL(file);
-        const playerOverlay = document.getElementById('activePlayerOverlay');
-        const contentArea = document.getElementById('playerContentArea');
-        const titleBar = document.getElementById('playerFileName');
-        
-        contentArea.innerHTML = ''; 
-        titleBar.innerText = file.name;
-
-        if (file.type.startsWith('video/')) {
-            contentArea.innerHTML = `<video src="${fileURL}" controls autoplay playsinline style="width:100%; max-height:100vh; outline:none; background:#000;"></video>`;
-        } else if (file.type.startsWith('image/')) {
-            contentArea.innerHTML = `<img src="${fileURL}" style="max-width:100vw; max-height:100vh; object-fit:contain; border-radius:8px;">`;
-        } else if (file.type.startsWith('audio/')) {
-            contentArea.innerHTML = `
-                <div style="text-align:center; background:linear-gradient(145deg, #111, #050505); padding:40px; border-radius:20px; border:1px solid #333; box-shadow:0 10px 30px rgba(0,191,255,0.1);">
-                    <div style="width:120px; height:120px; background:rgba(0,191,255,0.1); border-radius:50%; display:flex; justify-content:center; align-items:center; margin:0 auto 30px auto; border:2px solid #00bfff; box-shadow:0 0 20px rgba(0,191,255,0.3);">
-                        <i class="fas fa-headphones-alt" style="font-size:50px; color:#00bfff;"></i>
-                    </div>
-                    <h3 style="color:#fff; font-family:'Outfit'; margin:0 0 5px 0; font-size:18px; padding: 0 20px;">${file.name}</h3>
-                    <audio src="${fileURL}" controls autoplay style="width:280px; outline:none; margin-top:20px;"></audio>
-                </div>
-            `;
-        }
-
-        playerOverlay.style.display = 'flex';
-    }
-
-    function closeActivePlayer() {
-        const playerOverlay = document.getElementById('activePlayerOverlay');
-        const contentArea = document.getElementById('playerContentArea');
-        contentArea.innerHTML = ''; 
-        playerOverlay.style.display = 'none';
-    }
-</script>
-
-        <a href="javascript:void(0)" class="side-link" onclick="toggleMenu(); showGalleryPermission()">
-    <i class="fas fa-images"></i> Device Gallery Viewer
-</a>
-
-<div id="galleryPermissionModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:99999999; justify-content:center; align-items:center;">
-    <div style="background:#222; width:85%; max-width:350px; border-radius:12px; padding:25px 20px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.8);">
-        <i class="fas fa-folder-open" style="font-size:40px; color:#D4AF37; margin-bottom:15px;"></i>
-        <h3 style="color:#fff; font-family:'Outfit'; margin:0 0 10px 0; font-size:18px;">Allow Access to Media</h3>
-        <p style="color:#aaa; font-size:13px; font-family:'Outfit'; margin-bottom:20px; line-height:1.5;">
-            Allow MND Hub to access photos, media, and files on your device to display them in the player?
-        </p>
-        <div style="display:flex; justify-content:space-between; gap:10px;">
-            <button style="flex:1; padding:12px; background:transparent; border:1px solid #555; color:#aaa; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="document.getElementById('galleryPermissionModal').style.display='none'">Deny</button>
-            <button style="flex:1; padding:12px; background:#D4AF37; border:none; color:#000; border-radius:8px; font-weight:bold; cursor:pointer;" onclick="grantGalleryAccess()">Allow</button>
-        </div>
-    </div>
-</div>
-
-<input type="file" id="nativeGalleryInput" multiple accept="image/*, video/*" style="display:none;" onchange="buildGalleryGrid(this)">
-
-<div id="nativeGalleryOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#111; z-index:9999999; flex-direction:column;">
-    
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 20px; background:#1a1a1a; border-bottom:1px solid #333;">
-        <span onclick="closeNativeGallery()" style="color:#fff; font-size:16px; font-family:'Outfit'; cursor:pointer;"><i class="fas fa-arrow-left"></i> Back</span>
-        <span style="color:#fff; font-family:'Outfit'; font-weight:bold; font-size:18px;">Recents</span>
-        <span onclick="document.getElementById('nativeGalleryInput').click()" style="color:#D4AF37; font-size:14px; font-family:'Outfit'; cursor:pointer;"><i class="fas fa-plus"></i> Add More</span>
-    </div>
-
-    <div id="nativeGalleryGrid" style="flex-grow:1; overflow-y:auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:2px; padding:2px; background:#000; align-content:start;">
-        </div>
-</div>
-
-<div id="galleryFullscreenViewer" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000; z-index:99999999; flex-direction:column;">
-    <div style="position:absolute; top:0; left:0; width:100%; padding:15px; display:flex; justify-content:space-between; box-sizing:border-box; background:linear-gradient(180deg, rgba(0,0,0,0.8), transparent); z-index:10;">
-        <i class="fas fa-arrow-left" style="color:#fff; font-size:24px; cursor:pointer;" onclick="closeGalleryViewer()"></i>
-        <i class="fas fa-trash-alt" style="color:#ff3333; font-size:20px; cursor:pointer;" onclick="removeCurrentViewingItem()" title="Remove from view"></i>
-    </div>
-    <div id="galleryViewerContent" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
-        </div>
-</div>
-
-<style>
-    .gallery-grid-item {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 1 / 1; /* Makes them perfect squares like a real gallery */
-        background: #222;
-        overflow: hidden;
-        cursor: pointer;
-    }
-    .gallery-grid-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Zooms to fill square */
-    }
-    .video-duration-badge {
-        position: absolute;
-        bottom: 5px;
-        left: 5px;
-        background: rgba(0,0,0,0.6);
-        color: #fff;
-        font-family: sans-serif;
-        font-size: 11px;
-        padding: 2px 5px;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
-    .video-thumbnail-placeholder {
-        width: 100%; height: 100%;
-        display: flex; flex-direction: column;
-        justify-content: center; align-items: center;
-        background: #1a1a1a; color: #555;
-    }
-</style>
-
-<script>
-    let deviceMediaArray = [];
-    let currentViewingIndex = -1;
-
-    // 1. Trigger the permission modal
-    function showGalleryPermission() {
-        document.getElementById('galleryPermissionModal').style.display = 'flex';
-    }
-
-    // 2. User clicked "Allow" -> Trigger the OS File Picker
-    function grantGalleryAccess() {
-        document.getElementById('galleryPermissionModal').style.display = 'none';
-        document.getElementById('nativeGalleryInput').click();
-    }
-
-    // 3. Process selected files and build the grid
-    function buildGalleryGrid(inputElement) {
-        if (!inputElement.files || inputElement.files.length === 0) return;
-        
-        // Open the gallery UI
-        document.getElementById('nativeGalleryOverlay').style.display = 'flex';
-
-        // Add new files to the array
-        for (let i = 0; i < inputElement.files.length; i++) {
-            deviceMediaArray.push(inputElement.files[i]);
-        }
-        
-        inputElement.value = ''; // Reset input
-        renderNativeGrid();
-    }
-
-    // 4. Render the grid exactly like the screenshots
-    function renderNativeGrid() {
-        const grid = document.getElementById('nativeGalleryGrid');
-        grid.innerHTML = '';
-
-        if(deviceMediaArray.length === 0) {
-            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding-top:50px; color:#555; font-family:'Outfit';">Gallery is empty. Click 'Add More'.</div>`;
-            return;
-        }
-
-        // Display newest files first (reverse order)
-        [...deviceMediaArray].reverse().forEach((file, reversedIndex) => {
-            const realIndex = deviceMediaArray.length - 1 - reversedIndex;
-            const fileURL = URL.createObjectURL(file);
-            let innerHTML = '';
-
-            if (file.type.startsWith('image/')) {
-                innerHTML = `<img src="${fileURL}" loading="lazy">`;
-            } else if (file.type.startsWith('video/')) {
-                // Show video icon placeholder with file size acting as a "badge"
-                let sizeMB = (file.size / (1024*1024)).toFixed(1);
-                innerHTML = `
-                    <div class="video-thumbnail-placeholder">
-                        <i class="fas fa-play-circle" style="font-size:30px; color:#ddd;"></i>
-                    </div>
-                    <div class="video-duration-badge"><i class="fas fa-video"></i> ${sizeMB}MB</div>
+                    <div class="vmax-badge" style="background:rgba(0,191,255,0.2); color:#00bfff;"><i class="fas fa-headphones"></i> Audio</div>
                 `;
             }
 
-            grid.innerHTML += `
-                <div class="gallery-grid-item" onclick="openGalleryFullscreen(${realIndex})">
-                    ${innerHTML}
-                </div>
-            `;
+            grid.innerHTML += `<div class="vmax-grid-item" onclick="openVmaxFullscreen(${idx})">${html}</div>`;
         });
     }
 
-    // 5. Open Fullscreen Viewer
-    function openGalleryFullscreen(index) {
-        currentViewingIndex = index;
-        const file = deviceMediaArray[index];
+    // 5. Fullscreen Player
+    function openVmaxFullscreen(index) {
+        vmaxCurrentIndex = index;
+        const file = vmaxMediaList[index];
         const fileURL = URL.createObjectURL(file);
-        const viewer = document.getElementById('galleryFullscreenViewer');
-        const content = document.getElementById('galleryViewerContent');
-
+        const viewer = document.getElementById('vmaxFullscreenViewer');
+        const content = document.getElementById('vmaxPlayerContent');
+        
+        document.getElementById('vmaxPlayerTitle').innerText = file.name;
         content.innerHTML = '';
 
         if (file.type.startsWith('image/')) {
             content.innerHTML = `<img src="${fileURL}" style="max-width:100%; max-height:100%; object-fit:contain;">`;
         } else if (file.type.startsWith('video/')) {
-            content.innerHTML = `<video src="${fileURL}" controls autoplay playsinline style="max-width:100%; max-height:100%; outline:none;"></video>`;
+            content.innerHTML = `<video src="${fileURL}" controls autoplay playsinline style="max-width:100%; max-height:100%; outline:none; background:#000;"></video>`;
+        } else if (file.type.startsWith('audio/')) {
+            content.innerHTML = `
+                <div style="text-align:center;">
+                    <i class="fas fa-headphones-alt" style="font-size:80px; color:#00bfff; margin-bottom:20px;"></i>
+                    <h3 style="color:#fff; font-family:'Outfit'; font-size:16px; padding:0 20px;">${file.name}</h3>
+                    <audio src="${fileURL}" controls autoplay style="width:280px; outline:none; margin-top:20px;"></audio>
+                </div>
+            `;
         }
 
         viewer.style.display = 'flex';
     }
 
-    // 6. Close Fullscreen
-    function closeGalleryViewer() {
-        document.getElementById('galleryFullscreenViewer').style.display = 'none';
-        document.getElementById('galleryViewerContent').innerHTML = ''; // Stops video playback
-        currentViewingIndex = -1;
+    function closeVmaxFullscreen() {
+        document.getElementById('vmaxFullscreenViewer').style.display = 'none';
+        document.getElementById('vmaxPlayerContent').innerHTML = ''; // Stops playback
+        vmaxCurrentIndex = -1;
     }
 
-    // 7. Remove item from view
-    function removeCurrentViewingItem() {
-        if(currentViewingIndex > -1) {
-            deviceMediaArray.splice(currentViewingIndex, 1);
-            closeGalleryViewer();
-            renderNativeGrid();
+    function removeVmaxItem() {
+        if(vmaxCurrentIndex > -1) {
+            if(confirm("Remove this file from the V-MAX player?")) {
+                vmaxMediaList.splice(vmaxCurrentIndex, 1);
+                closeVmaxFullscreen();
+                renderVmaxGrid();
+            }
         }
-    }
-
-    function closeNativeGallery() {
-        document.getElementById('nativeGalleryOverlay').style.display = 'none';
     }
 </script>
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
