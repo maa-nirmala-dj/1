@@ -5596,11 +5596,13 @@
     </div>
 
     <script type="text/javascript">
-        // 3 MAIN INDIAN LANGUAGES (Hindi, Bengali, Telugu)
+        // MAIN INDIAN LANGUAGES (Hindi, Bengali, Telugu)
         function googleTranslateElementInit() { 
             new google.translate.TranslateElement({ 
-                pageLanguage: 'en', includedLanguages: 'hi,bn,te',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false 
+                pageLanguage: 'en', 
+                includedLanguages: 'hi,bn,te,mr,ta,ur,gu,kn,or,ml,pa,as,mai,bho,sa,sd,ne,gom,doi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+                autoDisplay: false 
             }, 'google_translate_element'); 
         }
     </script>
