@@ -212,7 +212,11 @@
         .price-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         .price-title { font-family: 'Cinzel'; font-weight: bold; font-size: 16px; color: #fff; }
         .price-amt { color: var(--gold-primary); font-size: 20px; font-weight: bold; font-family: 'Rajdhani'; }
-    </style>
+  </style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
 </head>
 <body data-theme="dark">
 
@@ -5047,8 +5051,24 @@
         }
 
         // ==========================================
-        // 📸 UPGRADED LIVE FEED CMS (Image, Video, Audio, Text)
+        // 📸 FIREBASE CLOUD LIVE FEED CMS (Global Sync)
         // ==========================================
+        
+        // 1. Connect to your exact Firebase Database
+        const firebaseConfig = {
+            apiKey: "AIzaSyAyydGIkA9fDUxrBtKWHiY3q7adpnpiWe0",
+            authDomain: "mnd-40060.firebaseapp.com",
+            projectId: "mnd-40060",
+            storageBucket: "mnd-40060.firebasestorage.app",
+            messagingSenderId: "1032098137597",
+            appId: "1:1032098137597:web:a848640633f239b6f94594"
+        };
+        
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const database = firebase.database();
+
         function toggleMediaInput() {
             const type = document.getElementById('admin-type').value;
             const group = document.getElementById('media-input-group');
@@ -5056,45 +5076,59 @@
             else { group.style.display = 'block'; }
         }
 
+        // Load Gallery Live from Cloud
         function loadGallery() {
             const gallery = document.getElementById('dynamicGallery');
-            let posts = JSON.parse(localStorage.getItem('mnd_feed')) || [];
-            
-            // Default Welcome Post if empty
-            if(posts.length === 0) {
-                posts = [{ type: 'text', text: 'Welcome to Maa Nirmala DJ Live Feed! Check back here for updates, videos from our recent events, and exclusive discount offers.', time: new Date().toLocaleDateString() }];
-            }
+            if (!gallery) return;
 
-            gallery.innerHTML = posts.map(p => {
-                let mediaHtml = "";
-                let badge = "Update";
+            // This listens to the cloud continuously.
+            database.ref('mnd_feed').on('value', function(snapshot) {
+                const postsData = snapshot.val();
+                let posts = [];
                 
-                if(p.type === 'image') {
-                    badge = "Photos";
-                    mediaHtml = `<img src="${p.media}" class="feed-media feed-img" alt="Post" onerror="this.src='https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg'">`;
-                } else if(p.type === 'video') {
-                    badge = "Live Video";
-                    mediaHtml = `<video controls class="feed-media feed-video"><source src="${p.media}" type="video/mp4">Your browser does not support video.</video>`;
-                } else if(p.type === 'audio') {
-                    badge = "DJ Mix Audio";
-                    mediaHtml = `<audio controls class="feed-audio"><source src="${p.media}" type="audio/mpeg">Browser unsupported.</audio>`;
-                } else if(p.type === 'text') {
-                    badge = "Special Offer / News";
-                    mediaHtml = ``; // Handled below in text styling
+                if(postsData) {
+                    const keys = Object.keys(postsData);
+                    for(let i = keys.length - 1; i >= 0; i--) {
+                        posts.push(postsData[keys[i]]);
+                    }
                 }
 
-                return `
-                    <div class="feed-card">
-                        <span class="feed-badge">${badge} • ${p.time || 'Recent'}</span>
-                        ${mediaHtml}
-                        <div class="${p.type === 'text' ? 'feed-offer' : 'feed-text'}">${p.text}</div>
-                    </div>
-                `;
-            }).join('');
+                if(posts.length === 0) {
+                    posts = [{ type: 'text', text: 'Welcome to Maa Nirmala DJ Live Feed! Check back here for updates, videos from our recent events, and exclusive discount offers.', time: new Date().toLocaleDateString() }];
+                }
+
+                gallery.innerHTML = posts.map(function(p) {
+                    let mediaHtml = "";
+                    let badge = "Update";
+                    
+                    if(p.type === 'image') {
+                        badge = "Photos";
+                        mediaHtml = `<img src="${p.media}" class="feed-media feed-img" alt="Post" onerror="this.src='https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg'">`;
+                    } else if(p.type === 'video') {
+                        badge = "Live Video";
+                        mediaHtml = `<video controls class="feed-media feed-video"><source src="${p.media}" type="video/mp4">Your browser does not support video.</video>`;
+                    } else if(p.type === 'audio') {
+                        badge = "DJ Mix Audio";
+                        mediaHtml = `<audio controls class="feed-audio"><source src="${p.media}" type="audio/mpeg">Browser unsupported.</audio>`;
+                    } else if(p.type === 'text') {
+                        badge = "Special Offer / News";
+                        mediaHtml = ``; 
+                    }
+
+                    return `
+                        <div class="feed-card">
+                            <span class="feed-badge">${badge} • ${p.time || 'Recent'}</span>
+                            ${mediaHtml}
+                            <div class="${p.type === 'text' ? 'feed-offer' : 'feed-text'}">${p.text}</div>
+                        </div>
+                    `;
+                }).join('');
+            });
         }
 
+        // Post directly to the World via Cloud
         function postToGallery() {
-            playTap();
+            if(typeof playTap === 'function') playTap();
             const type = document.getElementById('admin-type').value;
             const media = document.getElementById('admin-media').value;
             const text = document.getElementById('admin-text').value;
@@ -5103,24 +5137,38 @@
             if(type !== 'text' && !media) { alert("Please provide a media URL!"); return; }
             if(!text) { alert("Please enter some text or caption!"); return; }
             
-            let posts = JSON.parse(localStorage.getItem('mnd_feed')) || [];
-            posts.unshift({ type, media, text, time }); // Adds to top
-            localStorage.setItem('mnd_feed', JSON.stringify(posts));
+            // Push data to Google Firebase
+            database.ref('mnd_feed').push({
+                type: type,
+                media: media,
+                text: text,
+                time: time
+            });
             
-            document.getElementById('admin-media').value = ''; document.getElementById('admin-text').value = '';
-            closeModal(null, true); showToast("Live Feed Updated!"); loadGallery();
-            setTimeout(() => { document.getElementById('liveGallerySection').scrollIntoView({behavior: 'smooth'}); }, 500);
+            document.getElementById('admin-media').value = ''; 
+            document.getElementById('admin-text').value = '';
+            
+            if(typeof closeModal === 'function') closeModal(null, true); 
+            if(typeof showToast === 'function') showToast("Live Feed Published Globally!"); 
+            
+            setTimeout(function() { 
+                const gallerySection = document.getElementById('liveGallerySection');
+                if(gallerySection) gallerySection.scrollIntoView({behavior: 'smooth'}); 
+            }, 500);
         }
 
         function clearGallery() {
-            playTap();
-            if(confirm("Delete ALL feed posts? This cannot be undone.")) {
-                localStorage.removeItem('mnd_feed'); loadGallery(); closeModal(null, true); showToast("Feed Cleared!");
+            if(typeof playTap === 'function') playTap();
+            if(confirm("Delete ALL feed posts globally? This cannot be undone.")) {
+                database.ref('mnd_feed').remove(); 
+                if(typeof closeModal === 'function') closeModal(null, true); 
+                if(typeof showToast === 'function') showToast("Feed Cleared Globally!");
             }
         }
 
+        // Initialize gallery on load
         window.onload = () => { loadGallery(); };
-
+    
         // Forms and AI Handlers
         function submitFeedback() {
             playTap(); const name = document.getElementById('fb-name').value || "Anonymous Client"; const text = document.getElementById('fb-text').value; const rating = document.querySelector('input[name="rating"]:checked');
