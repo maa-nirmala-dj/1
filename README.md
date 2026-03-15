@@ -2816,13 +2816,184 @@
     </div>
 </div>
 
-<div id="seamlessHubLoader" style="display:none; position:fixed; inset:0; background:#050505; z-index:999999999; flex-direction:column; justify-content:center; align-items:center;">
-    <div class="loader-rings"></div>
-    <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" class="loader-logo">
-    <h2 class="loader-title">MAA NIRMALA HUB</h2>
-    <p id="hubLoadText" class="loader-text">Establishing Secure Handshake...</p>
+<div id="seamlessHubLoader" class="advanced-loader-overlay" style="display:none;">
+    
+    <div class="loader-bg-glow glow-1"></div>
+    <div class="loader-bg-glow glow-2"></div>
+
+    <div class="loader-core">
+        <div class="orbit orbit-outer"></div>
+        <div class="orbit orbit-middle"></div>
+        <div class="orbit orbit-inner"></div>
+        
+        <div class="logo-shield">
+            <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" class="loader-logo-adv" alt="MND">
+        </div>
+    </div>
+    
+    <div class="loader-text-container">
+        <h2 class="loader-title-adv">MAA NIRMALA HUB</h2>
+        
+        <div class="cyber-progress-bar">
+            <div class="cyber-progress-fill"></div>
+        </div>
+        
+        <p id="hubLoadText" class="loader-text-adv">ESTABLISHING SECURE HANDSHAKE<span class="dot-blink">...</span></p>
+    </div>
 </div>
 
+<style>
+    /* Full Screen Glassmorphic Background */
+    .advanced-loader-overlay {
+        position: fixed; inset: 0; 
+        background: rgba(3, 3, 5, 0.95); 
+        backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+        z-index: 999999999; 
+        display: flex; flex-direction: column; 
+        justify-content: center; align-items: center;
+        overflow: hidden;
+    }
+
+    /* Ambient Background Glows */
+    .loader-bg-glow {
+        position: absolute; width: 300px; height: 300px;
+        border-radius: 50%; filter: blur(80px); opacity: 0.3;
+        animation: floatGlow 6s infinite alternate ease-in-out;
+        z-index: 1;
+    }
+    .glow-1 { background: #00E5FF; top: 10%; left: 10%; }
+    .glow-2 { background: #FF00FF; bottom: 10%; right: 10%; animation-delay: 2s; }
+
+    @keyframes floatGlow {
+        0% { transform: scale(0.8) translate(0, 0); }
+        100% { transform: scale(1.2) translate(30px, 30px); }
+    }
+
+    /* The Quantum Core Setup */
+    .loader-core {
+        position: relative; width: 160px; height: 160px;
+        display: flex; justify-content: center; align-items: center;
+        z-index: 10; margin-bottom: 40px;
+    }
+
+    /* Dynamic Spinning Rings */
+    .orbit {
+        position: absolute; border-radius: 50%;
+        border: 2px solid transparent;
+        box-shadow: 0 0 15px transparent;
+    }
+    
+    .orbit-outer {
+        width: 160px; height: 160px;
+        border-top: 3px solid #D4AF37; /* Royal Gold */
+        border-bottom: 3px solid #00E5FF; /* Neon Cyan */
+        animation: spinRight 2s linear infinite, dynamicColorShift 4s linear infinite;
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .orbit-middle {
+        width: 130px; height: 130px;
+        border-left: 3px solid #FF00FF; /* Neon Pink */
+        border-right: 3px solid #00FA9A; /* Neon Lime */
+        animation: spinLeft 1.5s linear infinite;
+        opacity: 0.8;
+    }
+
+    .orbit-inner {
+        width: 100px; height: 100px;
+        border-top: 2px dashed #D4AF37;
+        border-bottom: 2px dashed #D4AF37;
+        animation: spinRight 3s linear infinite;
+    }
+
+    /* Logo Shield Pulse */
+    .logo-shield {
+        width: 75px; height: 75px;
+        border-radius: 50%;
+        background: #000;
+        padding: 3px;
+        display: flex; justify-content: center; align-items: center;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        animation: pulseShield 1.5s infinite alternate;
+        z-index: 15;
+    }
+    
+    .loader-logo-adv {
+        width: 100%; height: 100%;
+        border-radius: 50%; object-fit: cover;
+        border: 1px solid #D4AF37;
+    }
+
+    /* Text & Progress Container */
+    .loader-text-container {
+        text-align: center; z-index: 10;
+        display: flex; flex-direction: column; align-items: center;
+    }
+
+    /* Cinematic Shimmering Title */
+    .loader-title-adv {
+        font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900;
+        letter-spacing: 4px; margin-bottom: 15px;
+        background: linear-gradient(90deg, #fff 0%, #D4AF37 40%, #FFD700 50%, #D4AF37 60%, #fff 100%);
+        background-size: 200% auto;
+        color: #fff; /* fallback */
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        animation: shimmerText 2.5s infinite linear;
+        text-shadow: 0px 5px 15px rgba(0,0,0,0.8);
+    }
+
+    /* Cyberpunk Progress Bar */
+    .cyber-progress-bar {
+        width: 200px; height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px; margin-bottom: 12px;
+        position: relative; overflow: hidden;
+        box-shadow: inset 0 0 5px #000;
+    }
+    
+    .cyber-progress-fill {
+        position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+        background: linear-gradient(90deg, #00E5FF, #D4AF37);
+        box-shadow: 0 0 10px #00E5FF, 0 0 20px #D4AF37;
+        animation: loadFill 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* Advanced Text */
+    .loader-text-adv {
+        font-family: 'Orbitron', 'Rajdhani', sans-serif;
+        color: #00E5FF; font-size: 12px; font-weight: 600;
+        letter-spacing: 2px; text-transform: uppercase;
+        text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+    }
+
+    .dot-blink { animation: blink 1.5s infinite; }
+
+    /* Keyframe Animations */
+    @keyframes spinRight { 100% { transform: rotate(360deg); } }
+    @keyframes spinLeft { 100% { transform: rotate(-360deg); } }
+    
+    @keyframes dynamicColorShift {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes pulseShield {
+        0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+        100% { transform: scale(1.05); box-shadow: 0 0 50px rgba(212, 175, 55, 0.9), 0 0 20px #00E5FF; }
+    }
+
+    @keyframes shimmerText { to { background-position: 200% center; } }
+    
+    @keyframes loadFill {
+        0% { width: 0%; }
+        20% { width: 30%; }
+        50% { width: 45%; }
+        80% { width: 85%; }
+        100% { width: 100%; }
+    }
+    
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+</style>
 <style>
     /* Media Button Trigger Styles */
     .media-file-btn {
