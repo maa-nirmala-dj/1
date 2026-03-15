@@ -2816,183 +2816,237 @@
     </div>
 </div>
 
-<div id="seamlessHubLoader" class="advanced-loader-overlay" style="display:none;">
+<div id="seamlessHubLoader" class="premium-3d-loader" style="display:none;">
     
-    <div class="loader-bg-glow glow-1"></div>
-    <div class="loader-bg-glow glow-2"></div>
+    <div class="cyber-grid-container">
+        <div class="cyber-grid"></div>
+    </div>
 
-    <div class="loader-core">
-        <div class="orbit orbit-outer"></div>
-        <div class="orbit orbit-middle"></div>
-        <div class="orbit orbit-inner"></div>
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+
+    <div class="gyroscope-3d">
+        <div class="gyro-ring ring-x"></div>
+        <div class="gyro-ring ring-y"></div>
+        <div class="gyro-ring ring-z"></div>
         
-        <div class="logo-shield">
-            <img src="https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg" class="loader-logo-adv" alt="MND">
+        <div class="logo-hologram">
+            <img src="https://i.postimg.cc/76mz1v2j/file-0000000090a471fa84cbecd48a774885.png" alt="MND Logo">
         </div>
     </div>
     
-    <div class="loader-text-container">
-        <h2 class="loader-title-adv">MAA NIRMALA HUB</h2>
+    <div class="loader-ui-panel">
+        <h2 class="holographic-title" data-text="MAA NIRMALA HUB">MAA NIRMALA HUB</h2>
         
-        <div class="cyber-progress-bar">
-            <div class="cyber-progress-fill"></div>
+        <div class="energy-bar-container">
+            <div class="energy-bar-fill">
+                <div class="energy-spark"></div>
+            </div>
         </div>
         
-        <p id="hubLoadText" class="loader-text-adv">ESTABLISHING SECURE HANDSHAKE<span class="dot-blink">...</span></p>
+        <p id="hubLoadText" class="system-status-text">ESTABLISHING SECURE 3D HANDSHAKE<span class="blinking-dots">...</span></p>
     </div>
 </div>
 
 <style>
-    /* Full Screen Glassmorphic Background */
-    .advanced-loader-overlay {
-        position: fixed; inset: 0; 
-        background: rgba(3, 3, 5, 0.95); 
-        backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-        z-index: 999999999; 
-        display: flex; flex-direction: column; 
+    /* Fullscreen Deep Void Container */
+    .premium-3d-loader {
+        position: fixed; inset: 0;
+        background: radial-gradient(circle at center, #0a0a0c 0%, #000000 100%);
+        z-index: 999999999;
+        display: flex; flex-direction: column;
         justify-content: center; align-items: center;
+        perspective: 1000px; /* Activates 3D Space */
         overflow: hidden;
     }
 
-    /* Ambient Background Glows */
-    .loader-bg-glow {
-        position: absolute; width: 300px; height: 300px;
-        border-radius: 50%; filter: blur(80px); opacity: 0.3;
-        animation: floatGlow 6s infinite alternate ease-in-out;
-        z-index: 1;
+    /* --- 1. 3D MOVING CYBER GRID --- */
+    .cyber-grid-container {
+        position: absolute; bottom: -20%; left: 0;
+        width: 100%; height: 60%;
+        perspective: 600px;
+        z-index: 0;
+        opacity: 0.4;
     }
-    .glow-1 { background: #00E5FF; top: 10%; left: 10%; }
-    .glow-2 { background: #FF00FF; bottom: 10%; right: 10%; animation-delay: 2s; }
-
-    @keyframes floatGlow {
-        0% { transform: scale(0.8) translate(0, 0); }
-        100% { transform: scale(1.2) translate(30px, 30px); }
+    .cyber-grid {
+        width: 200%; height: 200%;
+        position: absolute; bottom: 0; left: -50%;
+        background-image: 
+            linear-gradient(to right, rgba(0, 229, 255, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 229, 255, 0.3) 1px, transparent 1px);
+        background-size: 50px 50px;
+        transform: rotateX(75deg);
+        transform-origin: bottom center;
+        animation: gridMove 3s linear infinite, dynamicGridColor 10s infinite alternate;
+        box-shadow: inset 0 0 100px #000;
+    }
+    @keyframes gridMove {
+        0% { transform: rotateX(75deg) translateY(0); }
+        100% { transform: rotateX(75deg) translateY(50px); }
+    }
+    @keyframes dynamicGridColor {
+        0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px #00E5FF); }
+        33% { filter: hue-rotate(90deg) drop-shadow(0 0 10px #FF00FF); }
+        66% { filter: hue-rotate(180deg) drop-shadow(0 0 10px #D4AF37); }
+        100% { filter: hue-rotate(270deg) drop-shadow(0 0 10px #00FA9A); }
     }
 
-    /* The Quantum Core Setup */
-    .loader-core {
-        position: relative; width: 160px; height: 160px;
-        display: flex; justify-content: center; align-items: center;
-        z-index: 10; margin-bottom: 40px;
-    }
-
-    /* Dynamic Spinning Rings */
-    .orbit {
+    /* Floating Particles */
+    .particle {
         position: absolute; border-radius: 50%;
-        border: 2px solid transparent;
-        box-shadow: 0 0 15px transparent;
+        background: #fff; filter: blur(5px);
+        animation: floatParticle 8s infinite ease-in-out alternate;
+    }
+    .p1 { width: 50px; height: 50px; background: #D4AF37; top: 20%; left: 20%; opacity: 0.2; }
+    .p2 { width: 80px; height: 80px; background: #00E5FF; bottom: 30%; right: 15%; opacity: 0.15; animation-delay: -3s; }
+    .p3 { width: 30px; height: 30px; background: #FF00FF; top: 40%; right: 30%; opacity: 0.3; animation-delay: -5s; }
+
+    @keyframes floatParticle {
+        0% { transform: translateY(0) scale(1); }
+        100% { transform: translateY(-50px) scale(1.5); }
+    }
+
+    /* --- 2. 3D HOLOGRAPHIC GYROSCOPE --- */
+    .gyroscope-3d {
+        position: relative;
+        width: 180px; height: 180px;
+        transform-style: preserve-3d;
+        animation: rotateGyro 15s infinite linear;
+        z-index: 10;
+        margin-bottom: 50px;
     }
     
-    .orbit-outer {
-        width: 160px; height: 160px;
-        border-top: 3px solid #D4AF37; /* Royal Gold */
-        border-bottom: 3px solid #00E5FF; /* Neon Cyan */
-        animation: spinRight 2s linear infinite, dynamicColorShift 4s linear infinite;
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-    }
-
-    .orbit-middle {
-        width: 130px; height: 130px;
-        border-left: 3px solid #FF00FF; /* Neon Pink */
-        border-right: 3px solid #00FA9A; /* Neon Lime */
-        animation: spinLeft 1.5s linear infinite;
-        opacity: 0.8;
-    }
-
-    .orbit-inner {
-        width: 100px; height: 100px;
-        border-top: 2px dashed #D4AF37;
-        border-bottom: 2px dashed #D4AF37;
-        animation: spinRight 3s linear infinite;
-    }
-
-    /* Logo Shield Pulse */
-    .logo-shield {
-        width: 75px; height: 75px;
+    .gyro-ring {
+        position: absolute; inset: 0;
         border-radius: 50%;
-        background: #000;
-        padding: 3px;
-        display: flex; justify-content: center; align-items: center;
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-        animation: pulseShield 1.5s infinite alternate;
-        z-index: 15;
+        border: 4px solid transparent;
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.2);
     }
-    
-    .loader-logo-adv {
+
+    /* Independent 3D Axis Rotations */
+    .ring-x { 
+        border-top-color: #D4AF37; border-bottom-color: #D4AF37; 
+        animation: spinX 3s infinite linear; 
+    }
+    .ring-y { 
+        border-left-color: #00E5FF; border-right-color: #00E5FF; 
+        animation: spinY 4s infinite linear; 
+    }
+    .ring-z { 
+        border-top-color: #FF00FF; border-bottom-color: #00FA9A; 
+        animation: spinZ 5s infinite linear; 
+    }
+
+    .logo-hologram {
+        position: absolute; inset: 25px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 50%; padding: 5px;
+        transform: translateZ(0); /* Anchors logo in center */
+        box-shadow: 0 0 40px var(--mnd-gold);
+        animation: logoBreathing 2s infinite alternate, counterRotate 15s infinite linear;
+    }
+    .logo-hologram img {
         width: 100%; height: 100%;
         border-radius: 50%; object-fit: cover;
-        border: 1px solid #D4AF37;
+        border: 2px solid rgba(212, 175, 55, 0.8);
     }
 
-    /* Text & Progress Container */
-    .loader-text-container {
-        text-align: center; z-index: 10;
+    @keyframes rotateGyro { 100% { transform: rotateX(360deg) rotateY(360deg); } }
+    @keyframes counterRotate { 100% { transform: rotateY(-360deg) rotateX(-360deg); } }
+    @keyframes spinX { 100% { transform: rotateX(360deg); } }
+    @keyframes spinY { 100% { transform: rotateY(360deg); } }
+    @keyframes spinZ { 100% { transform: rotateZ(360deg); } }
+    @keyframes logoBreathing {
+        0% { box-shadow: 0 0 20px #D4AF37, inset 0 0 10px #D4AF37; }
+        100% { box-shadow: 0 0 60px #00E5FF, inset 0 0 30px #00E5FF; }
+    }
+
+    /* --- 3. PREMIUM TYPOGRAPHY & UI --- */
+    .loader-ui-panel {
+        z-index: 10;
         display: flex; flex-direction: column; align-items: center;
+        width: 100%; max-width: 400px; padding: 0 20px;
     }
 
-    /* Cinematic Shimmering Title */
-    .loader-title-adv {
-        font-family: 'Cinzel', serif; font-size: 26px; font-weight: 900;
-        letter-spacing: 4px; margin-bottom: 15px;
-        background: linear-gradient(90deg, #fff 0%, #D4AF37 40%, #FFD700 50%, #D4AF37 60%, #fff 100%);
-        background-size: 200% auto;
-        color: #fff; /* fallback */
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        animation: shimmerText 2.5s infinite linear;
-        text-shadow: 0px 5px 15px rgba(0,0,0,0.8);
+    /* Layered 3D Text */
+    .holographic-title {
+        font-family: 'Cinzel', serif; font-size: 28px; font-weight: 900;
+        letter-spacing: 5px; margin-bottom: 20px;
+        color: transparent;
+        background: linear-gradient(90deg, #D4AF37, #FFF, #00E5FF, #D4AF37);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        animation: shineGold 4s infinite linear;
+        position: relative;
+    }
+    /* Glowing text reflection */
+    .holographic-title::after {
+        content: attr(data-text);
+        position: absolute; left: 0; top: 0; z-index: -1;
+        color: transparent;
+        text-shadow: 0 0 20px #D4AF37, 0 0 40px #00E5FF;
+        opacity: 0.6;
     }
 
-    /* Cyberpunk Progress Bar */
-    .cyber-progress-bar {
-        width: 200px; height: 4px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px; margin-bottom: 12px;
+    @keyframes shineGold {
+        0% { background-position: 0% center; }
+        100% { background-position: 300% center; }
+    }
+
+    /* Energy Progress Bar */
+    .energy-bar-container {
+        width: 100%; height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px; margin-bottom: 15px;
         position: relative; overflow: hidden;
-        box-shadow: inset 0 0 5px #000;
+        box-shadow: inset 0 0 10px #000, 0 0 10px rgba(0, 229, 255, 0.2);
     }
     
-    .cyber-progress-fill {
-        position: absolute; top: 0; left: 0; height: 100%; width: 0%;
-        background: linear-gradient(90deg, #00E5FF, #D4AF37);
-        box-shadow: 0 0 10px #00E5FF, 0 0 20px #D4AF37;
-        animation: loadFill 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    .energy-bar-fill {
+        height: 100%; width: 0%;
+        background: linear-gradient(90deg, #D4AF37, #00E5FF, #FF00FF);
+        background-size: 200% auto;
+        border-radius: 20px;
+        animation: fillEnergy 3.5s cubic-bezier(0.1, 0.7, 0.1, 1) forwards, shineGold 2s infinite linear;
+        position: relative;
     }
 
-    /* Advanced Text */
-    .loader-text-adv {
-        font-family: 'Orbitron', 'Rajdhani', sans-serif;
-        color: #00E5FF; font-size: 12px; font-weight: 600;
-        letter-spacing: 2px; text-transform: uppercase;
-        text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+    /* A bright spark flying across the loading bar */
+    .energy-spark {
+        position: absolute; right: 0; top: -5px;
+        width: 20px; height: 16px;
+        background: #fff; border-radius: 50%;
+        box-shadow: 0 0 15px #fff, 0 0 30px #00E5FF;
+        filter: blur(2px);
     }
 
-    .dot-blink { animation: blink 1.5s infinite; }
-
-    /* Keyframe Animations */
-    @keyframes spinRight { 100% { transform: rotate(360deg); } }
-    @keyframes spinLeft { 100% { transform: rotate(-360deg); } }
-    
-    @keyframes dynamicColorShift {
-        0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-    }
-
-    @keyframes pulseShield {
-        0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-        100% { transform: scale(1.05); box-shadow: 0 0 50px rgba(212, 175, 55, 0.9), 0 0 20px #00E5FF; }
-    }
-
-    @keyframes shimmerText { to { background-position: 200% center; } }
-    
-    @keyframes loadFill {
+    @keyframes fillEnergy {
         0% { width: 0%; }
-        20% { width: 30%; }
-        50% { width: 45%; }
-        80% { width: 85%; }
+        20% { width: 40%; }
+        60% { width: 70%; }
         100% { width: 100%; }
     }
+
+    .system-status-text {
+        font-family: 'Orbitron', sans-serif;
+        color: #D4AF37; font-size: 13px; font-weight: 700;
+        letter-spacing: 3px; text-transform: uppercase;
+        animation: colorCycle 6s infinite alternate;
+    }
     
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .blinking-dots { animation: blinkText 1.5s infinite; }
+
+    @keyframes colorCycle {
+        0% { color: #D4AF37; text-shadow: 0 0 10px #D4AF37; }
+        50% { color: #00E5FF; text-shadow: 0 0 10px #00E5FF; }
+        100% { color: #FF00FF; text-shadow: 0 0 10px #FF00FF; }
+    }
+
+    @keyframes blinkText {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
 </style>
 <style>
     /* Media Button Trigger Styles */
