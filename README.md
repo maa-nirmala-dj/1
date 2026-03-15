@@ -212,11 +212,7 @@
         .price-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
         .price-title { font-family: 'Cinzel'; font-weight: bold; font-size: 16px; color: #fff; }
         .price-amt { color: var(--gold-primary); font-size: 20px; font-weight: bold; font-family: 'Rajdhani'; }
-  </style>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
+    </style>
 </head>
 <body data-theme="dark">
 
@@ -4875,53 +4871,47 @@
         </div>
 
         <div class="modal-wrap" id="authModal" onclick="closeModal(event)">
-            <div class="modal-inner" onclick="event.stopPropagation()" style="background: linear-gradient(145deg, #110e08 0%, #050505 100%); border: 1px solid #D4AF37; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
+            <div class="modal-inner" onclick="event.stopPropagation()">
                 
-                <div style="display:flex; border-bottom:1px solid rgba(212,175,55,0.3); background: rgba(10,10,10,0.9);">
-                    <div class="auth-tab active" style="flex:1; padding:18px; text-align:center; color:#D4AF37; border-bottom:2px solid #D4AF37; font-weight:900; letter-spacing:2px; font-family:'Cinzel', serif; font-size:18px;">
-                        <i class="fas fa-key"></i> PORTAL ACCESS
+                <div style="display:flex; border-bottom:1px solid #333;">
+                    <div class="auth-tab active" style="flex:1; padding:15px; text-align:center; color:var(--gold-primary); border-bottom:2px solid var(--gold-primary); font-weight:bold; letter-spacing:1px;">
+                        PORTAL ACCESS SELECTION
                     </div>
                 </div>
                 
-                <div id="loginChoiceArea" style="padding:30px 25px;">
+                <div id="loginChoiceArea" style="padding:25px;">
                     
-                    <a href="javascript:void(0)" onclick="document.getElementById('authModal').classList.remove('active'); openSecureHub();" style="display:flex; align-items:center; justify-content:space-between; background:linear-gradient(145deg, #1a1a1a, #0d0d0d); border:1px solid rgba(212,175,55,0.5); border-radius:12px; padding:18px; width:100%; text-decoration:none; margin-bottom:20px; box-sizing:border-box; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: 0.3s;">
-                        <div style="width:45px; height:45px; border-radius:50%; background:linear-gradient(135deg, rgba(212,175,55,0.2), transparent); border:1px solid rgba(212,175,55,0.3); display:flex; justify-content:center; align-items:center; color:#D4AF37; font-size:20px; box-shadow: inset 0 0 10px rgba(212,175,55,0.1);">
+                    <a href="javascript:void(0)" class="media-file-btn" onclick="document.getElementById('authModal').classList.remove('active'); openSecureHub();" style="display:flex; align-items:center; justify-content:space-between; background:rgba(20,20,20,0.6); border:1px solid #D4AF37; border-radius:12px; padding:15px; width:100%; text-decoration:none; margin-bottom:15px; box-sizing:border-box;">
+                        <div style="width:40px; height:40px; border-radius:50%; background:rgba(212,175,55,0.1); display:flex; justify-content:center; align-items:center; color:#D4AF37; font-size:18px;">
                             <i class="fas fa-users"></i>
                         </div>
                         <div style="flex:1; margin-left:15px; display:flex; flex-direction:column;">
-                            <span style="color:#fff; font-family:'Outfit', sans-serif; font-size:16px; font-weight:800; letter-spacing: 0.5px;">Public / User Login</span>
-                            <span style="color:#aaa; font-family:'Outfit', sans-serif; font-size:12px;">Access Secure Hub (MFA)</span>
+                            <span style="color:#fff; font-family:'Outfit', sans-serif; font-size:15px; font-weight:700;">Public / User Login</span>
+                            <span style="color:#888; font-family:'Outfit', sans-serif; font-size:12px;">Access Secure Hub (MFA)</span>
                         </div>
-                        <i class="fas fa-chevron-right" style="color:#D4AF37; font-size:16px;"></i>
+                        <i class="fas fa-chevron-right" style="color:#555; font-size:14px;"></i>
                     </a>
 
-                    <a href="javascript:void(0)" onclick="document.getElementById('loginChoiceArea').style.display='none'; document.getElementById('adminLoginArea').style.display='block';" style="display:flex; align-items:center; justify-content:space-between; background:linear-gradient(145deg, #1a1a1a, #0d0d0d); border:1px solid rgba(212,175,55,0.5); border-radius:12px; padding:18px; width:100%; text-decoration:none; box-sizing:border-box; box-shadow: 0 8px 20px rgba(0,0,0,0.6); transition: 0.3s;">
-                        <div style="width:45px; height:45px; border-radius:50%; background:linear-gradient(135deg, rgba(212,175,55,0.2), transparent); border:1px solid rgba(212,175,55,0.3); display:flex; justify-content:center; align-items:center; color:#D4AF37; font-size:20px; box-shadow: inset 0 0 10px rgba(212,175,55,0.1);">
+                    <a href="javascript:void(0)" class="media-file-btn" onclick="document.getElementById('loginChoiceArea').style.display='none'; document.getElementById('adminLoginArea').style.display='block';" style="display:flex; align-items:center; justify-content:space-between; background:rgba(20,20,20,0.6); border:1px solid #D4AF37; border-radius:12px; padding:15px; width:100%; text-decoration:none; box-sizing:border-box;">
+                        <div style="width:40px; height:40px; border-radius:50%; background:rgba(212,175,55,0.1); display:flex; justify-content:center; align-items:center; color:#D4AF37; font-size:18px;">
                             <i class="fas fa-user-shield"></i>
                         </div>
                         <div style="flex:1; margin-left:15px; display:flex; flex-direction:column;">
-                            <span style="color:#fff; font-family:'Outfit', sans-serif; font-size:16px; font-weight:800; letter-spacing: 0.5px;">Admin / Manager</span>
-                            <span style="color:#aaa; font-family:'Outfit', sans-serif; font-size:12px;">Passcode Required</span>
+                            <span style="color:#fff; font-family:'Outfit', sans-serif; font-size:15px; font-weight:700;">Admin / Manager</span>
+                            <span style="color:#888; font-family:'Outfit', sans-serif; font-size:12px;">Passcode Required</span>
                         </div>
-                        <i class="fas fa-chevron-right" style="color:#D4AF37; font-size:16px;"></i>
+                        <i class="fas fa-chevron-right" style="color:#555; font-size:14px;"></i>
                     </a>
                 </div>
 
-                <div id="adminLoginArea" style="padding:30px 25px; display:none; text-align: center;">
-                    <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(212,175,55,0.1); border: 2px solid #D4AF37; display: flex; justify-content: center; align-items: center; color: #D4AF37; font-size: 24px; box-shadow: 0 0 20px rgba(212,175,55,0.3);">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h4 style="color:#fff; margin-top:0; margin-bottom:20px; font-family:'Outfit', sans-serif; font-weight: 700; letter-spacing: 1px;">MANAGEMENT LOGIN</h4>
-                    
-                    <input type="tel" id="mobileInput" style="width:100%; padding:15px; margin-bottom:15px; background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.4); color:#fff; border-radius:10px; font-family:'Outfit'; outline:none; text-align:center; letter-spacing:1px;" placeholder="Admin Number (e.g. 9771617808)">
-                    
+                <div id="adminLoginArea" style="padding:25px; display:none;">
+                    <h4 style="color:#D4AF37; margin-top:0; margin-bottom:15px; text-align:center;">MANAGEMENT ONLY</h4>
+                    <input type="tel" id="mobileInput" style="width:100%; padding:12px; margin-bottom:15px; background:#1a1a1a; border:1px solid #333; color:#fff; border-radius:8px;" placeholder="Admin Number (e.g. 9771617808)">
                     <div id="otpArea">
-                        <input type="password" id="otpInput" style="width:100%; padding:15px; margin-bottom:20px; background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.4); color:#D4AF37; border-radius:10px; font-family:'Outfit'; font-size:20px; letter-spacing:8px; text-align:center; outline:none;" placeholder="••••••">
+                        <input type="password" id="otpInput" style="width:100%; padding:12px; margin-bottom:15px; background:#1a1a1a; border:1px solid #333; color:#fff; border-radius:8px;" placeholder="Enter Auth Code">
+                        <button class="btn-full" style="width:100%; padding:12px; background:var(--gold-primary); border:none; font-weight:bold; border-radius:8px; color:#000; margin-bottom:10px;" onclick="verifyAdmin()">VERIFY SECURE LOGIN</button>
                         
-                        <button class="btn-full" style="width:100%; padding:16px; background:linear-gradient(90deg, #D4AF37, #FFD700); border:none; font-family:'Outfit'; font-weight:900; font-size:15px; letter-spacing:1px; border-radius:10px; color:#000; margin-bottom:12px; cursor:pointer; box-shadow:0 5px 15px rgba(212,175,55,0.4);" onclick="verifyAdmin()"><i class="fas fa-shield-alt"></i> VERIFY SECURE LOGIN</button>
-                        
-                        <button class="btn-full" style="width:100%; padding:15px; background:rgba(255,51,51,0.05); border:1px dashed rgba(255,51,51,0.5); font-family:'Outfit'; font-weight:700; font-size:14px; letter-spacing:1px; border-radius:10px; color:#ff3333; cursor:pointer;" onclick="document.getElementById('adminLoginArea').style.display='none'; document.getElementById('loginChoiceArea').style.display='block';"><i class="fas fa-arrow-left"></i> GO BACK</button>
+                        <button class="btn-full" style="width:100%; padding:12px; background:transparent; border:1px solid #ff3333; font-weight:bold; border-radius:8px; color:#ff3333;" onclick="document.getElementById('adminLoginArea').style.display='none'; document.getElementById('loginChoiceArea').style.display='block';">GO BACK</button>
                     </div>
                 </div>
 
@@ -4929,39 +4919,36 @@
         </div>
 
         <div class="modal-wrap" id="adminPanel" onclick="closeModal(event)">
-            <div class="modal-inner" onclick="event.stopPropagation()" style="background: linear-gradient(145deg, #110e08 0%, #050505 100%); border: 1px solid #D4AF37; box-shadow: 0 20px 50px rgba(0,0,0,0.9);">
-                <div class="ai-head" style="padding:20px; background:linear-gradient(90deg, #D4AF37, #AA8222); color:#000; font-weight:900; font-family:'Cinzel', serif; font-size:18px; letter-spacing:1px; display:flex; justify-content:space-between; align-items:center;">
-                    <span><i class="fas fa-broadcast-tower"></i> LIVE FEED PUBLISHER</span>
-                    <i class="fas fa-times" style="cursor:pointer; font-size:24px; color:#000;" onclick="closeModal(null, true)"></i>
+            <div class="modal-inner" onclick="event.stopPropagation()">
+                <div class="ai-head" style="padding:15px; background:var(--gold-primary); color:#000; font-weight:bold; font-family:'Cinzel';">
+                    <i class="fas fa-user-shield"></i> LIVE FEED PUBLISHER
+                    <i class="fas fa-times" style="float:right; cursor:pointer;" onclick="closeModal(null, true)"></i>
                 </div>
-                <div class="book-area" style="padding: 25px;">
-                    <p style="color:#D4AF37; font-size:13px; margin-bottom:20px; text-align:center; font-family:'Outfit', sans-serif; background:rgba(212,175,55,0.1); padding:10px; border-radius:8px; border:1px solid rgba(212,175,55,0.2);">
-                        <i class="fas fa-info-circle"></i> Publish images, videos, audio, or text offers directly to the public live gallery.
-                    </p>
+                <div class="book-area">
+                    <p style="color:var(--gold-primary); font-size:12px; margin-bottom:15px;">Publish images, videos, audio, or text offers directly to the public live gallery.</p>
                     
-                    <div class="f-group" style="margin-bottom:15px;">
-                        <span class="f-label" style="color:#D4AF37; font-size:12px; text-transform:uppercase; font-weight:bold; letter-spacing:1px; display:block; margin-bottom:8px;">Select Post Type</span>
-                        <select id="admin-type" class="f-input" onchange="toggleMediaInput()" style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.4); color:#fff; border-radius:8px; font-family:'Outfit'; outline:none;">
-                            <option value="image" style="color:#000;">📸 Image Post</option>
-                            <option value="video" style="color:#000;">🎥 Video Post (MP4 URL)</option>
-                            <option value="audio" style="color:#000;">🎵 Audio Track (MP3 URL)</option>
-                            <option value="text" style="color:#000;">📝 Special Offer / Text Only</option>
+                    <div class="f-group">
+                        <span class="f-label">Select Post Type</span>
+                        <select id="admin-type" class="f-input" onchange="toggleMediaInput()">
+                            <option value="image">Image Post</option>
+                            <option value="video">Video Post (MP4 URL)</option>
+                            <option value="audio">Audio Track (MP3 URL)</option>
+                            <option value="text">Special Offer / Text Only</option>
                         </select>
                     </div>
 
-                    <div class="f-group" id="media-input-group" style="margin-bottom:15px;">
-                        <span class="f-label" style="color:#D4AF37; font-size:12px; text-transform:uppercase; font-weight:bold; letter-spacing:1px; display:block; margin-bottom:8px;">Media URL Link</span>
-                        <input type="text" id="admin-media" class="f-input" placeholder="Paste link here (e.g. Postimg or raw MP4/MP3)" style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.4); color:#fff; border-radius:8px; font-family:'Outfit'; outline:none;">
+                    <div class="f-group" id="media-input-group">
+                        <span class="f-label">Media URL (Link to Image/Video/Audio)</span>
+                        <input type="text" id="admin-media" class="f-input" placeholder="Paste link here (e.g. Postimg or raw MP4/MP3)">
                     </div>
 
-                    <div class="f-group" style="margin-bottom:25px;">
-                        <span class="f-label" style="color:#D4AF37; font-size:12px; text-transform:uppercase; font-weight:bold; letter-spacing:1px; display:block; margin-bottom:8px;">Post Caption / Description</span>
-                        <textarea id="admin-text" class="f-input" rows="4" placeholder="Enter post text or offer details..." style="width:100%; padding:14px; background:rgba(255,255,255,0.03); border:1px solid rgba(212,175,55,0.4); color:#fff; border-radius:8px; font-family:'Outfit'; outline:none; resize:none;"></textarea>
+                    <div class="f-group">
+                        <span class="f-label">Post Caption / Description</span>
+                        <textarea id="admin-text" class="f-input" rows="3" placeholder="Enter post text or offer details" style="resize:none; font-family:'Outfit';"></textarea>
                     </div>
 
-                    <button class="f-btn" onclick="postToGallery()" style="width:100%; padding:16px; background:linear-gradient(90deg, #D4AF37, #FFD700); border:none; font-family:'Outfit'; font-weight:900; font-size:15px; letter-spacing:1px; border-radius:10px; color:#000; margin-bottom:12px; cursor:pointer; box-shadow:0 5px 15px rgba(212,175,55,0.4);"><i class="fas fa-upload"></i> PUBLISH LIVE</button>
-                    
-                    <button class="f-btn" onclick="clearGallery()" style="width:100%; padding:15px; background:rgba(255,51,51,0.1); border:1px solid #ff3333; font-family:'Outfit'; font-weight:700; font-size:14px; letter-spacing:1px; border-radius:10px; color:#ff3333; cursor:pointer; transition:0.3s;"><i class="fas fa-trash-alt"></i> CLEAR ENTIRE FEED</button>
+                    <button class="f-btn" onclick="postToGallery()"><i class="fas fa-upload"></i> PUBLISH LIVE</button>
+                    <button class="f-btn" style="background:#333; color:#fff; margin-top:10px;" onclick="clearGallery()"><i class="fas fa-trash"></i> CLEAR ENTIRE FEED</button>
                 </div>
             </div>
         </div>
@@ -5050,26 +5037,9 @@
             } else { alert("Unauthorized Access or Wrong Code!"); } 
         }
 
-     // ==========================================
-        // 📸 FIREBASE CLOUD LIVE FEED CMS (Global Sync)
         // ==========================================
-        
-        // 1. Connect to your exact Firebase Database
-        const firebaseConfig = {
-            apiKey: "AIzaSyAyydGIkA9fDUxrBtKWHiY3q7adpnpiWe0",
-            authDomain: "mnd-40060.firebaseapp.com",
-            databaseURL: "https://mnd-40060-default-rtdb.firebaseio.com",
-            projectId: "mnd-40060",
-            storageBucket: "mnd-40060.firebasestorage.app",
-            messagingSenderId: "1032098137597",
-            appId: "1:1032098137597:web:a848640633f239b6f94594"
-        };
-        
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-        const database = firebase.database();
-
+        // 📸 UPGRADED LIVE FEED CMS (Image, Video, Audio, Text)
+        // ==========================================
         function toggleMediaInput() {
             const type = document.getElementById('admin-type').value;
             const group = document.getElementById('media-input-group');
@@ -5077,68 +5047,45 @@
             else { group.style.display = 'block'; }
         }
 
-        // Load Gallery Live from Cloud
         function loadGallery() {
             const gallery = document.getElementById('dynamicGallery');
-            if (!gallery) return;
+            let posts = JSON.parse(localStorage.getItem('mnd_feed')) || [];
+            
+            // Default Welcome Post if empty
+            if(posts.length === 0) {
+                posts = [{ type: 'text', text: 'Welcome to Maa Nirmala DJ Live Feed! Check back here for updates, videos from our recent events, and exclusive discount offers.', time: new Date().toLocaleDateString() }];
+            }
 
-            // This listens to the cloud continuously.
-            database.ref('mnd_feed').on('value', function(snapshot) {
-                const postsData = snapshot.val();
-                let posts = [];
+            gallery.innerHTML = posts.map(p => {
+                let mediaHtml = "";
+                let badge = "Update";
                 
-                if(postsData) {
-                    const keys = Object.keys(postsData);
-                    for(let i = keys.length - 1; i >= 0; i--) {
-                        posts.push(postsData[keys[i]]);
-                    }
+                if(p.type === 'image') {
+                    badge = "Photos";
+                    mediaHtml = `<img src="${p.media}" class="feed-media feed-img" alt="Post" onerror="this.src='https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg'">`;
+                } else if(p.type === 'video') {
+                    badge = "Live Video";
+                    mediaHtml = `<video controls class="feed-media feed-video"><source src="${p.media}" type="video/mp4">Your browser does not support video.</video>`;
+                } else if(p.type === 'audio') {
+                    badge = "DJ Mix Audio";
+                    mediaHtml = `<audio controls class="feed-audio"><source src="${p.media}" type="audio/mpeg">Browser unsupported.</audio>`;
+                } else if(p.type === 'text') {
+                    badge = "Special Offer / News";
+                    mediaHtml = ``; // Handled below in text styling
                 }
 
-                // 🌟 DEFAULT WELCOME MESSAGE (Agar Database khali ho) 🌟
-                if(posts.length === 0) {
-                    posts = [{ 
-                        type: 'text', 
-                        text: '🎉 <b>Welcome to Maa Nirmala DJ & Tent House!</b> 🎉<br><br>Our Live Global Feed is now active. Check back here for the latest event updates, live videos, and exclusive discount offers directly from Mr. Lalu Kumar!', 
-                        time: new Date().toLocaleDateString() 
-                    }];
-                }
-
-                gallery.innerHTML = posts.map(function(p) {
-                    let mediaHtml = "";
-                    let badge = "Update";
-                    
-                    if(p.type === 'image') {
-                        badge = "Photos";
-                        mediaHtml = `<img src="${p.media}" class="feed-media feed-img" alt="Post" onerror="this.src='https://i.postimg.cc/Y0jPr7Vy/20251205-103059-IMG-STYLE.jpg'">`;
-                    } else if(p.type === 'video') {
-                        badge = "Live Video";
-                        mediaHtml = `<video controls class="feed-media feed-video"><source src="${p.media}" type="video/mp4">Your browser does not support video.</video>`;
-                    } else if(p.type === 'audio') {
-                        badge = "DJ Mix Audio";
-                        mediaHtml = `<audio controls class="feed-audio"><source src="${p.media}" type="audio/mpeg">Browser unsupported.</audio>`;
-                    } else if(p.type === 'text') {
-                        badge = "Special Offer / News";
-                        mediaHtml = ``; 
-                    }
-
-                    return `
-                        <div class="feed-card">
-                            <span class="feed-badge">${badge} • ${p.time || 'Recent'}</span>
-                            ${mediaHtml}
-                            <div class="${p.type === 'text' ? 'feed-offer' : 'feed-text'}">${p.text}</div>
-                        </div>
-                    `;
-                }).join('');
-            }, function (error) {
-                // Agar Firebase locked hai toh error yahan dikhega
-                console.error("Firebase Error: ", error);
-                gallery.innerHTML = `<div class="feed-card"><div class="feed-offer" style="color:red; border-color:red;">⚠️ Cloud Connection Error.<br>Please ensure Firebase Database Rules are set to "true".</div></div>`;
-            });
+                return `
+                    <div class="feed-card">
+                        <span class="feed-badge">${badge} • ${p.time || 'Recent'}</span>
+                        ${mediaHtml}
+                        <div class="${p.type === 'text' ? 'feed-offer' : 'feed-text'}">${p.text}</div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        // Post directly to the World via Cloud
         function postToGallery() {
-            if(typeof playTap === 'function') playTap();
+            playTap();
             const type = document.getElementById('admin-type').value;
             const media = document.getElementById('admin-media').value;
             const text = document.getElementById('admin-text').value;
@@ -5147,50 +5094,24 @@
             if(type !== 'text' && !media) { alert("Please provide a media URL!"); return; }
             if(!text) { alert("Please enter some text or caption!"); return; }
             
-            // Uploading Animation
-            const postBtn = document.querySelector('#adminPanel .f-btn');
-            const originalText = postBtn.innerHTML;
-            postBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PUBLISHING TO WORLD...';
+            let posts = JSON.parse(localStorage.getItem('mnd_feed')) || [];
+            posts.unshift({ type, media, text, time }); // Adds to top
+            localStorage.setItem('mnd_feed', JSON.stringify(posts));
             
-            // Push data to Google Firebase
-            database.ref('mnd_feed').push({
-                type: type,
-                media: media,
-                text: text,
-                time: time
-            }).then(() => {
-                document.getElementById('admin-media').value = ''; 
-                document.getElementById('admin-text').value = '';
-                
-                if(typeof closeModal === 'function') closeModal(null, true); 
-                if(typeof showToast === 'function') showToast("Live Feed Published Globally!"); 
-                
-                postBtn.innerHTML = originalText;
-                
-                setTimeout(function() { 
-                    const gallerySection = document.getElementById('liveGallerySection');
-                    if(gallerySection) gallerySection.scrollIntoView({behavior: 'smooth'}); 
-                }, 500);
-            }).catch((error) => {
-                alert("⚠️ Upload Failed! Your Firebase Database Rules are locked. Please set read/write to true in Firebase Console.");
-                postBtn.innerHTML = originalText;
-            });
+            document.getElementById('admin-media').value = ''; document.getElementById('admin-text').value = '';
+            closeModal(null, true); showToast("Live Feed Updated!"); loadGallery();
+            setTimeout(() => { document.getElementById('liveGallerySection').scrollIntoView({behavior: 'smooth'}); }, 500);
         }
 
         function clearGallery() {
-            if(typeof playTap === 'function') playTap();
-            if(confirm("Delete ALL feed posts globally? This cannot be undone.")) {
-                database.ref('mnd_feed').remove().then(() => {
-                    if(typeof closeModal === 'function') closeModal(null, true); 
-                    if(typeof showToast === 'function') showToast("Feed Cleared Globally!");
-                });
+            playTap();
+            if(confirm("Delete ALL feed posts? This cannot be undone.")) {
+                localStorage.removeItem('mnd_feed'); loadGallery(); closeModal(null, true); showToast("Feed Cleared!");
             }
         }
 
-        // PERFECT FIX: Loads instantly when page opens
-        document.addEventListener('DOMContentLoaded', loadGallery);
-        setTimeout(loadGallery, 1500); // Backup trigger
-        
+        window.onload = () => { loadGallery(); };
+
         // Forms and AI Handlers
         function submitFeedback() {
             playTap(); const name = document.getElementById('fb-name').value || "Anonymous Client"; const text = document.getElementById('fb-text').value; const rating = document.querySelector('input[name="rating"]:checked');
