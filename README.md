@@ -5058,6 +5058,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyAyydGIkA9fDUxrBtKWHiY3q7adpnpiWe0",
             authDomain: "mnd-40060.firebaseapp.com",
+            databaseURL: "https://mnd-40060-default-rtdb.firebaseio.com",
             projectId: "mnd-40060",
             storageBucket: "mnd-40060.firebasestorage.app",
             messagingSenderId: "1032098137597",
@@ -5168,6 +5169,8 @@
 
         // Initialize gallery on load
         window.onload = () => { loadGallery(); };
+                    
+
     
         // Forms and AI Handlers
         function submitFeedback() {
